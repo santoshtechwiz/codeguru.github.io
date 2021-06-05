@@ -1,0 +1,33 @@
+In this article, I will show you how to use boolean operators to perform really useful low level bit hacks.
+Most people are used to just using AND and OR operators on integers, but this article goes into much more detail, explaining good – and fast – ways to manipulate integers at a bit level.
+
+```
+&   -  bitwise and
+|   -  bitwise or
+^   -  bitwise xor
+~   -  bitwise not
+<< -  bitwise shift left
+>>  -  bitwise shift right
+```
+## How to check number is divisible by 2 using `bit`
+Naive appraoach for checking number is to take the modulo of number by two,and if remainer is zero number is even otherwise it is odd. 
+To check number is divisible by 2 used the following bit trick.
+
+```csharp
+void Main()
+{
+	int number=5;
+	if((number&1)==0){
+		Console.WriteLine("Number is even");
+	}else{
+		Console.WriteLine("Number is odd");
+	}
+}
+```
+## Divide by 2
+By using bit wise operator you can multiply by 2
+
+
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTYzNjMwNzIzLC03NTYxMzk3ODldfQ==
+-->

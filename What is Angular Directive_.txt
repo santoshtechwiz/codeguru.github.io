@@ -1,0 +1,28 @@
+
+## What is Angular Directive?
+ ![Imgur](https://i.imgur.com/2C8tCgo.jpg)
+**Directive** is a function that executes whenever the Angular compiler finds it in the DOM.
+There are two types of directives in Angular.
+
+  - **Attribute Directive**-Change the properties of HTML element when gets applied
+
+```html
+	<div upperCase>
+	<p>some text</p>
+	</div>
+```
+*When directive appliied it will change the text to uppercase.*
+
+- **Structural directives**- Add or remove HTML elements from the DOM
+ 
+ ``` html
+	 <div *ngIf="var.length>0">
+		 <p>Display only if var exists</p>
+	</div>
+```
+
+<!--stackedit_data:
+eyJwcm9wZXJ0aWVzIjoidGl0bGU6IFdoYXQgaXMgRGlyZWN0aX
+ZlIGluIEFuZ3VsYXI/XG4iLCJoaXN0b3J5IjpbLTE0Mzg0ODEx
+MjBdfQ==
+-->

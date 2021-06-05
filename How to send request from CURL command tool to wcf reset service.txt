@@ -1,0 +1,104 @@
+In this post,I will show you how to test your rest service from command prompt using CURL tool.
+
+**What is CURL:** A command line tool for getting or sending files using [URL](http://en.wikipedia.org/wiki/URL "URL") syntax.
+
+For this demo I have created a simple reset service which contains three method as below
+
+[Download Source Code](https://github.com/santoshkumarsingh/aspdotnetcodebook/blob/master/CurlDemo.zip)
+**[ICurlService]**
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.ServiceModel.Web;
+using System.Text;
+
+
+[ServiceContract(SessionMode = SessionMode.NotAllowed)]
+public interface ICurlService
+{
+    [WebGet(UriTemplate = "date/{year}/{month}/{day}", ResponseFormat = WebMessageFormat.Xml)]
+    [OperationContract]
+    string GetDate(string day, string month, string year);
+
+    [WebGet(UriTemplate = "greet", ResponseFormat = WebMessageFormat.Json)]
+    [OperationContract]
+    string Greeting();
+
+    [WebInvoke(Method = "POST", UriTemplate = "submit", BodyStyle = WebMessageBodyStyle.WrappedRequest, ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
+    [OperationContract]
+    string Save(string data);
+
+}
+```
+
+**[ServiceType]**
+``` csharp
+using System;
+
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.ServiceModel.Web;
+using System.Text;
+
+public class ServiceType : ICurlService
+{
+    public string GetDate(string day, string month, string year)
+    {
+        return new DateTime(Convert.ToInt32(year), Convert.ToInt32(month), Convert.ToInt32(day)).ToString("dddd, MMMM dd, yyyy");
+    }
+   public string Greeting()
+    {
+        return "Hello World";
+    }
+   public string Save(string data)
+   {
+       return data + "Has been saved!";
+   }
+}
+```
+
+Let's send request to first method
+
+  ``` csharp
+ [WebGet(UriTemplate = "date/{year}/{month}/{day}", ResponseFormat = WebMessageFormat.Xml)]
+    [OperationContract]
+    string GetDate(string day, string month, string year);
+```
+
+Go to command prompt and type following code
+``` bash
+curl http://localhost:12576/CurlDemo/Service.svc/date/2012/1/12** 
+```
+
+Let's send request to second method from curl
+
+``` csharp 
+
+  [WebGet(UriTemplate = "greet", ResponseFormat = WebMessageFormat.Json)]
+    [OperationContract]
+    string Greeting();
+```
+``` bash
+curl http://localhost:12576/CurlDemo/Service.svc/greet
+```
+  
+Now,let's send a post request to service from command prompt
+``` csharp
+[WebInvoke(Method =  "POST", UriTemplate =  "submit", BodyStyle = WebMessageBodyStyle.WrappedRequest, ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
+
+[OperationContract]
+
+string  Save(string  data);
+
+  ```
+``` bash
+curl -H "Content-Type: application/json" -H "Accept: application/json" -X POST -d '{"data":"dummy data"}' http://localhost:12576/CurlDemo/Service.svc/submit
+```
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTkxMzQyMjQ2MV19
+-->

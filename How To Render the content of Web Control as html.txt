@@ -1,0 +1,115 @@
+![aspdotnetcodebook](http://i951.photobucket.com/albums/ad355/excusemedoiknowu/capture-6.gif)
+
+ASP.NET is very popular web framework for devloping front end application using C#. In this article I will show you a very cool trics for getting the render HTML. The code is straight forward and self-explonatry.
+
+```html
+<%@ Page Language="C#" ValidateRequest="false" EnableEventValidation="false" AutoEventWireup="true"
+   CodeFile="Default.aspx.cs" Inherits="_Default" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+   <title></title>
+</head>
+<body>
+   <form id="form1" runat="server">
+   <div>
+       <table>
+           <tr>
+               <td>
+                   <asp:GridView ID="grdDemo" runat="server">
+                   </asp:GridView>
+               </td>
+               <td>
+                   <asp:DropDownList ID="ddlDemo" runat="server">
+                       <asp:ListItem Text="Cat1" Value="1"></asp:ListItem>
+                       <asp:ListItem Text="Cat1" Value="1"></asp:ListItem>
+                       <asp:ListItem Text="Cat1" Value="1"></asp:ListItem>
+                   </asp:DropDownList>
+               </td>
+               <td>
+                   <asp:Table ID="tblDemo" runat="server">
+                       <asp:TableRow>
+                           <asp:TableCell Text="Demo1" ID="tc1"></asp:TableCell>
+                           <asp:TableCell Text="Demo1" ID="TableCell1"></asp:TableCell>
+                       </asp:TableRow>
+                   </asp:Table>
+               </td>
+           </tr>
+       </table>
+   </div>
+   <div>
+       <asp:Button ID="btnTable" runat="server" Text="Table Control" OnClick="btnTable_Click" />
+       <asp:Button ID="btnGridView" runat="server" Text="GridView Control" OnClick="btnGridView_Click" />
+       <asp:Button ID="btnDDl" runat="server" Text="Drop Down List" OnClick="btnDDl_Click" />
+   </div>
+   <asp:TextBox ID="TextBox1" runat="server" Height="262px" TextMode="MultiLine" Width="441px"></asp:TextBox>
+   </form>
+</body>
+</html>
+```
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.IO;
+
+public partial class _Default : System.Web.UI.Page
+{
+   protected void Page_Load(object sender, EventArgs e)
+   {
+       if (!Page.IsPostBack)
+       {
+           grdDemo.DataSource = new Category().GetCategories();
+           grdDemo.DataBind();
+       }
+   }
+   private string ConvertControlToHTML(Control source)
+   {
+       StringWriter sw = new StringWriter();
+       HtmlTextWriter htw = new HtmlTextWriter(sw);
+       source.RenderControl(htw);
+       return sw.ToString();
+   }
+   protected void btnGridView_Click(object sender, EventArgs e)
+   {
+       TextBox1.Text = ConvertControlToHTML(grdDemo);
+   }
+   public override void VerifyRenderingInServerForm(Control control)
+   {
+       //base.VerifyRenderingInServerForm(control);
+   }
+   protected void btnDDl_Click(object sender, EventArgs e)
+   {
+       TextBox1.Text = ConvertControlToHTML(ddlDemo);
+   }
+   protected void btnTable_Click(object sender, EventArgs e)
+   {
+       TextBox1.Text = ConvertControlToHTML(tblDemo);
+   }
+}
+public class Category
+{
+   public int ID { get; set; }
+   public string Name { get; set; }
+   public List<Category> GetCategories()
+   {
+       List<Category> lists = new List<Category>();
+       for (int i = 1; i <= 10; i++)
+       {
+           lists.Add(new Category { ID = i, Name = "Category" + i.ToString() });
+
+       }
+
+       return lists;
+
+   }
+}
+```
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTgyMTQ4NDIwMl19
+-->

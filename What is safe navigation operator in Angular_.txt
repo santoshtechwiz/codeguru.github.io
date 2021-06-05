@@ -1,0 +1,37 @@
+![Imgur](https://i.imgur.com/2C8tCgo.jpg)
+## What is safe navigation operator in Angular?
+
+The **Safe Navigation Operator** is also known as the "**Elvis Operator**". This **operator** is very useful to protect against null and undefined values in property paths .
+Let's suppose you have following component and you want to display email in the UI
+``` javascript
+import { Component } from  "@angular/core";
+ @Component({
+selector: "my-app",
+templateUrl: "./app.component.html",
+styleUrls: ["./app.component.css"]
+})
+export  class AppComponent {
+user = null;
+}
+```
+
+### Whiout Safe navigation operator
+``` html
+<h1>{{user.email}}</h1>
+```
+If you run the application you will see the following error in `console`
+``` javascript
+ERROR
+
+Error: Cannot read property 'email'  of  null
+```
+### With safe navigation operator
+``` html
+
+<h1>{{user?.email}}</h1>
+```
+If you run the application will not see any error
+
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTEyNzIxMDA4OTBdfQ==
+-->

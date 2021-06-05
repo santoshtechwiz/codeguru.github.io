@@ -1,0 +1,13 @@
+![Imgur](https://i.imgur.com/2C8tCgo.jpg)
+## What is difference between component and directive?
+
+| Component | Directive |
+|--|--|
+| Angular component have there own view and behavior | Directive only contains behavior |
+|Component extends Directive so that there can be only one component on host element| Host element can have multipe directivve
+
+<!--stackedit_data:
+eyJwcm9wZXJ0aWVzIjoidGl0bGU6IFdoYXQgaXMgZGlmZmVyZW
+5jZSBiZXR3ZWVuIGNvbXBvbmVudCBhbmQgZGlyZWN0aXZlXG4i
+LCJoaXN0b3J5IjpbLTEwODgwMTY4MzddfQ==
+-->

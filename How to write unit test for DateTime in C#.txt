@@ -1,0 +1,69 @@
+In this post, I will show you how to write Unit Test for `DateTime` in C#.
+
+>Wrap the current time in an abstraction and inject that abstraction into the consumer
+
+
+```csharp
+public class ClockTest
+{
+
+	private string now = "05-23-2020 00:00:00";
+	private Mock<IClock> clock;
+	public ClockTest()
+	{
+		clock = new Mock<IClock>() { CallBase = true };
+	}
+
+	[Fact]
+	public void Now_It_Should_Parse_The_Date_String()
+	{
+		clock.SetupGet(n => n.Now).Returns(DateTime.Parse(now));
+		Assert.IsType(typeof(DateTime), clock.Object.Now);
+
+	}
+	[Fact]
+	public void It_Should_Add_Days_To_Given_DateAndTime()
+	{
+		clock.Setup(n => n.AddDays(1)).Returns(DateTime.Parse(now).AddDays(1));
+		var expectedDate = "05-24-2020 00:00:00";
+		var newDate = clock.Object.AddDays(1);
+		Assert.IsType(typeof(DateTime), clock.Object.Now);
+		Assert.Equal(DateTime.Parse(expectedDate), newDate);
+
+
+	}
+}
+```
+``` csharp
+public interface IClock
+{
+	DateTime Now { get; }
+	DateTime AddDays(int day);
+}
+```
+```csharp
+class SystemClock : IClock
+{
+	public DateTime Now { get { return DateTime.Now; } }
+	public DateTime AddDays(int day)
+	{
+		return Now.AddDays(day);
+	}
+
+}
+```
+```csharp
+class StaticClock : IClock
+{
+	public DateTime Now { get { return new DateTime(2008, 09, 3, 9, 6, 13); } }
+
+	public DateTime AddDays(int day)
+	{
+		DateTime newDate = Now.AddDays(day);
+		return newDate;
+	}
+}
+```
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTIwNzY5MjkwMzMsLTYzMDA3MTYyOV19
+-->

@@ -1,0 +1,37 @@
+![Imgur](https://i.imgur.com/2C8tCgo.jpg)
+## What is template referece in Anulgar?
+
+Angular allows creating a reference of DOM element in template By doing this you can reference this variable anywhere in the template.
+
+To create template reference prefix the variable name with `#`
+``` html
+<input  type='text'  #input>
+```
+Let's consider the following code snippet
+``` javascript
+
+import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  template: `
+  <label>Enter Your Email</label>
+  <input type='text' #input (focus)="input.value='hello'">
+  `,
+  styles: []
+})
+export class AppComponent implements OnInit {
+  
+ 
+  constructor(){
+
+  }
+  ngOnInit(): void {
+    
+  }
+}
+```
+In the above example, I have created one template reference for input filed named `#input`. When the user focuses on the input filed, I am setting the input field value as `hello` by using the template reference variable. You can also access this variable in the component class using `@ViewChild.`
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTIwNjY1NDEwMDldfQ==
+-->

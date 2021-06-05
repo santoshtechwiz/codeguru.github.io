@@ -1,0 +1,100 @@
+In this post I will show how to sum the value of gridview column on selection of checkbox .Let us suppose that you have a gridview which has three column named Name,Quantity and Price.Now your requirement is to sum the value of price filed on selection of checkbox.
+```html
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default2.aspx.cs" Inherits="Default2" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <script src="Scripts/jquery-1.4.1.js" type="text/javascript"></script>
+    <title></title>
+    <script type="text/javascript">
+        $(document).ready(function () {
+    var total;
+    //Column index value of price field (Column index start from 1)
+    var columnIndexValue = 4;
+    var checked = $('input:checkbox').click(function (e) {
+    var total = 0.0;
+                $("tr:has(:checkbox:checked) td:nth-child(" + columnIndexValue + ")").each(function () {
+                    total += parseFloat($(this).text());
+                });
+                $('#Sum').text("your total is:" + total.toFixed(2));
+            });
+        });
+        
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+    <asp:GridView ID="grdItems" runat="server" AutoGenerateColumns="false">
+    <Columns>
+    <asp:TemplateField>
+    <ItemTemplate>
+    <asp:CheckBox ID="chkItem" runat="server" />
+    </ItemTemplate>
+    </asp:TemplateField>
+    <asp:TemplateField HeaderText="Name">
+    <ItemTemplate>
+    <asp:Label ID="label2" Text='<%#Eval("Name") %>' runat="server" />
+    </ItemTemplate>
+    </asp:TemplateField>
+    <asp:TemplateField HeaderText="Quantity">
+    <ItemTemplate>
+    <asp:Label ID="Label1" Text='<%#Eval("Quantity") %>' runat="server" />
+    </ItemTemplate>
+    </asp:TemplateField>
+    <asp:TemplateField HeaderText="Price">
+    <ItemTemplate>
+    <asp:Label ID="Label2" Text='<%#Eval("Price") %>' runat="server" />
+    </ItemTemplate>
+    </asp:TemplateField>
+    </Columns>
+    </asp:GridView>
+    </div>
+    <div id="Sum">
+    </div>
+    </form>
+</body>
+</html>
+```
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+public partial class Default2 : System.Web.UI.Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        grdItems.DataSource = new Item().Items;
+        grdItems.DataBind();
+    }
+}
+public class Item
+{
+    public string Name { get; set; }
+    public int Quantity { get; set; }
+    public decimal Price { get; set; }
+    public List<Item> Items
+    {
+        get
+        {
+    return new List<Item>()
+                       {
+    new Item(){Name = "Item01",Quantity = 10,Price = 180M},
+    new Item(){Name = "Item01",Quantity = 11,Price = 184M},
+    new Item(){Name = "Item01",Quantity = 12,Price = 190M},
+    new Item(){Name = "Item01",Quantity = 13,Price = 110M},
+                       };
+        }
+    }
+}
+```
+  
+  
+
+![Click here for live Demo](https://www.blogger.com/blog/post/edit/6673695286148904603/5914235263335720739#)
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTExODA1NTAxXX0=
+-->

@@ -1,0 +1,57 @@
+
+# What is Design Pattern?
+
+>A design pattern is a general recurring solution to a commonly occurring problem in software design.
+
+
+
+
+
+<a href="https://1.bp.blogspot.com/-rg7NvcMmGxU/XqlWn6SweuI/AAAAAAAAMS8/WV0RA4Xp_TEJeq9STmPdc3GHNi184odwACLcBGAsYHQ/s1600/template.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="401" data-original-width="691" src="https://1.bp.blogspot.com/-rg7NvcMmGxU/XqlWn6SweuI/AAAAAAAAMS8/WV0RA4Xp_TEJeq9STmPdc3GHNi184odwACLcBGAsYHQ/s1600/template.png" /></a>
+
+```csharp
+void Main()
+{
+new Page().Render();
+}
+
+public class BasePage
+{
+	public virtual void Init()
+	{
+
+	}
+	public virtual void End()
+	{
+
+	}
+	public void Render()
+	{
+		Init();
+		Console.WriteLine("Page Render");
+		End();
+
+	}
+
+
+}
+
+public class Page : BasePage
+{
+	public override void Init()
+	{
+		Console.WriteLine("Page Init");
+
+	}
+	public override void End()
+	{
+		Console.WriteLine("Page End");
+	}
+}
+
+
+
+```
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTQ1MDkwNDcwNF19
+-->

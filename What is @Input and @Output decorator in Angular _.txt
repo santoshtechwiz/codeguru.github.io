@@ -1,0 +1,12 @@
+![Imgur](https://i.imgur.com/2C8tCgo.jpg)
+## What is @Input and @Output decorator in Angular ?
+
+They are a mechanism to send/receive data from one component to another.
+
+**@Input** is used to receive data in
+
+**@Output** is used to send data out. Output sends data out by exposing event producers, usually EventEmitter objects.
+
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTQ3NDgxNzI5OV19
+-->

@@ -1,0 +1,118 @@
+
+In this tutorial, I will give you some tips and tricks about JavaScript `Date`.Before going to show you, some code let's get familiar with some Terminology.
+
+### What is Unix Epoch
+---
+> UNIX Epoch is a system for describing a point in time. It is the number of seconds that have elapsed since the Unix epoch, that is the time 00:00:00 UTC on 1 January 1970, minus leap seconds.
+
+This is represented as `Date (0)` in JavaScript.
+
+### GMT and UTC
+---
+> The Difference Between GMT and UTC. Greenwich Mean Time (GMT) is often interchanged or confused with Coordinated Universal Time (UTC). But GMT is a time zone, and UTC is a time standard.
+
+### ISO 8601 (Data elements and interchange formats)
+---
+> The purpose of this standard is to provide an unambiguous and well-defined method of representing dates and times, to avoid misinterpretation of numeric representations of dates and times, particularly when data is transferred between countries with different conventions for writing numeric dates and times.
+
+### What is the time zone
+---
+
+> Time zones are based on the fact that the Earth moves 15 degrees longitude each hour. Since there are 24 hours in a day, there are 24 standard time zones on the globe. (24 hours x 15º = 360º)
+
+Let's see some example.
+
+---
+ - The time is centred at Greenwich, UK (UTC +0). So, for example, if
+   it is 2:30 PM in Greenwich (UTC) now, it will be 10:30 PM in Malaysia
+   (UTC+8).
+  - If it is 17:06 in Malaysia (UTC+8) now, it will be 2:36 PM in India (UTC+5:30), and 10:05 AM in the UK (UTC+0).
+
+Now let's write some code in javascript
+``` javascript
+const date=new Date()
+```
+If you run above code you will get following output
+``` javascript
+Tue Apr 07 2020 17:11:16 GMT+0800 (Singapore Standard Time)
+```
+|Day/Week|Month	|Date|	Year|	Hour	|Minute|	Second	|TimeZone|
+|--|--|--|--|--|--|--|--|
+| Tue | APR | 07| 2020|17|11|16|GMT+8
+
+
+
+### Different Ways to create Date in javascript
+Below table describe some ways to create `Date` in javascript
+| Date                                                             | Description                   |
+|------------------------------------------------------------------|-------------------------------|
+| `new Date()  `                                                     | Current Date/Time             |
+| `new Date(timestamp)  `                                            | Milliseconds since Unix Epoch |
+| `new Date(string)  `                                               | Date String                   |
+| `new Date (year, month, day, hours, minutes, seconds, milliseconds` | Based on Date and time        |
+
+### How to get yesterday or tomorrow date from given date
+---
+- Convert given `Date` to unix epoch
+```  JavaScript
+const date=new Date().getTime(); // Unix Epoch
+```
+- Convert one day to milliseconds 
+``` javascript
+const oneDayInMilliseconds=24*60*60*1000;
+```
+- Pass current milliseconds + tomarrow to `Date` constructor as show below
+ ``` javascript
+ const tomarow=new Date(date+oneDayInMilliseconds)
+ const yesterday=new Date(date-oneDayInMilliseconds)
+```
+
+### Compare two dates in javascript
+ You can get milliseconds from these two dates and compare using javascript logical operator like `>,<,===.`
+for example.
+Let's suppose you want to compare two dates in javascript.
+
+```javascript
+const date1=new Date('07-03-2020');
+const date1=new Date('08-03-2020');
+function compare(date1,date2){
+  return date1.getTime()>date2.getTime();
+}
+coconsole.log(compare(date1,date2)); // false
+
+```
+---
+###  Get difference between two dates
+If you want to get a difference (number of days) between you can use the same approach as we used in calculating the `yesterday` and `tomorrow.`
+The formula for calculating days
+
+---
+$diff =|day1 -day2|$  // in milliseconfs
+
+$oneDayInMilliSeconds=86400000$
+
+$days= | diff |\div oneDayInMilliseconds$
+
+---
+
+Let's uppose you want to calculate diffrence between following two dates
+``` javascript
+const date1=new Date('07-03-2020');
+const date2=new Date('07-05-2020')
+//Calculate difference in Unix Timestamp
+const diff=date1.getTime()-date2.getTime()
+const oneDayInMilliseconds=24*60*60*1000; // 24 hours X 60 mins X 60 secs X 1000 msec
+
+const absDiiff=Math.abs(diff);
+const numberOfDays=Math.floor(absDiiff/oneDayInMilliseconds);
+console.log(numberOfDays); //
+console.log(date2) // 2
+```
+
+
+
+
+
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTU0ODQ3OTk5NiwtMTU0OTg5OTc2MV19
+-->

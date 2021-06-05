@@ -1,0 +1,69 @@
+In this post, I will discuss a very popular and straightforward interview question. Reverse a string using recursion.
+
+## What is recursion
+In computer science, when a function calls itself, it's called recursion. To implement the recursion, we need to keep in mind two things.
+
+- Base case (termination) otherwise the program will end up with stack overflow
+- Recurse case where problem became smaller
+
+Let's first write the iterative solution.
+
+This idea is to loop from the end and append the string to result in the string (StringBuilder for better performance)
+
+```csharp
+void Main()
+{
+	Console.WriteLine(ReverseString("codeguru"));
+	Console.WriteLine(ReverseStringLinq("codeguru"));
+	Console.WriteLine(ReverseStringRec("codeguru"));
+}
+
+public string ReverseString(string input)
+{
+	StringBuilder builder = new StringBuilder();
+	if (input.Length <= 1)
+	{
+		return input;
+	}
+	else
+	{
+		for (var i = input.Length - 1; i >= 0; i--)
+		{
+			builder.Append(input[i]);
+		}
+	}
+	return builder.ToString();
+}
+public string ReverseStringLinq(string input)
+{
+	return new String(input.ToCharArray().Reverse().ToArray());
+}
+public string ReverseStringRec(string input)
+{
+	StringBuilder result=new StringBuilder();
+	string ReverseString(string input, int index =-1)
+	{
+		if (input.Length - 1 == index)
+		{
+			return result.ToString();
+		}
+		else
+		{
+
+			index = index + 1;
+			ReverseString( input, index);
+			result.Append(input.Substring(index, 1));
+			return result.ToString();
+
+		}
+	}
+	ReverseString(input);
+	return result.ToString();
+	
+
+
+}
+```
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbNTE1NDQ4MTIyLDE2MTcwNzQ5NDNdfQ==
+-->

@@ -1,0 +1,75 @@
+# Strategy Design Pattern
+
+Define a family of algorithms, encapsulate each one, and make them interchangeable. Strategy lets the algorithm vary independently from clients that use it.
+
+[![](https://1.bp.blogspot.com/-XGN4Na4DfBU/VCg-K7v6k2I/AAAAAAAAC_k/6BzWTRsVZwQ/s1600/stp.gif)](https://www.blogger.com/blog/post/edit/6673695286148904603/8188448436415701673#)  
+  
+## Problem
+>Client wants to decide at run-time what serialization it should use to serialize a type. Many different serialization algorithms are already available.  
+![](https://docs.microsoft.com/en-us/archive/msdn-magazine/2005/july/images/cc188707.fig05.gif)
+## Solution
+Encapsulate the different serialization algorithms using the Strategy pattern!  
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace StrategyPattern
+{
+
+    public interface ISerializer
+    {
+        void Serialize();
+    }
+    public class XmlSerializer : ISerializer
+    {
+        public void Serialize()
+        {
+            Console.WriteLine("Xml serilizer Invoked");
+        }
+    }
+    public class JsonSerializer : ISerializer
+    {
+        public void Serialize()
+        {
+            Console.WriteLine("Json serializer Invoked");
+        }
+    }
+    public class Context
+    {
+        private ISerializer _serializer;
+        public Context(ISerializer serializer)
+        {
+            this._serializer = serializer;
+        }
+        public void Serialize()
+        {
+            _serializer.Serialize();
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Context ctx = new Context(new XmlSerializer());
+            ctx.Serialize();
+        }
+    }
+}
+```
+## Patterns You're Already Using in the .NET Framework.
+.NET Framework `List<T>` and `ArrayList` `Sort` method  uses ==Strategy== design pattern in the `Sort` method.
+
+```csharp
+Sort<T>(T[], IComparer<T>)
+```
+## Refrences
+
+- [Do Factory](https://www.dofactory.com/net/strategy-design-pattern)
+
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTQ2MTYzNzUyNV19
+-->

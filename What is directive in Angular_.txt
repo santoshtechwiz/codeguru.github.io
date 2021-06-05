@@ -1,0 +1,26 @@
+Angular is very popular framework for developing SPA (Single Page Application) and Native application. 
+This blog is about Angular `Directive` . We will discuss what is Directive,types of Directive and how to create custom Directive in Angular
+
+## What is Directive
+Directive are on of the core building block of Angular. Directive is used to modify behavior and appearance of DOM elements.
+
+## Types of Directive
+There are two types of directive in Angular
++ Attribute Directive
++  Structural Directives
+
+## Atribute Directives
+> Example of Attribute directives are `ngClass`,`ngStyle `etc.
+
+## Strucural Direcive
+Directive that change the appearance of the DOM elements
+> Example of strucural directives are `*ngIf` `*ngFor` ,*ngSwithc`
+
+
+## Custom Directive
+
+If your requirent is not full filled with exiting directive you can create your own custom directive in angular
+
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMzkwNTc5NzM3XX0=
+-->

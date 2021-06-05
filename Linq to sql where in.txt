@@ -1,0 +1,42 @@
+In this post, I will show you how to generate  **" where in "**  clause in Linq to SQL. Imagine that we want to select rows from Products table in Northwind database where ProductId matches 3,4, 10. Our query should include the Where IN clause. Something like this:
+
+  
+
+```sql
+SELECT *FROM Products WHERE ProductID in (3,4,10)
+```
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Reflection;
+
+namespace Linq_Tips
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //Create a list
+            List<int> list = new List<int>();
+            //Add items in list
+            list.AddRange(new int[] {3, 4, 10 });
+            NorthwindDataContext dc = new NorthwindDataContext();
+            //Query database
+            var query = from product in dc.Products
+                        where list.Contains(product.ProductID)
+                        select product;
+            Console.WriteLine(query);
+          
+        }
+    }
+}
+```
+
+The output of the above code snippet will look like this:
+
+[![](https://2.bp.blogspot.com/_iY3Ra2OqpkA/THpOWTh47lI/AAAAAAAACOc/uwitG_cCgu8/s640/wherein.jpg)](http://2.bp.blogspot.com/_iY3Ra2OqpkA/THpOWTh47lI/AAAAAAAACOc/uwitG_cCgu8/s1600/wherein.jpg)
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTQyOTU5ODgyNF19
+-->

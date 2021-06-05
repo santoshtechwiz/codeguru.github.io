@@ -1,0 +1,122 @@
+In this post, I am going to discuss what is the difference between `@Inject` and `@Injectable` in angular.
+These decorators are used for injecting the Dependency into component/service. Angular has its own DI framework, which is typically used in the design of Angular applications to increase their efficiency and modularity.
+
+### What is Dependency Injection (DI)
+
+> Dependency Injection as the name implies is the process of injecting
+> dependent functionality into modules at run time. Using dependency
+> injection helps in having a more re-usable code.
+
+For this tutorial, I have created two simple services `LogService` and `AuthService` as shown below
+
+> LogService.ts
+
+```javascript
+export class LogService {
+  constructor() {}
+  log(msg) {
+    console.log(msg);
+  }
+}
+```
+> AuthService.ts
+```javascript
+import { Injectable } from "@angular/core";
+export class AuthService {
+  constructor() {}
+
+  isAuthenicated() {
+    return true;
+  }
+}
+```
+Let's first registered these services with Angular `provider`
+
+``` javascript
+@NgModule({
+  imports: [BrowserModule, FormsModule],
+  declarations: [AppComponent],
+  bootstrap: [AppComponent],
+  providers: [AuthService, LogService]
+})
+export class AppModule {}
+```
+### What is  angular provider?
+
+> A provider is an object declared to Angular so that it can be injected in the constructor of your components, directives and other classes instantiated by Angular.
+
+
+
+
+### @Inject
+
+> It's a manual way of `Injecting` the dependency into angular.
+
+Let's suppose you want to use `LogService` in `AuthService` 
+
+First import the `Inject` module from `@angular/core`
+
+```javascript
+import {Inject } from "@angular/core";
+```
+and then inject the `LogService` into `AuthService.ts` as below
+``` javascript
+import { Injectable, Inject } from "@angular/core";
+import { LogService } from "./log.service";
+
+export class AuthService {
+  constructor( private logService:LogService) {}
+
+  isAuthenicated() {
+    this.logService.log("Calling isAuthenicated method");
+    return true;
+  }
+}
+```
+If you run the Application you will get following error
+
+> Error: Can't resolve all parameters for AuthService:
+
+**Note**: Both services are not decorated with `@Injectable` decorator
+Now let's use the `@Inject` decorator to use `LogService` in  the `AuthService`
+``` javascript
+import { Injectable, Inject } from "@angular/core";
+import { LogService } from "./log.service";
+
+export class AuthService {
+  constructor(@Inject(LogService) private logService ) {}
+
+  isAuthenicated() {
+    this.logService.log("Calling isAuthenicated method");
+    return true;
+  }
+}
+```
+if you run the application you will see the following message in the `console`
+
+> Calling authenticated method
+
+### @Injectable
+`@Injectable` decorator is used to automatically inject the dependecy into the angular application
+Removed the `@Inject` constructor decorator from the `AuthService` and add `@Injectable` decorator as show below
+``` javascript
+import { Injectable, Inject } from "@angular/core";
+import { LogService } from "./log.service";
+
+@Injectable()
+export class AuthService {
+  constructor( private logService:LogService) {}
+
+  isAuthenicated() {
+    this.logService.log("Calling isAuthenicated method");
+    return true;
+  }
+}
+```
+If you run the application you will not see any error.
+**DEMO**
+<iframe width="100%" frameborder="0" src="https://stackblitz.com/edit/codeguru-di?embed=1&file=src/app/auth.service.ts" height="400"></iframe>
+
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbNzcyMDcwMjQyXX0=
+-->

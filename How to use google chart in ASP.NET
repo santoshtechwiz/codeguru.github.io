@@ -1,0 +1,92 @@
+In this post,I will show you how to display google chart in asp.net.Before going to implementation details,go through the following link
+ 
+[Visualization: Pie Chart](https://www.blogger.com/blog/post/edit/6673695286148904603/9186110814192460268#)  
+  [![](https://3.bp.blogspot.com/-gucvkNvnBmg/T9CbDJVmSHI/AAAAAAAACbk/CnKjFN0IKfI/s400/pie.png)](https://www.blogger.com/blog/post/edit/6673695286148904603/9186110814192460268#)
+```html
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="PieChart.aspx.cs" Inherits="PiChart" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>jQuery Google Chart Demo</title>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript">
+        google.load("visualization", "1", { packages: ["corechart"] });
+    function drawChart() {
+    var hdValue = document.getElementById("<%=hdData.ClientID%>").value;
+    var response = $.parseJSON(hdValue);
+    var data = new google.visualization.DataTable();
+            data.addColumn('string', 'TaskType');
+            data.addColumn('number', 'HoursPerDay');
+    for (var i = 0; i < response.length; i++) {
+    var row = new Array();
+                row[0] = response[i].TaskType;
+                row[1] = parseInt(response[i].HoursPerDay);
+                data.addRow(row);
+            }
+    var options = {
+                title: 'My Daily Activities'
+            };
+            chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        }
+    </script>
+    <script type="text/javascript">
+        $(document).ready(drawChart);
+      
+    </script>
+</head>
+<body>
+    <form id="dform" runat="server">
+    <div id="chart_div" style="width: 900px; height: 500px;">
+    </div>
+    <asp:HiddenField ID="hdData" runat="server" />
+    </form>
+</body>
+</html>
+```
+  
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Text;
+using System.Web.Script.Serialization;
+public partial class PiChart : System.Web.UI.Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+    if (!IsPostBack)
+        {
+            StringBuilder data = new StringBuilder();
+            JavaScriptSerializer json = new JavaScriptSerializer();
+            json.Serialize(GetSampleData(), data);
+            hdData.Value = data.ToString();
+        }
+    }
+  
+    private List<Task> GetSampleData()
+    {
+        List<Task> tasks = new List<Task>
+            {
+    new Task{TaskType="Work",HoursPerDay=11},
+    new Task{TaskType="Eat",HoursPerDay=2},
+    new Task{TaskType="Commute",HoursPerDay=2},
+    new Task{TaskType="Watch TV",HoursPerDay=2},
+    new Task{TaskType="Sleep",HoursPerDay=7},
+            };
+    return tasks;
+    }
+    public class Task
+    {
+    public string TaskType { get; set; }
+    public int HoursPerDay { get; set; }
+    }
+}
+```
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTY0OTM1OTQxOV19
+-->

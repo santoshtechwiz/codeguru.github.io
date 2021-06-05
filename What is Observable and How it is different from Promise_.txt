@@ -1,0 +1,15 @@
+![Imgur](https://i.imgur.com/2C8tCgo.jpg)
+## What is Observable and How it is different from Promise.
+In this blog post, I will discuss `Observable` and `Promise` and their differences
+Promise and Observable both are used for making the asynchronous request, but there are some differences.
+
+| **Observable**                                                                 | **Promise**                                       |
+|--------------------------------------------------------------------------------|---------------------------------------------------|
+| Observable emits multiple values over the period | Emit Single Value                                 |
+|  Observable is lazy means nothing happen until a subscription is made         | Not Lazy\. As soon as Promise is made it executes |
+| Observable is cancellable \. You can cancel the Observable by unsubscribing it | Not Cancellable                                   
+
+<!--stackedit_data:
+eyJwcm9wZXJ0aWVzIjoiZXh0ZW5zaW9uczpcbiAgcHJlc2V0Oi
+AnJ1xuIiwiaGlzdG9yeSI6WzY2ODk0MDYzMF19
+-->

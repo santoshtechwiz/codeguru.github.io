@@ -1,0 +1,15 @@
+## What is angular?
+
+![Imgur](https://i.imgur.com/2C8tCgo.jpg)
+
+**Angular** is an app-design framework and development platform for creating efficient and sophisticated single-page apps. 
+
+## Futher Readering
+[Angular Doc](https://angular.io/)
+
+<!--stackedit_data:
+eyJwcm9wZXJ0aWVzIjoiY2F0ZWdvcmllczogYW5ndWxhci1pbn
+RlcnZpZXdcbmZlYXR1cmVkSW1hZ2U6ICdodHRwczovL2kuaW1n
+dXIuY29tLzJDOHRDZ28uanBnJ1xudGl0bGU6IFdoYXQgaXMgYW
+5ndWxhcj9cbiIsImhpc3RvcnkiOlsxOTEzOTE3MzY3XX0=
+-->

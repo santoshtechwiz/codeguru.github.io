@@ -1,0 +1,46 @@
+In this post, I will show you how to unpack a complex javascript object using the ES6 spread operator
+Let's suppose you have the following javascript object
+
+``` javascript
+const person = {
+  firstName: "santosh",
+  lastName: "singh",
+  address: {
+    phone: {
+      mobile: "99991235",
+      countryCode: "60"
+    },
+    email: "santosh.singh@example.com"
+  }
+}
+```
+and you want to get `mobile` and `countryCode` from the object.
+
+``` javascript
+const {
+    phone: {
+      mobile,
+      countryCode
+    }
+  
+} = person;
+console.log(mobile,countryCode); // 99991235,60
+```
+
+### How to rename the property while unpacking the object
+
+Let's suppose you want to rename the property `mobile` as `mobileNumber` while using spread operator you can add a new property name using `:` as below
+
+``` javascript
+const {
+    phone: {
+      mobile:mobileNumber,
+      countryCode
+    }
+  
+} = person;
+```
+if you try to print `mobile` property javascript will throw an error that `mobile` is not defined because we renamed it to `mobileNumber`
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbODg5MzgyODQ1XX0=
+-->

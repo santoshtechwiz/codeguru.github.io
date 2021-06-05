@@ -1,0 +1,62 @@
+![Imgur](https://i.imgur.com/2C8tCgo.jpg)
+## What is Renderer2 in Angular?
+
+`Renderer2` is class that provided API to manipulate elements of your APP withour directly touching the DOM.It can be used in applications like Server side rendering,native mobile app and the application which dont have DOM access
+
+  
+
+``` javascript
+
+import {
+
+Component,
+
+Renderer2,
+
+ViewChild,
+
+ElementRef,
+
+AfterViewInit
+
+} from  "@angular/core";
+
+  
+
+@Component({
+
+selector: "my-app",
+
+templateUrl: `
+
+<h1 #h1> Hello World</h1>`,
+
+styles: []
+
+})
+
+export  class AppComponent implements AfterViewInit {
+
+@ViewChild("h1") el: ElementRef;
+
+constructor(private rd: Renderer2) {}
+
+  
+
+ngAfterViewInit() {
+
+this.rd.setStyle(this.el.nativeElement, "color", "red");
+
+}
+
+}
+
+  
+
+```
+
+  
+  
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTIyMDk3ODEyN119
+-->

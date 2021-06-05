@@ -1,0 +1,18 @@
+This post is a simple, fun example. In this post, I will show you a neat trick about LINQ.  You have to reverse a given sentence using LINQ. For example
+Input
+```
+I love LINQ
+```
+Output
+```
+LINQ love I
+```
+There are several ways to solve this problem using LINQ. But we are going to use LINQ `Aggregate` operator which I have already discussed in my [post](https://www.codeguru.co.in/2020/05/how-to-convert-array-of-string-to-array.html)
+
+```csharp
+var sentence="I Love LINQ"
+var result=sentence.Aggregate((a,b)=>b +" "+ a);
+```
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTMyNzQ2MzI2LDExNTM3NDMyODldfQ==
+-->

@@ -1,0 +1,36 @@
+![Imgur](https://i.imgur.com/2C8tCgo.jpg)
+## How to trigger change detection manually in Angular
+
+  
+
+If you want to trigger the Angular change detection manually, then you can use `ChangeDectorRef` class. You can inject the `ChangeDectorRef` in your component/service, and then you can call `detectChanges` instance method
+
+``` javascript
+import { Component, ChangeDetectorRef } from "@angular/core";
+
+
+@Component({
+
+    selector: "my-app",
+    templateUrl: "./app.component.html",
+    styleUrls: ["./app.component.css"]
+
+})
+
+export class AppComponent {
+    constructor(private cd: ChangeDetectorRef) { }
+    doSomething() {
+
+        // Perform some logic
+        this.cd.detectChanges();
+
+    }
+
+}
+
+```
+<!--stackedit_data:
+eyJwcm9wZXJ0aWVzIjoidGl0bGU6IEhvdyB0byB0cmlnZ2VyIG
+NoYW5nZSBkZXRlY3Rpb24gbWFudWFsbHkgaW4gQW5ndWxhclxu
+IiwiaGlzdG9yeSI6WzE2MDk0ODIxMTldfQ==
+-->

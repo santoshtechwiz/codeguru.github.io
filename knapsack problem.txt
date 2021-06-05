@@ -1,0 +1,72 @@
+As per the Wikipedia
+>The knapsack problem is a problem in combinatorial optimization: Given a set of items, each with a weight and a value, determine the number of each item included in a collection so that the total weight is less than or equal to a given limit and the total amount is as large as possible
+
+In this article, I will show you the implementation of the Knapsack in C#.
+
+```csharp
+using System;
+
+public class Knapsack
+{
+    static int nbObjects = 8;
+    static int[] weight = { 2, 3, 5, 2, 4, 6, 3, 1 };
+    static int[] utility = { 5, 8, 14, 6, 13, 17, 10, 4 };
+    static int weightmax = 12;
+    static int[,] array;
+    static void Display()
+    {
+        int i, u, w;
+        u = 0;
+        w = weightmax;
+        for (i = nbObjects - 1; i >= 1; i--)
+        {
+            if (array[i, w] != array[i - 1, w])
+            {
+                Console.Write((i + 1) + " ");
+                w = w - weight[i];
+                u = u + utility[i];
+            }
+        }
+
+        if (array[0, w] != 0)
+        {
+            Console.WriteLine("1");
+            w = w - weight[0];
+            u = u + utility[0];
+        }
+    }
+    public static void SolveDP()
+    {
+        array = new int[nbObjects, weightmax + 1];
+        // initialize the first row
+        for (int j = 0; j <= weightmax; j++)
+            if (j < weight[0])
+            {
+                array[0, j] = 0;
+
+            }
+            else
+            {
+                array[0, j] = utility[0];
+
+            }
+        // for all other rows
+        for (int i = 1; i < nbObjects; i++)
+        {
+            for (int j = 0; j <= weightmax; j++)
+            {
+                if (j - weight[i] < 0)
+                    array[i, j] = array[i - 1, j];
+                else
+                    array[i, j] = Math.Max(array[i - 1, j], array[i - 1, j - weight[i]] + utility[i]);
+            }
+        }
+        Display();
+    }
+
+}
+
+```
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTg2Njc2OTg2NV19
+-->

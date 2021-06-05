@@ -1,0 +1,121 @@
+In this post I will show you how to validate asp.net form using jqery. Create a new website,add a new js file ,and add following code inside it
+```javascript
+function validateForm(e) {
+    var formIsValid = true;
+    // check that a valid email address has been entered
+    var emailRegExp = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/;
+    if (!emailRegExp.test(String($("#txtEmail").val()).toUpperCase())) {
+        addError("txtEmail", "Please enter a valid email address.");
+        formIsValid = false;
+    } else {
+        removeError("txtEmail");
+    }
+
+    // check that first name has one or more characters
+    if ($("#txtFirstName").val() == '') {
+        addError("txtFirstName", "This field is required.");
+        formIsValid = false;
+    } else {
+        removeError("txtFirstName");
+    }
+    // check that last name has one or more characters
+    if ($("#txtLastName").val() == '') {
+        addError("txtLastName", "This field is required.");
+        formIsValid = false;
+    } else {
+        removeError("txtLastName");
+    }
+
+    // check that a valid phone number is entered
+    var phoneRegExp = /^\(?[1-9]\d{2}\)?\s?\-?\.?\d{3}\s?\-?\.?\d{4}$/;
+    if (!phoneRegExp.test($("#txtPhone").val())) {
+        addError("txtPhone", "Valid phone number required.");
+        formIsValid = false;
+    } else {
+        removeError("txtPhone");
+    }
+
+    if (!formIsValid) {
+        e.preventDefault();
+    }
+}
+
+function addError(id, msg) {
+    if ($("#" + id).parent().find("label[class=error]").attr("generated") == "true") {
+        $("#" + id).parent().find("label[class=error]").css("display", "block");
+    } else {
+        $("#" + id).parent().append('<label for="' + id + '" generated="true" class="error">' + msg + '</label>').css("display", "block");
+    }
+}
+function removeError(id) {
+    $("#" + id).parent().find("label[class=error]").css("display", "none");
+}
+```
+*Add a new page.Then add reference of jquery and above js file*
+
+```html
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default2.aspx.cs" Inherits="Default2" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <script type="text/javascript" src="Scripts/jquery-1.4.1.js"></script>
+    <script type="text/javascript" src="Scripts/Validation.js"></script>
+    <title></title>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".submitForm").click(function (e) {
+                validateForm(e);
+            });
+        });
+    </script>
+    <style type="text/css">
+    .error{color:Red;}
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <table class="style1">
+        <tr>
+            <td>
+                FirstName
+            </td>
+            <td>
+                <asp:TextBox ID="txtFirstName"  runat="server"></asp:TextBox>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                LastName
+            </td>
+            <td>
+                <asp:TextBox ID="txtLastName"  runat="server"></asp:TextBox>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Phone Number
+            </td>
+            <td>
+                <asp:TextBox ID="txtPhone"  runat="server"></asp:TextBox>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Email
+            </td>
+            <td>
+                <asp:TextBox ID="txtEmail"  runat="server"></asp:TextBox>
+            </td>
+        </tr>
+    </table>
+    <div>
+        <input type="button" id="btnSubmit" class="submitForm" value="Submit" />
+    </div>
+    </form>
+</body>
+</html>
+```
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE2MzEyNDQ2NTRdfQ==
+-->

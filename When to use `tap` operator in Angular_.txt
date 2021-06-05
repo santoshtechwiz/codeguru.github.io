@@ -1,0 +1,47 @@
+## When to use `tap` operator in Angular?
+
+![Imgur](https://i.imgur.com/2C8tCgo.jpg)
+
+
+>RxJS (Reactive Extensions for JavaScript) is a library for reactive programming using observables that makes it easier to compose asynchronous or callback-based code. See (RxJS Docs).
+
+Angular uses `RxJS` heavily in there framework. Angular provide a lot of `rxjs operator` for making developer life easy one of them is `tap` previously knkows as `do`. 
+Yow can use `tap` operator in following scenario (there could be more)
+
+- Debugging
+-  Making side effect /Call functions without breaking the stream
+- 
+
+- For Debugging (Example taken from [learnrxjs.io]([https://www.learnrxjs.io/learn-rxjs/operators/utility/do](https://www.learnrxjs.io/learn-rxjs/operators/utility/do))
+``` javascript
+// RxJS v6+
+import { of } from 'rxjs';
+import { tap, map } from 'rxjs/operators';
+
+const source = of(1, 2, 3, 4, 5);
+// transparently log values from source with 'tap'
+const example = source.pipe(
+  tap(val => console.log(`BEFORE MAP: ${val}`)),
+  map(val => val + 10),
+  tap(val => console.log(`AFTER MAP: ${val}`))
+);
+
+//'tap' does not transform values
+//output: 11...12...13...14...15
+const subscribe = example.subscribe(val => console.log(val));
+```
+- Call function
+
+```  javascript
+saveToLocalStorage(data){
+	 localStorage.setItem('dataSource', data);
+ }
+ const source = of(1, 2, 3, 4, 5);
+const example = source.pipe(
+  tap(val => this.saveToLocalStorage),
+  map(val => val + 10),
+ );
+ ``
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTEwOTU2OTExNjNdfQ==
+-->

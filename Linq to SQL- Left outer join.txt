@@ -1,0 +1,40 @@
+LINQ (Language Integrated Query) is a compelling feature of C# which allows the developer to write code in the query like syntax.
+Linq allows the developer to write code in C# and then it generates the SQL on fly. LINQ does not provide any operator for left join, but we can achieve this very quickly using Linq
+In this article, I am going to show how to generate a left outer join using LINQ to SQL. For this post, I am going to use Categories and Product table of northwind.
+
+[![](https://2.bp.blogspot.com/_iY3Ra2OqpkA/TQumIal3T1I/AAAAAAAACQQ/shbVYGGYwdY/s400/table.jpg)](http://2.bp.blogspot.com/_iY3Ra2OqpkA/TQumIal3T1I/AAAAAAAACQQ/shbVYGGYwdY/s1600/table.jpg)
+
+**First way to generate left outer join**
+``` csharp
+var query=from p in Products
+          join c in Categories
+          on p.CategoryID equals c.CategoryID into pc
+          where p.CategoryID==1
+          from j in pc.DefaultIfEmpty()
+          select new
+          {
+          CategoryName=j.CategoryName,
+          ProductName=p.ProductName
+          };
+```
+ouput generated code
+```sql
+SELECT [t1].[CategoryName] AS [CategoryName], [t0].[ProductName]
+FROM [Products] AS [t0]
+LEFT OUTER JOIN [Categories] AS [t1] ON [t0].[CategoryID] = ([t1].[CategoryID])
+WHERE [t0].[CategoryID] = @p0
+```
+second way without using into operator
+```csharp
+var query=from p in Products
+          from c in Categories.Where(x=>x.CategoryID==p.CategoryID).DefaultIfEmpty()
+          select new
+          {
+          CategoryName=c.CategoryName,
+          ProductName=p.ProductName
+          };
+  ```
+HAPPY CODING 😊❤❤
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE0ODAwMzA4NjBdfQ==
+-->

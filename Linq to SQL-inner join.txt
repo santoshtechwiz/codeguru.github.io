@@ -1,0 +1,22 @@
+>Language Integrated Query (LINQ, pronounced "link") is a Microsoft .NET Framework component that adds native data querying capabilities to .NET languages, released initially as a significant part of .NET Framework 3.5 in 2007.
+
+In this post, I am going to show you how to generate inner join using LINQ to SQL. For this post, I am going to use Categories and Product table of northwind.
+
+[![](https://1.bp.blogspot.com/_iY3Ra2OqpkA/TQujLJSvI-I/AAAAAAAACQE/F-3er8D3OrE/s400/table.jpg)](http://1.bp.blogspot.com/_iY3Ra2OqpkA/TQujLJSvI-I/AAAAAAAACQE/F-3er8D3OrE/s1600/table.jpg)
+
+  Let's imagine that you want to fetch `CategoryName `and` ProductName` from the above table using LINQ.
+ 
+```csharp
+var query=from p in Products
+          join c in Categories
+          on p.CategoryID equals c.CategoryID
+          select new
+          {
+          CategoryName=c.CategoryName,
+          ProductName=p.ProductName
+          };
+```
+[![](https://2.bp.blogspot.com/_iY3Ra2OqpkA/TQuk5PMGzpI/AAAAAAAACQM/I6kJf2nILS8/s640/inner.jpg)](http://2.bp.blogspot.com/_iY3Ra2OqpkA/TQuk5PMGzpI/AAAAAAAACQM/I6kJf2nILS8/s1600/inner.jpg)
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbNzQzODcxNTk5LC0xNDUzMDM2NzcwXX0=
+-->

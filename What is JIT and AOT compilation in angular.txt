@@ -1,0 +1,35 @@
+TL;DR 
+Angular is a very popular web framework of developing SPA (Single Page Application) and Native Application using modern technology like typescript and rxjs.
+Angular supports two types of compilation.
+
+- AOT (Ahead of time Compilation) - In Browser
+-  JIT (Just in time Compilation) - During Build
+
+
+![Imgur](https://i.imgur.com/2C8tCgo.jpg)
+## What is JIT and AOT and their differences
+
+The main differences between **JIT and AOT in Angular** are: Just-in-Time (**JIT**), compiles your app in the browser at runtime. Ahead-of-Time (**AOT**), compiles your app at build time on the server. **JIT** compilation is the default when you run the ng build (build only), or ng serve (build and serve locally)
+
+
+## Advantage of AOT compilation
++ Faster rendering
++ Fewer network request
++ Smaller bundle size
++ Detects template error(s) at build time
+
+## How to compile the angular app using `AOT.`
+if you want to build your app using AOT compilation. Run the following command at the terminal
+
+``` sh
+	ng build --prod --aot=true
+```
+## Advantages of JIT Compilation
+Below are some benefits of JIT compilation
++ No build required after changing the code
++  Good for local development because it's only built the change file.
+
+
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTY5MTk3MTc2Nl19
+-->
