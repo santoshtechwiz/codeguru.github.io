@@ -1,0 +1,131 @@
+In this post I will show how to convert IEnumerable to string (Html table).Assume you have a customer class which has three properties named FirstName,LastName and Age.Now,you want to display customer collection on UI. For this I have created following method which retrives propertyname and value dynamically (using reflection) and return result as string 
+```csharp
+public static string ToHtmlTable(IEnumerable list, string tableSyle, string headerStyle, string rowStyle, string alternateRowStyle)
+```
+```html
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <style type="text/css">
+        .headerStyle
+        {
+            background-color: #abc;
+        }
+        .rowStyle
+        {
+            background-color: #def;
+        }
+        .alternateRowStyle
+        {
+            background-color: #aabbcc;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <div id="table" runat="server">
+        </div>
+    </div>
+    </form>
+</body>
+</html>
+```
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+public partial class _Default : System.Web.UI.Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        table.InnerHtml = ToHtmlTable(EmployeeDAL.Employees, "", "headerStyle", "rowStyle", "alternateRowStyle");
+    }
+
+    public static string ToHtmlTable<T>(IEnumerable<T> list, string tableSyle, string headerStyle, string rowStyle, string alternateRowStyle)
+    {
+
+        var result = new StringBuilder();
+        if (String.IsNullOrEmpty(tableSyle))
+        {
+            result.Append("<table id=\"" + typeof(T).Name + "Table\">");
+        }
+        else
+        {
+            result.Append("<table id=\"" + typeof(T).Name + "Table\" class=\"" + tableSyle + "\">");
+        }
+
+        var propertyArray = typeof(T).GetProperties();
+        foreach (var prop in propertyArray)
+        {
+            if (String.IsNullOrEmpty(headerStyle))
+            {
+                result.AppendFormat("<th>{0}</th>", prop.Name);
+            }
+            else
+            {
+                result.AppendFormat("<th class=\"{0}\">{1}</th>", headerStyle, prop.Name);
+            }
+        }
+
+        for (int i = 0; i < list.Count(); i++)
+        {
+            if (!String.IsNullOrEmpty(rowStyle) && !String.IsNullOrEmpty(alternateRowStyle))
+            {
+                result.AppendFormat("<tr class=\"{0}\">", i % 2 == 0 ? rowStyle : alternateRowStyle);
+            }
+            else
+            {
+                result.AppendFormat("<tr>");
+            }
+
+            foreach (var prop in propertyArray)
+            {
+                object value = prop.GetValue(list.ElementAt(i), null);
+                result.AppendFormat("<td>{0}</td>", value ?? String.Empty);
+            }
+            result.AppendLine("</tr>");
+        }
+        result.Append("</table>");
+        return result.ToString();
+    }
+}
+```
+```csharp
+public class Employee
+{
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public int Age { get; set; }
+
+}
+```
+```csharp
+public class EmployeeDAL
+{
+    public static List<Employee> Employees
+    {
+        get
+        {
+            return new List<Employee>()
+                       {
+                           new Employee(){FirstName = "F001",LastName = "L001",Age = 31},
+                           new Employee(){FirstName = "F002",LastName = "L002",Age = 32},
+                           new Employee(){FirstName = "F003",LastName = "L003",Age = 33},
+                           new Employee(){FirstName = "F004",LastName = "L004",Age = 34},
+                       };
+        }
+    }
+}
+```
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE3ODIyMDMxMTJdfQ==
+-->

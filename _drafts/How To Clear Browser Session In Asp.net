@@ -1,0 +1,25 @@
+>ASP.NET is an open-source server-side web application framework designed for web development to produce dynamic web pages developed by Microsoft to allow programmers to build dynamic web sites, applications and services.
+
+
+In this post i will show how to clear Browser history in asp.net.just write down following code in Logout button.
+```csharp
+protected void LogOut()
+   {
+       Session.Abandon();
+       string nextpage = "Logoutt.aspx";
+       Response.Write("<script language=javascript>");
+
+       Response.Write("{");
+       Response.Write(" var Backlen=history.length;");
+
+       Response.Write(" history.go(-Backlen);");
+       Response.Write(" window.location.href='" + nextpage + "'; ");
+
+       Response.Write("}");
+       Response.Write("</script>");
+
+   }
+   ```
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE3MzI2MzAwXX0=
+-->
