@@ -1,0 +1,122 @@
+You can extend ASP.NET configuration settings with XML configuration elements of  your own. To do this, you create a custom configuration section handler.  The handler must be a .NET Framework class that inherits from the `System.Configuration.ConfigurationSection` class. The section handler  interprets and processes the settings that are defined in XML configuration  elements in a specific section of a `Web.config` file. You can read and write  these settings through the handler's properties.  
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Linq;
+using System.Web;
+namespace CustomConfigSection
+{
+    public class LoginRedirectByRoleSection : ConfigurationSection
+    {
+        [ConfigurationProperty("roleRedirects")]
+    public RoleRedirectCollection RoleRedirects
+        {
+    get
+            {
+    return (RoleRedirectCollection)this["roleRedirects"];
+            }
+    set
+            {
+    this["roleRedirects"] = value;
+            }
+        }
+    }
+    public class RoleRedirect : ConfigurationElement
+    {
+        [ConfigurationProperty("role", IsRequired = true)]
+    public string Role
+        {
+    get
+            {
+    return (string)this["role"];
+            }
+    set
+            {
+    this["role"] = value;
+            }
+        }
+        [ConfigurationProperty("url", IsRequired = true)]
+    public string Url
+        {
+    get
+            {
+    return (string)this["url"];
+            }
+    set
+            {
+    this["url"] = value;
+            }
+        }
+    }
+    public class RoleRedirectCollection : ConfigurationElementCollection
+    {
+    public RoleRedirect this[int index]
+        {
+    get
+            {
+    return (RoleRedirect)BaseGet(index);
+            }
+        }
+    public RoleRedirect this[object key]
+        {
+    get
+            {
+    return (RoleRedirect)BaseGet(key);
+            }
+        }
+    protected override ConfigurationElement CreateNewElement()
+        {
+    return new RoleRedirect();
+        }
+    protected override object GetElementKey(ConfigurationElement element)
+        {
+    return ((RoleRedirect)element).Role;
+        }
+    }
+}
+```
+  
+```xml
+<configSections>
+    <section name="loginRedirectByRole" type="CustomConfigSection.LoginRedirectByRoleSection,CustomConfigSection" allowLocation="true" allowDefinition="Everywhere" />
+    </configSections>
+    <loginRedirectByRole>
+    <roleRedirects>
+    <add role="Administrator" url="~/Admin/Default.aspx" />
+    <add role="User" url="~/User/Default.aspx" />
+    </roleRedirects>
+    </loginRedirectByRole>
+```
+  
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Linq;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using CustomConfigSection;
+namespace CustomConfigSection
+{
+    public partial class WebForm1 : System.Web.UI.Page
+    {
+    protected void Page_Load(object sender, EventArgs e)
+        {
+           LoginRedirectByRoleSection roleRedirectSection = (LoginRedirectByRoleSection)ConfigurationManager.GetSection("loginRedirectByRole");
+    foreach (RoleRedirect roleRedirect in roleRedirectSection.RoleRedirects)
+            {
+    if (Roles.IsUserInRole("", roleRedirect.Role))
+                {
+                    Response.Redirect(roleRedirect.Url);
+                }
+            }
+        }
+    }
+}
+```
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTU2MDEzMzUwMF19
+-->

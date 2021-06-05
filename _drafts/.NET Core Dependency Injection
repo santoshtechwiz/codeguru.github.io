@@ -1,0 +1,66 @@
+Dependency injection is a programming paradigm that makes a class independent of its dependencies or, in other words, loosely coupled. This allows you to replace dependencies without having to change the class that relies on them. It also lowers the risk of changing a class just because one of its dependencies changed.
+
+  
+
+Dependency Injection is discussed in a famous blog post by Martin Fowler
+
+ [Inversion of Control Containers and the Dependency Injection pattern](https://martinfowler.com/articles/injection.html)
+
+Fowler’s Example
+![](https://1.bp.blogspot.com/-zBiU-DlwnTE/YKyhGNEt7sI/AAAAAAAAOq0/6W9P57CWucUjItfDEYACGMu3i8gPu-i0wCLcBGAsYHQ/w640-h414/di-1.png))
+  
+
+The code on above has two concrete dependencies
+-A reference to a concrete class that implements MovieFinder
+- A reference to a hard-coded string
+
+  
+
+>The name of the movie database cannot change without causing MovieLister to be changed and recompiled
+ 
+
+## Our Goal
+
+Our goal is to remove as much as possible the `new` keyword from `MovieLister` class
+As much as possible, get rid of code with the form
+
+~~this.finder=new XmlMovieFinder("movies.xml");~~
+
+  ![](https://1.bp.blogspot.com/-xsCzvtcuHOI/YKyhGSjYSvI/AAAAAAAAOq4/j7KQSzKLMQ0u7dgE1s2gzle0XoVKYprOgCLcBGAsYHQ/w640-h468/di-2.png)
+
+## Types of dependency injection
+There are several types of dependency ijection like
+
+- Constructor Injection
+- Property Injection
+- Method Injection
+- Interface injection comparison.
+
+Let's understand first two with some real world example.
+
+## Constructor Injection
+
+![](https://1.bp.blogspot.com/-9Fjhd1MJzN0/YKyhGIFuPAI/AAAAAAAAOqw/nK57ak3QvBA1_a5SuW3xFpCnzUMUgZdXgCLcBGAsYHQ/w640-h360/di-3.png)
+
+You can in the above code that we are passing `IMovieFinder` in the constructor of the `MovieLister` instead of creating new instance in the constructor.
+## Property Injection(## aka  *setter injection*)
+
+![](https://1.bp.blogspot.com/-lpbwyDRxy-Y/YKyhHjh71RI/AAAAAAAAOq8/z795OLoSwtAdNHQyKU_kxjW9qyRSx80IwCLcBGAsYHQ/w640-h298/di-4.png)
+  
+The injector supplies dependency through the use of a public property of a client class during property injection (also known as the Setter Injection).
+  
+##  So, what is dependency injection?
+ 
+The idea is that classes in an application express their dependencies in very indirect ways.  `MovieLister` needs  `MovieFinder` and  `Main` needs a `MovieLister`.In order to achive this we need a   **third party** system  known as a ==Inversion of Control container== or a ==dependency injection framework==.which then injects (or inserts) a class that will meet that dependency at run-time.
+
+  The intent behind dependency injection is to achieve separation of concerns of construction and use of objects. This can increase readability and code reuse.
+ 
+## You May Like
+
+- [.Net Core dependency injection in console app](https://www.codeguru.co.in/2021/05/net-core-dependency-injection-in.html)
+- [.Net Core dependency injection multiple implementations](https://www.codeguru.co.in/2021/05/net-core-dependency-injection-multiple.html)
+- [Captive Dependency in .NET Core](https://www.codeguru.co.in/2021/05/captive-dependency-in-net-core.html)
+
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMjM1MjAwNTY2XX0=
+-->

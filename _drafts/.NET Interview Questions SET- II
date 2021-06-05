@@ -1,0 +1,93 @@
+
+- [Difference between Overloading and Overriding ?](#difference-between-overloading-and-overriding-)
+- [What is CLR (Common Language Runtime?](#what-is-clr-common-language-runtime)
+- [What is CTS (Common Type System)](#what-is-cts-common-type-system)
+- [What are the different types of Assemblies?](#what-are-the-different-types-of-assemblies)
+- [What will be the output of following code snippet](#what-will-be-the-output-of-following-code-snippet)
+```csharp
+void Main()
+{
+	var name=null;
+}
+```
+- [What is the output of following linq queries](#answer-1)
+```csharp
+void Main()
+{
+	var names=new List<string> {"Delhi","Mumbai","Banglore"};
+	var query=from name in names	
+				where name.Length>3
+				select name;
+	names.Add("Pune");
+	
+	Console.WriteLine(query);
+	
+}
+```
+
+
+## Difference between Overloading and Overriding ?
+`Overloading` 
+
+>Same function name and different parameters is called overloading.
+```csharp
+public void Add(int a, int b) {}
+
+public void Add(int a, int b, int d)
+```
+`Overriding`
+
+>The base class method is override by the derived class.
+```csharp
+class Parent
+{
+	protected virtual void Print()
+	{
+		Console.WriteLine("Parent")
+	}
+}
+
+class Child : Parent
+{
+	protected override void Print()
+	{
+		Console.WriteLine("Child")
+		}
+}
+```
+
+## What is CLR (Common Language Runtime)?
+>CLR provides a environment in which program are executed, it activate object, perform security check on them, lay them out in the memory, execute them and garbage collect them.
+The common Language Runtime (CLR) a rich set of features for cross-language development and deployment. CLR supports both Object Oriented Languages as well as procedural languages. CLR provides security, garbage collection, cross language exception handling, cross language inheritance and so on.
+
+## What is CTS (Common Type System)?
+
+The common type system defines how types are declared, used, and managed in the runtime, and is also an important part of the runtime's support for cross-language integration. The common type system performs the following functions:
+
+-   Establishes a framework that helps enable cross-language integration, type safety, and high performance code execution.
+    
+-   Provides an object-oriented model that supports the complete implementation of many programming languages.
+    
+-   Defines rules that languages must follow, which helps ensure that objects written in different languages can interact with each other.
+
+## What are the different types of Assemblies?
+
+Different types of assemblies are  `Priave, Public/Shared, Static, Dynamic assembly`
+
+_Private Assemblies_  : Assembly used within an application is known as private assemblies
+
+_Public/shared Assemblies_  : Assembly which can be shared across applicaiton is known as shared assemblies. Strong Name has to be created to create a shared assembly. This can be done using SN.EXE. The same has to be registered using GACUtil.exe (Global Assembly Cache).
+
+_Satellite Assemblies_  : These assemblies contain resource files pertaining to a locale (Culture+Language). These assemblies are used in deploying an Gloabl applicaiton for different languages.
+
+_Static assemblies_  can include .NET Framework types (interfaces and classes), as well as resources for the assembly (bitmaps, JPEG files, resource files, and so on). Static assemblies are stored on disk in portable executable (PE) files.
+
+_Dynamic Assemblies_  : You can also use the .NET Framework to create dynamic assemblies, which are run directly from memory and are not saved to disk before execution. You can save dynamic assemblies to disk after they have executed.
+## What will be the output of following code snippet
+==Answer==
+>CS0815 Cannot assign <null> to an implicitly-typed variable
+
+## What is the output of following linq queries?
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE2OTY5MjMxMTFdfQ==
+-->
