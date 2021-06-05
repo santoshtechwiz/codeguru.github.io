@@ -78,7 +78,7 @@ Console.WriteLine(rPerson1.ToString()); // RPerson { FirstName = John, LastName 
 Console.WriteLine(cPerson1.ToString()); // CPerson
 ```
 
-## record == and !=
+## record == and !=santosh
 
 
 
@@ -114,3 +114,6 @@ Thread Safe (record)
 
 When you need to change the data like database operations
 
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTU2NzkwNzI2NF19
+-->
