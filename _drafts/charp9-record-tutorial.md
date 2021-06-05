@@ -45,14 +45,15 @@ void Main()
 	var cPerson1 = new RPerson("John", "Doe");
 	var cPerson2 = new RPerson("John", "Doe");
 
-
 }
 
 ```
 
-
 ## Record by Default override `Object.Equal`
 
+`Record` by default override `Object.Equal` method in order to compare two record. If record have same value then its return true otherwise false.
+
+See the following example
 
 
 ```csharp
@@ -65,6 +66,8 @@ Console.WriteLine(cPerson1.Equals(cPerson2)); // False
 
 
 ## Record By Default override `GetHashCode`
+Record override `GetHashCode` method internally. 
+If you compare two records with same value there hash code will be same. see the below example
 
 ```csharp
 Console.WriteLine(rPerson1.GetHashCode()==rPerson2.GetHashCode()); // True
@@ -72,6 +75,7 @@ Console.WriteLine(cPerson1.GetHashCode()==cPerson2.GetHashCode()); // False
 ```
 
 ## Record by Default override `ToString`
+Record provide override version of `ToString` which print the record in nicely format while class print the name
 
 ```csharp
 Console.WriteLine(rPerson1.ToString()); // RPerson { FirstName = John, LastName = Doe }
@@ -80,18 +84,15 @@ Console.WriteLine(cPerson1.ToString()); // CPerson
 
 ## record == and !=santosh
 
-
+Record already provide operator overloding for == and != so it easy to compare two records.
 
 ```csharp
 Console.WriteLine(rPerson1==rPerson2); // True
 Console.WriteLine(cPerson1==cPerson2); // False
 ```
 
-Thread Safe (record)
 
 ## Create copy of record with `with` syntax.
-
-
 
 ```csharp
 	var rPersonCopy = rPerson1 with {
@@ -107,6 +108,7 @@ Thread Safe (record)
 ## When to use Record
 
 - Loading external data from API or Database that does;not change.
+- Thread Safe
 - Processing Huge Data
 - Read only data
 
