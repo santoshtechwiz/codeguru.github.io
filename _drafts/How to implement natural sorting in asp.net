@@ -1,0 +1,116 @@
+In this post,I will show you how to implement natural sorting in asp.net.There are several ways to implement this,but in this post,I am going to use windows api.  
+  Check out following link for more details  
+[StrCmpLogicalW (shlwapi)](https://www.blogger.com/blog/post/edit/6673695286148904603/6327840452339708303#)  
+Let's start the implementation  
+[![](https://1.bp.blogspot.com/-TLyz4Na6zIM/T4MOsCM28RI/AAAAAAAACZI/rfACaxmVl_c/s320/1.png)](https://www.blogger.com/blog/post/edit/6673695286148904603/6327840452339708303#)
+
+  
+Create a new class named FileList and add following code  
+  
+  
+
+[![](https://1.bp.blogspot.com/-c6fZYit2hqw/T4MO5r72hFI/AAAAAAAACZQ/qf4vWCDjYVY/s640/2.jpg)](https://www.blogger.com/blog/post/edit/6673695286148904603/6327840452339708303#)
+
+*Create a new class in App_Code folder and add following code*  
+  [![](https://3.bp.blogspot.com/-n4GxtIr0dYk/T4MO7dhJRiI/AAAAAAAACZY/eZjo3ay8a2o/s640/3.jpg)](https://www.blogger.com/blog/post/edit/6673695286148904603/6327840452339708303#)
+
+Here is complete source code  
+
+**FileList.cs**  
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+public class FileList
+{
+    public FileList()
+    {
+    }
+    public string Name { get; set; }
+    public DateTime DateModified { get; set; }
+    public string FileType { get; set; }
+    public static List<FileList> List
+    {
+    get
+        {
+    return new List<FileList>
+            {
+    new FileList{Name="file11.txt",DateModified=DateTime.Now,FileType="Text"},
+    new FileList{Name="file1.txt",DateModified=DateTime.Now,FileType="Text"},
+    new FileList{Name="file21.exe",DateModified=DateTime.Now,FileType="Application"},
+    new FileList{Name="file100.mp3",DateModified=DateTime.Now,FileType="MultiMedia"},
+    new FileList{Name="file19011.jpg",DateModified=DateTime.Now,FileType="iamge"},
+            };
+        }
+    }
+}
+```
+  
+**NaturalSort.cs**  
+  ```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Security;
+using System.Runtime.InteropServices;
+[SuppressUnmanagedCodeSecurity]
+internal static class SafeNativeMethods
+{
+    [DllImport("shlwapi.dll", CharSet = CharSet.Unicode)]
+    public static extern int StrCmpLogicalW(string psz1, string psz2);
+}
+public sealed class NaturalFileComparer : IComparer<FileList>
+{
+    public int Compare(FileList x, FileList y)
+    {
+    return SafeNativeMethods.StrCmpLogicalW(x.Name, y.Name);
+    }
+}
+```
+  
+```html
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+    
+    <asp:GridView ID="GridView1" runat="server">
+    </asp:GridView>
+    
+    </div>
+    <asp:Button ID="btnSort" runat="server" onclick="btnSort_Click" Text="Sort" />
+    </form>
+</body>
+</html>
+```
+  
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+public partial class _Default : System.Web.UI.Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+    }
+    protected void btnSort_Click(object sender, EventArgs e)
+    {
+    var list = FileList.List;
+        list.Sort(new NaturalFileComparer());
+        GridView1.DataSource = list;
+        GridView1.DataBind();
+    }
+}```
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTExNDg0NDgyMzhdfQ==
+-->
