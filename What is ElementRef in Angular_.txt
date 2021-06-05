@@ -1,8 +1,0 @@
-![Imgur](https://i.imgur.com/2C8tCgo.jpg)
-## What is ElementRef in Angular?
-
-According to the official docs. Angular **ElementRef** is a wrapper around a native element inside of a View. It's simply a class that wraps native DOM elements in the browser and allows you to work with the DOM by providing the nativeElement object which exposes all the methods and properties of the native elements
-
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY0NTc2OTUyXX0=
--->

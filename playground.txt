@@ -1,4 +1,0 @@
-C# is a common language for developing Software Applications. I m going to share a great [C# Hidden Tips and Trics](http://stackoverflow.com/questions/9033/hidden-features-of-c) about hidden tips and tricks of c#
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk0NjIxNzc5MF19
--->

@@ -1,4 +1,0 @@
-![Imgur](https://i.imgur.com/2C8tCgo.jpg)
-## What is content project in Angular?
-
-  **Content projection** allows you to insert a shadow DOM in your component. To put it simply, if you want to insert HTML elements or other components in a component, then you do that using the concept of **content projection**. In **Angular**, you achieve **content projection** using < ng-**content** >< /ng-**content** >
