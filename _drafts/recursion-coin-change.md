@@ -28,7 +28,7 @@ function coin_change(amount) {
 ```
 
 ## How The aboive code is running
-```
+
 $$
   \begin{pmatrix}
     a & b\\
@@ -38,8 +38,8 @@ $$
     0 & 1
   \end{pmatrix}
 $$
-```
-```
+
+
 ## Recursion Tree
 
 ![](https://1.bp.blogspot.com/-qJf9RTk0_VQ/YLxz6UPEheI/AAAAAAAAOwE/3V0MQCcf4NkyqdmZArvcc7_0LEpjUYMIgCLcBGAsYHQ/w400-h272/coin-change.gif)
@@ -49,5 +49,6 @@ $$
 eyJwcm9wZXJ0aWVzIjoiZXh0ZW5zaW9uczpcbiAgcHJlc2V0Oi
 B6ZXJvXG4gIG1hcmtkb3duOlxuICAgIHRhYmxlOiB0cnVlXG4g
 IGthdGV4OlxuICAgIGVuYWJsZWQ6IHRydWVcbiIsImhpc3Rvcn
-kiOls0Mzc1MDYwNzUsODUxNDExMjMsLTkwODk5OTMwOF19
+kiOlsxMjYyNjk3ODA1LDg1MTQxMTIzLC05MDg5OTkzMDhdfQ==
+
 -->
