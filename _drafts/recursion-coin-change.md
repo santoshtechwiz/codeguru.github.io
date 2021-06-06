@@ -9,7 +9,6 @@ You may assume that you have an infinite number of each kind of coin.
 **Output:** 2
 **Explanation:** 11 = 2 + 2 
 
-
 ```javascript
 function coin_change(amount) {
   // if remaining  coin is zero return
@@ -41,6 +40,6 @@ function coin_change(amount) {
 eyJwcm9wZXJ0aWVzIjoiZXh0ZW5zaW9uczpcbiAgcHJlc2V0Oi
 B6ZXJvXG4gIG1hcmtkb3duOlxuICAgIHRhYmxlOiB0cnVlXG4g
 IGthdGV4OlxuICAgIGVuYWJsZWQ6IHRydWVcbiIsImhpc3Rvcn
-kiOlstMTc0ODg5NjgxMiwxOTc2OTI3MTM5LDEyNjI2OTc4MDUs
+kiOlstMTg4MDI4MzM5MCwxOTc2OTI3MTM5LDEyNjI2OTc4MDUs
 ODUxNDExMjMsLTkwODk5OTMwOF19
 -->
