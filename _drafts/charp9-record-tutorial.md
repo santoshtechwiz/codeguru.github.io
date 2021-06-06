@@ -9,8 +9,6 @@ As per the Microsoft
 public record RPerson(string FirstName,string LastName);
 ```
 
-## 
-
 If you want to create a class which have the same behaviour as the above statement, then you can achieve it by using class as shown below ( its not complete source code. There is a lot when the Record is converted to C#)
 
 ```csharp
@@ -120,5 +118,5 @@ When you need to change the data like database operations
 - Record type can only inherit from another record, not from class
  - By default, the Record type is immutable, but you can create mutable Record but not recommended
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM4OTQxNzI0NCwtMTUwMjI4NTI4Nl19
+eyJoaXN0b3J5IjpbLTcxMDcyMjc4MiwtMTUwMjI4NTI4Nl19
 -->
