@@ -67,7 +67,7 @@ export class AppComponent implements OnInit {
 }
 
 ```
-The code is very simple only thing need to understand is below code
+The code is very simple only thing need to understand is below code. As you can see I am using `switchMap` opetator for loading the comments.
 
 ```typescript
 .getSinglePost()
@@ -81,6 +81,10 @@ The code is very simple only thing need to understand is below code
         console.log(result);
       });
       ```
+
+
+<iframe src='https://stackblitz.com/edit/codeguru-angular-switch-map?ctl=1&embed=1&file=app/app.component.html&hideNavigation=1&view=editor' height="500px" width="600px">
+</iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwODcyMjE1ODhdfQ==
+eyJoaXN0b3J5IjpbLTYxMDUyMzY3LC0yMDg3MjIxNTg4XX0=
 -->
