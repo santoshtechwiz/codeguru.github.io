@@ -1,6 +1,6 @@
 
 [![](http://3.bp.blogspot.com/_iY3Ra2OqpkA/Sbz5yEykQ2I/AAAAAAAAB68/clBVFPy99cs/s400/gd_paging.jpg)](https://www.blogger.com/blog/post/edit/6673695286148904603/7378798856969379009#)
-
+```html
 <%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default4.aspx.cs" Inherits="Default4" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -32,7 +32,8 @@
    </form>
 </body>
 </html>
-
+```
+```csharp
 using System;
 using System.Data;
 using System.Configuration;
@@ -223,8 +224,9 @@ public partial class Default4 : System.Web.UI.Page
         BindGrid();
     }
 }
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQwNTMyNjQsLTE3MjQyMzMzNzYsLTE1Nj
-U3MTM5ODMsLTIwNjY2NTU0NzUsLTkzODUxNjIzOCwtMzMyNDU1
-MzYzXX0=
+eyJoaXN0b3J5IjpbLTE2NTUyNTExMiwtMTcyNDIzMzM3NiwtMT
+U2NTcxMzk4MywtMjA2NjY1NTQ3NSwtOTM4NTE2MjM4LC0zMzI0
+NTUzNjNdfQ==
 -->
