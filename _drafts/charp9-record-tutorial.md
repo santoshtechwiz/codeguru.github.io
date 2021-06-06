@@ -1,120 +1,137 @@
+In this article I will show you how to add client side validation in control 
+[![](http://2.bp.blogspot.com/_iY3Ra2OqpkA/SAy6R-aITCI/AAAAAAAAA1I/GoAQkQUi6-4/s400/gd.bmp)](https://www.blogger.com/blog/post/edit/6673695286148904603/9000027923423660310#)  
+  
 
-## Compare Record and Class
-
-As per the Microsoft
-
-> C# 9.0 introduces ***record types***. You use the `record` keyword to define a reference type that provides built-in functionality for encapsulating data. You can create record types with immutable properties by using positional parameters or standard property syntax:
-
-```csharp
-public record RPerson(string FirstName,string LastName);
+  ```html
+<%@ Page Language="C#" AutoEventWireup="true"  
+="GridViewClientSide.aspx.cs"  
+ Inherits="GridViewClientSide" %>  
+  
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+<html xmlns="http://www.w3.org/1999/xhtml">  
+<head runat="server">  
+ <title>Untitled Page</title>  
+</head>  
+  <script type="text/javascript">  
+function ValidateCheckBox()  
+{   validateTextBox();  
+//get target base & child control.  
+var TargetBaseControl = document.getElementById('<%=this.GridView1.ClientID%>');  
+var TargetChildControl = "chkBxSelect";  
+  
+//get all the control of the type INPUT in the base control.  
+var Inputs = TargetBaseControl.getElementsByTagName("input");  
+  
+for(var n = 0; n < Inputs.length; ++n)  
+   if(Inputs[n].type == 'checkbox' && Inputs[n].id.indexOf(TargetChildControl,0) >= 0)  
+      if(Inputs[n].checked) return true;  
+  
+ alert('Select at least one checkbox!');  
+ return false;  
+}  
+  
+function validateTextBox()  
+{  
+//get target base & child control.  
+var TargetBaseControl = document.getElementById('<%=this.GridView1.ClientID%>');  
+var TargetChildControl1 = "txtInput";  
+  
+//get all the control of the type INPUT in the base control.  
+var Inputs = TargetBaseControl.getElementsByTagName("input");  
+  
+for(var n = 0; n < Inputs.length; ++n)  
+   if(Inputs[n].type == 'text' && Inputs[n].id.indexOf(TargetChildControl1,0) >= 0)  
+      if(Inputs[n].value!="") return true;  
+  
+ alert('Enter some value in textbox!');  
+ return false;  
+}  
+</script>  
+  
+<body>  
+ <form id="form1" runat="server">  
+     <div>  
+         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False">  
+             <Columns>  
+                 <asp:BoundField HeaderText="n" DataField="accountno">  
+                     <HeaderStyle HorizontalAlign="Center"  
+VerticalAlign="Middle" Width="50px" />  
+                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />  
+                 </asp:BoundField>  
+                 <asp:TemplateField HeaderText="Select">  
+                     <ItemTemplate>  
+                         <asp:CheckBox ID="chkBxSelect" runat="server" />  
+                     </ItemTemplate>  
+                     <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />  
+                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />  
+                 </asp:TemplateField>  
+                 <asp:TemplateField HeaderText="Name">  
+                     <ItemTemplate>  
+                         <asp:TextBox ID="txtInput" runat="server"></asp:TextBox>  
+                     </ItemTemplate>  
+                 </asp:TemplateField>  
+             </Columns>  
+         </asp:GridView>  
+         <asp:Button ID="btnPost" runat="server" Text="Post"  
+OnClientClick="javascript:return ValidateCheckBox();"  
+             OnClick="btnPost_Click" />  
+         <asp:Label ID="lblMsg" runat="server"></asp:Label>  
+     </div>  
+ </form>  
+</body>  
+</html>  
 ```
 
-If you want to create a class which have the same behaviour as the above statement, then you can achieve it by using class as shown below ( its not complete source code. There is a lot when the Record is converted to C#)
-
 ```csharp
-public class CPerson{
-	
-	public string FirstName { get; init; }
-	public string LastName { get; init; }
-	
-	public CPerson(string firstName,string lastName)
-	{
-		FirstName=firstName;
-		LastName=lastName;
-	}
+using System;  
+using System.Data;  
+using System.Configuration;  
+using System.Collections;  
+using System.Web;  
+using System.Web.Security;  
+using System.Web.UI;  
+using System.Web.UI.WebControls;  
+using System.Web.UI.WebControls.WebParts;  
+using System.Web.UI.HtmlControls;  
+  
+public partial class GridViewClientSide : System.Web.UI.Page  
+{  
+  protected void Page_Load(object sender, EventArgs e)  
+  {  
+      if (!IsPostBack)  
+      {  
+          GridView1.DataSource = c();  
+          GridView1.DataBind();  
+      }  
+  }  
+  public DataSet c()  
+  {  
+      DataSet ds = new DataSet();  
+      DataTable dt = new DataTable("Company");  
+      DataRow dr;  
+      dt.Columns.Add(new DataColumn("accountNo", typeof(Int32)));  
+      dt.Columns.Add(new DataColumn("CompanyName", typeof(string)));  
+      dt.Columns.Add(new DataColumn("Address", typeof(string)));  
+      for (int i = 0; i <= 10; i++)  
+      {  
+          dr = dt.NewRow();  
+          dr[0] = i;  
+          dr[1] = "Company" + i + Environment.NewLine + "Title" + i;  
+          dr[2] = "Address" + i + Environment.NewLine + "Title" + i;  
+          dt.Rows.Add(dr);  
+      }  
+      ds.Tables.Add(dt);  
+      return ds;  
+  }  
+  protected void btnPost_Click(object sender, EventArgs e)  
+  {  
+      lblMsg.Text = "Form is posted!";  
+  }  
+  
 }
 ```
-
-
-## Let's Compare the difference between class and Record with an example
-
-In order to understand the diffrences I have a create a simple console application as shown below. There are two instances of each record and class.
-
-```csharp
-void Main()
-{
-	var rPerson1=new RPerson("John","Doe");
-	var rPerson2=new RPerson("John","Doe");
-
-	var cPerson1 = new RPerson("John", "Doe");
-	var cPerson2 = new RPerson("John", "Doe");
-
-}
-
-```
-
-## Record by Default  provide Value equality
-
-`Record` by default override `Object.Equal` method to compare two Record. Suppose Record have the same value, then its return true otherwise false.
-
-See the following example.
-
-```csharp
-var cPerson1 = new CPerson("John", "Doe");
-var cPerson2 = new CPerson("John", "Doe");
-Console.WriteLine(rPerson1.Equals(rPerson2)); // True
-Console.WriteLine(cPerson1.Equals(cPerson2)); // False
-```
-> Note: C# compare record type by value, not by reference. If you try to compare their references, both will be different.
-
-
-## Record By Default override `GetHashCode`
-Record override the `GetHashCode` method internally. 
-If you compare two records with the same value there, the hash code will be the same. see the below example
-
-```csharp
-Console.WriteLine(rPerson1.GetHashCode()==rPerson2.GetHashCode()); // True
-Console.WriteLine(cPerson1.GetHashCode()==cPerson2.GetHashCode()); // False
-```
-
-## Built-in formatting for display
-
-Record provide override version of `ToString`, which print the Record in the friendly format while class print the name.
-
-```csharp
-Console.WriteLine(rPerson1.ToString()); // RPerson { FirstName = John, LastName = Doe }
-Console.WriteLine(cPerson1.ToString()); // CPerson
-```
-
-## record == and !=
-
-The Record already provide operator overloading for == and !=, so it is easy to compare two records.
-
-```csharp
-Console.WriteLine(rPerson1==rPerson2); // True
-Console.WriteLine(cPerson1==cPerson2); // False
-```
-
-
-## Easily create copy of record`with` syntax.
-
-```csharp
-	var rPersonCopy = rPerson1 with {
-		
-		FirstName="Updated Name"
-	};
-	Console.WriteLine(rPersonCopy); // RPerson { FirstName = Updated Name, LastName = Doe }
-	Console.WriteLine(rPerson1==rPersonCopy); // False
-
-```
-
-
-## When to use Record
-
-- Loading external data from API or Database that does; not change.
-- Thread Safe
-- Processing Huge Data
-- Read-only data
-
-## When not to use Record
-
-When you need to change the data like database operations
-
-## Record Other features
-
-- Record type can only inherit from another record, not from class
- - By default, the Record type is immutable, but you can create mutable Record but not recommended
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0Mjk5NjIxOTQsNjQ3OTc1NjE2LC0xNT
-AyMjg1Mjg2XX0=
+eyJoaXN0b3J5IjpbODk3MjI0OTk5LC0xNDI5OTYyMTk0LDY0Nz
+k3NTYxNiwtMTUwMjI4NTI4Nl19
 -->
