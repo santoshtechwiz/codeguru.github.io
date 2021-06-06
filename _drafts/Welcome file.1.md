@@ -17,8 +17,8 @@ Another feature that is often ignored with user controls, but that can be handy,
 - Create an instance of the template in the naming container.
 - Add the naming container instance to the  [Controls](https://www.blogger.com/blog/post/edit/6673695286148904603/8477637839794232054#)  property of the  [PlaceHolder](https://www.blogger.com/blog/post/edit/6673695286148904603/8477637839794232054#)  server control.
 
-SupportTemplates.ascx
-
+>SupportTemplates.ascx
+```html
 <%@ Control Language="C#" AutoEventWireup="true" CodeFile="SupportTemplates.ascx.cs"
 Inherits="SupportTemplates" %>
 <table>
@@ -39,9 +39,9 @@ Inherits="SupportTemplates" %>
    </td>
 </tr>
 </table>
-
-SupportTemplates.ascx.cs
-
+```
+>SupportTemplates.ascx.cs
+```csharp
 using System;
 using System.Data;
 using System.Configuration;
@@ -108,7 +108,8 @@ void Page_Init()
         }
     }
 }
-
+```
+```csharp
 public class MessageContainer : Control, INamingContainer
 {
     private int m_index;
@@ -136,11 +137,13 @@ public class MessageContainer : Control, INamingContainer
 
 
 }
+```
 
-How To Use
+## How To Use
 
-TemplateDemo.aspx
+>TemplateDemo.aspx
 
+```html
 <%@ Page Language="C#" AutoEventWireup="true" CodeFile="TemplateDemo.aspx.cs" Inherits="Template" %>
 
 <%@ Register Src="SupportTemplates.ascx" TagName="SupportTemplates" TagPrefix="uc2" %>
@@ -172,9 +175,10 @@ TemplateDemo.aspx
  </form>
 </body>
 </html>
+```
 
-TemplateDemo.aspx.cs
-
+>TemplateDemo.aspx.cs
+```csharp
 using System;
 using System.Data;
 using System.Configuration;
@@ -193,7 +197,8 @@ public partial class Template : System.Web.UI.Page
       this.DataBind();
   }
 }
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEyMTcwMTA2MCwtMjA2NjY1NTQ3NSwtOT
-M4NTE2MjM4LC0zMzI0NTUzNjNdfQ==
+eyJoaXN0b3J5IjpbLTE1NjU3MTM5ODMsLTIwNjY2NTU0NzUsLT
+kzODUxNjIzOCwtMzMyNDU1MzYzXX0=
 -->
