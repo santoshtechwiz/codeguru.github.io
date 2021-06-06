@@ -1,106 +1,171 @@
 
-[![](http://3.bp.blogspot.com/_iY3Ra2OqpkA/SBI0XSSxCPI/AAAAAAAAA2A/6hAgJX2317A/s400/su.bmp)](https://www.blogger.com/blog/post/edit/6673695286148904603/306381001595575064#)  
-  
+[![](http://1.bp.blogspot.com/_iY3Ra2OqpkA/SKwYu98H7aI/AAAAAAAABRo/C0kbscpfVRk/s400/Hover_menu.JPG)](https://www.blogger.com/blog/post/edit/6673695286148904603/7211338139921405787#)
 
 ```html
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="DisplayColumnSummery.aspx.cs"  
-  Inherits="DisplayColumnSummery" %>  
-  
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
-<html xmlns="http://www.w3.org/1999/xhtml">  
-<head runat="server">  
-  <title>Untitled Page</title>  
-</head>  
-<body>  
-  <form id="form1" runat="server">  
-      <div>  
-          <asp:GridView ID="grdMovies" OnRowDataBound="grdMovies_RowDataBound" AutoGenerateColumns="false"  
-              ShowFooter="true" runat="server">  
-              <Columns>  
-                  <asp:BoundField DataField="Name" HeaderText="Name" />  
-                  <asp:TemplateField HeaderText="Box Office Totals">  
-                      <ItemTemplate>  
-                          <%# Eval("SellPrice", "{0:c}")%>  
-                      </ItemTemplate>  
-                      <FooterTemplate>  
-                          <asp:Label ID="lblSummary" runat="server" />  
-                      </FooterTemplate>  
-                  </asp:TemplateField>  
-              </Columns>  
-          </asp:GridView>  
-  </form>  
-</body>  
-</html>  
-```
-  
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="HoverMenu.aspx.cs" Inherits="Default2" %>
 
-  ```csharp
-using System;  
-using System.Data;  
-using System.Configuration;  
-using System.Collections;  
-using System.Web;  
-using System.Web.Security;  
-using System.Web.UI;  
-using System.Web.UI.WebControls;  
-using System.Web.UI.WebControls.WebParts;  
-using System.Web.UI.HtmlControls;  
-  
-public partial class DisplayColumnSummery : System.Web.UI.Page  
-{  
-    protected void Page_Load(object sender, EventArgs e)  
-    {  
-        grdMovies.DataSource = GetData();  
-        grdMovies.DataBind();  
-  
-    }  
-    public DataSet GetData()  
-    {  
-        DataSet ds = new DataSet();  
-        DataTable dt = new DataTable("Movie");  
-        DataRow dr;  
-        dt.Columns.Add(new DataColumn("Id", typeof(Int32)));  
-        dt.Columns.Add(new DataColumn("Name", typeof(string)));  
-        dt.Columns.Add(new DataColumn("SellPrice", typeof(Int32)));  
-        for (int i = 1; i <= 10; i++)  
-        {  
-            dr = dt.NewRow();  
-            dr[0] = i;  
-            dr[1] = "Name" + i.ToString();  
-            dr[2] = 1 * 3;  
-            dt.Rows.Add(dr);  
-        }  
-        ds.Tables.Add(dt);  
-        Session["dt"] = dt;  
-        return ds;  
-    }  
-    int _boxOfficeTotalsTotal = 0;  
-    protected void grdMovies_RowDataBound(object sender, GridViewRowEventArgs e)  
-    {  
-          
-        if(e.Row.RowType==DataControlRowType.DataRow)  
-        {  
-  
-            int boxOfficeTotals = int.Parse(DataBinder.Eval(e.Row.DataItem, "SellPrice").ToString());  
-            _boxOfficeTotalsTotal += boxOfficeTotals;  
-  
-  
-  
-        }  
-        {  
-            if (e.Row.RowType == DataControlRowType.Footer)  
-            {  
-                Label lblSummary = (Label)e.Row.FindControl("lblSummary");  
-                lblSummary.Text = string.Format("Total: {0:c}", _boxOfficeTotalsTotal);  
-            }  
-        }  
-  
-  
-    }  
+<%@ Register TagPrefix="ccl" Namespace="AjaxControlToolkit" Assembly="AjaxControlToolkit" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+   <title>Untitled Page</title>
+   <style type="text/css">
+   .popupMenu
+{
+   position: absolute;
+   visibility: hidden;
+   background-color: #E3F2F7;
+   opacity: .9;
+   filter: alpha(opacity=90);
 }
-```
+
+.popupHover
+{
+   background-image: url(images/header-opened.png);
+   background-repeat: repeat-x;
+   background-position: left top;
+   background-color: #DEB887;
+}
+
+     h1 {
+
+
+font: 1.2em Arial, Helvetica, sans-serif;
+
+}
+input.txt {
+color: #00008B;
+background-color: #E3F2F7;
+border: 1px inset #00008B;
+width: 200px;
+}
+input.btn {
+color: #00008B;
+background-color: #ADD8E6;
+border: 1px outset #00008B;
+}
+form div {
+clear: left;
+margin: 0;
+padding: 0;
+padding-top: 5px;
+}
+form div label {
+float: left;
+width: 40%;
+font: bold 0.9em Arial, Helvetica, sans-serif;
+}
+fieldset {
+border: 1px dotted #61B5CF;
+margin-top: 1.4em;
+padding: 0.6em;
+}
+legend {
+font: bold 0.8em Arial, Helvetica, sans-serif;
+color: #00008B;
+background-color: #FFFFFF;
+}
+   </style>
+</head>
+<body>
+   <form id="form1" runat="server">
+       <asp:ScriptManager ID="ScriptManager1" runat="server" />
+       <div>
+           <ccl:HoverMenuExtender ID="HoverMenuExtender1" runat="Server" TargetControlID="QuickLinkLinkButton"
+               PopupControlID="PanelPopUp" PopupPosition="Bottom" OffsetX="6" PopDelay="500"
+               HoverCssClass="popupHover">
+           </ccl:HoverMenuExtender>
+           <asp:Panel ID="PanelPopUp" runat="server" Height="50px" Width="125px" CssClass="popupMenu"
+               BorderColor="Transparent">
+               <div style="width: 600px">
+                   <fieldset>
+                       <legend>Personal Information</legend>
+                       <div>
+                           <label for="fullname">
+                               Name:</label>
+                           <input type="text" name="fullname" id="fullname" class="txt" runat="server" />
+                       </div>
+                       <div>
+                           <label for="email">
+                               Email Address:</label>
+                           <input type="text" name="email" id="email" class="txt" runat="server" />
+                       </div>
+                       <div>
+                           <label for="password1">
+                               Password:</label>
+                           <input type="password" name="password1" id="password1" class="txt" runat="server" />
+                       </div>
+                       <div>
+                           <label for="password2">
+                               Confirm Password:</label>
+                           <input type="password" name="password2" id="password2" class="txt" runat="server" />
+                       </div>
+                   </fieldset>
+                   <fieldset>
+                       <legend>Address Details</legend>
+                       <div>
+                           <label for="address1">
+                               Address line one:</label>
+                           <input type="text" name="address1" id="address1" class="txt" runat="server" />
+                       </div>
+                       <div>
+                           <label for="address2">
+                               Address line two:</label>
+                           <input type="text" name="address2" id="address2" class="txt" runat="server" />
+                       </div>
+                       <div>
+                           <label for="city">
+                               Town / City:</label>
+                           <input type="text" name="city" id="city" class="txt" runat="server" />
+                       </div>
+                       <div>
+                           <label for="zip">
+                               Zip / Post code:</label>
+                           <input type="text" name="zip" id="zip" class="txt" runat="server" />
+                       </div>
+                   </fieldset>
+                   <div>
+                       <input type="submit" name="btnSubmit" id="btnSubmit" value="Sign Up!" class="btn"
+                           onserverclick="btnSubmit_ServerClick" runat="server" />
+                   </div>
+               </div>
+           </asp:Panel>
+           <asp:LinkButton ID="QuickLinkLinkButton" runat="server">Quick Link</asp:LinkButton>
+       </div>
+   </form>
+</body>
+</html>
+
+using System;
+using System.Data;
+using System.Configuration;
+using System.Collections;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Web.UI.HtmlControls;
+
+public partial class Default2 : System.Web.UI.Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
+    protected void btnSubmit_ServerClick(object sender, EventArgs e)
+    {
+        System.Text.StringBuilder sb = new System.Text.StringBuilder();
+        sb.Append("Full Name:" + fullname.Value+"\n");
+        sb.Append("Email:" + email.Value + "\n");
+        sb.Append("Address1:" + address1.Value + "\n");
+        sb.Append("Address2:" + address2.Value + "\n");
+        Response.Write(sb.ToString());
+    }
+}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM4NDEwNTAxMywtMzE1NjQ4NTg4LC04MD
-A1NjE5MzAsLTE3MjQyMzMzNzYsLTE1NjU3MTM5ODMsLTIwNjY2
-NTU0NzUsLTkzODUxNjIzOCwtMzMyNDU1MzYzXX0=
+eyJoaXN0b3J5IjpbNTE3NTE1NDUyLC0zODQxMDUwMTMsLTMxNT
+Y0ODU4OCwtODAwNTYxOTMwLC0xNzI0MjMzMzc2LC0xNTY1NzEz
+OTgzLC0yMDY2NjU1NDc1LC05Mzg1MTYyMzgsLTMzMjQ1NTM2M1
+19
 -->
