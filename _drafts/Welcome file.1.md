@@ -2,7 +2,7 @@
 [![](http://3.bp.blogspot.com/_iY3Ra2OqpkA/SBI0XSSxCPI/AAAAAAAAA2A/6hAgJX2317A/s400/su.bmp)](https://www.blogger.com/blog/post/edit/6673695286148904603/306381001595575064#)  
   
 
-  
+```html
 <%@ Page Language="C#" AutoEventWireup="true" CodeFile="DisplayColumnSummery.aspx.cs"  
   Inherits="DisplayColumnSummery" %>  
   
@@ -31,10 +31,10 @@
   </form>  
 </body>  
 </html>  
-
+```
   
 
-  
+  ```csharp
 using System;  
 using System.Data;  
 using System.Configuration;  
@@ -98,8 +98,9 @@ public partial class DisplayColumnSummery : System.Web.UI.Page
   
     }  
 }
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE3OTU4NDIwMywtMzE1NjQ4NTg4LC04MD
+eyJoaXN0b3J5IjpbLTM4NDEwNTAxMywtMzE1NjQ4NTg4LC04MD
 A1NjE5MzAsLTE3MjQyMzMzNzYsLTE1NjU3MTM5ODMsLTIwNjY2
 NTU0NzUsLTkzODUxNjIzOCwtMzMyNDU1MzYzXX0=
 -->
