@@ -4,9 +4,10 @@
 In .Net when you don’t want to relay for a file on physical location, then it is very good option to take an advantage of Embedded resources. Using embedded resources you can add any file type in the assembly/DLL/EXE when they get compiled. And whenever you want to use it, load it from the assembly, the files get stored in the metadata of Assembly. Here is an example of how to use Embedded Resources.    
 
 - Open Microsoft Visual Studio and create new project for C# Windows Application, here I have created Windows Application named “EmbeddedTest”, even you can use “Class Library”
-
-  - To add a file in the project Right click on the project name in Solution Explorer, select “Add” >> “Existing Item…”[![](http://4.bp.blogspot.com/_iY3Ra2OqpkA/SLZM6CR_ZPI/AAAAAAAABS0/K1NdqDUkbis/s400/emb_1.JPG)](https://www.blogger.com/blog/post/edit/6673695286148904603/3108281191786163790#)**3.**  Now we have added a file to the project, so it doesn’t mean that it will automatically embedded in the Assembly, for that we need to change the files “Build Action” property to “Embedded Resource”, and compiler will include this file in metatdata. Here I have added Image file(blue.jpg), you can add one or more any kind of files[![](http://1.bp.blogspot.com/_iY3Ra2OqpkA/SLZNGxZBsnI/AAAAAAAABS8/Gu7spfbWiig/s400/emb_2.JPG)](https://www.blogger.com/blog/post/edit/6673695286148904603/3108281191786163790#)Now use the following code in Form1_Load method to list all the Embedded Resources available in the Assembly
-
+- To add a file in the project Right click on the project name in Solution Explorer, select “Add” >> “Existing Item…”[![](http://4.bp.blogspot.com/_iY3Ra2OqpkA/SLZM6CR_ZPI/AAAAAAAABS0/K1NdqDUkbis/s400/emb_1.JPG)](https://www.blogger.com/blog/post/edit/6673695286148904603/3108281191786163790#)
+- Now we have added a file to the project, so it doesn’t mean that it will automatically embedded in the Assembly, for that we need to change the files “Build Action” property to “Embedded Resource”, and compiler will include this file in metatdata. Here I have added Image file(blue.jpg), you can add one or more any kind of files[![](http://1.bp.blogspot.com/_iY3Ra2OqpkA/SLZNGxZBsnI/AAAAAAAABS8/Gu7spfbWiig/s400/emb_2.JPG)](https://www.blogger.com/blog/post/edit/6673695286148904603/3108281191786163790#)
+- Now use the following code in Form1_Load method to list all the Embedded Resources available in the Assembly
+```csharp
 protected void Page_Load(object sender, EventArgs e)
 {
     if (!IsPostBack)
@@ -19,9 +20,10 @@ protected void Page_Load(object sender, EventArgs e)
         }
     }
 }
+```
+- The following code is used to get the resource from the Manifest of the Assembly when user clicks on the listBox1
 
-**5.**  The following code is used to get the resource from the Manifest of the Assembly when user clicks on the listBox1
-
+```csharp
 protected void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
  {
      if (ListBox1.SelectedIndex == -1)
@@ -47,9 +49,10 @@ protected void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
  
 
  }
+ ```
 
-complete code
-
+>complete code
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -86,7 +89,9 @@ namespace ImageLibrary
       }
   }
 }
+```
 
+```html
 <%@ Page Language="C#" AutoEventWireup="true" CodeFile="EmbeedTest.aspx.cs" Inherits="EmbeedTest" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -110,7 +115,9 @@ namespace ImageLibrary
   </form>
 </body>
 </html>
+```
 
+```csharp
 using System;
 using System.Data;
 using System.Configuration;
@@ -162,7 +169,8 @@ public partial class EmbeedTest : System.Web.UI.Page
 
   }
 }
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NTE0MDY2ODYsLTE1NjU3MTM5ODMsLT
+eyJoaXN0b3J5IjpbLTE3MjQyMzMzNzYsLTE1NjU3MTM5ODMsLT
 IwNjY2NTU0NzUsLTkzODUxNjIzOCwtMzMyNDU1MzYzXX0=
 -->
