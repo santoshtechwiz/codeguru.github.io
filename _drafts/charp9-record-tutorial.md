@@ -86,7 +86,7 @@ Console.WriteLine(cPerson1==cPerson2); // False
 ```
 
 
-## Create a copy of Record with `with` syntax.
+## Easily create copy of record`with` syntax.
 
 ```csharp
 	var rPersonCopy = rPerson1 with {
@@ -115,5 +115,6 @@ When you need to change the data like database operations
 - Record type can only inherit from another record, not from class
  - By default, the Record type is immutable, but you can create mutable Record but not recommended
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MDk0ODkwMiwtMTUwMjI4NTI4Nl19
+eyJoaXN0b3J5IjpbLTE0Mjk5NjIxOTQsLTE1MDIyODUyODZdfQ
+==
 -->
