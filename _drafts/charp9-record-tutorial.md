@@ -1,6 +1,7 @@
+
 ## Compare Record and Class
 
-As per the microsoft
+As per the Microsoft
 
 > C# 9.0 introduces ***record types***. You use the `record` keyword to define a reference type that provides built-in functionality for encapsulating data. You can create record types with immutable properties by using positional parameters or standard property syntax:
 
@@ -12,7 +13,7 @@ public record RPerson(string FirstName,string LastName);
 
 ## 
 
-If you want to create a class which have the same behavior as above statement then you can achieve by using class as shown below ( its not full source code there is a lot when record is converted to C#)
+If you want to create a class which have the same behaviour as the above statement, then you can achieve it by using class as shown below ( its not complete source code. There is a lot when the Record is converted to C#)
 
 ```csharp
 public class CPerson{
@@ -30,7 +31,7 @@ public class CPerson{
 
 
 
-## Let's Compare the diffrence between class and record with example
+## Let's Compare the difference between class and Record with an example
 
 
 
@@ -49,11 +50,11 @@ void Main()
 
 ```
 
-## Record by Default override `Object.Equal`
+## Record by Default override `Object.Equal.`
 
-`Record` by default override `Object.Equal` method in order to compare two record. If record have same value then its return true otherwise false.
+`Record` by default override `Object.Equal` method to compare two Record. Suppose Record have the same value, then its return true otherwise false.
 
-See the following example
+See the following example.
 
 
 ```csharp
@@ -62,12 +63,12 @@ var cPerson2 = new CPerson("John", "Doe");
 Console.WriteLine(rPerson1.Equals(rPerson2)); // True
 Console.WriteLine(cPerson1.Equals(cPerson2)); // False
 ```
-> Note: C# compare record type by value not by refrence. If you try to compare there refrences both will be diffrent.
+> Note: C# compare record type by value, not by reference. If you try to compare their references, both will be different.
 
 
 ## Record By Default override `GetHashCode`
-Record override `GetHashCode` method internally. 
-If you compare two records with same value there hash code will be same. see the below example
+Record override the `GetHashCode` method internally. 
+If you compare two records with the same value there, the hash code will be the same. see the below example
 
 ```csharp
 Console.WriteLine(rPerson1.GetHashCode()==rPerson2.GetHashCode()); // True
@@ -75,7 +76,7 @@ Console.WriteLine(cPerson1.GetHashCode()==cPerson2.GetHashCode()); // False
 ```
 
 ## Record by Default override `ToString`
-Record provide override version of `ToString` which print the record in nicely format while class print the name
+Record provide override version of `ToString`, which print the Record in the friendly format while class print the name.
 
 ```csharp
 Console.WriteLine(rPerson1.ToString()); // RPerson { FirstName = John, LastName = Doe }
@@ -84,7 +85,7 @@ Console.WriteLine(cPerson1.ToString()); // CPerson
 
 ## record == and !=santosh
 
-Record already provide operator overloding for == and != so it easy to compare two records.
+The Record already provide operator overloading for == and !=, so it is easy to compare two records.
 
 ```csharp
 Console.WriteLine(rPerson1==rPerson2); // True
@@ -92,7 +93,7 @@ Console.WriteLine(cPerson1==cPerson2); // False
 ```
 
 
-## Create copy of record with `with` syntax.
+## Create a copy of Record with `with` syntax.
 
 ```csharp
 	var rPersonCopy = rPerson1 with {
@@ -107,19 +108,20 @@ Console.WriteLine(cPerson1==cPerson2); // False
 
 ## When to use Record
 
-- Loading external data from API or Database that does;not change.
+- Loading external data from API or Database that does; not change.
 - Thread Safe
 - Processing Huge Data
-- Read only data
+- Read-only data
 
-## Whn not to use Record
+## When not to use Record
 
 When you need to change the data like database operations
 
 ## Record Other features
 
-- Record type can only inherit from another record not from class
- - By default Record type is imutable but you can create mutable record but not recommended
+- Record type can only inherit from another record, not from class
+ - By default, the Record type is immutable, but you can create mutable Record but not recommended
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MDIyODUyODZdfQ==
+eyJoaXN0b3J5IjpbLTE5ODI3MDUzNDQsLTE1MDIyODUyODZdfQ
+==
 -->
