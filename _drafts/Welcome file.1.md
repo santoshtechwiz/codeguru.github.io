@@ -3,7 +3,7 @@
 
 In this post i will show how to freeze header of gridview using css.
   
-
+```html
 <%@ Page Language="C#" AutoEventWireup="true" CodeFile="FreezHeader.aspx.cs" Inherits="FreezHeader" %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
@@ -104,7 +104,9 @@ In this post i will show how to freeze header of gridview using css.
   </form>
 </body>
 </html>
+```
 
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -185,6 +187,7 @@ public partial class FreezHeader : System.Web.UI.Page
        e.Row.Cells[1].CssClass = "locked";
    }
 }
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYyNTk5MzMwNSwtMzMyNDU1MzYzXX0=
+eyJoaXN0b3J5IjpbMTAzMzk0NzI5LC0zMzI0NTUzNjNdfQ==
 -->
