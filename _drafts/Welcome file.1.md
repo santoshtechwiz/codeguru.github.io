@@ -1,193 +1,157 @@
 
-[![](http://4.bp.blogspot.com/_iY3Ra2OqpkA/SdZnA7JopKI/AAAAAAAAB88/3nIAkWoSsnQ/s400/freez.jpg)](https://www.blogger.com/blog/post/edit/6673695286148904603/6963062621936664530#)
+[![](http://1.bp.blogspot.com/_iY3Ra2OqpkA/SLT-4XkZ9eI/AAAAAAAABSs/gI1noE7kC-s/s400/cascade_dropdown.JPG)](https://www.blogger.com/blog/post/edit/6673695286148904603/8006761619418300614#)
 
-In this post i will show how to freeze header of gridview using css.
-  
+Many a times there are circumstances where by we need to use dropdown list inside a Gridview and also handle the index changed event of the dropdown list. The easy example of this kind of requirement would be when we nee to fill another dropdown list in the same row from the value selected in the first dropdown list. We all know that the dropdown list does not support command name property so you cannot handle the event in the row command event.
+
+A simple solution to the problem is to use the namingcontainer in the selectedindexchanged event and get the reference of the parent row view. After that we can do what we want from the row view. Here is an example in the code.
 ```html
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="FreezHeader.aspx.cs" Inherits="FreezHeader" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="GridViewDropDown.aspx.cs"
+   Inherits="GridViewDropDown" %>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head id="Head1" runat="server">
-  <title>Untitled Page</title>
-  <style type="text/css">
-      /* Div container to wrap the datagrid */
-      div#div-datagrid
-      {
-          width: 500px;
-          height: 200px;
-          overflow: auto;
-          scrollbar-base-color: #ffeaff;
-      }
-      /* Locks the left column */
-      td.locked, th.locked
-      {
-          font-size: 14px;
-          font-weight: bold;
-          text-align: center;
-          background-color: navy;
-          color: white;
-          border-right: 1px solid silver;
-          position: relative;
-          cursor: default;
-          left: expression(document.getElementById("div-datagrid").scrollLeft-2); /*IE5+ only*/
-      }
-      /* Locks table header */
-      th
-      {
-          font-size: 14px;
-          font-weight: bold;
-          text-align: center;
-          background-color: navy;
-          color: white;
-          border-right: 1px solid silver;
-          position: relative;
-          cursor: default;
-          top: expression(document.getElementById("div-datagrid").scrollTop-2); /*IE5+ only*/
-          z-index: 10;
-      }
-      /* Keeps the header as the top most item. Important for top left item*/
-      th.locked
-      {
-          z-index: 99;
-      }
-      /* DataGrid Item and AlternatingItem Style*/
-      .GridRow
-      {
-          font-size: 10pt;
-          color: black;
-          font-family: Arial;
-          background-color: #ffffff;
-          height: 35px;
-      }
-      .GridAltRow
-      {
-          font-size: 10pt;
-          color: black;
-          font-family: Arial;
-          background-color: #eeeeee;
-          height: 35px;
-      }
-  </style>
+<head runat="server">
+   <title>Untitled Page</title>
 </head>
 <body>
-  <form id="form1" runat="server">
-  <div id="div-datagrid">
-      <asp:GridView ID="Grd" runat="server" AutoGenerateColumns="false" CssClass="Grid"
-          UseAccessibleHeader="true" OnRowDataBound="Grd_RowDataBound" PageSize="10" Height="100px">
-          <AlternatingRowStyle CssClass="GridAltRow" Wrap="false" />
-          <RowStyle CssClass="GridRow" Wrap="false"></RowStyle>
-          <Columns>
-              <asp:BoundField DataField="Id" HeaderText="ID" />
-              <asp:BoundField DataField="Column2" HeaderText="Column2" />
-              <asp:BoundField DataField="Column3" HeaderText="Column3" />
-              <asp:BoundField DataField="Column4" HeaderText="Column4" />
-              <asp:BoundField DataField="Id" HeaderText="ID" />
-              <asp:BoundField DataField="Column2" HeaderText="Column2" />
-              <asp:BoundField DataField="Column3" HeaderText="Column3" />
-              <asp:BoundField DataField="Column4" HeaderText="Column4" />
-              <asp:BoundField DataField="Id" HeaderText="ID" />
-              <asp:BoundField DataField="Column2" HeaderText="Column2" />
-              <asp:BoundField DataField="Column3" HeaderText="Column3" />
-              <asp:BoundField DataField="Column4" HeaderText="Column4" />
-              <asp:BoundField DataField="Id" HeaderText="ID" />
-              <asp:BoundField DataField="Column2" HeaderText="Column2" />
-              <asp:BoundField DataField="Column3" HeaderText="Column3" />
-              <asp:BoundField DataField="Column4" HeaderText="Column4" />
-              <asp:BoundField DataField="Id" HeaderText="ID" />
-              <asp:BoundField DataField="Column2" HeaderText="Column2" />
-              <asp:BoundField DataField="Column3" HeaderText="Column3" />
-              <asp:BoundField DataField="Column4" HeaderText="Column4" />
-          </Columns>
-      </asp:GridView>
-  </div>
-  </form>
+   <form id="form1" runat="server">
+       <div>
+           <asp:GridView ID="GridView1" runat="Server" AutoGenerateColumns="False">
+               <Columns>
+                   <asp:TemplateField HeaderText="Publisher">
+                       <ItemTemplate>
+                           <asp:DropDownList ID="ddlPub" runat="Server" AutoPostBack="true" OnSelectedIndexChanged="ddlPub_SelectedIndexChanged"
+                               DataSource='<%#GetCustomMadeDataTable()%>' DataTextField="Publisher">
+                           </asp:DropDownList>
+                       </ItemTemplate>
+                   </asp:TemplateField>
+                   <asp:TemplateField HeaderText="Title">
+                       <ItemTemplate>
+                           <asp:DropDownList ID="ddlTitle" runat="Server">
+                           </asp:DropDownList>
+                       </ItemTemplate>
+                   </asp:TemplateField>
+               </Columns>
+           </asp:GridView>
+       </div>
+   </form>
 </body>
 </html>
 ```
 
 ```csharp
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Data;
+using System.Configuration;
+using System.Collections;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data;
+using System.Web.UI.WebControls.WebParts;
+using System.Web.UI.HtmlControls;
 
-public partial class FreezHeader : System.Web.UI.Page
+public partial class GridViewDropDown : System.Web.UI.Page
 {
-   protected void Page_Load(object sender, EventArgs e)
-   {
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (!IsPostBack)
+        {
+            BindGridViewView();
+            this.DataBind();
+        }
+    }
+    private void BindGridViewView()
+    {
+        if (Session["strTemp"] != null)
+        {
 
-       if (!IsPostBack)
-       {
-           if (Session["s"] != null)
-           {
-               Grd.DataSource = Session["s"] as DataTable;
+            GridView1.DataSource = Session["strTemp"] as DataTable;
+            GridView1.DataBind();
 
-               Grd.DataBind();
-
-
-           }
-           else
-           {
-               Grd.DataSource = GetCustomMadeDataTable();
+        }
+        else
+        {
+            GridView1.DataSource = GetCustomMadeDataTable();
+            GridView1.DataBind();
+        }
+    }
 
 
-               Grd.DataBind();
-           }
-       }
+    public DataTable GetCustomMadeDataTable()
+    {
+        //Create a new DataTable object
+        System.Data.DataTable objDataTable = new System.Data.DataTable();
+        //Create three columns with string as their type
+        objDataTable.Columns.Add("ISBN", typeof(int));
+        objDataTable.Columns.Add("Title", typeof(string));
+        objDataTable.Columns.Add("Publisher", typeof(string));
+        objDataTable.Columns.Add("Year", typeof(string));
+        DataColumn[] dcPk = new DataColumn[1];
+        dcPk[0] = objDataTable.Columns["ISBN"];
+        objDataTable.PrimaryKey = dcPk;
+        objDataTable.Columns["ISBN"].AutoIncrement = true;
+        objDataTable.Columns["ISBN"].AutoIncrementSeed = 1;
+        //Adding some data in the rows of this DataTable
+        DataRow dr;
+        for (int i = 1; i <= 5; i++)
+        {
+            dr = objDataTable.NewRow();
+            dr[1] = "Title" + i.ToString();
+            dr[2] = "Publisher" + i.ToString();
+            dr[3] = "200" + i.ToString();
+            objDataTable.Rows.Add(dr);
+        }
+        for (int i = 6; i <= 8; i++)
+        {
+            dr = objDataTable.NewRow();
+            dr[1] = "Computer" + i.ToString();
+            dr[2] = "TMH" + i.ToString();
+            dr[3] = "200" + i.ToString();
+            objDataTable.Rows.Add(dr);
+        }
+        Session["strTemp"] = objDataTable;
+        return objDataTable;
+    }
 
-   }
-   public DataTable GetCustomMadeDataTable()
-   {
+    protected ArrayList RelatedData(string s)
+    {
+        ArrayList ar = new ArrayList();
+        if (s == "Publisher1")
+        {
 
-       //Create a new DataTable object
+            ar.Add("Book1");
+            ar.Add("Book2");
 
-       System.Data.DataTable objDataTable = new System.Data.DataTable();
 
-       //Create three columns with string as their type
+        }
+        if (s == "Publisher2")
+        {
 
-       objDataTable.Columns.Add("Id", typeof(string));
-       objDataTable.Columns.Add("Column2", typeof(string));
-       objDataTable.Columns.Add("Column3", typeof(string));
-       objDataTable.Columns.Add("Column4", typeof(string));
-       objDataTable.Columns.Add("Column5", typeof(string));
+            ar.Add("Computer");
+            ar.Add("C#");
 
-       //Adding some data in the rows of this DataTable
-       objDataTable.Rows.Add(new string[] { "1", "R1C1 ", " Column3", "Test", "Test" });
-       objDataTable.Rows.Add(new string[] { "2", "R1C1 ", " Column3", "Test", "Test" });
-       objDataTable.Rows.Add(new string[] { "3", "R1C1 ", " Column3", "Test", "Test" });
-       objDataTable.Rows.Add(new string[] { "4", "R1C1 ", " Column3", "Test", "Test" });
-       objDataTable.Rows.Add(new string[] { "5", "R1C1 ", " Column3", "Test", "Test" });
-       objDataTable.Rows.Add(new string[] { "6", "R1C1 ", " Column3", "Test", "Test" });
-       objDataTable.Rows.Add(new string[] { "7", "R1C1 ", " Column3", "Test", "Test" });
-       objDataTable.Rows.Add(new string[] { "8", "R1C1 ", " Column3", "Test", "Test" });
-       objDataTable.Rows.Add(new string[] { "9", "R1C1 ", " Column3", "Test", "Test" });
-       objDataTable.Rows.Add(new string[] { "10", "R1C1 ", " Column3", "Test", "Test" });
-       objDataTable.Rows.Add(new string[] { "11", "R1C1 ", " Column3", "Test", "Test" });
-       objDataTable.Rows.Add(new string[] { "12", "R1C1 ", " Column3", "Test", "Test" });
-       objDataTable.Rows.Add(new string[] { "13", "R1C1 ", " Column3", "Test", "Test" });
-       objDataTable.Rows.Add(new string[] { "14", "R1C1 ", " Column3", "Test", "Test" });
-       objDataTable.Rows.Add(new string[] { "15", "R1C1 ", " Column3", "Test", "Test" });
-       objDataTable.Rows.Add(new string[] { "16", "R1C1 ", " Column3", "Test", "Test" });
-       objDataTable.Rows.Add(new string[] { "17", "R1C1 ", " Column3", "Test", "Test" });
-       objDataTable.Rows.Add(new string[] { "18", "R1C1 ", " Column3", "Test", "Test" });
-       objDataTable.Rows.Add(new string[] { "19", "R1C1 ", " Column3", "Test", "Test" });
-       DataColumn[] dcPk = new DataColumn[1];
-       dcPk[0] = objDataTable.Columns["Id"];
-       objDataTable.PrimaryKey = dcPk;
-       Session["s"] = objDataTable;
-       return objDataTable;
-   }
-   protected void Grd_RowDataBound(object sender, GridViewRowEventArgs e)
-   {
-       e.Row.Cells[0].CssClass = "locked";
-       e.Row.Cells[1].CssClass = "locked";
-   }
+        }
+        return ar;
+    }
+    protected void ddlPub_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        // get reference to the row
+        GridViewRow gvr = (GridViewRow)(((Control)sender).NamingContainer);
+
+        // Get the reference of this DropDownlist
+        DropDownList dropdownlist1 = (DropDownList)gvr.FindControl("ddlPub");
+
+        // Get the reference of other DropDownlist in the same row.
+        DropDownList ddlParagraph = (DropDownList)gvr.FindControl("ddlTitle");
+
+        string strValue = dropdownlist1.SelectedItem.Text;
+        ddlParagraph.DataSource = RelatedData(strValue);
+        ddlParagraph.DataBind();
+    }
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAzMzk0NzI5LC0zMzI0NTUzNjNdfQ==
+eyJoaXN0b3J5IjpbLTkzODUxNjIzOCwtMzMyNDU1MzYzXX0=
 -->
