@@ -43,7 +43,7 @@ void Main()
 
 ```
 
-## Record by Default override `Object.Equal.`
+## Record by Default  provide Value equality
 
 `Record` by default override `Object.Equal` method to compare two Record. Suppose Record have the same value, then its return true otherwise false.
 
@@ -116,5 +116,6 @@ When you need to change the data like database operations
 - Record type can only inherit from another record, not from class
  - By default, the Record type is immutable, but you can create mutable Record but not recommended
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ4NTQwMjQyNSwtMTUwMjI4NTI4Nl19
+eyJoaXN0b3J5IjpbLTIwNDMxMjc2MDIsLTE1MDIyODUyODZdfQ
+==
 -->
