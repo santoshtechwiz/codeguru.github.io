@@ -32,6 +32,7 @@ function coin_change(amount) {
 $$
   c(j) =
 \begin{cases}
+infinity,  & \text{if $n$<0} \\
 n/2,  & \text{if $n$ is even} \\
 3n+1, & \text{if $n$ is odd}
 \end{cases}
@@ -47,6 +48,6 @@ $$
 eyJwcm9wZXJ0aWVzIjoiZXh0ZW5zaW9uczpcbiAgcHJlc2V0Oi
 B6ZXJvXG4gIG1hcmtkb3duOlxuICAgIHRhYmxlOiB0cnVlXG4g
 IGthdGV4OlxuICAgIGVuYWJsZWQ6IHRydWVcbiIsImhpc3Rvcn
-kiOlstNjg0MjUwMjEsMTI2MjY5NzgwNSw4NTE0MTEyMywtOTA4
-OTk5MzA4XX0=
+kiOlsxNjU4Njk5NTM5LDEyNjI2OTc4MDUsODUxNDExMjMsLTkw
+ODk5OTMwOF19
 -->
