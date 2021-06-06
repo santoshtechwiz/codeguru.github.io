@@ -30,7 +30,7 @@ function coin_change(amount) {
 
 ![](https://1.bp.blogspot.com/-qJf9RTk0_VQ/YLxz6UPEheI/AAAAAAAAOwE/3V0MQCcf4NkyqdmZArvcc7_0LEpjUYMIgCLcBGAsYHQ/w400-h272/coin-change.gif)
 
->This article only show you how to write recursive program. I know this is not optimized way to write coin change.
+>This article only show you how to write recursive program. I know this is not optimized way to write coin change problem{alertError}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEwMzMxOTk2NV19
+eyJoaXN0b3J5IjpbLTkwODk5OTMwOF19
 -->
