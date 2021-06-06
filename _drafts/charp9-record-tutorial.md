@@ -116,6 +116,8 @@ Console.WriteLine(cPerson1==cPerson2); // False
 
 When you need to change the data like database operations
 
-## Record type can only inherit from another record not from class
-
-## By default Record type is imutable but you can create mutable record but not recommended
+- Record type can only inherit from another record not from class
+ - By default Record type is imutable but you can create mutable record but not recommended
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTE2MzMxODY1MF19
+-->
