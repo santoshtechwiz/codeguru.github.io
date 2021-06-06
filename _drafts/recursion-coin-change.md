@@ -34,7 +34,7 @@ $$
 \begin{cases}
 \infty,  & \text{if $j$<0} \\
 0,  & \text{if $j$ =0} \\
- 1+min(\sum_{n=1}) = 1 
+ 1+\min(\sum{j-amount}) \text{if $j$>1}
 \end{cases}
 $$
 
@@ -48,6 +48,6 @@ $$
 eyJwcm9wZXJ0aWVzIjoiZXh0ZW5zaW9uczpcbiAgcHJlc2V0Oi
 B6ZXJvXG4gIG1hcmtkb3duOlxuICAgIHRhYmxlOiB0cnVlXG4g
 IGthdGV4OlxuICAgIGVuYWJsZWQ6IHRydWVcbiIsImhpc3Rvcn
-kiOls2MTU3NTE4NzYsMTI2MjY5NzgwNSw4NTE0MTEyMywtOTA4
-OTk5MzA4XX0=
+kiOlsxOTc2OTI3MTM5LDEyNjI2OTc4MDUsODUxNDExMjMsLTkw
+ODk5OTMwOF19
 -->
