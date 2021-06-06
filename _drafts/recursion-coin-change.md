@@ -8,6 +8,23 @@ You may assume that you have an infinite number of each kind of coin.
 **Input:** coins = [1,2], amount = 4
 **Output:** 2
 **Explanation:** 11 = 2 + 2 
+
+
+```javascript
+function fn(v) {
+  // if remaining  co
+  if (v == 0) return 0
+  if (v < 0) return Infinity
+  
+  let ans = Infinity
+  for (const coin of coins)
+    ans = Math.min(
+      ans,
+      1 + fn(v - coin)
+    )
+  return ans
+}
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkzNTAzMDgxOV19
+eyJoaXN0b3J5IjpbLTE0MDYzNzk2MzBdfQ==
 -->
