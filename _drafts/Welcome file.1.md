@@ -1,57 +1,106 @@
 
+[![](http://3.bp.blogspot.com/_iY3Ra2OqpkA/SBesvCSxC5I/AAAAAAAAA_U/N7qKQzraazI/s400/ClassDiagram1.png)](https://www.blogger.com/blog/post/edit/6673695286148904603/2628405464949013845#)  
+  
 
-```html
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="AllColors.aspx.cs"
- Inherits="AllColors" %>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-  <title>Untitled Page</title>
-</head>
-<body>
-  <form id="form1" runat="server">
-      <div>
-          <asp:DropDownList ID="ddlColor" runat="Server">
-          </asp:DropDownList>
-      </div>
-  </form>
-</body>
-</html>
-```
-```csharp
-using System;
-using System.Data;
-using System.Configuration;
-using System.Collections;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
-using System.Drawing;
-
-public partial class AllColors : System.Web.UI.Page
-{
-   protected void Page_Load(object sender, EventArgs e)
-   {
-       ArrayList arrlist = new ArrayList();
-       KnownColor enumColor = new KnownColor();
-       Array Colors = Enum.GetValues(enumColor.GetType());
-       foreach (object clr in Colors)
-       {
-           if (!Color.FromKnownColor((KnownColor)clr).IsSystemColor)
-               arrlist.Add(clr.ToString());
-       }
-       ddlColor.DataSource = arrlist;
-       ddlColor.DataBind();
-   }
+  
+using System;  
+using System.Collections.Generic;  
+using System.Text;  
+  
+namespace SampleFactoryClass  
+{  
+   public interface IApparel    // Interface representing product  
+   {  
+  
+       string ShowMe();  
+  
+       bool Knit        // Property to indicate if Knit  
+  
+       { get; }  
+  
+   }  
+  
+   public class SportsShirt : IApparel  
+   {  
+  
+       public string ShowMe()  
+       {  
+  
+           return ("Sports Shirt");  
+  
+       }  
+  
+       public bool Knit  
+  
+       { get { return true; } }  
+  
+   }  
+  
+   public class DressShirt : IApparel  
+   {  
+  
+       public string ShowMe()  
+       {  
+  
+           return ("Dress Shirt");  
+  
+       }  
+  
+       public bool Knit  
+  
+       { get { return false; } }  
+  
+   }  
+  
+   // Factory to return instances of apparel classes  
+  
+   public class ApparelFactory  
+   {  
+  
+       public IApparel CreateApparel(string apptype)  
+       {  
+  
+           switch (apptype)  
+           {  
+  
+               case "MDRSHIRT":  
+  
+                   return new DressShirt();  
+  
+               case "MSPSHIRT":  
+  
+                   return new SportsShirt();  
+  
+           }  
+  
+           return null;  
+  
+       }  
+       public static void Main()  
+       {  
+  
+           ApparelFactory factory = new ApparelFactory();  
+  
+           IApparel ob1 = factory.CreateApparel("MDRSHIRT");  
+  
+           IApparel ob2 = factory.CreateApparel("MSPSHIRT");  
+  
+           string shirtType = ob1.ShowMe(); // Returns "Dress Shirt"  
+           Console.WriteLine(shirtType);  
+           Console.Read();  
+  
+  
+  
+  
+  
+       }  
+  
+   }  
+  
+  
 }
-```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgwMDU2MTkzMCwtMTcyNDIzMzM3NiwtMT
-U2NTcxMzk4MywtMjA2NjY1NTQ3NSwtOTM4NTE2MjM4LC0zMzI0
-NTUzNjNdfQ==
+eyJoaXN0b3J5IjpbMjExNzUxNTY4NSwtODAwNTYxOTMwLC0xNz
+I0MjMzMzc2LC0xNTY1NzEzOTgzLC0yMDY2NjU1NDc1LC05Mzg1
+MTYyMzgsLTMzMjQ1NTM2M119
 -->
