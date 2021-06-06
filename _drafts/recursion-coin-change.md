@@ -4,11 +4,9 @@
 Return  _the fewest number of coins that you need to make up that amount_. If that amount of money cannot be made up by any combination of the coins, return  `-1`.
 
 You may assume that you have an infinite number of each kind of coin.
-Example 1:
 
-Input: coins = [1,2], amount = 4
-Output: 2
-Explanation: 4 = 2 + 2,4=1+1+2 
+> Example 1: Input: coins = [1,2], amount = 4 Output: 2 Explanation: 4 =
+> 2 + 2,4=1+1+2
 
 ## The recursion formual for coin change as below
 
@@ -50,7 +48,7 @@ function coin_change(amount) {
 >This article only show you how to write recursive program. I know this is not optimized way to write coin change problem{alertError}
 <!--stackedit_data:
 eyJwcm9wZXJ0aWVzIjoiZXh0ZW5zaW9uczpcbiBcbiAga2F0ZX
-g6XG4gICAgZW5hYmxlZDogdHJ1ZVxuIiwiaGlzdG9yeSI6Wy02
-OTIyNjE0MzgsLTE3NDg4OTY4MTIsMTk3NjkyNzEzOSwxMjYyNj
+g6XG4gICAgZW5hYmxlZDogdHJ1ZVxuIiwiaGlzdG9yeSI6Wy05
+NDg4Nzc4NDgsLTE3NDg4OTY4MTIsMTk3NjkyNzEzOSwxMjYyNj
 k3ODA1LDg1MTQxMTIzLC05MDg5OTkzMDhdfQ==
 -->
