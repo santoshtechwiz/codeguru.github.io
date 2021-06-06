@@ -1,6 +1,6 @@
 
 We have a web based **gridview** displaying data from a database. All cells are template columns containing textboxes. When users alter the text in a textbox you want an event to fire. (the functionality could be compared to that of the table editor in enterprise manger, in that once a user edits a cell and leaves that cell, its updated immediately).
-
+```html
 <%@ Page Language="C#" AutoEventWireup="false" CodeFile="TextBoxChange.aspx.cs" Inherits="TextBoxChange" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -25,7 +25,8 @@ We have a web based **gridview** displaying data from a database. All cells are 
         </div>
     </form>
 </body> 
-
+```
+```csharp
 using System;
 using System.Data;
 using System.Configuration;
@@ -67,9 +68,9 @@ public partial class TextBoxChange : System.Web.UI.Page
     }
 
 }
+```
 
-
-
+```csharp
 using System;
 using System.Data;
 using System.Configuration;
@@ -117,7 +118,8 @@ public class Freight
     }
 
 }
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU3MjYxODgyNywtOTM4NTE2MjM4LC0zMz
-I0NTUzNjNdfQ==
+eyJoaXN0b3J5IjpbLTIwNTIwNTIyNjAsLTkzODUxNjIzOCwtMz
+MyNDU1MzYzXX0=
 -->
