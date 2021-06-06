@@ -76,7 +76,7 @@ Console.WriteLine(rPerson1.ToString()); // RPerson { FirstName = John, LastName 
 Console.WriteLine(cPerson1.ToString()); // CPerson
 ```
 
-## record == and !=santosh
+## record == and !=
 
 The Record already provide operator overloading for == and !=, so it is easy to compare two records.
 
@@ -115,5 +115,5 @@ When you need to change the data like database operations
 - Record type can only inherit from another record, not from class
  - By default, the Record type is immutable, but you can create mutable Record but not recommended
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkzODAwNDMyMCwtMTUwMjI4NTI4Nl19
+eyJoaXN0b3J5IjpbLTE4MDk0ODkwMiwtMTUwMjI4NTI4Nl19
 -->
