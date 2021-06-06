@@ -62,7 +62,7 @@ var cPerson2 = new CPerson("John", "Doe");
 Console.WriteLine(rPerson1.Equals(rPerson2)); // True
 Console.WriteLine(cPerson1.Equals(cPerson2)); // False
 ```
-
+> Note: C# compare record type by value not by refrence. If you try to compare there refrences both will be diffrent.
 
 
 ## Record By Default override `GetHashCode`
@@ -116,6 +116,6 @@ Console.WriteLine(cPerson1==cPerson2); // False
 
 When you need to change the data like database operations
 
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU2NzkwNzI2NF19
--->
+## Record type can only inherit from another record not from class
+
+## By default Record type is imutable but you can create mutable record but not recommended
