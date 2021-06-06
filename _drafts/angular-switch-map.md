@@ -8,6 +8,8 @@ SwitchMap is a flattening operator with two observables, one outer and one inner
 
 Let's understand this operator with real world example.Assume you want to load post from the webserver and once post is loaded you want to download all the related comments.
 
+![](https://1.bp.blogspot.com/-tBALfDqjn0c/YLxfMim_FbI/AAAAAAAAOv0/O1xaV36oleIzZFHGB3ixWWXRyOUVNOjsgCLcBGAsYHQ/s16000/switch-map.gif)
+
 > I am using stackbliz id for this demo
 
 Let's create a service that load post and comments
@@ -65,3 +67,6 @@ export class AppComponent implements OnInit {
 }
 
 ```
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbODU3MTgzMjgyXX0=
+-->
