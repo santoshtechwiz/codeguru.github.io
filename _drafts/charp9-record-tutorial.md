@@ -49,7 +49,6 @@ void Main()
 
 See the following example.
 
-
 ```csharp
 var cPerson1 = new CPerson("John", "Doe");
 var cPerson2 = new CPerson("John", "Doe");
@@ -116,6 +115,5 @@ When you need to change the data like database operations
 - Record type can only inherit from another record, not from class
  - By default, the Record type is immutable, but you can create mutable Record but not recommended
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNDMxMjc2MDIsLTE1MDIyODUyODZdfQ
-==
+eyJoaXN0b3J5IjpbLTkzODAwNDMyMCwtMTUwMjI4NTI4Nl19
 -->
