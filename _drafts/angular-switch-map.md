@@ -83,8 +83,9 @@ The code is very simple only thing need to understand is below code. As you can 
  ```
 
 
-<iframe src='https://stackblitz.com/edit/codeguru-angular-switch-map?ctl=1&embed=1&file=app/app.component.html&hideNavigation=1&view=editor' height="500px" width="600px">
+<iframe src='https://stackblitz.com/edit/codeguru-angular-switch-map?ctl=1&embed=1&file=app/app.component.html&hideExplorer=1&view=preview' height="500px" width="600px">
 </iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMzODU0NzY0MywtMjA4NzIyMTU4OF19
+eyJoaXN0b3J5IjpbLTIxNDU2NjIyODUsLTIwODcyMjE1ODhdfQ
+==
 -->
