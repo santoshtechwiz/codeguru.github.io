@@ -100,7 +100,6 @@ Console.WriteLine(cPerson1==cPerson2); // False
 
 
 ## When to use Record
-
 - Loading external data from API or Database that does; not change.
 - Thread Safe
 - Processing Huge Data
@@ -115,6 +114,5 @@ When you need to change the data like database operations
 - Record type can only inherit from another record, not from class
  - By default, the Record type is immutable, but you can create mutable Record but not recommended
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0Mjk5NjIxOTQsLTE1MDIyODUyODZdfQ
-==
+eyJoaXN0b3J5IjpbNjQ3OTc1NjE2LC0xNTAyMjg1Mjg2XX0=
 -->
