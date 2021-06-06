@@ -34,7 +34,7 @@ $$
 \begin{cases}
 \infty,  & \text{if $j$<0} \\
 0,  & \text{if $j$ =0} \\
-3n+1, & \text{if $n$ is odd}
+ 1+min(\sum_{n=1}) = 1 
 \end{cases}
 $$
 
@@ -48,6 +48,6 @@ $$
 eyJwcm9wZXJ0aWVzIjoiZXh0ZW5zaW9uczpcbiAgcHJlc2V0Oi
 B6ZXJvXG4gIG1hcmtkb3duOlxuICAgIHRhYmxlOiB0cnVlXG4g
 IGthdGV4OlxuICAgIGVuYWJsZWQ6IHRydWVcbiIsImhpc3Rvcn
-kiOlsxMDI3ODQzOTg1LDEyNjI2OTc4MDUsODUxNDExMjMsLTkw
-ODk5OTMwOF19
+kiOls2MTU3NTE4NzYsMTI2MjY5NzgwNSw4NTE0MTEyMywtOTA4
+OTk5MzA4XX0=
 -->
