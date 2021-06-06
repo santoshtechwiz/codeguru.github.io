@@ -27,16 +27,9 @@ function coin_change(amount) {
 }
 ```
 
->
 
-$$
-  coinchange(j,a) =
-\begin{cases}
-\infty,  & \text{if $j$<0} \\
-0,  & \text{if $j$ =0} \\
- 1+\min(\sum_{i=k}^n c[j-a_i]) & \text{if $j$ >1}
-\end{cases}
-$$
+
+
 
 
 ## Recursion Tree
@@ -48,6 +41,6 @@ $$
 eyJwcm9wZXJ0aWVzIjoiZXh0ZW5zaW9uczpcbiAgcHJlc2V0Oi
 B6ZXJvXG4gIG1hcmtkb3duOlxuICAgIHRhYmxlOiB0cnVlXG4g
 IGthdGV4OlxuICAgIGVuYWJsZWQ6IHRydWVcbiIsImhpc3Rvcn
-kiOlstMjA3NDExMDU3NSwxOTc2OTI3MTM5LDEyNjI2OTc4MDUs
+kiOlstMTc0ODg5NjgxMiwxOTc2OTI3MTM5LDEyNjI2OTc4MDUs
 ODUxNDExMjMsLTkwODk5OTMwOF19
 -->
