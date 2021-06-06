@@ -1,4 +1,4 @@
-## Create Generic Rest Client
+## Create Generic Rest Client in C#
 
 In this article, We will look at a generic asynchronous RESTful  HttpClient used with any service. This class will make it extremely simple for us to create RESTful clients that interact with RESTful services. Take a look at this post if you want to build a RESTful cross-domain client.
 
@@ -115,3 +115,6 @@ void Main()
 
 }
 ```
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE1Mjk5MTUzMjhdfQ==
+-->
