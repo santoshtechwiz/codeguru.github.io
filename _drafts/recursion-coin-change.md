@@ -11,21 +11,21 @@ You may assume that you have an infinite number of each kind of coin.
 
 
 ```javascript
-function coin_change(v) {
+function coin_change(amount) {
   // if remaining  coin is zero return
-  if (v == 0) return 0
+  if (amount == 0) return 0
   // if coin is negative return some large value
-  if (v < 0) return Infinity
+  if (amount < 0) return Infinity
   
   let ans = Infinity
   for (const coin of coins)
     ans = Math.min(
       ans,
-      1 + fn(v - coin)
+      1 + coin_change(amount - coin)
     )
   return ans
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjg1MDkwOTI0XX0=
+eyJoaXN0b3J5IjpbNzU3NTI1MDYwXX0=
 -->
