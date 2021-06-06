@@ -6,7 +6,7 @@ In this article I will show you how to implement `switchMap` operator which is o
 ## switchMap opetator
 SwitchMap is a flattening operator with two observables, one outer and one inner. switchMap emit values only from the most recently projected Observable.
 
-Let's understand this operator with real world example.Assume you want to load post from the webserver and once post is loaded you want to download all the related comments.
+Let's understand this operator with real world example.Assume you want to load post from the webserver and once post is loaded you want to download all the related comments. See the below animations how switchMap works.
 
 ![](https://1.bp.blogspot.com/-tBALfDqjn0c/YLxfMim_FbI/AAAAAAAAOv0/O1xaV36oleIzZFHGB3ixWWXRyOUVNOjsgCLcBGAsYHQ/s16000/switch-map.gif)
 
@@ -67,6 +67,20 @@ export class AppComponent implements OnInit {
 }
 
 ```
+The code is very simple only thing need to understand is below code
+
+```typescript
+.getSinglePost()
+      .pipe(
+        // Switch to load comments
+        switchMap((res1: any) => this.postService.getAllComments(res1.id))
+      )
+      .subscribe(result => {
+        // Finally get the result and show to page
+        this.items = result;
+        console.log(result);
+      });
+      ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODU3MTgzMjgyXX0=
+eyJoaXN0b3J5IjpbLTIwODcyMjE1ODhdfQ==
 -->
