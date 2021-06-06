@@ -11,9 +11,10 @@ You may assume that you have an infinite number of each kind of coin.
 
 
 ```javascript
-function fn(v) {
-  // if remaining  co
+function coin_change(v) {
+  // if remaining  coin is zero return
   if (v == 0) return 0
+  // if coin is negative return some large value
   if (v < 0) return Infinity
   
   let ans = Infinity
@@ -26,5 +27,5 @@ function fn(v) {
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MDYzNzk2MzBdfQ==
+eyJoaXN0b3J5IjpbNjg1MDkwOTI0XX0=
 -->
