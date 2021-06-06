@@ -1,6 +1,7 @@
 
 create a textbox and default all colors to white (or whatever you need to hide it) create a event for OnSelectionChange on the calendar control.
 
+```html
 <%@ Page Language="C#" AutoEventWireup="true" CodeFile="ValidateCalControl.aspx.cs"
 Inherits="ValidateCalControl" %>
 
@@ -25,7 +26,8 @@ ControlToValidate="txtCal" ErrorMessage="Select Date"></asp:RequiredFieldValidat
    </form>
 </body>
 </html>
-
+```
+```csharp
 using System;
 using System.Data;
 using System.Configuration;
@@ -50,7 +52,8 @@ public partial class ValidateCalControl : System.Web.UI.Page
 
     }
 }
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgwMTQxNTIwNSwtOTM4NTE2MjM4LC0zMz
+eyJoaXN0b3J5IjpbLTgwNjU1MjU2MSwtOTM4NTE2MjM4LC0zMz
 I0NTUzNjNdfQ==
 -->
