@@ -33,7 +33,9 @@ Supoose you have the follwing **XML**  **file** . If I want to retrieve game1 mo
      </move>
  </game>
 </playMoves>
+```
 
+```html
 <%@ Page Language="C#" AutoEventWireup="true" CodeFile="ReadXMLfile.aspx.cs" Inherits="ReadXMLfile" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
@@ -92,6 +94,7 @@ function ProcessXML()
    </form>
 </body>
 </html>
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjI4NDkyNzQxLC0zMzI0NTUzNjNdfQ==
+eyJoaXN0b3J5IjpbMTcxOTQzODAxMCwtMzMyNDU1MzYzXX0=
 -->
