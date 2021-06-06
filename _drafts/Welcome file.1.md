@@ -1,6 +1,7 @@
 
     
 
+```html
 <%@ Page Language="C#" AutoEventWireup="true" CodeFile="TimeDisplay.aspx.cs" Inherits="TimeDisplay" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -25,9 +26,9 @@
    </form>
 </body>
 </html>
-
+```
   
-
+```csharp
 using System;
 using System.Data;
 using System.Configuration;
@@ -121,9 +122,10 @@ public partial class TimeDisplay : System.Web.UI.Page
         return fdate;
     }
 }
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI4OTU2MTc4NywxMjAzMDQ2OTQ2LDE0MD
-c1MTczMTUsLTM4NDEwNTAxMywtMzE1NjQ4NTg4LC04MDA1NjE5
-MzAsLTE3MjQyMzMzNzYsLTE1NjU3MTM5ODMsLTIwNjY2NTU0Nz
-UsLTkzODUxNjIzOCwtMzMyNDU1MzYzXX0=
+eyJoaXN0b3J5IjpbNjY4MTkwMDQ5LDEyMDMwNDY5NDYsMTQwNz
+UxNzMxNSwtMzg0MTA1MDEzLC0zMTU2NDg1ODgsLTgwMDU2MTkz
+MCwtMTcyNDIzMzM3NiwtMTU2NTcxMzk4MywtMjA2NjY1NTQ3NS
+wtOTM4NTE2MjM4LC0zMzI0NTUzNjNdfQ==
 -->
