@@ -5,8 +5,6 @@ As per the Microsoft
 
 > C# 9.0 introduces ***record types***. You use the `record` keyword to define a reference type that provides built-in functionality for encapsulating data. You can create record types with immutable properties by using positional parameters or standard property syntax:
 
-
-
 ```csharp
 public record RPerson(string FirstName,string LastName);
 ```
@@ -122,6 +120,5 @@ When you need to change the data like database operations
 - Record type can only inherit from another record, not from class
  - By default, the Record type is immutable, but you can create mutable Record but not recommended
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5ODI3MDUzNDQsLTE1MDIyODUyODZdfQ
-==
+eyJoaXN0b3J5IjpbMTM4OTQxNzI0NCwtMTUwMjI4NTI4Nl19
 -->
