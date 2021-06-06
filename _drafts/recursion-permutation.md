@@ -6,8 +6,8 @@ In computer science, recursion is a programming technique using function or algo
 
 
 Pseudocode:
--  if you have no more characters left to rearrange, 
- - print current permutation
+-  if you have no more characters left to rearrange
+-  -print current permutation
   - for (every possible choice among the characters left
 to rearrange){
 
@@ -61,5 +61,5 @@ namespace Permutation
 ![](https://1.bp.blogspot.com/-p2ifD-oxOUM/YLxsBJZLpnI/AAAAAAAAOv8/pz_FPx595o8rNkgilEqfo2T27dPSLwbTgCLcBGAsYHQ/s16000/permutation.gif)
 Happy Coding 😊
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYwMTMwMDUxOF19
+eyJoaXN0b3J5IjpbNTQxODkwMzIxXX0=
 -->
