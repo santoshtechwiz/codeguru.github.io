@@ -1,123 +1,38 @@
 
-[![](http://1.bp.blogspot.com/_iY3Ra2OqpkA/SLZOQuLeNpI/AAAAAAAABTE/pkDWoupcbPE/s400/emb_3.JPG)](https://www.blogger.com/blog/post/edit/6673695286148904603/3108281191786163790#)
+[![](http://3.bp.blogspot.com/_iY3Ra2OqpkA/Sbz5yEykQ2I/AAAAAAAAB68/clBVFPy99cs/s400/gd_paging.jpg)](https://www.blogger.com/blog/post/edit/6673695286148904603/7378798856969379009#)
 
-In .Net when you don’t want to relay for a file on physical location, then it is very good option to take an advantage of Embedded resources. Using embedded resources you can add any file type in the assembly/DLL/EXE when they get compiled. And whenever you want to use it, load it from the assembly, the files get stored in the metadata of Assembly. Here is an example of how to use Embedded Resources.    
-
-- Open Microsoft Visual Studio and create new project for C# Windows Application, here I have created Windows Application named “EmbeddedTest”, even you can use “Class Library”
-- To add a file in the project Right click on the project name in Solution Explorer, select “Add” >> “Existing Item…”[![](http://4.bp.blogspot.com/_iY3Ra2OqpkA/SLZM6CR_ZPI/AAAAAAAABS0/K1NdqDUkbis/s400/emb_1.JPG)](https://www.blogger.com/blog/post/edit/6673695286148904603/3108281191786163790#)
-- Now we have added a file to the project, so it doesn’t mean that it will automatically embedded in the Assembly, for that we need to change the files “Build Action” property to “Embedded Resource”, and compiler will include this file in metatdata. Here I have added Image file(blue.jpg), you can add one or more any kind of files[![](http://1.bp.blogspot.com/_iY3Ra2OqpkA/SLZNGxZBsnI/AAAAAAAABS8/Gu7spfbWiig/s400/emb_2.JPG)](https://www.blogger.com/blog/post/edit/6673695286148904603/3108281191786163790#)
-- Now use the following code in Form1_Load method to list all the Embedded Resources available in the Assembly
-```csharp
-protected void Page_Load(object sender, EventArgs e)
-{
-    if (!IsPostBack)
-    {
-        string[] resources = ImageLibrary.Images.GetNames();
-
-        foreach (string resourceName in resources)
-        {
-            ListBox1.Items.Add(resourceName);
-        }
-    }
-}
-```
-- The following code is used to get the resource from the Manifest of the Assembly when user clicks on the listBox1
-
-```csharp
-protected void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
- {
-     if (ListBox1.SelectedIndex == -1)
-         return;
-
-     string selectedResourceName = ListBox1.SelectedItem.ToString();
-
-    System.Drawing.Image  img = ImageLibrary.Images.GetImageByResourceName(selectedResourceName);
-     if (img != null)
-     {
-         System.Drawing.Bitmap obj = new System.Drawing.Bitmap(img);
-         Response.ContentType = "image/gif";
-
-
-         obj.Save(Response.OutputStream, System.Drawing.Imaging.ImageFormat.Gif);
-    
-     }
-     else
-     {
-    
-    
-     }
- 
-
- }
- ```
-
->complete code
-```csharp
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Drawing;
-using System.Reflection;
-
-using System.IO;
-
-namespace ImageLibrary
-{
-  public class Images
-  {
-      public static string[] GetNames()
-      {
-          Assembly a = Assembly.GetExecutingAssembly();
-
-          return a.GetManifestResourceNames();
-      }
-
-      public static Image GetImageByResourceName(string resourceName)
-      {
-          Assembly a = Assembly.GetExecutingAssembly();
-
-          try
-          {
-              Stream stream = a.GetManifestResourceStream(resourceName);
-
-              return Bitmap.FromStream(stream) as Bitmap;
-          }
-          catch (Exception ex)
-          {
-              return null;
-          }
-      }
-  }
-}
-```
-
-```html
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="EmbeedTest.aspx.cs" Inherits="EmbeedTest" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default4.aspx.cs" Inherits="Default4" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-  <title>Untitled Page</title>
+   <title>Untitled Page</title>
 </head>
 <body>
-  <form id="form1" runat="server">
-      <div>
-          <table style="width: 100%">
-              <tr>
-                  <td style="width: 100px">
-                      <asp:ListBox ID="ListBox1" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged">
-                      </asp:ListBox></td>
-                  <td style="width: 100px">
-                  </td>
-              </tr>
-          </table>
-      </div>
-  </form>
+   <form id="form1" runat="server">
+       <div>
+           <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True"
+               AutoGenerateColumns="true"  OnDataBound="GridView1_DataBound"
+               OnPageIndexChanging="GridView1_PageIndexChanging" OnSorting="GridView1_Sorting">
+               <PagerTemplate>
+                   <asp:Button ID="btnFirst" runat="server" Text="<< First" CommandArgument="First"
+                       CommandName="Page" />
+                   <asp:Button ID="btnPrev" runat="server" Text="< Previous" CommandArgument="Prev"
+                       CommandName="Page" />
+                   Page
+                   <asp:DropDownList ID="ddlPages" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlPages_SelectedIndexChanged">
+                   </asp:DropDownList>
+                   of
+                   <asp:Label ID="lblPageCount" runat="server"></asp:Label>
+                   <asp:Button ID="btnNext" runat="server" Text="Next >" CommandArgument="Next" CommandName="Page" />
+                   <asp:Button ID="btnLast" runat="server" Text="Last >>" CommandArgument="Last" CommandName="Page" />
+               </PagerTemplate>
+           </asp:GridView>
+       </div>
+   </form>
 </body>
 </html>
-```
 
-```csharp
 using System;
 using System.Data;
 using System.Configuration;
@@ -129,48 +44,187 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 
-public partial class EmbeedTest : System.Web.UI.Page
+public partial class Default4 : System.Web.UI.Page
 {
-  protected void Page_Load(object sender, EventArgs e)
-  {
-      if (!IsPostBack)
-      {
-          string[] resources = ImageLibrary.Images.GetNames();
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (!IsPostBack)
+        {
+            BindGrid();
+        } 
 
-          foreach (string resourceName in resources)
-          {
-              ListBox1.Items.Add(resourceName);
-          }
-      }
-  }
-  protected void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
-  {
-      if (ListBox1.SelectedIndex == -1)
-          return;
+    }
 
-      string selectedResourceName = ListBox1.SelectedItem.ToString();
+    private void BindGrid()
+    {
+       
+        GridView1.DataSource = GetDataSet();
+        GridView1.DataBind();
+    }
+    protected void GridView1_DataBound(Object sender, EventArgs e)
+    {
+        GridViewRow gvrPager = GridView1.BottomPagerRow;
 
-     System.Drawing.Image  img = ImageLibrary.Images.GetImageByResourceName(selectedResourceName);
-      if (img != null)
-      {
-          System.Drawing.Bitmap obj = new System.Drawing.Bitmap(img);
-          Response.ContentType = "image/gif";
+        if (gvrPager == null) return;
+
+        // get your controls from the gridview
+        DropDownList ddlPages =
+        (DropDownList)gvrPager.Cells[0].FindControl("ddlPages");
+        Label lblPageCount =
+        (Label)gvrPager.Cells[0].FindControl("lblPageCount");
+
+        if (ddlPages != null)
+        {
+            // populate pager
+            for (int i = 0; i < GridView1.PageCount; i++)
+            {
+
+                int intPageNumber = i + 1;
+                ListItem lstItem =
+                new ListItem(intPageNumber.ToString());
+
+                if (i == GridView1.PageIndex)
+                    lstItem.Selected = true;
+
+                ddlPages.Items.Add(lstItem);
+            }
+        }
+
+        int itemCount = 0;
+
+        // populate page count
+        if (lblPageCount != null)
+        {
+
+            //pull the datasource
+            DataSet ds = GridView1.DataSource as DataSet;
+            if (ds != null)
+                itemCount = ds.Tables[0].Rows.Count;
+
+            string pageCount = "<b>" + GridView1.PageCount.ToString() + "</b> (" + itemCount.ToString() + " Items)";
+            lblPageCount.Text = pageCount;
+
+        }
+
+        Button btnPrev = (Button)gvrPager.Cells[0].FindControl("btnPrev");
+        Button btnNext = (Button)gvrPager.Cells[0].FindControl("btnNext");
+        Button btnFirst = (Button)gvrPager.Cells[0].FindControl("btnFirst");
+        Button btnLast = (Button)gvrPager.Cells[0].FindControl("btnLast");
+
+        //now figure out what page we're on
+        if (GridView1.PageIndex == 0)
+        {
+            btnPrev.Enabled = false;
+            btnFirst.Enabled = false;
+        }
+        else if (GridView1.PageIndex + 1 == GridView1.PageCount)
+        {
+            btnLast.Enabled = false;
+            btnNext.Enabled = false;
+        }
+        else
+        {
+            btnLast.Enabled = true;
+            btnNext.Enabled = true;
+            btnPrev.Enabled = true;
+            btnFirst.Enabled = true;
+        }
+
+    }
+    protected void ddlPages_SelectedIndexChanged(Object sender, EventArgs e)
+    {
+        GridViewRow gvrPager = GridView1.BottomPagerRow;
+        DropDownList ddlPages = (DropDownList)gvrPager.Cells[0].FindControl("ddlPages");
+
+        GridView1.PageIndex = ddlPages.SelectedIndex;
+
+        // a method to populate your grid
+        BindGrid();
+    }
+    public DataSet GetDataSet()
+    {
+
+        DataTable dt = new DataTable("Company");
+        DataRow dr;
+        dt.Columns.Add(new DataColumn("accountNo", typeof(Int32)));
+        dt.Columns.Add(new DataColumn("CompanyName", typeof(string)));
+        dt.Columns.Add(new DataColumn("Address", typeof(Int32)));
+        for (int i = 0; i <= 10; i++)
+        {
+            dr = dt.NewRow();
+            dr[0] = i;
+            dr[1] = "Company" + i + Environment.NewLine + "Title" + i;
+            dr[2] = i;
+            dt.Rows.Add(dr);
+        }
+
+        DataSet ds = new DataSet();
+        ds.Tables.Add(dt);
+        return ds;
+    }
+    protected void GridView1_Sorting(object sender, GridViewSortEventArgs e)
+    {
+        DataSet ds = GetDataSet();
+
+        if (ds != null)
+        {
 
 
-          obj.Save(Response.OutputStream, System.Drawing.Imaging.ImageFormat.Gif);
-      
-      }
-      else
-      {
-      
-      
-      }
-   
+            DataView dataView = new DataView(ds.Tables[0]);
+            dataView.Sort = e.SortExpression + " " + GetSortDirection(e.SortExpression);
 
-  }
+            GridView1.DataSource = dataView;
+            GridView1.DataBind();
+        }
+
+    }
+
+    private DataSet GetMyDataSet()
+    {
+        throw new Exception("The method or operation is not implemented.");
+    }
+
+    string GetSortDirection(string sortBy)
+    {
+
+        string sortDir = " ASC";
+        if (ViewState["sortBy"] != null)
+        {
+            string sortedBy = ViewState["sortBy"].ToString();
+
+            if (sortedBy == sortBy)
+            {
+                //the direction should be desc
+                sortDir = " DESC";
+
+                //reset the sorter to null
+                ViewState["sortBy"] = null;
+            }
+            else
+            {
+                //this is the first sort for this row
+                //put it to the ViewState
+                ViewState["sortBy"] = sortBy;
+
+            }
+        }
+        else
+        {
+            //it's null, so this is the first sort
+            ViewState["sortBy"] = sortBy;
+        }
+        return sortDir;
+
+    }
+    protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        GridView1.PageIndex = e.NewPageIndex;
+        //rebind using your bind routine
+        BindGrid();
+    }
 }
-```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MjQyMzMzNzYsLTE1NjU3MTM5ODMsLT
-IwNjY2NTU0NzUsLTkzODUxNjIzOCwtMzMyNDU1MzYzXX0=
+eyJoaXN0b3J5IjpbLTQwNTMyNjQsLTE3MjQyMzMzNzYsLTE1Nj
+U3MTM5ODMsLTIwNjY2NTU0NzUsLTkzODUxNjIzOCwtMzMyNDU1
+MzYzXX0=
 -->
