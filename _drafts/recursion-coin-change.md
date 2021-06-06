@@ -30,11 +30,11 @@ function coin_change(amount) {
 ## How The aboive code is running
 
 $$
-  c(j) =
+  c(j,a) =
 \begin{cases}
 \infty,  & \text{if $j$<0} \\
 0,  & \text{if $j$ =0} \\
- 1+\min(\sum{j-amount}) \text{if $j$>1}
+ 1+\min(\sum_{i=k}^n c[j-a_i)
 \end{cases}
 $$
 
@@ -48,6 +48,6 @@ $$
 eyJwcm9wZXJ0aWVzIjoiZXh0ZW5zaW9uczpcbiAgcHJlc2V0Oi
 B6ZXJvXG4gIG1hcmtkb3duOlxuICAgIHRhYmxlOiB0cnVlXG4g
 IGthdGV4OlxuICAgIGVuYWJsZWQ6IHRydWVcbiIsImhpc3Rvcn
-kiOlsxOTc2OTI3MTM5LDEyNjI2OTc4MDUsODUxNDExMjMsLTkw
-ODk5OTMwOF19
+kiOls2NjgzNzYwNDYsMTk3NjkyNzEzOSwxMjYyNjk3ODA1LDg1
+MTQxMTIzLC05MDg5OTkzMDhdfQ==
 -->
