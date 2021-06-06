@@ -68,7 +68,8 @@ Console.WriteLine(rPerson1.GetHashCode()==rPerson2.GetHashCode()); // True
 Console.WriteLine(cPerson1.GetHashCode()==cPerson2.GetHashCode()); // False
 ```
 
-## Built-in formatting for display  `ToString`
+## Built-in formatting for display
+
 Record provide override version of `ToString`, which print the Record in the friendly format while class print the name.
 
 ```csharp
@@ -115,5 +116,5 @@ When you need to change the data like database operations
 - Record type can only inherit from another record, not from class
  - By default, the Record type is immutable, but you can create mutable Record but not recommended
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY5ODE4MzE5MSwtMTUwMjI4NTI4Nl19
+eyJoaXN0b3J5IjpbLTQ4NTQwMjQyNSwtMTUwMjI4NTI4Nl19
 -->
