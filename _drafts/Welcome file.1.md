@@ -1,23 +1,21 @@
 
 [![](http://1.bp.blogspot.com/_iY3Ra2OqpkA/SLeTjxFkAwI/AAAAAAAABTs/_VBei4hZ_5A/s400/user_template.JPG)](https://www.blogger.com/blog/post/edit/6673695286148904603/8477637839794232054#)
 
-Another feature that is often ignored with user controls, but that can be very useful, is the template. Templates are often associated with server controls and are an important part of both the DataList and the Repeater controls. However, their usefulness is not limited to server controls. Templates, however, allow us to provide a means for the page designer to supply HTML content that will be rendered within our control. Templates allow our user controls to be more flexible because they are used across pages within our application.
+Another feature that is often ignored with user controls, but that can be handy, is the template. Templates are often associated with server controls and are an important part of both the DataList and the Repeater controls. However, their usefulness is not limited to server controls. Templates, however, allow us to provide a means for the page designer to supply HTML content that will be rendered within our control. Templates allow our user controls to be more flexible because they are used across pages within our application.
 
-1. In the .ascx file, add an ASP.NET  [PlaceHolder](https://www.blogger.com/blog/post/edit/6673695286148904603/8477637839794232054#)  control where you want the template to appear.
+1. In the .ascx file, add an ASP.NET  PlaceHolder  control where you want the template to appear.
 
-2. In the user control's code, implement a property of type  [ITemplate](https://www.blogger.com/blog/post/edit/6673695286148904603/8477637839794232054#).
+2. In the user control's code, implement a property of type  ITemplate.
 
-3. Define a server control class that implements the  [INamingContainer](https://www.blogger.com/blog/post/edit/6673695286148904603/8477637839794232054#)  interface as a container in which to create an instance of the template. This is called the template's naming container.
+3. Define a server control class that implements the  INamingContainer  interface as a container to create an instance of the template. This is called the template's naming container.
 
 4. Apply the  [TemplateContainerAttribute](https://www.blogger.com/blog/post/edit/6673695286148904603/8477637839794232054#)  to the property that implements  [ITemplate](https://www.blogger.com/blog/post/edit/6673695286148904603/8477637839794232054#)  and pass the type of the template's naming container as the argument to the attribute's constructor.
 
 5. In the control's  [Init](https://www.blogger.com/blog/post/edit/6673695286148904603/8477637839794232054#)  method, repeat the following steps one or more times:
 
-o Create an instance of the naming container class.
-
-o Create an instance of the template in the naming container.
-
-o Add the naming container instance to the  [Controls](https://www.blogger.com/blog/post/edit/6673695286148904603/8477637839794232054#)  property of the  [PlaceHolder](https://www.blogger.com/blog/post/edit/6673695286148904603/8477637839794232054#)  server control.
+- Create an instance of the naming container class.
+- Create an instance of the template in the naming container.
+- Add the naming container instance to the  [Controls](https://www.blogger.com/blog/post/edit/6673695286148904603/8477637839794232054#)  property of the  [PlaceHolder](https://www.blogger.com/blog/post/edit/6673695286148904603/8477637839794232054#)  server control.
 
 SupportTemplates.ascx
 
@@ -196,6 +194,6 @@ public partial class Template : System.Web.UI.Page
   }
 }
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY4MjAyOTI1NSwtMjA2NjY1NTQ3NSwtOT
+eyJoaXN0b3J5IjpbMTEyMTcwMTA2MCwtMjA2NjY1NTQ3NSwtOT
 M4NTE2MjM4LC0zMzI0NTUzNjNdfQ==
 -->
