@@ -29,7 +29,16 @@ function coin_change(amount) {
 
 ## How The aboive code is running
 ```
-C[0] = 0; C[1] = min    1 + C[1 − 50] = ∞ 1 + C[1 − 25] = ∞ 1 + C[1 − 10] = ∞ 1 + C[1 − 1] = 1 C[2] = min    1 + C[2 − 50] = ∞ 1 + C[2 − 25] = ∞ 1 + C[2 − 10] = ∞ 1 + C[2 − 1] = 2 Similarly, C[3] = 3; C[4] = 4; ...; C[9] = 9; C[10] = 1;
+$$
+  \begin{pmatrix}
+    a & b\\
+    c & d\\
+  \hline
+    1 & 0\\
+    0 & 1
+  \end{pmatrix}
+$$
+```
 ```
 ## Recursion Tree
 
@@ -37,5 +46,8 @@ C[0] = 0; C[1] = min    1 + C[1 − 50] = ∞ 1 + C[1
 
 >This article only show you how to write recursive program. I know this is not optimized way to write coin change problem{alertError}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODUxNDExMjMsLTkwODk5OTMwOF19
+eyJwcm9wZXJ0aWVzIjoiZXh0ZW5zaW9uczpcbiAgcHJlc2V0Oi
+B6ZXJvXG4gIG1hcmtkb3duOlxuICAgIHRhYmxlOiB0cnVlXG4g
+IGthdGV4OlxuICAgIGVuYWJsZWQ6IHRydWVcbiIsImhpc3Rvcn
+kiOls0Mzc1MDYwNzUsODUxNDExMjMsLTkwODk5OTMwOF19
 -->
