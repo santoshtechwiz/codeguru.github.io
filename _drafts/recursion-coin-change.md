@@ -30,13 +30,11 @@ function coin_change(amount) {
 ## How The aboive code is running
 
 $$
-  \begin{pmatrix}
-    a & b\\
-    c & d\\
-  \hline
-    1 & 0\\
-    0 & 1
-  \end{pmatrix}
+  c(j) =
+\begin{cases}
+n/2,  & \text{if $n$ is even} \\
+3n+1, & \text{if $n$ is odd}
+\end{cases}
 $$
 
 
@@ -49,6 +47,6 @@ $$
 eyJwcm9wZXJ0aWVzIjoiZXh0ZW5zaW9uczpcbiAgcHJlc2V0Oi
 B6ZXJvXG4gIG1hcmtkb3duOlxuICAgIHRhYmxlOiB0cnVlXG4g
 IGthdGV4OlxuICAgIGVuYWJsZWQ6IHRydWVcbiIsImhpc3Rvcn
-kiOlsxMjYyNjk3ODA1LDg1MTQxMTIzLC05MDg5OTkzMDhdfQ==
-
+kiOlstNjg0MjUwMjEsMTI2MjY5NzgwNSw4NTE0MTEyMywtOTA4
+OTk5MzA4XX0=
 -->
