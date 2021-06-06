@@ -26,12 +26,9 @@ public class CPerson{
 ```
 
 
-
 ## Let's Compare the difference between class and Record with an example
 
-
-
-
+In order to understand the diffrences I have a create a simple console application as shown below. There are two instances of each record and class.
 
 ```csharp
 void Main()
@@ -118,5 +115,5 @@ When you need to change the data like database operations
 - Record type can only inherit from another record, not from class
  - By default, the Record type is immutable, but you can create mutable Record but not recommended
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTcxMDcyMjc4MiwtMTUwMjI4NTI4Nl19
+eyJoaXN0b3J5IjpbLTgwNTExNTQxNiwtMTUwMjI4NTI4Nl19
 -->
