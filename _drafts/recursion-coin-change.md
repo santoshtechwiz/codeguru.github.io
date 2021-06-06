@@ -26,11 +26,16 @@ function coin_change(amount) {
   return ans
 }
 ```
+
+## How The aboive code is running
+```
+C[0] = 0; C[1] = min    1 + C[1 − 50] = ∞ 1 + C[1 − 25] = ∞ 1 + C[1 − 10] = ∞ 1 + C[1 − 1] = 1 C[2] = min    1 + C[2 − 50] = ∞ 1 + C[2 − 25] = ∞ 1 + C[2 − 10] = ∞ 1 + C[2 − 1] = 2 Similarly, C[3] = 3; C[4] = 4; ...; C[9] = 9; C[10] = 1;
+```
 ## Recursion Tree
 
 ![](https://1.bp.blogspot.com/-qJf9RTk0_VQ/YLxz6UPEheI/AAAAAAAAOwE/3V0MQCcf4NkyqdmZArvcc7_0LEpjUYMIgCLcBGAsYHQ/w400-h272/coin-change.gif)
 
 >This article only show you how to write recursive program. I know this is not optimized way to write coin change problem{alertError}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkwODk5OTMwOF19
+eyJoaXN0b3J5IjpbODUxNDExMjMsLTkwODk5OTMwOF19
 -->
