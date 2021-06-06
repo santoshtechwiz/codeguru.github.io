@@ -1,4 +1,4 @@
-In this article I will show you how to add client side validation in control 
+In this article I will show you how to add client side validation in control that is inside GridView. These control can be textbox or checkbox this program will handle easily. The code is very easy to understand. Just copy paste the code in ASP.NET webapplication and you are done.
 [![](http://2.bp.blogspot.com/_iY3Ra2OqpkA/SAy6R-aITCI/AAAAAAAAA1I/GoAQkQUi6-4/s400/gd.bmp)](https://www.blogger.com/blog/post/edit/6673695286148904603/9000027923423660310#)  
   
 
@@ -132,6 +132,6 @@ public partial class GridViewClientSide : System.Web.UI.Page
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODk3MjI0OTk5LC0xNDI5OTYyMTk0LDY0Nz
-k3NTYxNiwtMTUwMjI4NTI4Nl19
+eyJoaXN0b3J5IjpbMTUyMzM5MTExMCwtMTQyOTk2MjE5NCw2ND
+c5NzU2MTYsLTE1MDIyODUyODZdfQ==
 -->
