@@ -1,6 +1,6 @@
 
-Q.How do I show numbers with 5 fixed digits with leading zeroes 
-Ans: 
+## How do I show numbers with 5 fixed digits with leading zeroes 
+```csharp 
 int _num1 = 123; 
 int _num2 = 45; 
 int _num3 = 123456; 
@@ -10,14 +10,15 @@ String.Format("{0:00000}", _num3); //"123456"
 String.Format("{0:d5}", _num1); //"00123" 
 String.Format("{0:d5}", _num2); //"00045" 
 String.Format("{0:d5}", _num3); //"123456" 
-
-Q:Can I substitute a string for a value? 
-Ans: Yes: 
+```
+## Can I substitute a string for a value?  Yes: 
+```csharp
 String.Format("{0:yes;;no}", value)
-
- This will print "no" if value is 0, "yes" if value is 1. 
- Q:What’s the most efficient way to convert a type into a string? 
+```
+This will print "no" if value is 0, "yes" if value is 1. 
+ ## What’s the most efficient way to convert a type into a string? 
  Ans: 
+ ```csharp
  Double testDouble = 19.95; 
  String testString1 = String.Format("{0:C}", testDouble); // Boxing operation required. 
  String testString2 = testDouble.ToString(”C”); // No boxing operation required. 
@@ -47,10 +48,10 @@ String.Format("{0:yes;;no}", value)
  A: There’s no direct way to do this; however you can get dashes in the output. 
  So you can do this: string tempStr = String.Format(”{0:###-###-####}”, 8005551212); string result =tempStr.Replace(’-',’.');
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMDk1Mjc3Nyw1MDIwOTYyMzEsLTgzNT
-c3MTE5MiwtNTUyOTkzNDI2LDE1NTMxNjA2ODAsNjY4MTkwMDQ5
-LDEyMDMwNDY5NDYsMTQwNzUxNzMxNSwtMzg0MTA1MDEzLC0zMT
-U2NDg1ODgsLTgwMDU2MTkzMCwtMTcyNDIzMzM3NiwtMTU2NTcx
-Mzk4MywtMjA2NjY1NTQ3NSwtOTM4NTE2MjM4LC0zMzI0NTUzNj
-NdfQ==
+eyJoaXN0b3J5IjpbNjY2ODQxODA5LDUwMjA5NjIzMSwtODM1Nz
+cxMTkyLC01NTI5OTM0MjYsMTU1MzE2MDY4MCw2NjgxOTAwNDks
+MTIwMzA0Njk0NiwxNDA3NTE3MzE1LC0zODQxMDUwMTMsLTMxNT
+Y0ODU4OCwtODAwNTYxOTMwLC0xNzI0MjMzMzc2LC0xNTY1NzEz
+OTgzLC0yMDY2NjU1NDc1LC05Mzg1MTYyMzgsLTMzMjQ1NTM2M1
+19
 -->
