@@ -1,129 +1,56 @@
 
-[![](http://4.bp.blogspot.com/_iY3Ra2OqpkA/SAZ76n-Jn_I/AAAAAAAAA0U/xTQmZDjEBg0/s400/webjava.bmp)](https://www.blogger.com/blog/post/edit/6673695286148904603/4070751644824528356#)  
+Q.How do I show numbers with 5 fixed digits with leading zeroes 
+Ans: 
+int _num1 = 123; 
+int _num2 = 45; 
+int _num3 = 123456; 
+String.Format("{0:00000}", _num1); //"00123" 
+String.Format("{0:00000}", _num2); //"00045" 
+String.Format("{0:00000}", _num3); //"123456" 
+String.Format("{0:d5}", _num1); //"00123" 
+String.Format("{0:d5}", _num2); //"00045" 
+String.Format("{0:d5}", _num3); //"123456" 
 
-Suppose that you have to read the records of DataTable in the DataSet that was sent as a response value from an Ajaxed Web Service using javascript.  
+Q:Can I substitute a string for a value? 
+Ans: Yes: 
+String.Format("{0:yes;;no}", value)
 
-```html
-<%@ Page Language="C#" %>  
-  
-<%@ Import Namespace="System.Data" %>  
-  
-<script runat="server">  
-[System.Web.Services.WebMethod]  
-  
-[System.Web.Script.Services.ScriptMethod]  
-public static System.Data.DataTable MyMethod(int value)  
-{  
-    return GetDataSet(value);  
-}  
-  
-public static System.Data.DataTable GetDataSet(int value)  
-{  
-  
-    DataTable dt = new DataTable("Author");  
-    DataRow dr;  
-    dt.Columns.Add(new DataColumn("Id", typeof(Int32)));  
-    dt.Columns.Add(new DataColumn("Author", typeof(string)));  
-  
-    for (int i = 0; i <= 10; i++)  
-    {  
-        dr = dt.NewRow();  
-        dr[0] = i;  
-        dr[1] = "Author" + i.ToString();  
-        dt.Rows.Add(dr);  
-    }  
-    for (int i = 20; i <= 40; i++)  
-    {  
-        dr = dt.NewRow();  
-        dr[0] = i;  
-        dr[1] = "Author" + i.ToString();  
-        dt.Rows.Add(dr);  
-    }  
-  
-  
-    DataView dv = new DataView(dt);  
-    dv.RowFilter = "Id='" + value + "'";  
-  
-  
-  
-    return dv.Table;  
-}  
-  
-  
-  
-</script>  
-  
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
-<html xmlns="http://www.w3.org/1999/xhtml">  
-<head id="Head1" runat="server">  
-<title>Untitled Page</title>  
-  
-<script language="javascript" type="text/javascript">  
-    function CallMyWebService()  
-    {  
-        WebService.MyMethod(1,OnRequestComplete);  
-    }  
-    function OnRequestComplete(result)  
-    {  
-        var str="";  
-      for(var i = 0; i < result.rows.length; i++)  
-     
-        {  
-         str+=result.rows[i].Author +"<br>";  
-   
-        }  
-      document.getElementById('result').innerHTML=str;  
-    }  
-</script>  
-  
-</head>  
-<body>  
-<form id="form1" runat="server">  
-    <div>  
-        <asp:ScriptManager ID="scriptManger1" runat="server"  
-EnablePageMethods="true">  
-            <Services>  
-                <asp:ServiceReference Path="~/WebService.asmx" />  
-            </Services>  
-        </asp:ScriptManager>  
-        <div id="result">  
-        </div>  
-        <input type="button" onclick="CallMyWebService();" id="myButton"  
-value="Call MyWebService" />  
-    </div>  
-</form>  
-</body>  
-</html>  
-```
-
->if you tried, you likely received some sort of circular reference serialization error to take advantage of this, you will need to add the following to your web.config:  
-  
-  ```xml
- <system.web.extensions>  
- <scripting>  
-   <webServices>  
-     <jsonSerialization>  
-       <converters>  
-         <add name="DataSetConverter"  
-type="Microsoft.Web.Preview.Script.Serialization.Converters.DataSetConverter,  
- Microsoft.Web.Preview"/>  
-         <add name="DataRowConverter"  
-type="Microsoft.Web.Preview.Script.Serialization.Converters.DataRowConverter,  
- Microsoft.Web.Preview"/>  
-         <add name="DataTableConverter"  
-type="Microsoft.Web.Preview.Script.Serialization.Converters.DataTableConverter,  
-Microsoft.Web.Preview"/>  
-       </converters>  
-     </jsonSerialization>  
-   </webServices>  
- </scripting>  
-</system.web.extensions>
-```
+ This will print "no" if value is 0, "yes" if value is 1. 
+ Q:What’s the most efficient way to convert a type into a string? 
+ Ans: 
+ Double testDouble = 19.95; 
+ String testString1 = String.Format("{0:C}", testDouble); // Boxing operation required. 
+ String testString2 = testDouble.ToString(”C”); // No boxing operation required. 
+ Q:How can I format as percentage without having the number multiplied by 100? 
+ Ans: 
+ Put a single quote (’) before the % in the format string. 
+ myString.Format("{0:##.00′%", 1.23); 
+ This will yield "1.23%". 
+ Q:Can I convert a number with a thousand separator to an int? 
+ Ans: Yes - no matter what thousand separator is in use for your locale. 
+ int x = int.Parse("1,345"); // fails int x = int.Parse("1,345",System.Globalization.NumberStyles.AllowThousands) 
+ This gives you an x of 1345. 
+ Q:How can I use curly brackets within a formatted number? 
+ Ans: Yes - doubling them escapes them. 
+ For example: string.format("{{SomeString}}={0}","Hello"); 
+ will produce: "{SomeString}=Hellow" 
+ Q:How can I convert from currency back to a number? 
+ Ans: You can add the bitmapped values of the Globalization.NumberStyles enumeration. // format double to currency 
+ str = string.Format("{0:c}", pmt); // parse currency formatted string to double 
+ double.Parse(str, Globalization.NumberStyles.AllowCurrencySymbol + Globalization.NumberStyles.AllowDecimalPoint + Globalization.NumberStyles.AllowThousands); 
+ Q:What’s a good way to format currency? 
+ Ans: double val = 4219.6; str = string.Format("{0:$#,#.00;Call Us;Call Us}", val);
+ This will return "$4,219.60". The .00 will force 2 decimals and the “;Call Us;Call Us” to show the text “Call Us” in place of negative and null values respectively. (Just in case) 
+ Q:How do I format an integer, with commas for thousands? 
+ A: string str = string.Format("{0:#,0}", intValue); 
+ Q:How can I format a phone number to look like 800.555.1212? 
+ A: There’s no direct way to do this; however you can get dashes in the output. 
+ So you can do this: string tempStr = String.Format(”{0:###-###-####}”, 8005551212); string result =tempStr.Replace(’-',’.');
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTAyMDk2MjMxLC04MzU3NzExOTIsLTU1Mj
-k5MzQyNiwxNTUzMTYwNjgwLDY2ODE5MDA0OSwxMjAzMDQ2OTQ2
-LDE0MDc1MTczMTUsLTM4NDEwNTAxMywtMzE1NjQ4NTg4LC04MD
-A1NjE5MzAsLTE3MjQyMzMzNzYsLTE1NjU3MTM5ODMsLTIwNjY2
-NTU0NzUsLTkzODUxNjIzOCwtMzMyNDU1MzYzXX0=
+eyJoaXN0b3J5IjpbLTIwMDk1Mjc3Nyw1MDIwOTYyMzEsLTgzNT
+c3MTE5MiwtNTUyOTkzNDI2LDE1NTMxNjA2ODAsNjY4MTkwMDQ5
+LDEyMDMwNDY5NDYsMTQwNzUxNzMxNSwtMzg0MTA1MDEzLC0zMT
+U2NDg1ODgsLTgwMDU2MTkzMCwtMTcyNDIzMzM3NiwtMTU2NTcx
+Mzk4MywtMjA2NjY1NTQ3NSwtOTM4NTE2MjM4LC0zMzI0NTUzNj
+NdfQ==
 -->
