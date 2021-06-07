@@ -1,7 +1,6 @@
 
-[![](http://3.bp.blogspot.com/_iY3Ra2OqpkA/SKkQbCUn2qI/AAAAAAAABP8/AxrrhO_moAk/s400/imagemeta_2.JPG)](https://www.blogger.com/blog/post/edit/6673695286148904603/5948804696753250327#)[![](http://4.bp.blogspot.com/_iY3Ra2OqpkA/SKkQQzvFLQI/AAAAAAAABP0/0rQAq4YipzM/s400/metadata.JPG)](https://www.blogger.com/blog/post/edit/6673695286148904603/5948804696753250327#)
-Some image files contain metadata that you can read to determine features of the image. For example, a digital photograph might contain metadata that you can read to determine the Author,Title and Keywords of the image. [With Microsoft Developer Support OLE File Property Reader](https://www.blogger.com/blog/post/edit/6673695286148904603/5948804696753250327#) you can read existing metadata, and you can also write new metadata to image files.
-
+Some image files contain metadata that you can read to determine the features of the image. For example, a digital photograph might contain metadata that you can read to determine the image's Author, Title, and Keywords. With Microsoft Developer Support OLE File Property Reader, you can read existing metadata and write new metadata to image files.
+```html
 <%@ Page Language="C#" AutoEventWireup="true" CodeFile="ImageMetaData.aspx.cs" Inherits="ImageMetaData" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -19,7 +18,8 @@ Some image files contain metadata that you can read to determine features of the
   </form>
 </body>
 </html>
-
+```
+```csharp
 using System;
 using System.Data;
 using System.Configuration;
@@ -146,10 +146,11 @@ public partial class ImageMetaData : System.Web.UI.Page
 
    }
 }
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODAzMTI3ODI4LC01NTI5OTM0MjYsMTU1Mz
-E2MDY4MCw2NjgxOTAwNDksMTIwMzA0Njk0NiwxNDA3NTE3MzE1
-LC0zODQxMDUwMTMsLTMxNTY0ODU4OCwtODAwNTYxOTMwLC0xNz
-I0MjMzMzc2LC0xNTY1NzEzOTgzLC0yMDY2NjU1NDc1LC05Mzg1
-MTYyMzgsLTMzMjQ1NTM2M119
+eyJoaXN0b3J5IjpbLTEyMjEyMDUwMjIsLTU1Mjk5MzQyNiwxNT
+UzMTYwNjgwLDY2ODE5MDA0OSwxMjAzMDQ2OTQ2LDE0MDc1MTcz
+MTUsLTM4NDEwNTAxMywtMzE1NjQ4NTg4LC04MDA1NjE5MzAsLT
+E3MjQyMzMzNzYsLTE1NjU3MTM5ODMsLTIwNjY2NTU0NzUsLTkz
+ODUxNjIzOCwtMzMyNDU1MzYzXX0=
 -->
