@@ -39,14 +39,22 @@ This will print "no" if value is 0, "yes" if value is 1.
  This gives you an x of 1345. 
  ## How can I use curly brackets within a formatted number? 
  Ans: Yes - doubling them escapes them. 
- For example: string.format("{{SomeString}}={0}","Hello"); 
+ For example: 
+ ```csharp
+ string.format("{{SomeString}}={0}","Hello"); 
+ ```
  will produce: "{SomeString}=Hellow" 
- Q:How can I convert from currency back to a number? 
- Ans: You can add the bitmapped values of the Globalization.NumberStyles enumeration. // format double to currency 
+ ## How can I convert from currency back to a number? 
+ 
+ Ans: You can add the bitmapped values of the `Globalization.NumberStyles` enumeration. // format double to currency 
+ ```csharp
  str = string.Format("{0:c}", pmt); // parse currency formatted string to double 
  double.Parse(str, Globalization.NumberStyles.AllowCurrencySymbol + Globalization.NumberStyles.AllowDecimalPoint + Globalization.NumberStyles.AllowThousands); 
- Q:What’s a good way to format currency? 
- Ans: double val = 4219.6; str = string.Format("{0:$#,#.00;Call Us;Call Us}", val);
+ ```
+ ## What’s a good way to format currency? 
+```csharp
+double val = 4219.6; str = string.Format("{0:$#,#.00;Call Us;Call Us}", val);
+```
  This will return "$4,219.60". The .00 will force 2 decimals and the “;Call Us;Call Us” to show the text “Call Us” in place of negative and null values respectively. (Just in case) 
  Q:How do I format an integer, with commas for thousands? 
  A: string str = string.Format("{0:#,0}", intValue); 
@@ -54,10 +62,10 @@ This will print "no" if value is 0, "yes" if value is 1.
  A: There’s no direct way to do this; however you can get dashes in the output. 
  So you can do this: string tempStr = String.Format(”{0:###-###-####}”, 8005551212); string result =tempStr.Replace(’-',’.');
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE1NTM2NTUyLDUwMjA5NjIzMSwtODM1Nz
-cxMTkyLC01NTI5OTM0MjYsMTU1MzE2MDY4MCw2NjgxOTAwNDks
-MTIwMzA0Njk0NiwxNDA3NTE3MzE1LC0zODQxMDUwMTMsLTMxNT
-Y0ODU4OCwtODAwNTYxOTMwLC0xNzI0MjMzMzc2LC0xNTY1NzEz
-OTgzLC0yMDY2NjU1NDc1LC05Mzg1MTYyMzgsLTMzMjQ1NTM2M1
-19
+eyJoaXN0b3J5IjpbMTA0MTY0NzE0OSw1MDIwOTYyMzEsLTgzNT
+c3MTE5MiwtNTUyOTkzNDI2LDE1NTMxNjA2ODAsNjY4MTkwMDQ5
+LDEyMDMwNDY5NDYsMTQwNzUxNzMxNSwtMzg0MTA1MDEzLC0zMT
+U2NDg1ODgsLTgwMDU2MTkzMCwtMTcyNDIzMzM3NiwtMTU2NTcx
+Mzk4MywtMjA2NjY1NTQ3NSwtOTM4NTE2MjM4LC0zMzI0NTUzNj
+NdfQ==
 -->
