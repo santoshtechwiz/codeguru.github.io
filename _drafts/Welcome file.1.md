@@ -56,16 +56,21 @@ This will print "no" if value is 0, "yes" if value is 1.
 double val = 4219.6; str = string.Format("{0:$#,#.00;Call Us;Call Us}", val);
 ```
  This will return "$4,219.60". The .00 will force 2 decimals and the “;Call Us;Call Us” to show the text “Call Us” in place of negative and null values respectively. (Just in case) 
- Q:How do I format an integer, with commas for thousands? 
- A: string str = string.Format("{0:#,0}", intValue); 
- Q:How can I format a phone number to look like 800.555.1212? 
- A: There’s no direct way to do this; however you can get dashes in the output. 
- So you can do this: string tempStr = String.Format(”{0:###-###-####}”, 8005551212); string result =tempStr.Replace(’-',’.');
+ ## How do I format an integer, with commas for thousands? 
+ ```csharp
+ string str = string.Format("{0:#,0}", intValue); 
+ ```
+ ## How can I format a phone number to look like 800.555.1212? 
+ There’s no direct way to do this; however you can get dashes in the output. 
+ So you can do this: 
+```csharp
+string tempStr = String.Format(”{0:###-###-####}”, 8005551212); string result =tempStr.Replace(’-',’.');
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA0MTY0NzE0OSw1MDIwOTYyMzEsLTgzNT
-c3MTE5MiwtNTUyOTkzNDI2LDE1NTMxNjA2ODAsNjY4MTkwMDQ5
-LDEyMDMwNDY5NDYsMTQwNzUxNzMxNSwtMzg0MTA1MDEzLC0zMT
-U2NDg1ODgsLTgwMDU2MTkzMCwtMTcyNDIzMzM3NiwtMTU2NTcx
-Mzk4MywtMjA2NjY1NTQ3NSwtOTM4NTE2MjM4LC0zMzI0NTUzNj
-NdfQ==
+eyJoaXN0b3J5IjpbLTE4OTQxOTk0MzMsNTAyMDk2MjMxLC04Mz
+U3NzExOTIsLTU1Mjk5MzQyNiwxNTUzMTYwNjgwLDY2ODE5MDA0
+OSwxMjAzMDQ2OTQ2LDE0MDc1MTczMTUsLTM4NDEwNTAxMywtMz
+E1NjQ4NTg4LC04MDA1NjE5MzAsLTE3MjQyMzMzNzYsLTE1NjU3
+MTM5ODMsLTIwNjY2NTU0NzUsLTkzODUxNjIzOCwtMzMyNDU1Mz
+YzXX0=
 -->
