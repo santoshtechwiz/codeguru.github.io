@@ -33,7 +33,8 @@ CodeFile="HireUsingCodeBhindGrid.aspx.cs"
    </form>
 </body>
 </html>
-
+```
+```csharp
 using System;
 using System.Data;
 using System.Configuration;
@@ -137,8 +138,9 @@ public partial class HireUsingCodeBhindGrid : System.Web.UI.Page
         }
     }
 }
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc4NzMyMjk0NywtMTczMTI0NjY4MiwtNT
+eyJoaXN0b3J5IjpbLTMzNTYyMjg2MCwtMTczMTI0NjY4MiwtNT
 Q5MjU0ODAxLDE5NDU1MzcxMjcsLTE4OTQxOTk0MzMsNTAyMDk2
 MjMxLC04MzU3NzExOTIsLTU1Mjk5MzQyNiwxNTUzMTYwNjgwLD
 Y2ODE5MDA0OSwxMjAzMDQ2OTQ2LDE0MDc1MTczMTUsLTM4NDEw
