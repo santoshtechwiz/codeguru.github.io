@@ -1,150 +1,84 @@
-GridView is most used control in ASP.NET webform application. It is used to show tabular data and also provides paging,sorting and editing out of the box. In this article I will show you how to display records in ASP.NET Gridview from multiple tables. The code snippet is very easy and simple to understand.
 
-```html
-<%@ Page Language="C#" AutoEventWireup="true"
-CodeFile="HireUsingCodeBhindGrid.aspx.cs"
-   Inherits="HireUsingCodeBhindGrid" %>
+## Adapter Pattern
+>The Adapter pattern converts the interface of a class into another interface that clients expect.The client makes a request on the adapter by invoking a method from the target interface on it and then adapter translates that request into one or more calls on the adaptee using the adaptee interface. The client receives the results of the call and never knows there is an adapter doing the translation
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-   <title>Untitled Page</title>
-</head>
-<body>
-   <form id="form1" runat="server">
-       <div>
-           <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnRowDataBound="GridView1_RowDataBound">
-               <Columns>
-                   <asp:BoundField DataField="CompanyName" HeaderText="CompanyName" />
-                   <asp:TemplateField>
-                       <ItemTemplate>
-                           <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False">
-                               <Columns>
-                                   <asp:BoundField DataField="Dept" HeaderText="Department" />
-                                   <asp:BoundField DataField="name" HeaderText="Name" />
-                               </Columns>
-                           </asp:GridView>
-                       </ItemTemplate>
-                   </asp:TemplateField>
-               </Columns>
-           </asp:GridView>
-       </div>
-   </form>
-</body>
-</html>
-```
+**Pre-Condition**: You are maintaining an existing system that makes use of a third-party class library from vendor A
+**Stimulus**: Vendor A goes belly up and corporate policy does not allow you to make use of an unsupported class library.
+**Response**: Vendor B provides a similar class library but its interface is completely different from the interface provided by vendor A
+**Assumptions**: You don’t want to change your code, and you can’t change vendor B’s code
+**Solution**?: Write new code that adapts vendor B’s interface to the interface expected by your original code
+
+>C# Example
+
 ```csharp
 using System;
-using System.Data;
-using System.Configuration;
-using System.Collections;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml.Linq;
 
-public partial class HireUsingCodeBhindGrid : System.Web.UI.Page
+namespace Adapter
 {
-    protected void Page_Load(object sender, EventArgs e)
+
+    public class VendorA
     {
-        if (!IsPostBack)
+
+        public string GetResponse()
         {
-            GridView1.DataSource = CreateDS().Tables["Company"];
-            GridView1.DataBind();
+
+            return "<Root><Item><Column1>John</Column1> <Column2>Doe</Column2><Column3>John@email.com</Column3> </Item></Root>";
         }
+    }
+
+    public class VendorB
+    {
+        public string GetResponse()
+        {
+
+            return "John,Doe,John@email.com\nsantosh,singh,santosh@gmail.com";
+        }
+
 
     }
-    private DataSet CreateDS()
+    public interface IRquest
     {
-        DataSet ds;
-        if (Session["DataList_ParentChild"] == null)
-        {
-            ds = new DataSet();
-            DataTable dt = new DataTable("Company");
-            DataRow dr;
-            dt.Columns.Add(new DataColumn("ID", typeof(Int32)));
-            dt.Columns.Add(new DataColumn("CompanyName", typeof(string)));
-            dt.Columns.Add(new DataColumn("Address", typeof(string)));
-            dt.Columns.Add(new DataColumn("Name", typeof(string)));
-            dt.Columns.Add(new DataColumn("Dept", typeof(string)));
-            for (int i = 1; i < 10; i++)
-            {
-                dr = dt.NewRow();
-                dr[0] = i;
-                dr[1] = "Company " + i;
-                dr[2] = "Address " + i;
-                dr[3] = "Manager name";
-                dr[4] = "Adminstration";
-                dt.Rows.Add(dr);
-            }
-            ds.Tables.Add(dt);
-            DataColumn[] Parent_PKColumns = new DataColumn[1];
-            Parent_PKColumns[0] = dt.Columns["ID"];
-            dt.PrimaryKey = Parent_PKColumns;
-
-            dt = new DataTable("Employees");
-            dt.Columns.Add(new DataColumn("ID", typeof(Int32)));
-            dt.Columns.Add(new DataColumn("CompanyID", typeof(Int32)));
-            dt.Columns.Add(new DataColumn("Name", typeof(string)));
-            dt.Columns.Add(new DataColumn("Dept", typeof(string)));
-            for (int i = 1; i < 10; i++)
-            {
-                int imax = 0;
-                if (i % 2 == 0) imax = 5;
-                else imax = 4;
-                for (int y = 2; y < imax; y++)    //3 emplyees for each company
-                {
-                    dr = dt.NewRow();
-                    dr[0] = y + i * 5;
-                    dr[1] = i;
-                    dr[2] = "Employee # " + dr[0];
-                    dr[3] = "Dept # " + (y + i);
-                    dt.Rows.Add(dr);
-                }
-            }
-            DataColumn[] Child_PKColumns = new DataColumn[1];
-            Child_PKColumns[0] = dt.Columns["ID"];
-            dt.PrimaryKey = Child_PKColumns;
-            ds.Tables.Add(dt);
-            DataColumn[] Child_FKColumns = new DataColumn[1];
-            Child_FKColumns[0] = dt.Columns["CompanyID"];
-
-            ds.Relations.Add("ParentChild", Parent_PKColumns, Child_FKColumns);
-            Session["DataList_ParentChild"] = ds;
-        }
-        else
-        {
-            ds = (DataSet)Session["DataList_ParentChild"];
-        }
-        return ds;
+        string Get();
 
     }
-    protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+    public class Adapter : IRquest
     {
-        if (e.Row.RowType == DataControlRowType.DataRow)
+        private VendorB _vendorb = new VendorB();
+        public string Get()
         {
-            //Just cast the current DataItem to a DataRowView and then
-            //use the method CreateChildView to get a view of the related
-            //rows
-
-            ((GridView)e.Row.FindControl("GridView2")).DataSource
-                = ((DataRowView)e.Row.DataItem).CreateChildView("ParentChild");
-            ((GridView)e.Row.FindControl("GridView2")).DataBind();
+            var lines = _vendorb.GetResponse().Split('\n');
 
 
+            var xml = new XElement("Root",
+               lines.Select(line => new XElement("Item",
+                  line.Split(new char[] { ',' })
+                      .Select((column, index) => new XElement("Column" + index, column)))));
+
+            return xml.ToString();
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Adapter client = new Adapter();
+            var response = client.Get();
+            Console.WriteLine(response);
         }
     }
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMzNTYyMjg2MCwtMTczMTI0NjY4MiwtNT
-Q5MjU0ODAxLDE5NDU1MzcxMjcsLTE4OTQxOTk0MzMsNTAyMDk2
-MjMxLC04MzU3NzExOTIsLTU1Mjk5MzQyNiwxNTUzMTYwNjgwLD
-Y2ODE5MDA0OSwxMjAzMDQ2OTQ2LDE0MDc1MTczMTUsLTM4NDEw
-NTAxMywtMzE1NjQ4NTg4LC04MDA1NjE5MzAsLTE3MjQyMzMzNz
-YsLTE1NjU3MTM5ODMsLTIwNjY2NTU0NzUsLTkzODUxNjIzOCwt
-MzMyNDU1MzYzXX0=
+eyJoaXN0b3J5IjpbMTA5NDMyODM4OSwtMzM1NjIyODYwLC0xNz
+MxMjQ2NjgyLC01NDkyNTQ4MDEsMTk0NTUzNzEyNywtMTg5NDE5
+OTQzMyw1MDIwOTYyMzEsLTgzNTc3MTE5MiwtNTUyOTkzNDI2LD
+E1NTMxNjA2ODAsNjY4MTkwMDQ5LDEyMDMwNDY5NDYsMTQwNzUx
+NzMxNSwtMzg0MTA1MDEzLC0zMTU2NDg1ODgsLTgwMDU2MTkzMC
+wtMTcyNDIzMzM3NiwtMTU2NTcxMzk4MywtMjA2NjY1NTQ3NSwt
+OTM4NTE2MjM4XX0=
 -->
