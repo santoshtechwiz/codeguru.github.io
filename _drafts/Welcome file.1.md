@@ -1,6 +1,6 @@
 
 Selecting a row in the GridView causes a postback. In order to highlight a row in the GridView, you have to set the ‘SelectedRowStyle’ property which takes effect when the postback occurs. In this article, we will see how to highlight a row without causing a postback. We will be using the RowCreated event of the GridView. A GridViewRow object is created for each row in the control before the GridView is rendered. Whenever a row in the GridView gets created, the RowCreated event is fired. Using this event, we can customize the behavior of the GridView. For e.g.: adding client script to the row or customizing the content of the row. Let us see an example where we will be adding some client script to the GridView. I assume that you have some experience of creating data sources and binding controls to it.
-
+```html
 <%@ Page Language="C#" AutoEventWireup="true" CodeFile="GridViewSelect.aspx.cs"
 Inherits="GridViewSelect" %>
 
@@ -22,7 +22,8 @@ OnRowCreated="GridView1_RowCreated">
   </form>
 </body>
 </html>
-
+```
+```csharp
 using System;
 using System.Data;
 using System.Configuration;
@@ -103,12 +104,13 @@ public partial class GridViewSelect : System.Web.UI.Page
       return objDataTable;
   }
 }
+```
 
 As you are already aware that the GridView is rendered as a HTML table and each row as . In the code shown above, we are using the Attributes property of the AttributeCollection to add extra properties to the element. The onMouseOver and the onMouseOut events are added that enable the row to change its color whenever the mouse is over a particular row. Run the application and see the color of the rows changing, that too without a postback!! Well that was a quick overview of the RowCreated event. You can also use the same event to find the index of the row clicked. Just use e.Row.DataItemIndex.ToString() to retrieve the selected row index information.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNzE2NzUyNjEsLTgzNTc3MTE5MiwtNT
-UyOTkzNDI2LDE1NTMxNjA2ODAsNjY4MTkwMDQ5LDEyMDMwNDY5
-NDYsMTQwNzUxNzMxNSwtMzg0MTA1MDEzLC0zMTU2NDg1ODgsLT
-gwMDU2MTkzMCwtMTcyNDIzMzM3NiwtMTU2NTcxMzk4MywtMjA2
-NjY1NTQ3NSwtOTM4NTE2MjM4LC0zMzI0NTUzNjNdfQ==
+eyJoaXN0b3J5IjpbLTY3MTY3OTIwOSwtODM1NzcxMTkyLC01NT
+I5OTM0MjYsMTU1MzE2MDY4MCw2NjgxOTAwNDksMTIwMzA0Njk0
+NiwxNDA3NTE3MzE1LC0zODQxMDUwMTMsLTMxNTY0ODU4OCwtOD
+AwNTYxOTMwLC0xNzI0MjMzMzc2LC0xNTY1NzEzOTgzLC0yMDY2
+NjU1NDc1LC05Mzg1MTYyMzgsLTMzMjQ1NTM2M119
 -->
