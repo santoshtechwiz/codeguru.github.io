@@ -1,116 +1,129 @@
 
-Selecting a row in the GridView causes a postback. In order to highlight a row in the GridView, you have to set the ‘SelectedRowStyle’ property which takes effect when the postback occurs. In this article, we will see how to highlight a row without causing a postback. We will be using the RowCreated event of the GridView. A GridViewRow object is created for each row in the control before the GridView is rendered. Whenever a row in the GridView gets created, the RowCreated event is fired. Using this event, we can customize the behavior of the GridView. For e.g.: adding client script to the row or customizing the content of the row. Let us see an example where we will be adding some client script to the GridView. I assume that you have some experience of creating data sources and binding controls to it.
+[![](http://4.bp.blogspot.com/_iY3Ra2OqpkA/SAZ76n-Jn_I/AAAAAAAAA0U/xTQmZDjEBg0/s400/webjava.bmp)](https://www.blogger.com/blog/post/edit/6673695286148904603/4070751644824528356#)  
+
+Suppose that you have to read the records of DataTable in the DataSet that was sent as a response value from an Ajaxed Web Service using javascript.  
+
 ```html
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="GridViewSelect.aspx.cs"
-Inherits="GridViewSelect" %>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" >
-<head runat="server">
-  <title>Untitled Page</title>
-</head>
-<body>
-  <form id="form1" runat="server">
-  <div>
-      <asp:GridView ID="GridView1" runat="server"
-OnRowCreated="GridView1_RowCreated">
-      </asp:GridView>
-
-  </div>
-  </form>
-</body>
-</html>
-```
-```csharp
-using System;
-using System.Data;
-using System.Configuration;
-using System.Collections;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
-
-public partial class GridViewSelect : System.Web.UI.Page
-{
-  protected void Page_Load(object sender, EventArgs e)
-  {
-      if (!IsPostBack)
-      {
-          if (Session["dtTemp"] != null)
-          {
-              GridView1.DataSource = Session["dtTemp"] as DataTable;
-
-              GridView1.DataBind();
-              this.DataBind();
-
-          }
-          else
-          {
-              GridView1.DataSource = GetCustomMadeDataTable();
-              GridView1.DataSource = GetCustomMadeDataTable();
-              this.DataBind();
-
-          }
-      }
-
-  }
-  protected void GridView1_RowCreated(object sender, GridViewRowEventArgs e)
-  {
-      e.Row.Attributes.Add("onMouseOver", "this.style.background='#eeff00'");
-      e.Row.Attributes.Add("onMouseOut", "this.style.background='#ffffff'");   
-  }
-
-  public DataTable GetCustomMadeDataTable()
-  {
-
-      //Create a new DataTable object
-
-      System.Data.DataTable objDataTable = new System.Data.DataTable();
-
-      //Create three columns with string as their type
-
-      objDataTable.Columns.Add("Id", typeof(string));
-      objDataTable.Columns.Add("FirstName", typeof(string));
-      objDataTable.Columns.Add("LastName", typeof(string));
-      objDataTable.Columns.Add("Address", typeof(string));
-      objDataTable.Columns.Add("Email", typeof(string));
-      DataRow dr;
-      //Adding some data in the rows of this DataTable
-      for (int i = 0; i <= 50; i++)
-      {
-          dr = objDataTable.NewRow();
-          dr[0] = i.ToString();
-          dr[1] = "FirstName" + i.ToString();
-          dr[2] = "LastName" + i.ToString();
-          dr[3] = "Address" + i.ToString();
-          dr[4] = "Email" + i.ToString();
-          objDataTable.Rows.Add(dr);
-
-
-
-
-
-      }
-
-      DataColumn[] dcPk = new DataColumn[1];
-      dcPk[0] = objDataTable.Columns["Id"];
-      objDataTable.PrimaryKey = dcPk;
-      Session["dtTemp"] = objDataTable;
-      return objDataTable;
-  }
-}
+<%@ Page Language="C#" %>  
+  
+<%@ Import Namespace="System.Data" %>  
+  
+<script runat="server">  
+[System.Web.Services.WebMethod]  
+  
+[System.Web.Script.Services.ScriptMethod]  
+public static System.Data.DataTable MyMethod(int value)  
+{  
+    return GetDataSet(value);  
+}  
+  
+public static System.Data.DataTable GetDataSet(int value)  
+{  
+  
+    DataTable dt = new DataTable("Author");  
+    DataRow dr;  
+    dt.Columns.Add(new DataColumn("Id", typeof(Int32)));  
+    dt.Columns.Add(new DataColumn("Author", typeof(string)));  
+  
+    for (int i = 0; i <= 10; i++)  
+    {  
+        dr = dt.NewRow();  
+        dr[0] = i;  
+        dr[1] = "Author" + i.ToString();  
+        dt.Rows.Add(dr);  
+    }  
+    for (int i = 20; i <= 40; i++)  
+    {  
+        dr = dt.NewRow();  
+        dr[0] = i;  
+        dr[1] = "Author" + i.ToString();  
+        dt.Rows.Add(dr);  
+    }  
+  
+  
+    DataView dv = new DataView(dt);  
+    dv.RowFilter = "Id='" + value + "'";  
+  
+  
+  
+    return dv.Table;  
+}  
+  
+  
+  
+</script>  
+  
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+<html xmlns="http://www.w3.org/1999/xhtml">  
+<head id="Head1" runat="server">  
+<title>Untitled Page</title>  
+  
+<script language="javascript" type="text/javascript">  
+    function CallMyWebService()  
+    {  
+        WebService.MyMethod(1,OnRequestComplete);  
+    }  
+    function OnRequestComplete(result)  
+    {  
+        var str="";  
+      for(var i = 0; i < result.rows.length; i++)  
+     
+        {  
+         str+=result.rows[i].Author +"<br>";  
+   
+        }  
+      document.getElementById('result').innerHTML=str;  
+    }  
+</script>  
+  
+</head>  
+<body>  
+<form id="form1" runat="server">  
+    <div>  
+        <asp:ScriptManager ID="scriptManger1" runat="server"  
+EnablePageMethods="true">  
+            <Services>  
+                <asp:ServiceReference Path="~/WebService.asmx" />  
+            </Services>  
+        </asp:ScriptManager>  
+        <div id="result">  
+        </div>  
+        <input type="button" onclick="CallMyWebService();" id="myButton"  
+value="Call MyWebService" />  
+    </div>  
+</form>  
+</body>  
+</html>  
 ```
 
-As you are already aware that the GridView is rendered as a HTML table and each row as . In the code shown above, we are using the Attributes property of the AttributeCollection to add extra properties to the element. The onMouseOver and the onMouseOut events are added that enable the row to change its color whenever the mouse is over a particular row. Run the application and see the color of the rows changing, that too without a postback!! Well that was a quick overview of the RowCreated event. You can also use the same event to find the index of the row clicked. Just use e.Row.DataItemIndex.ToString() to retrieve the selected row index information.
+>if you tried, you likely received some sort of circular reference serialization error to take advantage of this, you will need to add the following to your web.config:  
+  
+  ```xml
+ <system.web.extensions>  
+ <scripting>  
+   <webServices>  
+     <jsonSerialization>  
+       <converters>  
+         <add name="DataSetConverter"  
+type="Microsoft.Web.Preview.Script.Serialization.Converters.DataSetConverter,  
+ Microsoft.Web.Preview"/>  
+         <add name="DataRowConverter"  
+type="Microsoft.Web.Preview.Script.Serialization.Converters.DataRowConverter,  
+ Microsoft.Web.Preview"/>  
+         <add name="DataTableConverter"  
+type="Microsoft.Web.Preview.Script.Serialization.Converters.DataTableConverter,  
+Microsoft.Web.Preview"/>  
+       </converters>  
+     </jsonSerialization>  
+   </webServices>  
+ </scripting>  
+</system.web.extensions>
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY3MTY3OTIwOSwtODM1NzcxMTkyLC01NT
-I5OTM0MjYsMTU1MzE2MDY4MCw2NjgxOTAwNDksMTIwMzA0Njk0
-NiwxNDA3NTE3MzE1LC0zODQxMDUwMTMsLTMxNTY0ODU4OCwtOD
-AwNTYxOTMwLC0xNzI0MjMzMzc2LC0xNTY1NzEzOTgzLC0yMDY2
-NjU1NDc1LC05Mzg1MTYyMzgsLTMzMjQ1NTM2M119
+eyJoaXN0b3J5IjpbNTAyMDk2MjMxLC04MzU3NzExOTIsLTU1Mj
+k5MzQyNiwxNTUzMTYwNjgwLDY2ODE5MDA0OSwxMjAzMDQ2OTQ2
+LDE0MDc1MTczMTUsLTM4NDEwNTAxMywtMzE1NjQ4NTg4LC04MD
+A1NjE5MzAsLTE3MjQyMzMzNzYsLTE1NjU3MTM5ODMsLTIwNjY2
+NTU0NzUsLTkzODUxNjIzOCwtMzMyNDU1MzYzXX0=
 -->
