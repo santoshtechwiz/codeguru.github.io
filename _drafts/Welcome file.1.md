@@ -19,19 +19,25 @@ This will print "no" if value is 0, "yes" if value is 1.
  ## What’s the most efficient way to convert a type into a string? 
  Ans: 
  ```csharp
- Double testDouble = 19.95; 
+ double testDouble = 19.95; 
  String testString1 = String.Format("{0:C}", testDouble); // Boxing operation required. 
  String testString2 = testDouble.ToString(”C”); // No boxing operation required. 
- Q:How can I format as percentage without having the number multiplied by 100? 
- Ans: 
+ ```
+## How can I format as percentage without having the number multiplied by 100? 
+  
  Put a single quote (’) before the % in the format string. 
+ ```csharp
  myString.Format("{0:##.00′%", 1.23); 
+ ```
  This will yield "1.23%". 
- Q:Can I convert a number with a thousand separator to an int? 
+ 
+ ## Can I convert a number with a thousand separator to an int? 
  Ans: Yes - no matter what thousand separator is in use for your locale. 
+ ```csharp
  int x = int.Parse("1,345"); // fails int x = int.Parse("1,345",System.Globalization.NumberStyles.AllowThousands) 
+ ```
  This gives you an x of 1345. 
- Q:How can I use curly brackets within a formatted number? 
+ ## How can I use curly brackets within a formatted number? 
  Ans: Yes - doubling them escapes them. 
  For example: string.format("{{SomeString}}={0}","Hello"); 
  will produce: "{SomeString}=Hellow" 
@@ -48,7 +54,7 @@ This will print "no" if value is 0, "yes" if value is 1.
  A: There’s no direct way to do this; however you can get dashes in the output. 
  So you can do this: string tempStr = String.Format(”{0:###-###-####}”, 8005551212); string result =tempStr.Replace(’-',’.');
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjY2ODQxODA5LDUwMjA5NjIzMSwtODM1Nz
+eyJoaXN0b3J5IjpbMTE1NTM2NTUyLDUwMjA5NjIzMSwtODM1Nz
 cxMTkyLC01NTI5OTM0MjYsMTU1MzE2MDY4MCw2NjgxOTAwNDks
 MTIwMzA0Njk0NiwxNDA3NTE3MzE1LC0zODQxMDUwMTMsLTMxNT
 Y0ODU4OCwtODAwNTYxOTMwLC0xNzI0MjMzMzc2LC0xNTY1NzEz
