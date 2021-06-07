@@ -1,82 +1,92 @@
 
-[![](http://4.bp.blogspot.com/_iY3Ra2OqpkA/R_u2y5uTE0I/AAAAAAAAAzU/7jsxKx8rIyU/s400/search.bmp)](https://www.blogger.com/blog/post/edit/6673695286148904603/47245049969282190#)  
+[![](http://2.bp.blogspot.com/_iY3Ra2OqpkA/SA9jsySxCKI/AAAAAAAAA1Y/6qO4DWZIA-Q/s400/modal.bmp)](https://www.blogger.com/blog/post/edit/6673695286148904603/8233896566551132262#)  
   
 
   ```html
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="GridViewSearchHeighlight.aspx.cs"  
-  Inherits="GridViewSearchHeighlight" %>  
+<%@ Page Language="C#" AutoEventWireup="true"  
+CodeFile="ModalPopuuandValidation.aspx.cs"  
+  Inherits="ModalPopupasLoader" %>  
   
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit"  
+TagPrefix="ajaxToolkit" %>  
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
 <html xmlns="http://www.w3.org/1999/xhtml">  
 <head runat="server">  
   <title>Untitled Page</title>  
   <style type="text/css">  
-.highlight{  
-background-color: red;  
+  
+.modalBackground  
+{  
+  background-color: Gray;  
+  filter: alpha(opacity=50);  
+  opacity: 0.50;  
+  
 }  
-</style>  
+  
+.updateProgress  
+{  
+  border-width: 1px;  
+  border-style: solid;  
+  background-color: #FFFFFF;  
+  position: absolute;  
+  width: 180px;  
+  height: 65px;  
+}  
+  
+  </style>  
 </head>  
 <body>  
   <form id="form1" runat="server">  
-      <asp:ScriptManager ID="s" runat="server">  
+      <asp:ScriptManager runat="server" ID="Scriptmanager1">  
+          <Scripts>  
+              <asp:ScriptReference Assembly="Microsoft.Web.Preview"  
+Name="PreviewScript.js" />  
+          </Scripts>  
       </asp:ScriptManager>  
-      <div>  
-          <asp:UpdatePanel ID="UpdatePanel1" runat="server"  
-UpdateMode="Conditional">  
-              <ContentTemplate>  
-                  <div>  
-                      Filter selected column:  
-                      <asp:TextBox ID="FilterText" runat="server"  
-OnTextChanged="FilterText_TextChanged" />  
-                  </div>  
-                  <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false"   
-AllowPaging="True"  
-                      AllowSorting="True" OnRowDataBound="GridView1_RowDataBound"  
-OnPageIndexChanged="GridView1_PageIndexChanged"  
-                      OnSorted="GridView1_Sorted">  
-                      <Columns>  
-                          <asp:BoundField DataField="Id" HeaderText="Id"  
-SortExpression="Id" />  
-                          <asp:BoundField DataField="Address" HeaderText="Address"  
-SortExpression="Address" />  
-                          <asp:BoundField DataField="City" HeaderText="Address"  
-SortExpression="City" />  
-                      </Columns>  
-                  </asp:GridView>  
-              </ContentTemplate>  
-          </asp:UpdatePanel>  
-      </div>  
+  
+      <script type="text/javascript">  
+function postbackFromJS(sender, e) {  
+var postBack = new Sys.Preview.PostBackAction();  
+postBack.set_target(sender);  
+postBack.set_eventArgument(e);  
+postBack.performAction();  
+}  
+      </script>  
+  
+      <asp:Button ID="Button3" runat="server" Text="Decline" CausesValidation="false" />  
+      <asp:Panel ID="Panel1" runat="server" Style="display: none" CssClass="modalPopup">  
+          <fieldset>  
+              <asp:Panel ID="Panel3" runat="server" CssClass="modalPanel">  
+                  Please comment.  
+              </asp:Panel>  
+              <br />  
+              <asp:TextBox ID="TextBox1" TextMode="MultiLine"  
+runat="server" Rows="5" Width="98%" /><br />  
+              <asp:RequiredFieldValidator EnableClientScript="true" ID="RequiredFieldValidator3"  
+                  runat="server" ValidationGroup="modal" ControlToValidate="TextBox1"  
+ErrorMessage="Please enter a reason"  
+                  Display="Dynamic" />  
+              <div style="text-align: center;">  
+                  <br />  
+                  <asp:Button ID="OkButton" runat="server" Text="Decline"  
+ValidationGroup="modal" CausesValidation="true"  
+                      OnClick="OKButton_Click" />  
+                  <asp:Button ID="CancelButton" runat="server" CausesValidation="false" Text="Cancel" />  
+              </div>  
+          </fieldset>  
+      </asp:Panel>  
+      <ajaxToolkit:ModalPopupExtender ID="ModalPopupExtender" runat="server"  
+TargetControlID="Button3"  
+          PopupControlID="Panel1" BackgroundCssClass="modalBackground" OkControlID="OkButton"  
+          CancelControlID="CancelButton" DropShadow="true" PopupDragHandleControlID="Panel3" />  
   </form>  
-  
-  <script type="text/javascript">  
-      Sys.Application.add_load(page_load);  
-      Sys.Application.add_unload(page_unload);  
-      function page_load(){  
-                  $addHandler($get('FilterText'), 'keydown', onFilterTextChanged);  
-                          }  
-     function page_unload(){  
-          $removeHandler($get('FilterText'), 'keydown',  
-          onFilterTextChanged);  
-          }  
-      var timeoutID = 0;  
-      function onFilterTextChanged(e){  
-      if (timeoutID){  
-          window.clearTimeout(timeoutID);  
-      }  
-      timeoutID = window.setTimeout(updateFilterText, 1000);  
-  }  
-      function updateFilterText(){  
-      __doPostBack('FilterText', '');  
-      }  
-  </script>  
-  
 </body>  
 </html>  
-
+```
   
 
-  
+  ```
 using System;  
 using System.Data;  
 using System.Configuration;  
@@ -87,164 +97,28 @@ using System.Web.UI;
 using System.Web.UI.WebControls;  
 using System.Web.UI.WebControls.WebParts;  
 using System.Web.UI.HtmlControls;  
-using System.Text;  
   
-public partial class GridViewSearchHeighlight : System.Web.UI.Page  
+public partial class ModalPopupasLoader : System.Web.UI.Page  
 {  
    protected void Page_Load(object sender, EventArgs e)  
    {  
+       OkButton.OnClientClick = String.Format("postbackFromJS('{0}', '{1}')",OkButton.UniqueID, "");  
   
-  
-       if (!IsPostBack)  
-       {  
-  
-           BindGrid();  
-       }  
    }  
-   public DataTable GetCustomMadeDataTable()  
+   protected void OKButton_Click(object sender, EventArgs e)  
    {  
-  
-       //Create a new DataTable object  
-       System.Data.DataTable objDataTable = new System.Data.DataTable();  
-       //Create three columns with string as their type  
-       objDataTable.Columns.Add("Id", typeof(int));  
-       objDataTable.Columns.Add("Address", typeof(string));  
-       objDataTable.Columns.Add("City", typeof(string));  
-       objDataTable.Columns.Add("Postalcode", typeof(string));  
-       //Adding some data in the rows of this DataTable  
-       DataRow dr;  
-       int intIndex = 900;  
-       for (int i = 1; i <10; i++)  
+       if (IsValid)  
        {  
-  
-           dr = objDataTable.NewRow();  
-           dr[0] = i;  
-           dr[1] = "Address" + i.ToString();  
-           dr[2] = "City" + i.ToString();  
-           dr[3] = "Postalcode" + intIndex.ToString();  
-           objDataTable.Rows.Add(dr);  
-           intIndex++;  
-  
-       }  
-       for (int i = 10; i < 20; i++)  
-       {  
-  
-           dr = objDataTable.NewRow();  
-           dr[0] = i;  
-           dr[1] = "bbb" + i.ToString();  
-           dr[2] = "City" + i.ToString();  
-           dr[3] = "Postalcode" + intIndex.ToString();  
-           objDataTable.Rows.Add(dr);  
-           intIndex++;  
-  
-       }  
-       for (int i = 20; i <30; i++)  
-       {  
-  
-           dr = objDataTable.NewRow();  
-           dr[0] = i;  
-           dr[1] = "cde" + i.ToString();  
-           dr[2] = "City" + i.ToString();  
-           dr[3] = "Postalcode" + intIndex.ToString();  
-           objDataTable.Rows.Add(dr);  
-           intIndex++;  
-  
-       }  
-  
-       DataColumn[] dcPk = new DataColumn[1];  
-       dcPk[0] = objDataTable.Columns["Id"];  
-       objDataTable.PrimaryKey = dcPk;  
-       Session["strTemp"] = objDataTable;  
-  
-  
-       return objDataTable;  
-   }  
-  
-   public void BindGrid()  
-   {  
-       if (Session["strTemp"] != null)  
-       {  
-  
-           GridView1.DataSource = Session["strTemp"] as DataTable;  
-           GridView1.DataBind();  
-  
+           //do  
        }  
        else  
        {  
-           GridView1.DataSource = GetCustomMadeDataTable();  
-           GridView1.DataBind();  
+           ModalPopupExtender.Show();  
        }  
-  
-  
-   }  
-  
-   protected void GridView1_Sorted(object sender, EventArgs e)  
-   {  
-       UpdateFilter();  
-   }  
-   protected void GridView1_PageIndexChanged(object sender, EventArgs e)  
-   {  
-       UpdateFilter();  
-   }  
-   protected void Filter_Click(object sender, EventArgs e)  
-   {  
-       UpdateFilter();  
-   }  
-   protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)  
-   {  
-       if (e.Row.RowType != DataControlRowType.DataRow)  
-  
-           return;  
-       int colIndex = GetColumnIndex("Address");  
-       TableCell cell = e.Row.Cells[colIndex];  
-  
-       string cellText = cell.Text;  
-       int leftIndex = cellText.IndexOf(FilterText.Text,  
-       StringComparison.OrdinalIgnoreCase);  
-       int rightIndex = leftIndex + FilterText.Text.Length;  
-       StringBuilder builder = new StringBuilder();  
-       builder.Append(cellText, 0, leftIndex);  
-       builder.Append("<span class=\"highlight\">");  
-       builder.Append(cellText, leftIndex, rightIndex - leftIndex);  
-       builder.Append("</span>");  
-       builder.Append(cellText, rightIndex,  
-       cellText.Length - rightIndex);  
-       cell.Text = builder.ToString();  
-  
-  
-   }  
-   protected void FilterText_TextChanged(object sender, EventArgs e)  
-   {  
-       UpdateFilter();  
-   }  
-   private void UpdateFilter()  
-   {  
-       DataTable dt = Session["strTemp"] as DataTable;  
-       DataView dv = new DataView(dt);  
-  
-       string filterExpression = null;  
-       if (!String.IsNullOrEmpty(FilterText.Text))  
-           filterExpression = string.Format("{0}  '%{1}%'",  
-           GridView1.SortExpression, FilterText.Text);  
-  
-       dv.RowFilter = "Address like" + filterExpression;  
-       GridView1.DataSource = dv;  
-       GridView1.DataBind();  
-       //SqlDataSource1.FilterExpression = filterExpression;  
-   }  
-   private int GetColumnIndex(string columnName)  
-   {  
-       for (int i = 0; i < GridView1.Columns.Count; i++)  
-       {  
-           BoundField field = GridView1.Columns[i] as BoundField;  
-           if (field != null && field.DataField == columnName)  
-               return i;  
-       }  
-       return -1;  
    }  
 }
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTM5ODM3NzE3LC0xODk0MTk5NDMzLDUwMj
+eyJoaXN0b3J5IjpbNTYxNjIwNDYyLC0xODk0MTk5NDMzLDUwMj
 A5NjIzMSwtODM1NzcxMTkyLC01NTI5OTM0MjYsMTU1MzE2MDY4
 MCw2NjgxOTAwNDksMTIwMzA0Njk0NiwxNDA3NTE3MzE1LC0zOD
 QxMDUwMTMsLTMxNTY0ODU4OCwtODAwNTYxOTMwLC0xNzI0MjMz
