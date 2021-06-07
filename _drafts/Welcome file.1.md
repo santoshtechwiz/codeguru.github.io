@@ -20,11 +20,11 @@ string str = num.ToString(CultureInfo.GetCultureInfo("de-DE").NumberFormat); // 
 
 ```csharp
 // parse float from string
-float num = float.Parse("1.5", CultureInfo.InvariantCulture.NumberFormat**);
-float num = float.**Parse**("1,5", CultureInfo.GetCultureInfo("de-DE").**NumberFormat**);
+float num = float.Parse("1.5", CultureInfo.InvariantCulture.NumberFormat);
+float num = float.Parse("1,5", CultureInfo.GetCultureInfo("de-DE").NumberFormat);
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMzMyOTgzNzEsLTE4OTQxOTk0MzMsNT
+eyJoaXN0b3J5IjpbLTExNzA3OTQ3NTUsLTE4OTQxOTk0MzMsNT
 AyMDk2MjMxLC04MzU3NzExOTIsLTU1Mjk5MzQyNiwxNTUzMTYw
 NjgwLDY2ODE5MDA0OSwxMjAzMDQ2OTQ2LDE0MDc1MTczMTUsLT
 M4NDEwNTAxMywtMzE1NjQ4NTg4LC04MDA1NjE5MzAsLTE3MjQy
