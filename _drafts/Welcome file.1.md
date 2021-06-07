@@ -1,21 +1,24 @@
 
-Some image files contain metadata that you can read to determine the features of the image. For example, a digital photograph might contain metadata that you can read to determine the image's Author, Title, and Keywords. With Microsoft Developer Support OLE File Property Reader, you can read existing metadata and write new metadata to image files.
+[![](http://4.bp.blogspot.com/_iY3Ra2OqpkA/SLfjuQgRo2I/AAAAAAAABT0/p_x7lkfVwyQ/s400/treeview_1.JPG)](https://www.blogger.com/blog/post/edit/6673695286148904603/5064240701301416640#)
+
+you can see the code that uses the static GeTDrives method of the DriveInfo class to get a list of all installed drives, then iterates through them. For each fixed, formatted, and available (ready) drive, the code creates a new node containing details of the drive. It then sets the ImageUrl to the custom image, specifies that clicking this node will cause a postback that executes the "populate on demand" event handler, and adds the node to the treeView.
+
 ```html
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ImageMetaData.aspx.cs" Inherits="ImageMetaData" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TreeView.aspx.cs" Inherits="TreeView" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-  <title>Untitled Page</title>
+   <title>Untitled Page</title>
 </head>
 <body>
-  <form id="form1" runat="server">
-      <div>
-          <asp:FileUpload ID="FileUpload1" runat="server" />
-          <asp:Button ID="Button1" runat="server" Text="Read" OnClick="Button1_Click" /><br />
-          <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label><br />
-      </div>
-  </form>
+   <form id="form1" runat="server">
+       <div>
+           <asp:TreeView ID="treeDir" runat="Server">
+           </asp:TreeView>
+           <asp:Label ID="lblError" runat="Server"></asp:Label>
+       </div>
+   </form>
 </body>
 </html>
 ```
@@ -30,127 +33,67 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
-using DSOFile;
+using System.Text;
+using System.IO;
 
-public partial class ImageMetaData : System.Web.UI.Page
+public partial class TreeView : System.Web.UI.Page
 {
-   OleDocumentPropertiesClass oDocument;
-   string strImgName = string.Empty;
-   string strImgPath = string.Empty;
-   string strImgTitle = string.Empty;
-   string strImgAuthor = string.Empty;
-   string strImgSubject = string.Empty;
-   string strImgCompany = string.Empty;
-   string strImgComments = string.Empty;
-   string strImgApplication = string.Empty;
-   string strImgVersion = string.Empty;
-   string strImgCategory = string.Empty;
-   string strImgKeywords = string.Empty;
-   string strImgManager = string.Empty;
-   string strImgLastSavedBy = string.Empty;
-   string strImgByteCount = string.Empty;
-   string strImgDateCreated = string.Empty;
-   string strImgRevisionnum = string.Empty;
-   string strImgHeight = string.Empty;
-   string strImgWidth = string.Empty;
-   string strImgHResolution = string.Empty;
-   string strImgVResolution = string.Empty;
-   protected void Page_Load(object sender, EventArgs e)
-   {
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        CreateTreeView();
 
-   }
-   protected void Button1_Click(object sender, EventArgs e)
-   {
+    }
+    private void CreateTreeView()
+    {
+        treeDir.Nodes.Clear();
+        TreeNode node = new TreeNode("My Computer", "Root");
+        node.SelectAction = TreeNodeSelectAction.None;
+        node.Expanded = true;
+        treeDir.Nodes.Add(node);
+        try
+        {
+            // get a list of installed drives
+            DriveInfo[] allDrives = DriveInfo.GetDrives();
+            foreach (DriveInfo d in allDrives)
+            {
+                // only include fixed drives that are ready
+                if (d.DriveType == DriveType.Fixed && d.IsReady)
+                {
+                    // create text for the TreeView to display
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append(d.Name.Substring(0, 2));
+                    sb.Append(" ");
+                    sb.Append(d.VolumeLabel);
+                    sb.Append(" (");
+                    sb.Append(d.DriveFormat);
+                    sb.Append(") ");
+                    Double space = d.AvailableFreeSpace / 1024 / 1024;
+                    sb.Append(space.ToString("#,###,###,##0"));
+                    sb.Append(" MB available");
+                    String theName = sb.ToString();
+                    String theValue = d.Name;
+                    // add a node to the TreeView with "drive" image
+                    TreeNode child = new TreeNode(theName, theValue);
+                    child.ImageUrl = "images/icon_drive.gif";
+                    // specify postback for populating child nodes
+                    child.SelectAction = TreeNodeSelectAction.Expand;
+                    child.PopulateOnDemand = true;
+                    node.ChildNodes.Add(child);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            lblError.Text = "ERROR: " + ex.Message + "<p />";
+        }
+    }
 
-       System.Text.StringBuilder sb = new System.Text.StringBuilder();
-       OpenDocumentProperties(FileUpload1.PostedFile.FileName.ToString());
-       sb.Append("<table><tr><th>Author</th><th>Subject</th><th>Title</th></tr>");
-       sb.Append("<tr><td>");
-       sb.Append(strImgAuthor);
-       sb.Append("</td>");
-       sb.Append("<td>");
-       sb.Append(strImgSubject);
-       sb.Append("</td>");
-       sb.Append("<td>");
-       sb.Append(strImgTitle);
-       sb.Append("</td>");
-       sb.Append("</table>");
-
-       Label1.Text = sb.ToString();
-
-
-
-   }
-
-   protected void OpenDocumentProperties(string strFile)
-   {
-       try
-       {
-           DSOFile.SummaryProperties oSummProps;
-           string strTmp = string.Empty;
-           oDocument = new DSOFile.OleDocumentPropertiesClass();
-           oDocument.Open(strFile, false, DSOFile.dsoFileOpenOptions.dsoOptionOpenReadOnlyIfNoWriteAccess);
-           oSummProps = oDocument.SummaryProperties;
-           strImgName = oDocument.Name;
-           strImgPath = oDocument.Path;
-           if (oSummProps.Author == "" || oSummProps.Comments == "" || oSummProps.Title == "" || oSummProps.Keywords == "")
-           {
-               strImgTitle = "All";
-
-
-           }
-           else
-           {
-
-
-               strImgTitle = oSummProps.Title;
-
-           }
-           if (oSummProps.Author == "")
-           {
-               strImgAuthor = "Unknown";
-           }
-           else
-           {
-               strImgAuthor = oSummProps.Author;
-           }
-           strImgSubject = oSummProps.Subject;
-           strImgCompany = oSummProps.Company;
-           strImgComments = oSummProps.Comments;
-           strImgApplication = oSummProps.ApplicationName;
-           strImgVersion = oSummProps.Version;
-           strImgCategory = oSummProps.Category;
-           strImgKeywords = "," + oSummProps.Keywords.ToString() + ",";
-           strImgManager = oSummProps.Manager;
-           strImgLastSavedBy = oSummProps.LastSavedBy;
-           strImgByteCount = oSummProps.ByteCount.ToString();
-           if (oSummProps.DateCreated != null)
-           {
-               strImgDateCreated = oSummProps.DateCreated.ToString();
-           }
-           else
-           {
-               strImgDateCreated = "";
-           }
-
-           strImgRevisionnum = oSummProps.RevisionNumber;
-       }
-       catch (Exception ex)
-       {
-           Response.Write(ex.Message);
-       }
-       finally
-       {
-
-       }
-
-   }
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMjEyMDUwMjIsLTU1Mjk5MzQyNiwxNT
-UzMTYwNjgwLDY2ODE5MDA0OSwxMjAzMDQ2OTQ2LDE0MDc1MTcz
-MTUsLTM4NDEwNTAxMywtMzE1NjQ4NTg4LC04MDA1NjE5MzAsLT
-E3MjQyMzMzNzYsLTE1NjU3MTM5ODMsLTIwNjY2NTU0NzUsLTkz
-ODUxNjIzOCwtMzMyNDU1MzYzXX0=
+eyJoaXN0b3J5IjpbLTgzNTc3MTE5MiwtNTUyOTkzNDI2LDE1NT
+MxNjA2ODAsNjY4MTkwMDQ5LDEyMDMwNDY5NDYsMTQwNzUxNzMx
+NSwtMzg0MTA1MDEzLC0zMTU2NDg1ODgsLTgwMDU2MTkzMCwtMT
+cyNDIzMzM3NiwtMTU2NTcxMzk4MywtMjA2NjY1NTQ3NSwtOTM4
+NTE2MjM4LC0zMzI0NTUzNjNdfQ==
 -->
