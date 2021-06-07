@@ -1,4 +1,6 @@
+GridView is most used control in ASP.NET webform application. It is used to show tabular data and also provides paging,sorting and editing out of the box. In this article I will show you how to display records in ASP.NET Gridview from multiple tables. The code snippet is very easy and simple to understand.
 
+```html
 <%@ Page Language="C#" AutoEventWireup="true"
 CodeFile="HireUsingCodeBhindGrid.aspx.cs"
    Inherits="HireUsingCodeBhindGrid" %>
@@ -136,11 +138,11 @@ public partial class HireUsingCodeBhindGrid : System.Web.UI.Page
     }
 }
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MzIwMDU0OTksLTE3MzEyNDY2ODIsLT
-U0OTI1NDgwMSwxOTQ1NTM3MTI3LC0xODk0MTk5NDMzLDUwMjA5
-NjIzMSwtODM1NzcxMTkyLC01NTI5OTM0MjYsMTU1MzE2MDY4MC
-w2NjgxOTAwNDksMTIwMzA0Njk0NiwxNDA3NTE3MzE1LC0zODQx
-MDUwMTMsLTMxNTY0ODU4OCwtODAwNTYxOTMwLC0xNzI0MjMzMz
-c2LC0xNTY1NzEzOTgzLC0yMDY2NjU1NDc1LC05Mzg1MTYyMzgs
-LTMzMjQ1NTM2M119
+eyJoaXN0b3J5IjpbLTc4NzMyMjk0NywtMTczMTI0NjY4MiwtNT
+Q5MjU0ODAxLDE5NDU1MzcxMjcsLTE4OTQxOTk0MzMsNTAyMDk2
+MjMxLC04MzU3NzExOTIsLTU1Mjk5MzQyNiwxNTUzMTYwNjgwLD
+Y2ODE5MDA0OSwxMjAzMDQ2OTQ2LDE0MDc1MTczMTUsLTM4NDEw
+NTAxMywtMzE1NjQ4NTg4LC04MDA1NjE5MzAsLTE3MjQyMzMzNz
+YsLTE1NjU3MTM5ODMsLTIwNjY2NTU0NzUsLTkzODUxNjIzOCwt
+MzMyNDU1MzYzXX0=
 -->
