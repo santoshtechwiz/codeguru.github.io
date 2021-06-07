@@ -1,24 +1,65 @@
 
-[![](http://4.bp.blogspot.com/_iY3Ra2OqpkA/SLfjuQgRo2I/AAAAAAAABT0/p_x7lkfVwyQ/s400/treeview_1.JPG)](https://www.blogger.com/blog/post/edit/6673695286148904603/5064240701301416640#)
+[![](http://1.bp.blogspot.com/_iY3Ra2OqpkA/SLaVlEJQMfI/AAAAAAAABTc/1jZ2ddat6fo/s400/reg_array.JPG)](https://www.blogger.com/blog/post/edit/6673695286148904603/6555678894328060084#
 
-you can see the code that uses the static GeTDrives method of the DriveInfo class to get a list of all installed drives, then iterates through them. For each fixed, formatted, and available (ready) drive, the code creates a new node containing details of the drive. It then sets the ImageUrl to the custom image, specifies that clicking this node will cause a postback that executes the "populate on demand" event handler, and adds the node to the treeView.
-
+)Let's create a simple Web page to demonstrate the RegisterArrayDeclaration method. This page provides a slide show where the client-side JavaScript changes the image. In this example, we will search a specified folder on the server and load the names of all the images in a JavaScript array. We will also provide two buttons, one for showing the next image from the list and another for showing the previous one
 ```html
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TreeView.aspx.cs" Inherits="TreeView" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ArrayDeclaration.aspx.cs"
+    Inherits="ArrayDeclaration" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-   <title>Untitled Page</title>
+    <title>Untitled Page</title>
+
+    <script type="text/javascript">
+      var curPic = 0;
+
+      function processPrevious()
+      {
+            if (curPic==0)
+            {
+                  curPic=Pictures.length - 1;
+            }
+            else
+            {
+                  curPic--;
+            }
+            document.getElementById('<%=myPicture.ClientID%>').src=Pictures[curPic];
+      }
+
+      function processNext()
+      {
+            if (curPic==Pictures.length -1)
+            {
+                  curPic=0;
+            }
+            else
+            {
+                  curPic++;
+            }
+            document.getElementById('<%=myPicture.ClientID%>').src=Pictures[curPic];
+      }
+    </script>
+
 </head>
 <body>
-   <form id="form1" runat="server">
-       <div>
-           <asp:TreeView ID="treeDir" runat="Server">
-           </asp:TreeView>
-           <asp:Label ID="lblError" runat="Server"></asp:Label>
-       </div>
-   </form>
+    <form id="form1" runat="server">
+        <div>
+            <table border="1">
+                <tr>
+                    <td>
+                        <asp:Image ID="myPicture" runat="Server" Height="500px" Width="600px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Button ID="BackButton" runat="Server" Text="Back" />
+                        <asp:Button ID="NextButton" runat="Server" Text="Previous" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
 </body>
 </html>
 ```
@@ -36,64 +77,77 @@ using System.Web.UI.HtmlControls;
 using System.Text;
 using System.IO;
 
-public partial class TreeView : System.Web.UI.Page
+public partial class ArrayDeclaration : System.Web.UI.Page
 {
-    protected void Page_Load(object sender, EventArgs e)
-    {
-        CreateTreeView();
+   protected void Page_Load(object sender, EventArgs e)
+   {
+       if (!IsPostBack)
+       {
 
-    }
-    private void CreateTreeView()
-    {
-        treeDir.Nodes.Clear();
-        TreeNode node = new TreeNode("My Computer", "Root");
-        node.SelectAction = TreeNodeSelectAction.None;
-        node.Expanded = true;
-        treeDir.Nodes.Add(node);
-        try
-        {
-            // get a list of installed drives
-            DriveInfo[] allDrives = DriveInfo.GetDrives();
-            foreach (DriveInfo d in allDrives)
-            {
-                // only include fixed drives that are ready
-                if (d.DriveType == DriveType.Fixed && d.IsReady)
-                {
-                    // create text for the TreeView to display
-                    StringBuilder sb = new StringBuilder();
-                    sb.Append(d.Name.Substring(0, 2));
-                    sb.Append(" ");
-                    sb.Append(d.VolumeLabel);
-                    sb.Append(" (");
-                    sb.Append(d.DriveFormat);
-                    sb.Append(") ");
-                    Double space = d.AvailableFreeSpace / 1024 / 1024;
-                    sb.Append(space.ToString("#,###,###,##0"));
-                    sb.Append(" MB available");
-                    String theName = sb.ToString();
-                    String theValue = d.Name;
-                    // add a node to the TreeView with "drive" image
-                    TreeNode child = new TreeNode(theName, theValue);
-                    child.ImageUrl = "images/icon_drive.gif";
-                    // specify postback for populating child nodes
-                    child.SelectAction = TreeNodeSelectAction.Expand;
-                    child.PopulateOnDemand = true;
-                    node.ChildNodes.Add(child);
-                }
-            }
-        }
-        catch (Exception ex)
-        {
-            lblError.Text = "ERROR: " + ex.Message + "<p />";
-        }
-    }
+           StringBuilder imageArray = new StringBuilder();
+           // The GetImageArray method searches the Images
+           // folder and returns a JavaScript array declaration
+           // for all files contained in the folder.
+
+           imageArray = GetImageArray("Image");
+            // Once we have the array declaration, we simply add it
+           // to the page by using the RegisterArrayDeclaration method.
+           // The name of the JavaScript array will be Pictures,
+           // as specified in the first parameter.
+
+           ClientScript.RegisterArrayDeclaration("Pictures", imageArray.ToString());
+           // Wiring the Back button's click event to
+           // the processPrevious function. Make sure to
+           // return false in order to disable post-back operation.
+
+           BackButton.Attributes.Add("onClick", "processPrevious();return false;");
+
+                //Wiring the Next button's click event to
+                // the processNext function. Make sure to
+                // return false in order to disable post-back operation.
+
+           NextButton.Attributes.Add("onClick", "processNext();return false;");
+
+       }
+   }
+    // This function receives a folder name and returns a
+    //   JavaScript array declaration containing names of all files
+    //  from the folder.
+
+   protected StringBuilder GetImageArray(string folderName)
+   {
+
+
+       string Path;
+       DirectoryInfo Folder;
+
+       FileInfo[] Images;
+       StringBuilder ImageArray = new StringBuilder();
+
+       Path = Request.PhysicalApplicationPath + folderName;
+       Folder = new DirectoryInfo(Path);
+       Images = Folder.GetFiles();
+
+       // Looping through all files in the folder and generating
+       // a JavaScript array declaration.
+       foreach (FileInfo Image in Images)
+       {
+           ImageArray.AppendFormat("'{0}/{1}',", folderName, Image.Name);
+       }
+
+       // Removing the unwanted last comma.
+       ImageArray.Remove(ImageArray.Length - 1, 1);
+
+       return ImageArray;
+   }
+
 
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgzNTc3MTE5MiwtNTUyOTkzNDI2LDE1NT
-MxNjA2ODAsNjY4MTkwMDQ5LDEyMDMwNDY5NDYsMTQwNzUxNzMx
-NSwtMzg0MTA1MDEzLC0zMTU2NDg1ODgsLTgwMDU2MTkzMCwtMT
-cyNDIzMzM3NiwtMTU2NTcxMzk4MywtMjA2NjY1NTQ3NSwtOTM4
-NTE2MjM4LC0zMzI0NTUzNjNdfQ==
+eyJoaXN0b3J5IjpbLTgwNjUzMzUyNywtODM1NzcxMTkyLC01NT
+I5OTM0MjYsMTU1MzE2MDY4MCw2NjgxOTAwNDksMTIwMzA0Njk0
+NiwxNDA3NTE3MzE1LC0zODQxMDUwMTMsLTMxNTY0ODU4OCwtOD
+AwNTYxOTMwLC0xNzI0MjMzMzc2LC0xNTY1NzEzOTgzLC0yMDY2
+NjU1NDc1LC05Mzg1MTYyMzgsLTMzMjQ1NTM2M119
 -->
