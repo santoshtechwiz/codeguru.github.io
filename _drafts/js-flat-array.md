@@ -27,7 +27,8 @@ function flatten(ary) {
 Lets understand the code line by line
 
 - First time function call is `flatten([2,[3],4]`
-- Then it calls `flatten([3]
+- Then it calls `flatten([3]` because three is the array
+- In the final call last function returns 3 and append to the result
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4OTMyMTQ2MCw3ODA0ODAxMTddfQ==
+eyJoaXN0b3J5IjpbLTk1Njg2NjA5OSw3ODA0ODAxMTddfQ==
 -->
