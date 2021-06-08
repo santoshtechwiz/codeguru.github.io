@@ -3,7 +3,7 @@
 
 As per the microsoft
 
-> C# 9.0 introduces ***record types***. You use the `record` keyword to define a reference type that provides built-in functionality for encapsulating data. You can create record types with immutable properties by using positional parameters or standard property syntax:
+> A record is a type of class that is intended to work with immutable (read-only) data.The non-destructive mutation is its most useful feature:
 
 
 
@@ -100,8 +100,8 @@ Console.WriteLine(cPerson1==cPerson2); // False
 	Console.WriteLine(rPersonCopy); // RPerson { FirstName = Updated Name, LastName = Doe }
 	Console.WriteLine(rPerson1==rPersonCopy); // False
 ```
-- The 'with' keyword performs non-destructive mutation:
-- rPersonCopy is a new record; we haven't altered the original person.	
+- The `with` keyword performs non-destructive mutation:
+- `rPersonCopy` is a new record; we haven't altered the original person.	
 
 ## When to use Record
 
@@ -118,7 +118,7 @@ When you need to change the data like database operations
 
 ## By default Record type is imutable but you can create mutable record but not recommended
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTg3MDY0NDksNjgyNjk0MzgsMTUyMzM5MT
-ExMCwtMTQyOTk2MjE5NCw2NDc5NzU2MTYsLTE1MDIyODUyODZd
-fQ==
+eyJoaXN0b3J5IjpbMTMyNTQ4NjI2NCw2ODI2OTQzOCwxNTIzMz
+kxMTEwLC0xNDI5OTYyMTk0LDY0Nzk3NTYxNiwtMTUwMjI4NTI4
+Nl19
 -->
