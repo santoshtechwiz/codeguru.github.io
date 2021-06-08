@@ -26,10 +26,6 @@ public class CPerson{
 
 ## Let's Compare the diffrence between class and record with example
 
-
-
-
-
 ```csharp
 void Main()
 {
@@ -40,9 +36,7 @@ void Main()
 	var cPerson2 = new RPerson("John", "Doe");
 
 }
-
 ```
-
 ## Record by Default override `Object.Equal`
 
 `Record` by default override `Object.Equal` method in order to compare two record. If record have same value then its return true otherwise false.
@@ -111,7 +105,7 @@ When you need to change the data like database operations
 
 ## By default Record type is imutable but you can create mutable record but not recommended
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUwNDQ0MDg2Miw2ODI2OTQzOCwxNTIzMz
+eyJoaXN0b3J5IjpbLTU1Njk1Mzc1MCw2ODI2OTQzOCwxNTIzMz
 kxMTEwLC0xNDI5OTYyMTk0LDY0Nzk3NTYxNiwtMTUwMjI4NTI4
 Nl19
 -->
