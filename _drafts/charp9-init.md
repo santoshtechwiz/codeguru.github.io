@@ -21,11 +21,26 @@ But if you assign to
 ```csharp
 blog.Title="Some other title"; 
 ```
+>CS8852 Init-only property or indexer 'Blog.Title' can only be assigned in an object initializer, or on 'this' or 'base' in an instance constructor or an 'init' accessor.{alertError}
 
+## You can assign init only propery in constructor also
 
+```csharp
+var newBlog=new Blog{Description="New Description"};
+Console.WriteLine(newBlog);
 
+public class Blog
+{
+	public string Title { get; init; } //init-only
+	public string Description { get; init; } //init-only
+	public Blog()
+	{
+		Title="Title From Constructor";
+	}
 
+}
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTY4NDkyMjczLC04MzUxNTgyODAsNzMwOT
+eyJoaXN0b3J5IjpbODY4OTU4ODE1LC04MzUxNTgyODAsNzMwOT
 k4MTE2XX0=
 -->
