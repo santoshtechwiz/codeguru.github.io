@@ -29,6 +29,8 @@ Lets understand the code line by line
 - First time function call is `flatten([2,[3],4]`
 - Then it calls `flatten([3]` because three is the array
 - In the final call last function returns 3 and append to the result
+
+![](https://1.bp.blogspot.com/-gW4XETt9RJY/YL8HP7ooGQI/AAAAAAAAOxQ/IrR_h1hY3lcT6I75wfeSnVmtQxtlZffIgCLcBGAsYHQ/w640-h402/flatten.gif)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk1Njg2NjA5OSw3ODA0ODAxMTddfQ==
+eyJoaXN0b3J5IjpbLTcwMzAzNjQ1OCw3ODA0ODAxMTddfQ==
 -->
