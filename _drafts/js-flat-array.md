@@ -26,7 +26,8 @@ function flatten(ary) {
 ```
 Lets understand the code line by line
 
-- First time function call is `flatten(
+- First time function call is `flatten([2,[3],4]`
+- Then it calls `flatten([3]
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDQ3OTE5NDM0LDc4MDQ4MDExN119
+eyJoaXN0b3J5IjpbLTE4OTMyMTQ2MCw3ODA0ODAxMTddfQ==
 -->
