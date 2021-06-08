@@ -24,6 +24,9 @@ function flatten(ary) {
     return ret;
 }
 ```
+Lets understand the code line by line
+
+- First time function call is `flatten(
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzgwNDgwMTE3XX0=
+eyJoaXN0b3J5IjpbNDQ3OTE5NDM0LDc4MDQ4MDExN119
 -->
