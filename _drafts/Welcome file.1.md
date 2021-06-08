@@ -1,49 +1,91 @@
->You are given an integer array  `coins`  representing coins of different denominations and an integer  `amount`  representing a total amount of money.
 
-Return  _the fewest number of coins that you need to make up that amount_. If that amount of money cannot be made up by any combination of the coins, return  `-1`.
+[![](http://3.bp.blogspot.com/_iY3Ra2OqpkA/SesmGifTHrI/AAAAAAAAB-U/EtWzhBRW4dg/s400/jq.jpg)](https://www.blogger.com/blog/post/edit/6673695286148904603/5648605650764605805#)In this post i will show how to use Jquery in asp.net
 
-You may assume that you have an infinite number of each kind of coin.
-Example 1:
+1.  Start Microsoft Visual Studio .NET.
+2.  On the  **File**  menu, point to  **New**, and then click  **Project**.
+3.  In the  **New Project**  dialog box, click  **Visual C# Projects**
+4.  Add a new xml file and copy the following xml.
 
-Input: coins = [1,2], amount = 4
-Output: 2
-Explanation: 4 = 2 + 2,4=1+1+2 
+>labels.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<labels>
+<label id="1">
+<name>Test</name>
+<address>
+  <street>street1</street>
+  <city>City1</city>
+  <province>ID</province>
+</address>
+</label>
+<label id='2'>
+<name>Name2</name>
+<address>
+  <street>Street2</street>
+  <city>City2</city>
+  <province>CT</province>
+</address>
+</label>
 
-## The recursion formual for coin change as below
-
-$$
-  coinchange(j,a) =
-\begin{cases}
-\infty,  & \text{if $j$<0} \\
-0,  & \text{if $j$ =0} \\
- 1+\min(\sum_{i=k}^n c[j-a_i]) & \text{if $j$ >1}
-\end{cases}
-$$
-
-```javascript
-function coin_change(amount) {
-  // if remaining  coin is zero return
-  if (amount == 0) return 0
-  // if coin is negative return some large value
-  if (amount < 0) return Infinity
-  
-  let ans = Infinity
-  for (const coin of coins)
-    ans = Math.min(
-      ans,
-      1 + coin_change(amount - coin)
-    )
-  return ans
-}
+</labels> 
 ```
 
+5. Add a reference to the [jQuery script](
+6. Copy below code in aspx page.
+```html
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default2.aspx.cs" Inherits="Default2" %>
 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+  <title></title>
 
+  <script src="Scripts/jquery-1.3.2.js" type="text/javascript"></script>
 
+  <script type="text/javascript">
+   $(function() {
+       $('#update-target a').click(function() {
+           $.ajax({
+               type: "GET",
+               url: "labels.xml",
+               dataType: "xml",
+               success: function(xml) {
+                   $(xml).find('label').each(function(){
+                       var id_text = $(this).attr('id')
+                       var name_text = $(this).find('name').text()
 
+                       $('<li></li>')
+                           .html(name_text + ' (' + id_text + ')')
+                           .appendTo('#update-target ol');
+                   }); //close each(
+               }
+           }); //close $.ajax(
+       }); //close click(
+   }); //close $(
+  </script>
 
-## Recursion Tree
-
-![](https://1.bp.blogspot.com/-qJf9RTk0_VQ/YLxz6UPEheI/AAAAAAAAOwE/3V0MQCcf4NkyqdmZArvcc7_0LEpjUYMIgCLcBGAsYHQ/w400-h272/coin-change.gif)
-
->This article only show you how to write recursive program. I know this is not optimized way to write coin change problem{alertError}
+</head>
+<body>
+  <form id="form1" runat="server">
+  <div>
+      <p>
+          <div id='update-target'>
+              <a href="#">Click here to load addresses</a>
+              <ol>
+              </ol>
+          </div>
+      </p>
+  </div>
+  </form>
+</body>
+</html>
+```
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTg1NzU1NzEzMywtNDIwMDEzMjg5LC0xNj
+c2NDIyMzY0LDE3NTQ5MDEzMzAsMTA5NDMyODM4OSwtMzM1NjIy
+ODYwLC0xNzMxMjQ2NjgyLC01NDkyNTQ4MDEsMTk0NTUzNzEyNy
+wtMTg5NDE5OTQzMyw1MDIwOTYyMzEsLTgzNTc3MTE5MiwtNTUy
+OTkzNDI2LDE1NTMxNjA2ODAsNjY4MTkwMDQ5LDEyMDMwNDY5ND
+YsMTQwNzUxNzMxNSwtMzg0MTA1MDEzLC0zMTU2NDg1ODgsLTgw
+MDU2MTkzMF19
+-->

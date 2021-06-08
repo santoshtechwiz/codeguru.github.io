@@ -1,18 +1,14 @@
+
 ## Compare Record and Class
 
-As per the microsoft
 
-> C# 9.0 introduces ***record types***. You use the `record` keyword to define a reference type that provides built-in functionality for encapsulating data. You can create record types with immutable properties by using positional parameters or standard property syntax:
+> In C#9 A record is a type of class that is intended to work with immutable (read-only) data.The non-destructive mutation is its most useful feature:
 
-
-
+## Syntax for creating record
 ```csharp
 public record RPerson(string FirstName,string LastName);
 ```
-
-## 
-
-If you want to create a class which have the same behavior as above statement then you can achieve by using class as shown below ( its not full source code there is a lot when record is converted to C#)
+>If you want to create a class which have the same behavior as above statement then you can achieve by using class as shown below ( its not full source code there is a lot when record is converted to C#){alertInfo}
 
 ```csharp
 public class CPerson{
@@ -28,13 +24,7 @@ public class CPerson{
 }
 ```
 
-
-
 ## Let's Compare the diffrence between class and record with example
-
-
-
-
 
 ```csharp
 void Main()
@@ -46,8 +36,10 @@ void Main()
 	var cPerson2 = new RPerson("John", "Doe");
 
 }
-
 ```
+>You can eliminate almost all boilerplate with *positional parameters*. This makes records useful for simple types that  just combine or hold data.{alertInfo}
+
+
 
 ## Record by Default override `Object.Equal`
 
@@ -90,10 +82,7 @@ Record already provide operator overloding for == and != so it easy to compare t
 Console.WriteLine(rPerson1==rPerson2); // True
 Console.WriteLine(cPerson1==cPerson2); // False
 ```
-
-
-## Create copy of record with `with` syntax.
-
+## Create copy of record with `with` syntax.(
 ```csharp
 	var rPersonCopy = rPerson1 with {
 		
@@ -101,8 +90,11 @@ Console.WriteLine(cPerson1==cPerson2); // False
 	};
 	Console.WriteLine(rPersonCopy); // RPerson { FirstName = Updated Name, LastName = Doe }
 	Console.WriteLine(rPerson1==rPersonCopy); // False
-
 ```
+- The `with` keyword performs non-destructive mutation:
+- `rPersonCopy` is a new record; we haven't altered the original person.	
+
+## Record Positional Parameter
 
 
 ## When to use Record
@@ -119,3 +111,8 @@ When you need to change the data like database operations
 ## Record type can only inherit from another record not from class
 
 ## By default Record type is imutable but you can create mutable record but not recommended
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMjEyNDQwNTY2Miw2ODI2OTQzOCwxNTIzMz
+kxMTEwLC0xNDI5OTYyMTk0LDY0Nzk3NTYxNiwtMTUwMjI4NTI4
+Nl19
+-->
