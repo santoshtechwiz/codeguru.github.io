@@ -37,6 +37,10 @@ void Main()
 
 }
 ```
+You can eliminate almost all boilerplate with *positional parameters*. This makes records useful for simple types that  just combine or hold data.```
+
+
+
 ## Record by Default override `Object.Equal`
 
 `Record` by default override `Object.Equal` method in order to compare two record. If record have same value then its return true otherwise false.
@@ -90,6 +94,9 @@ Console.WriteLine(cPerson1==cPerson2); // False
 - The `with` keyword performs non-destructive mutation:
 - `rPersonCopy` is a new record; we haven't altered the original person.	
 
+## Record Positional Parameter
+
+
 ## When to use Record
 
 - Loading external data from API or Database that does;not change.
@@ -105,7 +112,7 @@ When you need to change the data like database operations
 
 ## By default Record type is imutable but you can create mutable record but not recommended
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU1Njk1Mzc1MCw2ODI2OTQzOCwxNTIzMz
-kxMTEwLC0xNDI5OTYyMTk0LDY0Nzk3NTYxNiwtMTUwMjI4NTI4
-Nl19
+eyJoaXN0b3J5IjpbLTEyOTcxODgxNjAsNjgyNjk0MzgsMTUyMz
+M5MTExMCwtMTQyOTk2MjE5NCw2NDc5NzU2MTYsLTE1MDIyODUy
+ODZdfQ==
 -->
