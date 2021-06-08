@@ -1,42 +1,125 @@
 
-In this article we will see that how we can populate a DropDownList control with XML file as a source.Our XML file looks something like below which simply contains the name of the clients.
+[![](http://1.bp.blogspot.com/_iY3Ra2OqpkA/SJwEaTU5toI/AAAAAAAABOM/1wZNauFqvYc/s400/exclusive.JPG)](https://www.blogger.com/blog/post/edit/6673695286148904603/3651813876830606022#)
 
-```xml
-<?xml version="1.0" encoding="utf-8" ?>
-<names>
- <name>
-   <client>hank</client>
- </name>
- <name>
-   <client>corry</client>
- </name>
- <name>
-   <client>david</client>
- </name>
- <name>
-   <client>james</client>
- </name>
-</names>
+```html
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="MutuallyexGrid.aspx.cs" Inherits="MutuallyexGrid" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+   <title>Untitled Page</title>
+   <script type="text/javascript" language="javascript">
+   function uncheckOthers(id)
+   {      
+       var elm = document.getElementsByTagName('input');      
+       for(var i = 0; i < elm.length; i++)
+       {                          
+           if(elm.item(i).id.substring(id.id.lastIndexOf('_')) == id.id.substring(id.id.lastIndexOf('_')))
+           {
+               if( elm.item(i).type == "checkbox" && elm.item(i)!=id)
+                   elm.item(i).checked = false;
+           }
+       }
+   }      
+   </script>
+</head>
+<body>
+   <form id="form1" runat="server">
+       <div>
+           <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnRowDataBound="GridView1_RowDataBound"
+               CellPadding="4" ForeColor="#333333" GridLines="None">
+               <Columns>
+                   <asp:TemplateField HeaderText="Select">
+                       <ItemTemplate>
+                           <asp:CheckBox ID="CheckBox1" runat="server" />
+                       </ItemTemplate>
+                   </asp:TemplateField>
+                   <asp:BoundField DataField="Contact Name" HeaderText="Name" />
+               </Columns>
+               <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+               <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+               <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+               <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+               <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+               <EditRowStyle BackColor="#999999" />
+               <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+           </asp:GridView>
+       </div>
+   </form>
+</body>
+</html>
 ```
-Filling a DropDownList with XML file: Now we want to fill the DropDownList with the contents contained in the XML file. Don't forget to include the namespace System.XML.
 ```csharp
-private void FillDropDownList()
-    {
-        XmlDocument doc = new XmlDocument();
-        doc.Load(Server.MapPath("Menu.xml"));
-        XmlNodeList nodeList = doc.SelectNodes("names/name");
-        foreach (XmlNode node in nodeList)
-            DropdownList1.Items.Add(new ListItem(node.SelectSingleNode("client").InnerText));
-    }
- ```
+using System;
+using System.Data;
+using System.Configuration;
+using System.Collections;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Web.UI.HtmlControls;
 
-All we are doing is making an object of the XmlDocument class. Than we read the XML file, dig down in the nodes and selects the nodes that we want. And finally add those node's inner text to the DropDownList items.
+public partial class MutuallyexGrid : System.Web.UI.Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (!IsPostBack)
+        {
+            GridView1.DataSource = _sampleData;
+            GridView1.DataBind();
+        }
+
+    }
+    public DataTable _sampleData
+    {
+        get
+        {
+            DataTable dt = (DataTable)Session["DataTable"];
+            if (dt == null)
+            {
+                dt = new DataTable();
+                dt.Columns.Add(new DataColumn("Contact Name", typeof(string)));
+                dt.Columns.Add(new DataColumn("Company Name", typeof(string)));
+                dt.Columns.Add(new DataColumn("City", typeof(string)));
+                dt.Columns.Add(new DataColumn("Country", typeof(string)));
+
+                dt.Rows.Add(new object[] { "Maria Anders", "Alfreds Futterkiste", "Berlin", "Germany" });
+                dt.Rows.Add(new object[] { "Ana Trujillo", "Emparedados y helados ", "México D.F.", "Mexico" });
+                dt.Rows.Add(new object[] { "Antonio Moreno", "Antonio Moreno Taquería", "México D.F.", "Mexico" });
+                Session["DataTable"] = dt;
+            }
+            return dt;
+        }
+        set
+        {
+            Session["DataTable"] = value;
+        }
+    }
+    protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        try
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                string strScript = "uncheckOthers(" + ((CheckBox)e.Row.Cells[0].FindControl("CheckBox1")).ClientID + ");";
+                ((CheckBox)e.Row.Cells[0].FindControl("CheckBox1")).Attributes.Add("onclick", strScript);
+            }
+        }
+        catch (Exception Ex)
+        {
+            //report error
+        }
+    }
+}
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NzY0MjIzNjQsMTc1NDkwMTMzMCwxMD
-k0MzI4Mzg5LC0zMzU2MjI4NjAsLTE3MzEyNDY2ODIsLTU0OTI1
-NDgwMSwxOTQ1NTM3MTI3LC0xODk0MTk5NDMzLDUwMjA5NjIzMS
-wtODM1NzcxMTkyLC01NTI5OTM0MjYsMTU1MzE2MDY4MCw2Njgx
-OTAwNDksMTIwMzA0Njk0NiwxNDA3NTE3MzE1LC0zODQxMDUwMT
-MsLTMxNTY0ODU4OCwtODAwNTYxOTMwLC0xNzI0MjMzMzc2LC0x
-NTY1NzEzOTgzXX0=
+eyJoaXN0b3J5IjpbLTQyMDAxMzI4OSwtMTY3NjQyMjM2NCwxNz
+U0OTAxMzMwLDEwOTQzMjgzODksLTMzNTYyMjg2MCwtMTczMTI0
+NjY4MiwtNTQ5MjU0ODAxLDE5NDU1MzcxMjcsLTE4OTQxOTk0Mz
+MsNTAyMDk2MjMxLC04MzU3NzExOTIsLTU1Mjk5MzQyNiwxNTUz
+MTYwNjgwLDY2ODE5MDA0OSwxMjAzMDQ2OTQ2LDE0MDc1MTczMT
+UsLTM4NDEwNTAxMywtMzE1NjQ4NTg4LC04MDA1NjE5MzAsLTE3
+MjQyMzMzNzZdfQ==
 -->
