@@ -1,84 +1,153 @@
 
-## Adapter Pattern
->The Adapter pattern converts the interface of a class into another interface that clients expect.The client makes a request on the adapter by invoking a method from the target interface on it and then adapter translates that request into one or more calls on the adaptee using the adaptee interface. The client receives the results of the call and never knows there is an adapter doing the translation
+Supoose you have a **gridview** in asp.net that each row in the **gridview** has a dropdown(or textbox).You need to check that at least 1 row of the gridiew has a dropdown selected before submitting.
 
-**Pre-Condition**: You are maintaining an existing system that makes use of a third-party class library from vendor A
-**Stimulus**: Vendor A goes belly up and corporate policy does not allow you to make use of an unsupported class library.
-**Response**: Vendor B provides a similar class library but its interface is completely different from the interface provided by vendor A
-**Assumptions**: You don’t want to change your code, and you can’t change vendor B’s code
-**Solution**?: Write new code that adapts vendor B’s interface to the interface expected by your original code
+```html
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="GridDropDown.aspx.cs"
+Inherits="GridDropDown" %>
 
->C# Example
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+   <title>Untitled Page</title>
 
+   <script language="javascript" type="text/javascript">
+   //var text="firsttext";
+   function Submit()
+   {
+   var  txtNamefirst = "GridView1_ctl";
+   var txtNameLast = "_txtNameChk";
+
+    var  chkNamefirst = "GridView1_ctl";
+   var chkNameLast = "_dropselect";
+
+  var temptxtobj= document.getElementById(txtNamefirst+"02" + txtNameLast) ;
+   var tempchkobj= document.getElementById(chkNamefirst+"02" + chkNameLast) ;
+  var i=1;
+  var txtFlag=false;
+ var drpFlag=false;
+ var id;
+  while(temptxtobj != null  && tempchkobj!=null )
+  {
+        if( !txtFlag && temptxtobj.value!="")
+           txtFlag=true;
+        
+        if( !drpFlag && tempchkobj.selectedIndex>=0)
+           drpFlag=true;
+            i++;
+            if (i< 10)
+           id="0" + i;
+          else
+              id= i;
+     temptxtobj= document.getElementById(txtNamefirst+ id + txtNameLast) ;
+     tempchkobj= document.getElementById(chkNamefirst+ id + chkNameLast) ;
+  }
+   if (!(txtFlag && drpFlag))
+       alert("select");
+
+    return  txtFlag && drpFlag;
+
+   }
+   </script>
+
+</head>
+<body>
+   <form id="form1" runat="server" onsubmit="return Submit();">
+       <div>
+           <asp:GridView ID="GridView1" runat="server"
+AutoGenerateColumns="False" Height="80px"
+               Width="224px">
+               <Columns>
+                   <asp:TemplateField HeaderText="Select Txt">
+                       <ItemTemplate>
+                           <asp:DropDownList ID="dropselect" runat="server">
+                               <asp:ListItem>   </asp:ListItem>
+                               <asp:ListItem>aaa</asp:ListItem>
+                               <asp:ListItem>bbbb</asp:ListItem>
+                               <asp:ListItem></asp:ListItem>
+                           </asp:DropDownList>
+                       </ItemTemplate>
+                   </asp:TemplateField>
+                   <asp:TemplateField HeaderText="Enter Text">
+                       <ItemTemplate>
+                           <asp:TextBox ID="txtNameChk" runat="server">
+ </asp:TextBox>
+                       </ItemTemplate>
+                   </asp:TemplateField>
+                   <asp:TemplateField HeaderText="Name">
+                       <ItemTemplate>
+                           <asp:TextBox ID="txtName" runat="server"
+Text='<%# DataBinder.Eval(Container.DataItem, "Name")%>'> </asp:TextBox>
+                       </ItemTemplate>
+                   </asp:TemplateField>
+                   <asp:TemplateField HeaderText="Age">
+                       <ItemTemplate>
+                           <asp:Label ID="ibiage" runat="server"
+Text='<%# DataBinder.Eval(Container.DataItem, "Age")%>'></asp:Label>
+                       </ItemTemplate>
+                   </asp:TemplateField>
+               </Columns>
+           </asp:GridView>
+           <asp:Button ID="Button1" runat="server" Text="Submit" /></div>
+   </form>
+</body>
+</html>
+```
 ```csharp
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
+using System.Data;
+using System.Configuration;
+using System.Collections;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Web.UI.HtmlControls;
 
-namespace Adapter
+public partial class GridDropDown : System.Web.UI.Page
 {
-
-    public class VendorA
+    private DataTable Data()
     {
 
-        public string GetResponse()
-        {
+        DataTable dt = new DataTable();
+        dt.Columns.Add("Name", typeof(string));
+        dt.Columns.Add("Age", typeof(int));
 
-            return "<Root><Item><Column1>John</Column1> <Column2>Doe</Column2><Column3>John@email.com</Column3> </Item></Root>";
-        }
+        dt.Rows.Add(new object[] { "aaaa", 1 });
+        dt.Rows.Add(new object[] { "bbbb", 2 });
+        dt.Rows.Add(new object[] { "cccc", 3 });
+        dt.Rows.Add(new object[] { "aaaa", 1 });
+        dt.Rows.Add(new object[] { "bbbb", 2 });
+        dt.Rows.Add(new object[] { "cccc", 3 });
+        dt.Rows.Add(new object[] { "aaaa", 1 });
+        dt.Rows.Add(new object[] { "bbbb", 2 });
+        dt.Rows.Add(new object[] { "cccc", 3 });
+        dt.Rows.Add(new object[] { "aaaa", 1 });
+        dt.Rows.Add(new object[] { "bbbb", 2 });
+        dt.Rows.Add(new object[] { "cccc", 3 });
+
+
+        return dt;
+
     }
 
-    public class VendorB
+    protected void Page_Load(object sender, System.EventArgs e)
     {
-        public string GetResponse()
+        if (!this.IsPostBack)
         {
-
-            return "John,Doe,John@email.com\nsantosh,singh,santosh@gmail.com";
-        }
-
-
-    }
-    public interface IRquest
-    {
-        string Get();
-
-    }
-    public class Adapter : IRquest
-    {
-        private VendorB _vendorb = new VendorB();
-        public string Get()
-        {
-            var lines = _vendorb.GetResponse().Split('\n');
-
-
-            var xml = new XElement("Root",
-               lines.Select(line => new XElement("Item",
-                  line.Split(new char[] { ',' })
-                      .Select((column, index) => new XElement("Column" + index, column)))));
-
-            return xml.ToString();
-        }
-    }
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Adapter client = new Adapter();
-            var response = client.Get();
-            Console.WriteLine(response);
+            this.GridView1.DataSource = Data();
+            this.GridView1.DataBind();
         }
     }
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA5NDMyODM4OSwtMzM1NjIyODYwLC0xNz
-MxMjQ2NjgyLC01NDkyNTQ4MDEsMTk0NTUzNzEyNywtMTg5NDE5
-OTQzMyw1MDIwOTYyMzEsLTgzNTc3MTE5MiwtNTUyOTkzNDI2LD
-E1NTMxNjA2ODAsNjY4MTkwMDQ5LDEyMDMwNDY5NDYsMTQwNzUx
-NzMxNSwtMzg0MTA1MDEzLC0zMTU2NDg1ODgsLTgwMDU2MTkzMC
-wtMTcyNDIzMzM3NiwtMTU2NTcxMzk4MywtMjA2NjY1NTQ3NSwt
-OTM4NTE2MjM4XX0=
+eyJoaXN0b3J5IjpbMTc1NDkwMTMzMCwxMDk0MzI4Mzg5LC0zMz
+U2MjI4NjAsLTE3MzEyNDY2ODIsLTU0OTI1NDgwMSwxOTQ1NTM3
+MTI3LC0xODk0MTk5NDMzLDUwMjA5NjIzMSwtODM1NzcxMTkyLC
+01NTI5OTM0MjYsMTU1MzE2MDY4MCw2NjgxOTAwNDksMTIwMzA0
+Njk0NiwxNDA3NTE3MzE1LC0zODQxMDUwMTMsLTMxNTY0ODU4OC
+wtODAwNTYxOTMwLC0xNzI0MjMzMzc2LC0xNTY1NzEzOTgzLC0y
+MDY2NjU1NDc1XX0=
 -->
