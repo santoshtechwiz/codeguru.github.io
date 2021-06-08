@@ -8,10 +8,7 @@
 ```csharp
 public record RPerson(string FirstName,string LastName);
 ```
-
-## 
-
-If you want to create a class which have the same behavior as above statement then you can achieve by using class as shown below ( its not full source code there is a lot when record is converted to C#)
+>If you want to create a class which have the same behavior as above statement then you can achieve by using class as shown below ( its not full source code there is a lot when record is converted to C#){alertInfo}
 
 ```csharp
 public class CPerson{
@@ -116,7 +113,7 @@ When you need to change the data like database operations
 
 ## By default Record type is imutable but you can create mutable record but not recommended
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTcyNzE4OTc0Niw2ODI2OTQzOCwxNTIzMz
-kxMTEwLC0xNDI5OTYyMTk0LDY0Nzk3NTYxNiwtMTUwMjI4NTI4
-Nl19
+eyJoaXN0b3J5IjpbLTE1NzIzNTczMTQsNjgyNjk0MzgsMTUyMz
+M5MTExMCwtMTQyOTk2MjE5NCw2NDc5NzU2MTYsLTE1MDIyODUy
+ODZdfQ==
 -->
