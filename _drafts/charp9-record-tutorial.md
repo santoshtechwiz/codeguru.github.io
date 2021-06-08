@@ -37,7 +37,7 @@ void Main()
 
 }
 ```
-You can eliminate almost all boilerplate with *positional parameters*. This makes records useful for simple types that  just combine or hold data.```
+>You can eliminate almost all boilerplate with *positional parameters*. This makes records useful for simple types that  just combine or hold data.{alertInfo}
 
 
 
@@ -112,7 +112,7 @@ When you need to change the data like database operations
 
 ## By default Record type is imutable but you can create mutable record but not recommended
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyOTcxODgxNjAsNjgyNjk0MzgsMTUyMz
-M5MTExMCwtMTQyOTk2MjE5NCw2NDc5NzU2MTYsLTE1MDIyODUy
-ODZdfQ==
+eyJoaXN0b3J5IjpbMjEyNDQwNTY2Miw2ODI2OTQzOCwxNTIzMz
+kxMTEwLC0xNDI5OTYyMTk0LDY0Nzk3NTYxNiwtMTUwMjI4NTI4
+Nl19
 -->
