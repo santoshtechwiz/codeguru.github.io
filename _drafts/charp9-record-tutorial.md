@@ -1,12 +1,10 @@
 
 ## Compare Record and Class
 
-As per the microsoft
 
-> A record is a type of class that is intended to work with immutable (read-only) data.The non-destructive mutation is its most useful feature:
+> In C#9 A record is a type of class that is intended to work with immutable (read-only) data.The non-destructive mutation is its most useful feature:
 
-
-
+## Syntax for creating record
 ```csharp
 public record RPerson(string FirstName,string LastName);
 ```
@@ -118,7 +116,7 @@ When you need to change the data like database operations
 
 ## By default Record type is imutable but you can create mutable record but not recommended
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMyNTQ4NjI2NCw2ODI2OTQzOCwxNTIzMz
+eyJoaXN0b3J5IjpbLTcyNzE4OTc0Niw2ODI2OTQzOCwxNTIzMz
 kxMTEwLC0xNDI5OTYyMTk0LDY0Nzk3NTYxNiwtMTUwMjI4NTI4
 Nl19
 -->
