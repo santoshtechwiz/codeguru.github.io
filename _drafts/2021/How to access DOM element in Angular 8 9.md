@@ -52,7 +52,9 @@ export class AppComponent implements AfterViewInit {
 <iframe src="https://stackblitz.com/edit/codeguru-dom?embed=1&file=src/app/app.component.ts&view=preview" width='500' height='400'></iframe>
 
 
+
+> Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
 eyJwcm9wZXJ0aWVzIjoidGFnczogQW5ndWxhclxuIiwiaGlzdG
-9yeSI6WzE3MDY0MzY3ODNdfQ==
+9yeSI6Wy0xNzY0NTM3MzUsMTcwNjQzNjc4M119
 -->
