@@ -58,7 +58,10 @@ Let's assume you have
 }
 }
 ```
+
+
+<iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/QGOKFrvx28guctVl38?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzOTAyODQ3MDIsMTg3ODQ2NzUwNCwtMT
-E5NjQxNTczNSw3MzA5OTgxMTZdfQ==
+eyJoaXN0b3J5IjpbLTEyOTIxMTM5MTMsLTEzOTAyODQ3MDIsMT
+g3ODQ2NzUwNCwtMTE5NjQxNTczNSw3MzA5OTgxMTZdfQ==
 -->
