@@ -34,8 +34,31 @@ Let's assume you have
 }
 ```
 
+.NET 5.0
 
+
+```csharp
+@page "/focus"
+<h3>InputFocus</h3>
+@inject IJSRuntime Js
+<EditForm Model="model">
+    <!-- <InputText id="elemetnToFocus" @bind-Value="model" class="form form-control"></InputText> -->
+     <InputText  @ref="InputToFocus" @bind-Value="model" class="form form-control"></InputText>
+</EditForm>
+
+@code {
+    private string model = "";
+    private InputText InputToFocus;
+    
+   protected override async Task OnAfterRenderAsync(bool firstRender)
+{
+    if (firstRender)
+      if (InputToFocus.Element != null)
+           await InputToFocus.Element.Value.FocusAsync();
+}
+}
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjc2NzYzNzg4LDE4Nzg0Njc1MDQsLTExOT
-Y0MTU3MzVdfQ==
+eyJoaXN0b3J5IjpbLTEzOTAyODQ3MDIsMTg3ODQ2NzUwNCwtMT
+E5NjQxNTczNV19
 -->
