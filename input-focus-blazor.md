@@ -33,7 +33,9 @@ Let's assume you have
     }
 }
 ```
+
+.NET 5
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg3ODQ2NzUwNCwtMTE5NjQxNTczNSw3Mz
-A5OTgxMTZdfQ==
+eyJoaXN0b3J5IjpbOTk1MDgxODk2LDE4Nzg0Njc1MDQsLTExOT
+Y0MTU3MzUsNzMwOTk4MTE2XX0=
 -->
