@@ -40,10 +40,21 @@ Blazor.registerCustomEventType('dotnetguruevent', {
 		    public bool IsMedia { get; set; }
 		    public string Data { get; set; }
 		}
+```
+
+ 3. List item
+```csharp
+[EventHandler("ondotnetguruevent", typeof(DotNetGuruEventArgs), true, true)]
+		public static class EventHandlers
+		{
+		}
+```
+
+## Live Demo
 
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/GmEUlsOi09g7ff4h31?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQwODg1MDg4MSwtOTc3MDY4MDQwLDk5MD
+eyJoaXN0b3J5IjpbMTY5NDQwNTc0OCwtOTc3MDY4MDQwLDk5MD
 UzNDg1MSwtMjA1NjE1ODM4LDE1NTYwMzE4MjAsMTA1MzQzNjY4
 Myw3MzA5OTgxMTZdfQ==
 -->
