@@ -1,4 +1,4 @@
-This blog post I will show you how to focus an input element in Blazor app
+This blog post I will show you how to focus an input element in Blazor app. Let's suppose you want when user browser to your page you want that focus shoud
 
 Let's assume you have
 
@@ -62,6 +62,7 @@ Let's assume you have
 
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/QGOKFrvx28guctVl38?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyOTIxMTM5MTMsLTEzOTAyODQ3MDIsMT
-g3ODQ2NzUwNCwtMTE5NjQxNTczNSw3MzA5OTgxMTZdfQ==
+eyJoaXN0b3J5IjpbLTUyNzM5NjQwMywtMTI5MjExMzkxMywtMT
+M5MDI4NDcwMiwxODc4NDY3NTA0LC0xMTk2NDE1NzM1LDczMDk5
+ODExNl19
 -->
