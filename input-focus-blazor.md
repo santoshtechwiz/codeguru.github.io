@@ -5,8 +5,7 @@ I will show you two technique to handle this. The first one is JavaScript approa
 
 >You can write JavaScript function in   `wwwroot/index.html`  (Blazor WebAssembly) or  `Pages/_Layout.cshtml`  (Blazor Server) immediately after the Blazor  `<script>`
 
-Let's first understand the `JavaScript` approach. I have created a J
-
+Let's first understand the `JavaScript` approach. I have created a JavaScript function on global scope which takes element id and set the focus
 
 
 ```js
@@ -16,6 +15,7 @@ Let's first understand the `JavaScript` approach. I have created a J
         }
 
 ```
+Now its time to call the JavaScript function.As you know if you want to register `JavaScript` function or want to access Browser API then  `OnAfterRender`  lifecycle event is best place to register
 
 >InputFocus.razor
 
@@ -68,7 +68,7 @@ Let's first understand the `JavaScript` approach. I have created a J
 
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/QGOKFrvx28guctVl38?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0OTQ3NzQyNDQsLTEyOTIxMTM5MTMsLT
-EzOTAyODQ3MDIsMTg3ODQ2NzUwNCwtMTE5NjQxNTczNSw3MzA5
-OTgxMTZdfQ==
+eyJoaXN0b3J5IjpbMjkyNDI0NzA1LC0xMjkyMTEzOTEzLC0xMz
+kwMjg0NzAyLDE4Nzg0Njc1MDQsLTExOTY0MTU3MzUsNzMwOTk4
+MTE2XX0=
 -->
