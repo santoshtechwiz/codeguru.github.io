@@ -79,6 +79,26 @@ Assume you have two components `ComOne` and `ComTwo` in the component folders
 
 }
 ```
+
+Let's understand the aboive code most of the code are biolerplate code. The only method that is related to dynmaic loading of component is `LoadComponent`. Blazor provides a very power
+
+
+```csharp
+ public void LoadComponent(ChangeEventArgs e)
+    {
+       
+        RenderFragment = builder =>
+        {
+            var currentComponent = FilterByType(typeof(ComponentBase), e.Value.ToString());
+            if (currentComponent != null)
+            {
+                builder.OpenComponent(0, currentComponent);
+                builder.CloseComponent();
+            }
+        };
+        StateHasChanged();
+    }
+  ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAyMDQxNjQ5XX0=
+eyJoaXN0b3J5IjpbLTQwMDQwMTU3OV19
 -->
