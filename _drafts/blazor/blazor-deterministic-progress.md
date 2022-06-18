@@ -60,7 +60,11 @@ Let's see how to show the progress bar in the UI. Here I am creating the instanc
         await GetPosts(new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 }, progress);
 
     }
-    ```
+```
+
+### Complete Code
+
+
 
 ```csharp
 @page "/progress"
@@ -120,5 +124,5 @@ Let's see how to show the progress bar in the UI. Here I am creating the instanc
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzOTczNTYyNzEsLTU5ODg3NTAzMl19
+eyJoaXN0b3J5IjpbLTY0MzAyNTY2NiwtNTk4ODc1MDMyXX0=
 -->
