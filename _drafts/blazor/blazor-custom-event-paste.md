@@ -14,27 +14,22 @@ The following steps are generally what are required in order to enable custom ev
     ```  
 2.  Register the custom event with the preceding handler in  `wwwroot/index.html`  (Blazor WebAssembly) or  `Pages/_Layout.cshtml`  (Blazor Server) immediately after the Blazor  `<script>`:
     
-    HTMLCopy
-    
-    ```
+  ```js
     <script>
       Blazor.registerCustomEventType('customevent', {
         createEventArgs: eventArgsCreator;
       });
     </script>
+```
+
+
     
-    ```
-    
-    Note
-    
-    The call to  `registerCustomEventType`  is performed in a script only once per event.
+  >The call to  registerCustomEventType`  is performed in a script only once per event.
     
 3.  Define a class for the event arguments:
     
-    C#Copy
-    
-    ```
-    public class CustomEventArgs : EventArgs
+    ```csharp
+        public class CustomEventArgs : EventArgs
     {
         public string? CustomProperty1 {get; set;}
         public string? CustomProperty2 {get; set;}
@@ -139,6 +134,6 @@ In a Razor component, attach the custom handler to an element.
 
 `Pages/CustomPasteArguments.razor`:
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE3OTc1NTg1MCwxMDUzNDM2NjgzLDczMD
-k5ODExNl19
+eyJoaXN0b3J5IjpbLTE2NTU3OTg5MjMsMTA1MzQzNjY4Myw3Mz
+A5OTgxMTZdfQ==
 -->
