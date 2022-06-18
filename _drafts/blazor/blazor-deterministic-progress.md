@@ -1,4 +1,4 @@
-
+In this blog post I will show you how to show deterministics progress bar in Blazor Web Assembly. In order to achive the goal we dont need any third party library. C# already has one interface `IProgress` that expose one method `Report` that sends the data to 
 
 ```csharp
 @page "/progress"
@@ -58,5 +58,5 @@
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYyMjEzNjMxNSwtNTk4ODc1MDMyXX0=
+eyJoaXN0b3J5IjpbNTA2MDExOTc1LC01OTg4NzUwMzJdfQ==
 -->
