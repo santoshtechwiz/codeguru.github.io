@@ -80,7 +80,8 @@ Assume you have two components, `ComOne` and `ComTwo` in the component folders a
 
 }
 ```
-In order to make demo simple I have already c
+In order to make demo simple I have already created a list of component as a string array in UI but you can scan the assembly and load the components.
+
 
 >Represents a segment of UI content, implemented as a delegate that writes the content to a [RenderTreeBuilder](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.components.rendering.rendertreebuilder?view=aspnetcore-6.0).
 
@@ -104,6 +105,6 @@ Let's understand the above code; most of the code is boilerplate. The only metho
     }
   ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NjM1NzM2MSwxMTkyNjM1NjMsLTE3Mj
-MyNzU2NzddfQ==
+eyJoaXN0b3J5IjpbLTIxMDU5NTEzNDcsMTE5MjYzNTYzLC0xNz
+IzMjc1Njc3XX0=
 -->
