@@ -15,7 +15,7 @@ Let's first understand the `JavaScript` approach. I have created a JavaScript fu
         }
 
 ```
-Now its time to call the JavaScript function.As you know if you want to register `JavaScript` function or want to access Browser API then  `OnAfterRender`  lifecycle event is best place to re
+Now its time to call the JavaScript function.As you know if you want to register `JavaScript` function or want to access Browser API then  `OnAfterRender`  lifecycle event is best place to register. In the following code I am injecting the `IJSRuntime` interface and then calling the function that it now when the page is loaded in the browser it will be focused
 
 >InputFocus.razor
 
@@ -40,7 +40,9 @@ Now its time to call the JavaScript function.As you know if you want to register
 }
 ```
 
-.NET 5.0
+## Second Apporach
+
+If you are using .net version 5.0 or higher you can achive the above functionality v
 
 
 ```csharp
@@ -68,6 +70,6 @@ Now its time to call the JavaScript function.As you know if you want to register
 
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/QGOKFrvx28guctVl38?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMzQ4MTEwNTUsLTEyOTIxMTM5MTMsLT
-EzOTAyODQ3MDIsMTg3ODQ2NzUwNCwtMTE5NjQxNTczNV19
+eyJoaXN0b3J5IjpbMzA0ODUyMzAyLC0xMjkyMTEzOTEzLC0xMz
+kwMjg0NzAyLDE4Nzg0Njc1MDQsLTExOTY0MTU3MzVdfQ==
 -->
