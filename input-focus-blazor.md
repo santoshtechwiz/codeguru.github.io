@@ -42,8 +42,11 @@ Now its time to call the JavaScript function.As you know if you want to register
 
 ## Second Apporach
 
-If you are using .net version 5.0 or higher you can achive the above functionality very 
-
+If you are using .net version 5.0 or higher you can achive the above functionality very easily. .net 5.0 allows to reference InputText component in C# code. Just declare a variable  `InputToFocus` and assign it to @ref as shown below
+```csharp
+  <InputText  @ref="InputToFocus" @bind-Value="model" class="form form-control">
+```
+Now you can 
 
 ```csharp
 @page "/focus"
@@ -70,7 +73,7 @@ If you are using .net version 5.0 or higher you can achive the above functionali
 
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/QGOKFrvx28guctVl38?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc3MDc5MjczMCwtMTI5MjExMzkxMywtMT
-M5MDI4NDcwMiwxODc4NDY3NTA0LC0xMTk2NDE1NzM1LDczMDk5
-ODExNl19
+eyJoaXN0b3J5IjpbLTIwNzA1MzAxMTQsLTEyOTIxMTM5MTMsLT
+EzOTAyODQ3MDIsMTg3ODQ2NzUwNCwtMTE5NjQxNTczNSw3MzA5
+OTgxMTZdfQ==
 -->
