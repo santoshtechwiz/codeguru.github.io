@@ -1,6 +1,6 @@
 
 In this blog post, I will show you how to load the blazor component dynamically. 
-Assume you have two components, `ComOne` and `ComTwo` in the component folders
+Assume you have two components, `ComOne` and `ComTwo` in the component folders and 
 
 ![](https://blogger.googleusercontent.com/img/a/AVvXsEjw_ZRoKUFt974keXx79VTid71cicO1RYw-crUpeg-CKjs7HLqRWxVF7ZOXseUpuiUcteNW4RoJ0yp-8HHj4WOIWZEb4YHAIPrjxpNgqofzOlOXX59NRT-Wkx6S_SuPc3x2GJalT1Rg4CNWg9fKPfPMT-cvNp0BYCAiRMmx7XxzdfzCAV7QRhKHFz1uag=w640-h314)
 
@@ -104,6 +104,6 @@ Let's understand the above code; most of the code is boilerplate. The only metho
     }
   ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NTAwMTc2NTYsMTE5MjYzNTYzLC0xNz
-IzMjc1Njc3XX0=
+eyJoaXN0b3J5IjpbODE0OTYyMDMzLDExOTI2MzU2MywtMTcyMz
+I3NTY3N119
 -->
