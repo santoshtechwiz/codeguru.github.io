@@ -2,7 +2,12 @@ This blog post I will show you how to focus an input element in Blazor app. Let'
 I will show you two technique to handle this. The first one is JavaScript approach and second one is Blazor approach which is aviable after .net 5.0
 
 ## First Apporach
-Let's first understand the ja
+
+>You can write JavaScript function in   `wwwroot/index.html`  (Blazor WebAssembly) or  `Pages/_Layout.cshtml`  (Blazor Server) immediately after the Blazor  `<script>`
+
+Let's first understand the `JavaScript` approach. I have created a J
+
+
 
 ```js
   window.focusElement = (element) => {
@@ -63,7 +68,7 @@ Let's first understand the ja
 
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/QGOKFrvx28guctVl38?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk0NjUzNDM5NCwtMTI5MjExMzkxMywtMT
-M5MDI4NDcwMiwxODc4NDY3NTA0LC0xMTk2NDE1NzM1LDczMDk5
-ODExNl19
+eyJoaXN0b3J5IjpbLTE0OTQ3NzQyNDQsLTEyOTIxMTM5MTMsLT
+EzOTAyODQ3MDIsMTg3ODQ2NzUwNCwtMTE5NjQxNTczNSw3MzA5
+OTgxMTZdfQ==
 -->
