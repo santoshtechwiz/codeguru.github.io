@@ -54,8 +54,11 @@ Above is the simple C# custom eventargs class which have two property IsMedia an
 		{
 		}
 ```
+This is the most important part of the article. Here we are registring the custom event 
+> Make sure that you prefix on on your event name
 
- 5. Register the event handler on one or more HTML elements. Access the data that was passed in from JavaScript in the delegate handler method:
+
+ 5. Now its time to consume the custom event Register the event handler on one or more HTML elements. Access the data that was passed in from JavaScript in the delegate handler method:
 ```csharp
 <label>
     Try pasting into the following text box:
@@ -80,13 +83,14 @@ Above is the simple C# custom eventargs class which have two property IsMedia an
     }
 }
 ```
+Above 
 Whenever the custom event is fired on the DOM, the event handler is called with the data passed from the JavaScript.
 
 ## Live Demo
 
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/GmEUlsOi09g7ff4h31?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODI5MjUyMDg5LC05NzcwNjgwNDAsOTkwNT
+eyJoaXN0b3J5IjpbMjI1OTA2MjE4LC05NzcwNjgwNDAsOTkwNT
 M0ODUxLC0yMDU2MTU4MzgsMTU1NjAzMTgyMCwxMDUzNDM2Njgz
 LDczMDk5ODExNl19
 -->
