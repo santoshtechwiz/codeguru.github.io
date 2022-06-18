@@ -27,23 +27,24 @@ The following steps are generally required to enable custom events with custom e
   >
     
 3. Define a class for the event arguments:
+
     
     ```csharp
-    public class DotNetGuruEventArgs : EventArgs
-{
-    public bool IsMedia { get; set; }
-    public string Data { get; set; }
-}
-
-[EventHandler("ondotnetguruevent", typeof(DotNetGuruEventArgs), true, true)]
-public static class EventHandlers
-{
-}
-````
- 
     
-4- An [EventHandlerAttribute](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.components.eventhandlerattribute) attribute annotation should be added to the custom event to connect the custom event with the event parameters. It is not necessary to have members in the class:
->Code
+		public class DotNetGuruEventArgs : EventArgs
+		{
+		    public bool IsMedia { get; set; }
+		    public string Data { get; set; }
+		}
+```
+4. An [EventHandlerAttribute](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.components.eventhandlerattribute) attribute annotation should be added to the custom event to connect the custom event with the event parameters. It is not necessary to have members in the class:
+```csharp
+
+		[EventHandler("ondotnetguruevent", typeof(DotNetGuruEventArgs), true, true)]
+		public static class EventHandlers
+		{
+		}
+```
     
 5. It is possible to register the event handler on one or more of the HTML elements. In the handler method for the delegate, which can be found here, you can retrieve the data sent in from JavaScript: It is possible to register the event handler on one or more of the HTML elements. In the handler method for the delegate, which can be found here, you can retrieve the data that was sent in from JavaScript:
 >code
@@ -52,7 +53,7 @@ public static class EventHandlers
 
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/GmEUlsOi09g7ff4h31?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg0NDUzNDA5NSwtOTc3MDY4MDQwLDk5MD
-UzNDg1MSwtMjA1NjE1ODM4LDE1NTYwMzE4MjAsMTA1MzQzNjY4
-Myw3MzA5OTgxMTZdfQ==
+eyJoaXN0b3J5IjpbOTE4NzU5OTk2LC05NzcwNjgwNDAsOTkwNT
+M0ODUxLC0yMDU2MTU4MzgsMTU1NjAzMTgyMCwxMDUzNDM2Njgz
+LDczMDk5ODExNl19
 -->
