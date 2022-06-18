@@ -4,7 +4,7 @@ The following steps are generally what are required in order to enable custom ev
 1. Define a function in JavaScript that will be responsible for constructing the custom event argument object from the source event:
     
     
-        ```js
+   ```js
     function eventArgsCreator(event) { 
       return {
         customProperty1: 'any value for property 1',
@@ -139,6 +139,6 @@ In a Razor component, attach the custom handler to an element.
 
 `Pages/CustomPasteArguments.razor`:
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ0MDA1MjMwLDEwNTM0MzY2ODMsNzMwOT
-k4MTE2XX0=
+eyJoaXN0b3J5IjpbMTE3OTc1NTg1MCwxMDUzNDM2NjgzLDczMD
+k5ODExNl19
 -->
