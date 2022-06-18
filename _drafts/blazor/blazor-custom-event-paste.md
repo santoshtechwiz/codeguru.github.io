@@ -1,3 +1,6 @@
+In this blog post I will show you one of the lesser known feature of Blazor custom event. This feature allows us to map a event to browser event and then connect to C# code. 
+Here I am going to build a textbox that react to paste event and displayed the image that is pasted similar to facebook or twitter textbox.
+Currently the code support only the png image but you can easl
 
 The following steps are generally required to enable custom events with custom event arguments.
 
@@ -82,7 +85,7 @@ Whenever the custom event is fired on the DOM, the event handler is called with 
 
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/GmEUlsOi09g7ff4h31?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMDgzNDk2MywtOTc3MDY4MDQwLDk5MD
-UzNDg1MSwtMjA1NjE1ODM4LDE1NTYwMzE4MjAsMTA1MzQzNjY4
-Myw3MzA5OTgxMTZdfQ==
+eyJoaXN0b3J5IjpbMzc0NTg2NDIxLC05NzcwNjgwNDAsOTkwNT
+M0ODUxLC0yMDU2MTU4MzgsMTU1NjAzMTgyMCwxMDUzNDM2Njgz
+LDczMDk5ODExNl19
 -->
