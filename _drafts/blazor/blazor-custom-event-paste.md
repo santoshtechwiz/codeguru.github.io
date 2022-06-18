@@ -1,6 +1,7 @@
-In this blog post I will show you one of the lesser known feature of Blazor custom event. This feature allows us to map a event to browser event and then connect to C# code. 
-Here I am going to build a textbox that react to paste event and displayed the image that is pasted similar to facebook or twitter textbox.
-Currently the code support only the png image but you can easly extended it.
+
+In this blog post, I will show you one of the lesser-known features of the Blazor custom event. This feature allows us to map an event to a browser event and then connect to the C# code. 
+Here I am going to build a textbox that reacts to paste events and displays the pasted image, similar to Facebook or Twitter textbox.
+Currently, the code supports only the png image, but this can quickly extend it.
 
 The following steps are generally required to enable custom events with custom event arguments.
 
@@ -32,7 +33,7 @@ Blazor.registerCustomEventType('dotnetguruevent', {
   }
 });
 ```
-Above code defines a custom event `dotnetguruevent` (you can name it whatever you want) and then this event is map to browser paste event. when any control trigger the `dotnetguruevent` event it will fire the `createEventArgs` event and process the data and send it to C# method. See the other steps for how to connect this functions to c#
+The above code defines a custom event `dotnetguruevent` (you can name it whatever you want). Then this event is the map to browser paste event. When any control triggers the `dotnetguruevent` event, it will fire the `createEventArgs` event, process the data, and send it to the C# method. See the other steps for how to connect these functions to c#
  >The call to registerCustomEventType`  is performed in a script only once per event.
 
  2. Define a class for the event arguments:
@@ -44,7 +45,7 @@ Above code defines a custom event `dotnetguruevent` (you can name it whatever yo
 		    public string Data { get; set; }
 		}
 ```
-Above is the simple C# custom eventargs class which have two property IsMedia and Data.
+Above is the simple C# custom event args class, which has two properties, IsMedia and Data.
 
  3. Wire up the custom event with the event arguments by adding an EventHandlerAttribute attribute annotation for the custom event. The class doesn't require members:
 
@@ -54,8 +55,8 @@ Above is the simple C# custom eventargs class which have two property IsMedia an
 		{
 		}
 ```
-This is the most important part of the article. Here we are registring the custom event 
-> Make sure that you prefix on on your event name
+This is the essential part of the article. Here we are registering the custom event 
+> Make sure that you prefix your event name
 
 
  5. Now its time to consume the custom event Register the event handler on one or more HTML elements. Access the data that was passed in from JavaScript in the delegate handler method:
@@ -83,14 +84,14 @@ This is the most important part of the article. Here we are registring the custo
     }
 }
 ```
-Above code is slef explanorty
-Whenever the custom event is fired on the DOM, the event handler is called with the data passed from the JavaScript.
+The above code is self-explanatory.
+Whenever the custom event is fired on the DOM, the event handler is called with the data passed from JavaScript.
 
 ## Live Demo
 
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/GmEUlsOi09g7ff4h31?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkwNDU2MzUxNSwtOTc3MDY4MDQwLDk5MD
-UzNDg1MSwtMjA1NjE1ODM4LDE1NTYwMzE4MjAsMTA1MzQzNjY4
-Myw3MzA5OTgxMTZdfQ==
+eyJoaXN0b3J5IjpbLTE5MzA1Njc5MzksLTk3NzA2ODA0MCw5OT
+A1MzQ4NTEsLTIwNTYxNTgzOCwxNTU2MDMxODIwLDEwNTM0MzY2
+ODMsNzMwOTk4MTE2XX0=
 -->
