@@ -1,6 +1,8 @@
 In this blog post I will show you how to load blazor component dynamically. 
 Assume you have two components `ComOne` and `ComTwo` in the component folders
 
+![](https://blogger.googleusercontent.com/img/a/AVvXsEjw_ZRoKUFt974keXx79VTid71cicO1RYw-crUpeg-CKjs7HLqRWxVF7ZOXseUpuiUcteNW4RoJ0yp-8HHj4WOIWZEb4YHAIPrjxpNgqofzOlOXX59NRT-Wkx6S_SuPc3x2GJalT1Rg4CNWg9fKPfPMT-cvNp0BYCAiRMmx7XxzdfzCAV7QRhKHFz1uag=w640-h314)
+
 >Components/ComOne.razor
 
 ```csharp
@@ -53,12 +55,9 @@ Assume you have two components `ComOne` and `ComTwo` in the component folders
     protected override void OnInitialized()
     {
     }
-
-
     public void LoadComponent(ChangeEventArgs e)
     {
-        Console.WriteLine(e.Value);
-
+       
         RenderFragment = builder =>
         {
             var currentComponent = FilterByType(typeof(ComponentBase), e.Value.ToString());
@@ -81,5 +80,5 @@ Assume you have two components `ComOne` and `ComTwo` in the component folders
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTcxNjQyNTEyXX0=
+eyJoaXN0b3J5IjpbMjAyMDQxNjQ5XX0=
 -->
