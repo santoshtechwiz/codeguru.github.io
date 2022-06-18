@@ -1,11 +1,12 @@
-This blog post I will show you how to focus an input element in Blazor app. Let's suppose you want when user browser to your page you want that focus should be on the input control.
-I will show you two technique to handle this. The first one is JavaScript approach and second one is Blazor approach which is aviable after .net 5.0
 
-## First Apporach
+In this blog post, I will show you how to focus an input element in Blazor app. Let's suppose you want when the user browser to your page you want that focus should be on the input control.
+I will show you two techniques to handle this. The first one is the JavaScript approach, and the second one is the Blazor approach which is available after .net 5.0
 
->You can write JavaScript function in   `wwwroot/index.html`  (Blazor WebAssembly) or  `Pages/_Layout.cshtml`  (Blazor Server) immediately after the Blazor  `<script>`
+## First Approach
 
-Let's first understand the `JavaScript` approach. I have created a JavaScript function on global scope which takes element id and set the focus
+>You can write JavaScript function in   `wwwroot/index.html`  (Blazor WebAssembly) or  `Pages/_Layout.cshtml`  (Blazor Server) immediately after the Blazor  `<script>.`
+
+Let's first understand the `JavaScript approach. I have created a JavaScript function on the global scope, which takes element id and sets the focus.
 
 
 ```js
@@ -15,7 +16,7 @@ Let's first understand the `JavaScript` approach. I have created a JavaScript fu
         }
 
 ```
-Now its time to call the JavaScript function.As you know if you want to register `JavaScript` function or want to access Browser API then  `OnAfterRender`  lifecycle event is best place to register. In the following code I am injecting the `IJSRuntime` interface and then calling the function that it now when the page is loaded in the browser it will be focused
+Now it's time to call the JavaScript function. As you know, if you want to register the `JavaScript` function or access Browser API, then the `OnAfterRender`  lifecycle event is the best place to register. In the following code, I inject the `IJSRuntime` interface and then call the function that now, when the page is loaded in the browser, it will be focused.
 
 >InputFocus.razor
 
@@ -40,13 +41,13 @@ Now its time to call the JavaScript function.As you know if you want to register
 }
 ```
 
-## Second Apporach
+## Second Approach
 
 If you are using .net version 5.0 or higher you can achive the above functionality very easily. .net 5.0 allows to reference InputText component in C# code. Just declare a variable  `InputToFocus` and assign it to @ref as shown below
 ```csharp
   <InputText  @ref="InputToFocus" @bind-Value="model" class="form form-control">
 ```
-Now you can 
+Now you can `FocusAsync()` method on the @ref in C# code.
 
 ```csharp
 @page "/focus"
@@ -69,10 +70,11 @@ Now you can
 }
 }
 ```
-
+## Live Demo
+I have added both approaches in the following demo; just comment and play with the code.
 
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/QGOKFrvx28guctVl38?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNzA1MzAxMTQsLTEyOTIxMTM5MTMsLT
-EzOTAyODQ3MDIsMTg3ODQ2NzUwNCwtMTE5NjQxNTczNV19
+eyJoaXN0b3J5IjpbLTk5Nzc5NzI3NiwtMTI5MjExMzkxMywtMT
+M5MDI4NDcwMiwxODc4NDY3NTA0LC0xMTk2NDE1NzM1XX0=
 -->
