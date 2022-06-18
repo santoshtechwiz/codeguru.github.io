@@ -1,19 +1,17 @@
-Custom events with custom event arguments are generally enabled with the following steps.
 
-1.  In JavaScript, define a function for building the custom event argument object from the source event:
+The following steps are generally what are required in order to enable custom events with custom event arguments.
+
+1. Define a function in JavaScript that will be responsible for constructing the custom event argument object from the source event:
     
-    JavaScriptCopy
     
-    ```
+        ```js
     function eventArgsCreator(event) { 
       return {
         customProperty1: 'any value for property 1',
         customProperty2: event.srcElement.value
       };
     }
-    
-    ```
-    
+    ```  
 2.  Register the custom event with the preceding handler in  `wwwroot/index.html`  (Blazor WebAssembly) or  `Pages/_Layout.cshtml`  (Blazor Server) immediately after the Blazor  `<script>`:
     
     HTMLCopy
@@ -141,5 +139,6 @@ In a Razor component, attach the custom handler to an element.
 
 `Pages/CustomPasteArguments.razor`:
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA1MzQzNjY4Myw3MzA5OTgxMTZdfQ==
+eyJoaXN0b3J5IjpbLTQ0MDA1MjMwLDEwNTM0MzY2ODMsNzMwOT
+k4MTE2XX0=
 -->
