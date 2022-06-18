@@ -83,6 +83,7 @@ Assume you have two components, `ComOne` and `ComTwo` in the component folders
 
 Let's understand the above code; most of the code is boilerplate. The only method related to the dynamic loading of components is `LoadComponent`. Blazor provides a powerful API `RenderFragment` delegate that reacts to DOM events and builds the dom tree. In the following code, I am finding the component from the assembly, and then I am adding the component in RenderTree dynamically based on the type selected from the DropDown list
 
+>Represents a segment of UI content, implemented as a delegate that writes the content to a [RenderTreeBuilder](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.components.rendering.rendertreebuilder?view=aspnetcore-6.0).
 
 ```csharp
  public void LoadComponent(ChangeEventArgs e)
@@ -101,5 +102,6 @@ Let's understand the above code; most of the code is boilerplate. The only metho
     }
   ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE5MjYzNTYzLC0xNzIzMjc1Njc3XX0=
+eyJoaXN0b3J5IjpbLTY5OTQxNjM1MywxMTkyNjM1NjMsLTE3Mj
+MyNzU2NzddfQ==
 -->
