@@ -76,12 +76,13 @@ Blazor.registerCustomEventType('dotnetguruevent', {
     }
 }
 ```
+Whenever the custom event is fired on the DOM, the event handler is called with the data passed from the JavaScript.
 
 ## Live Demo
 
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/GmEUlsOi09g7ff4h31?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NzkyODU3NzAsLTk3NzA2ODA0MCw5OT
-A1MzQ4NTEsLTIwNTYxNTgzOCwxNTU2MDMxODIwLDEwNTM0MzY2
-ODMsNzMwOTk4MTE2XX0=
+eyJoaXN0b3J5IjpbLTExMDgzNDk2MywtOTc3MDY4MDQwLDk5MD
+UzNDg1MSwtMjA1NjE1ODM4LDE1NTYwMzE4MjAsMTA1MzQzNjY4
+Myw3MzA5OTgxMTZdfQ==
 -->
