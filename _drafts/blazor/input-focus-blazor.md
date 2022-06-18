@@ -1,7 +1,8 @@
-This blog post I will show you how to focus an input element in Blazor app. Let's suppose you want when user browser to your page you want that focus 
+This blog post I will show you how to focus an input element in Blazor app. Let's suppose you want when user browser to your page you want that focus should be on the input control.
+I will show you two technique to handle this. The first one is JavaScript approach and second one is Blazor approach which is aviable after .net 5.0
 
-Let's assume you have
-
+## First Apporach
+Let's first understand
 
 ```js
   window.focusElement = (element) => {
@@ -62,6 +63,6 @@ Let's assume you have
 
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/QGOKFrvx28guctVl38?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkxNjQ1NzY4NiwtMTI5MjExMzkxMywtMT
-M5MDI4NDcwMiwxODc4NDY3NTA0LC0xMTk2NDE1NzM1XX0=
+eyJoaXN0b3J5IjpbNTMxMDE3NjA4LC0xMjkyMTEzOTEzLC0xMz
+kwMjg0NzAyLDE4Nzg0Njc1MDQsLTExOTY0MTU3MzVdfQ==
 -->
