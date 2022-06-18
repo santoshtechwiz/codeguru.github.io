@@ -83,14 +83,14 @@ This is the most important part of the article. Here we are registring the custo
     }
 }
 ```
-Above 
+Above code is slef explanorty
 Whenever the custom event is fired on the DOM, the event handler is called with the data passed from the JavaScript.
 
 ## Live Demo
 
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/GmEUlsOi09g7ff4h31?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjI1OTA2MjE4LC05NzcwNjgwNDAsOTkwNT
-M0ODUxLC0yMDU2MTU4MzgsMTU1NjAzMTgyMCwxMDUzNDM2Njgz
-LDczMDk5ODExNl19
+eyJoaXN0b3J5IjpbLTkwNDU2MzUxNSwtOTc3MDY4MDQwLDk5MD
+UzNDg1MSwtMjA1NjE1ODM4LDE1NTYwMzE4MjAsMTA1MzQzNjY4
+Myw3MzA5OTgxMTZdfQ==
 -->
