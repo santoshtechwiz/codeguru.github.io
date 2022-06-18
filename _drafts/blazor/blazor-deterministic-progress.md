@@ -35,9 +35,32 @@ Let's see the following method. In this method I am making api calls to jsonplac
 
 ```
 
-Let's see how to show the progress bar in the UI
+Let's see how to show the progress bar in the UI. Here I am creating the instance of the Progress class and then pass the action method in the body where I am getting the progress value. once I recived the progress value I am re-rendering the UI by calling `StateHasChanged` method.
 
-```c
+```csharp
+<div class="progress">
+    <div class="progress-bar bg-success"
+         role="progressbar" style="width: @(progressValue)%" aria-valuenow="@progressValue" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+
+@code {
+
+    int eventCount = 0;
+    int progressValue = 0;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var progress = new Progress<int>(x =>
+        {
+            progressValue = x;
+
+            StateHasChanged();
+
+        });
+        await GetPosts(new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 }, progress);
+
+    }
+    ```
 
 ```csharp
 @page "/progress"
@@ -97,5 +120,5 @@ Let's see how to show the progress bar in the UI
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTg5OTY4NTY2LC01OTg4NzUwMzJdfQ==
+eyJoaXN0b3J5IjpbLTEzOTczNTYyNzEsLTU5ODg3NTAzMl19
 -->
