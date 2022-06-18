@@ -75,43 +75,13 @@ Blazor.registerCustomEventType('dotnetguruevent', {
         }
     }
 }
-
-<script suppress-error="BL9992">
-  Blazor.registerCustomEventType('custompaste', {
-    browserEventName: 'paste',
-    createEventArgs: event => {
-        alert(event);
-        let isMedia = false;
-        let data = event.clipboardData.getData('Text');
-        const items = event.clipboardData.items;
-        const acceptedMim = ['image/png'];
-        for (let i = 0; i < items.length; i++) {
-            const file = items[i].getAsFile();
-            if (!file) continue;
-            if (acceptedMim.indexOf(items[i].type) === -1) {
-                continue;
-
-            }
-            isMedia = true;
-            const url = window.URL || window.webkitURL;
-            data = url.createObjectURL(file);
-          
-
-        }
-        return {
-            isMedia,
-            data
-        }
-    }
-});
-</script>
 ```
 
 ## Live Demo
 
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/GmEUlsOi09g7ff4h31?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NTI3NTUwODgsLTk3NzA2ODA0MCw5OT
+eyJoaXN0b3J5IjpbLTE4NzkyODU3NzAsLTk3NzA2ODA0MCw5OT
 A1MzQ4NTEsLTIwNTYxNTgzOCwxNTU2MDMxODIwLDEwNTM0MzY2
 ODMsNzMwOTk4MTE2XX0=
 -->
