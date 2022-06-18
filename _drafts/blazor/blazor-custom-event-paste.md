@@ -32,7 +32,7 @@ Blazor.registerCustomEventType('dotnetguruevent', {
   }
 });
 ```
-Above code defines a custom event `dotnetguruevent` (you can name it whatever you want) and then this event is map to browser paste event. when any control trigg
+Above code defines a custom event `dotnetguruevent` (you can name it whatever you want) and then this event is map to browser paste event. when any control trigger the `dotnetguruevent` event it will fire the `createEventArgs` event and process the data and send it to C# method. See the other steps for how to connect this functions to c#
  >The call to registerCustomEventType`  is performed in a script only once per event.
 
  2. Define a class for the event arguments:
@@ -44,6 +44,7 @@ Above code defines a custom event `dotnetguruevent` (you can name it whatever yo
 		    public string Data { get; set; }
 		}
 ```
+Above is the simple C# custom eventargs class which have two property IsMedia and Data.
 
  3. Wire up the custom event with the event arguments by adding an EventHandlerAttribute attribute annotation for the custom event. The class doesn't require members:
 
@@ -85,7 +86,7 @@ Whenever the custom event is fired on the DOM, the event handler is called with 
 
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/GmEUlsOi09g7ff4h31?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgxMTIwODk4MiwtOTc3MDY4MDQwLDk5MD
-UzNDg1MSwtMjA1NjE1ODM4LDE1NTYwMzE4MjAsMTA1MzQzNjY4
-Myw3MzA5OTgxMTZdfQ==
+eyJoaXN0b3J5IjpbODI5MjUyMDg5LC05NzcwNjgwNDAsOTkwNT
+M0ODUxLC0yMDU2MTU4MzgsMTU1NjAzMTgyMCwxMDUzNDM2Njgz
+LDczMDk5ODExNl19
 -->
