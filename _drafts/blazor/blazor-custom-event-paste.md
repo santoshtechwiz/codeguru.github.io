@@ -36,35 +36,16 @@ The following steps are generally what are required in order to enable custom ev
     }
 
     
-4- Wire up the custom event with the event arguments by adding an  [EventHandlerAttribute](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.components.eventhandlerattribute)  attribute annotation for the custom event. The class doesn't require members:
+4- An [EventHandlerAttribute](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.components.eventhandlerattribute) attribute annotation should be added to the custom event in order to connect the custom event with the event parameters. It is not necessary to have members in the class:
+>Code
     
- 
-```csharp
-    [EventHandler("oncustomevent", typeof(CustomEventArgs), enableStopPropagation: true, enablePreventDefault: true)]
-    static class EventHandlers
-    {
-    }
-  ```
-    
-5.  Register the event handler on one or more HTML elements. Access the data that was passed in from JavaScript in the delegate handler method:
-
-    ```csharp
-
-    <button @oncustomevent="HandleCustomEvent">Handle</button>
-    
-    @code
-    {
-        void HandleCustomEvent(CustomEventArgs eventArgs)
-        {
-            // eventArgs.CustomProperty1
-            // eventArgs.CustomProperty2
-        }
-    }
-
+5.  The event handler can be registered on one or more HTML elements. You can get the data that was sent in from JavaScript in the handler method for the delegate here:
+>code
+  
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU1NjAzMTgyMCwxMDUzNDM2NjgzLDczMD
-k5ODExNl19
+eyJoaXN0b3J5IjpbNjQ5MDk4NDk0LDE1NTYwMzE4MjAsMTA1Mz
+QzNjY4Myw3MzA5OTgxMTZdfQ==
 -->
