@@ -36,7 +36,10 @@ The following steps are generally required to enable custom events with custom e
 >code
   
 
+
+<iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/GmEUlsOi09g7ff4h31?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTkwNTM0ODUxLC0yMDU2MTU4MzgsMTU1Nj
-AzMTgyMCwxMDUzNDM2NjgzLDczMDk5ODExNl19
+eyJoaXN0b3J5IjpbLTk3NzA2ODA0MCw5OTA1MzQ4NTEsLTIwNT
+YxNTgzOCwxNTU2MDMxODIwLDEwNTM0MzY2ODMsNzMwOTk4MTE2
+XX0=
 -->
