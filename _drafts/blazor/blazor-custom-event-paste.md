@@ -12,7 +12,7 @@ The following steps are generally what are required in order to enable custom ev
       };
     }
     ```  
-2.  
+2.  Register the custom event with the preceding handler in  `wwwroot/index.html`  (Blazor WebAssembly) or  `Pages/_Layout.cshtml`  (Blazor Server) immediately after the Blazor  `<script>`:
     
   ```js
     <script>
@@ -22,19 +22,11 @@ The following steps are generally what are required in order to enable custom ev
     </script>
 ```
 
-
-    
   >The call to  registerCustomEventType`  is performed in a script only once per event.
     
 3.  Define a class for the event arguments:
     
-    ```csharp
-        public class CustomEventArgs : EventArgs
-    {
-        public string? CustomProperty1 {get; set;}
-        public string? CustomProperty2 {get; set;}
-    }
-
+ 
     
 4- An [EventHandlerAttribute](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.components.eventhandlerattribute) attribute annotation should be added to the custom event in order to connect the custom event with the event parameters. It is not necessary to have members in the class:
 >Code
@@ -44,6 +36,6 @@ The following steps are generally what are required in order to enable custom ev
   
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM0ODIwNDIwMCwtMjA1NjE1ODM4LDE1NT
-YwMzE4MjAsMTA1MzQzNjY4Myw3MzA5OTgxMTZdfQ==
+eyJoaXN0b3J5IjpbNjk4NDE1ODkwLC0yMDU2MTU4MzgsMTU1Nj
+AzMTgyMCwxMDUzNDM2NjgzLDczMDk5ODExNl19
 -->
