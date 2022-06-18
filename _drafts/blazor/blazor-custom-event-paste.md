@@ -13,7 +13,7 @@ The following steps are generally required to enable custom events with custom e
       };
     }
     ```  
-2. Register the custom event with the preceding handler in  `wwwroot/index.html`  (Blazor WebAssembly) or  `Pages/_Layout.cshtml`  (Blazor Server) immediately after the Blazor  `<script>`:
+2. Register the custom event with the preceding handler in  `wwwroot/index.html`  (Blazor WebAssembly) or  `Pages/_Layout.cshtml`  (Blazor Server) immediately after the Blazor  `<script>`
     
   ```js
     <script>
@@ -24,9 +24,22 @@ The following steps are generally required to enable custom events with custom e
 ```
 
   >The call to registerCustomEventType`  is performed in a script only once per event.
+  >
     
 3. Define a class for the event arguments:
     
+    ```csharp
+    public class DotNetGuruEventArgs : EventArgs
+{
+    public bool IsMedia { get; set; }
+    public string Data { get; set; }
+}
+
+[EventHandler("ondotnetguruevent", typeof(DotNetGuruEventArgs), true, true)]
+public static class EventHandlers
+{
+}
+````
  
     
 4- An [EventHandlerAttribute](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.components.eventhandlerattribute) attribute annotation should be added to the custom event to connect the custom event with the event parameters. It is not necessary to have members in the class:
@@ -39,7 +52,7 @@ The following steps are generally required to enable custom events with custom e
 
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/GmEUlsOi09g7ff4h31?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk3NzA2ODA0MCw5OTA1MzQ4NTEsLTIwNT
-YxNTgzOCwxNTU2MDMxODIwLDEwNTM0MzY2ODMsNzMwOTk4MTE2
-XX0=
+eyJoaXN0b3J5IjpbLTg0NDUzNDA5NSwtOTc3MDY4MDQwLDk5MD
+UzNDg1MSwtMjA1NjE1ODM4LDE1NTYwMzE4MjAsMTA1MzQzNjY4
+Myw3MzA5OTgxMTZdfQ==
 -->
