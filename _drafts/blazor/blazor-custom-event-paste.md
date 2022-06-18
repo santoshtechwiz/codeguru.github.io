@@ -12,7 +12,7 @@ The following steps are generally what are required in order to enable custom ev
       };
     }
     ```  
-2.  Register the custom event with the preceding handler in  `wwwroot/index.html`  (Blazor WebAssembly) or  `Pages/_Layout.cshtml`  (Blazor Server) immediately after the Blazor  `<script>`:
+2.  
     
   ```js
     <script>
@@ -44,6 +44,6 @@ The following steps are generally what are required in order to enable custom ev
   
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNTYxNTgzOCwxNTU2MDMxODIwLDEwNT
-M0MzY2ODMsNzMwOTk4MTE2XX0=
+eyJoaXN0b3J5IjpbLTM0ODIwNDIwMCwtMjA1NjE1ODM4LDE1NT
+YwMzE4MjAsMTA1MzQzNjY4Myw3MzA5OTgxMTZdfQ==
 -->
