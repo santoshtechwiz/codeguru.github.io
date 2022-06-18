@@ -42,7 +42,8 @@ Blazor.registerCustomEventType('dotnetguruevent', {
 		}
 ```
 
- 3. List item
+ 3. Wire up the custom event with the event arguments by adding an EventHandlerAttribute attribute annotation for the custom event. The class doesn't require members:
+
 ```csharp
 [EventHandler("ondotnetguruevent", typeof(DotNetGuruEventArgs), true, true)]
 		public static class EventHandlers
@@ -54,7 +55,7 @@ Blazor.registerCustomEventType('dotnetguruevent', {
 
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/GmEUlsOi09g7ff4h31?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY5NDQwNTc0OCwtOTc3MDY4MDQwLDk5MD
-UzNDg1MSwtMjA1NjE1ODM4LDE1NTYwMzE4MjAsMTA1MzQzNjY4
-Myw3MzA5OTgxMTZdfQ==
+eyJoaXN0b3J5IjpbLTE2OTE0OTQyMjgsLTk3NzA2ODA0MCw5OT
+A1MzQ4NTEsLTIwNTYxNTgzOCwxNTU2MDMxODIwLDEwNTM0MzY2
+ODMsNzMwOTk4MTE2XX0=
 -->
