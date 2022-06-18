@@ -80,7 +80,7 @@ Assume you have two components `ComOne` and `ComTwo` in the component folders
 }
 ```
 
-Let's understand the aboive code most of the code are biolerplate code. The only method that is related to dynmaic loading of component is `LoadComponent`. Blazor provides a very power
+Let's understand the aboive code most of the code are biolerplate code. The only method that is related to dynmaic loading of component is `LoadComponent`. Blazor provides a very powerfull API `RenderFragment` delegate that reacts to DOM event and build the dom tree. In the following code I am finding the component from assembly and then I am adding the component in RenderTree dynamically based on the type selected from the DropDown list
 
 
 ```csharp
@@ -100,5 +100,5 @@ Let's understand the aboive code most of the code are biolerplate code. The only
     }
   ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQwMDQwMTU3OV19
+eyJoaXN0b3J5IjpbLTE3MjMyNzU2NzddfQ==
 -->
