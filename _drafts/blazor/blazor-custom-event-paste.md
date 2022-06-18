@@ -51,7 +51,8 @@ The following steps are generally what are required in order to enable custom ev
 5.  Register the event handler on one or more HTML elements. Access the data that was passed in from JavaScript in the delegate handler method:
     
      
-    ```html
+    ```csharp
+
     <button @oncustomevent="HandleCustomEvent">Handle</button>
     
     @code
@@ -62,11 +63,10 @@ The following steps are generally what are required in order to enable custom ev
             // eventArgs.CustomProperty2
         }
     }
-``
+```
 
-
-
+zfsdsf
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDAyODcwMjIzLDEwNTM0MzY2ODMsNzMwOT
-k4MTE2XX0=
+eyJoaXN0b3J5IjpbMTA1MTg1NTE0NSwxMDUzNDM2NjgzLDczMD
+k5ODExNl19
 -->
