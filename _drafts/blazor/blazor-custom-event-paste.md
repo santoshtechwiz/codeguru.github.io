@@ -7,7 +7,7 @@ The following steps are generally required to enable custom events with custom e
 
  1. Define a function in JavaScript that will be responsible for constructing the custom event argument object from the source event and  Register the custom event with the preceding handler in  `wwwroot/index.html`  (Blazor WebAssembly) or  `Pages/_Layout.cshtml`  (Blazor Server) immediately after the Blazor  `<script>`
 ```js
-Blazor.registerCustomEventType('dotnetguruevent', {
+Blazor.registerCustomEventType('codeguruevent', {
   browserEventName: 'paste',
   createEventArgs: event => {
     let isMedia = false;
@@ -39,7 +39,7 @@ The above code defines a custom event `dotnetguruevent` (you can name it whateve
  2. Define a class for the event arguments:
 
 ```csharp
-	public class DotNetGuruEventArgs : EventArgs
+	public class CodeGuruEventArgs : EventArgs
 		{
 		    public bool IsMedia { get; set; }
 		    public string Data { get; set; }
@@ -50,7 +50,7 @@ Above is the simple C# custom event args class, which has two properties, IsMedi
  3. Wire up the custom event with the event arguments by adding an EventHandlerAttribute attribute annotation for the custom event. The class doesn't require members:
 
 ```csharp
-[EventHandler("ondotnetguruevent", typeof(DotNetGuruEventArgs), true, true)]
+[EventHandler("oncodeguruevent", typeof(DotNetGuruEventArgs), true, true)]
 		public static class EventHandlers
 		{
 		}
@@ -63,7 +63,7 @@ This is the essential part of the article. Here we are registering the custom ev
 ```csharp
 <label>
     Try pasting into the following text box:
-    <textarea @oncustompaste="HandleCustomPaste" />
+    <textarea @oncodeguruevent="HandleCustomPaste" />
 </label>
 
 <p>
@@ -76,7 +76,7 @@ This is the essential part of the article. Here we are registering the custom ev
     private string? message;
     private List<string> images=new List<string>();
 
-    private void HandleCustomPaste(CustomPasteEventArgs eventArgs)
+    private void HandleCustomPaste(CodeGuruEventArgs eventArgs)
     {
         if(eventArgs.IsMedia){
           images.Add(eventArgs.Data);
@@ -91,7 +91,7 @@ Whenever the custom event is fired on the DOM, the event handler is called with 
 
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/GmEUlsOi09g7ff4h31?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MzA1Njc5MzksLTk3NzA2ODA0MCw5OT
-A1MzQ4NTEsLTIwNTYxNTgzOCwxNTU2MDMxODIwLDEwNTM0MzY2
-ODMsNzMwOTk4MTE2XX0=
+eyJoaXN0b3J5IjpbMzk4OTkxMTQ0LC0xOTMwNTY3OTM5LC05Nz
+cwNjgwNDAsOTkwNTM0ODUxLC0yMDU2MTU4MzgsMTU1NjAzMTgy
+MCwxMDUzNDM2NjgzLDczMDk5ODExNl19
 -->
