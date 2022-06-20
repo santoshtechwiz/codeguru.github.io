@@ -1,6 +1,8 @@
 
 In this blog post, I will show you how to show the deterministic progress bar in Blazor Web Assembly. To achieve the goal, we don't need any third-party library. C# already has one interface, `IProgress`, that exposes one method, `Report`, that sends the data to the caller.
 
+![](https://blogger.googleusercontent.com/img/a/AVvXsEjvGP5N_mu81tjivJRC8Mqoy8b0gPrtPf0_dRKHCw8PLpiVedQu8vFbiU0zZG1OVRfexivJciTq3rB81tuODc6V3bLHr7cgu9rgg8lwto4gSOzrZrPuFCSnNq9NdyqZZ-O-bs8PFbPDDbmS_nN48-nVvWFx8usMdGiMu_1rj_Z-FpXBOlXbhYW0thCOBQ=w400-h281)
+
 Let's see the following method. I am making API calls to JSON placeholder in a loop in this method. I have injected the `IProgress<int>` interface in the GetPosts, and then I am calculating the progress value and calling the report method.
 
 
@@ -124,7 +126,10 @@ Let's see how to show the progress bar in the UI. Here I am creating the instanc
 }
 
 ```
+
+## Live Demo
+<iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/GmYKGYlO22PE2wmt30?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTQ4NzM5MDIxLC02NDMwMjU2NjYsLTU5OD
-g3NTAzMl19
+eyJoaXN0b3J5IjpbLTE2NTE1NjI0MDksNTQ4NzM5MDIxLC02ND
+MwMjU2NjYsLTU5ODg3NTAzMl19
 -->
