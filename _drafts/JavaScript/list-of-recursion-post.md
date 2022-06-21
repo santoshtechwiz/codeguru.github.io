@@ -4,7 +4,10 @@
  - [Generate permutations of a given string in c#](https://www.codeguru.co.in/2013/04/generate-permutations-of-given-string.html "Generate permutations of a given string in c#")
  - [Minimum coin change problem using recursion in JavaScript](https://www.codeguru.co.in/2021/06/minimum-coin-change-problem-using.html "Minimum coin change problem using recursion in JavaScript")
  - [How do I loop through all the controls in a form?](https://www.codeguru.co.in/2008/03/how-do-i-loop-through-all-controls-in.html "How do I loop through all the controls in a form?")
+ - [How to draw fractal tree in html5](https://www.codeguru.co.in/2017/03/how-to-draw-fractal-tree-in-html5.html "How to draw fractal tree in html5")
+ - [Quick sort program in C# using recursion](https://www.codeguru.co.in/2013/04/quicksort-is-very-efficient-sorting.html "Quick sort program in C# using recursion")
+ - [Recursively Flatten JavaScript Array](https://www.codeguru.co.in/2021/06/recursively-flatten-javascript-array.html "Recursively Flatten JavaScript Array")
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAzOTA5NTU1MV19
+eyJoaXN0b3J5IjpbLTEwNzUwOTE4NzddfQ==
 -->
