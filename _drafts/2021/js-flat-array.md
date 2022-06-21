@@ -1,4 +1,4 @@
-I have started a series on recursive problem. In this problem I will show you how to flat of nested array objects using javascript with visulization.
+I have started a series on recursive problem. In this problem I will show you how to  flatten javascript array.This example is for nested array objects. In order to understand the recursive part I have added the visualization which will help to understand the recur
 
 Let's suppose you have following function `fn` which accepts nested array as arguments and then it flat the array into single array.
 >Input
@@ -32,5 +32,6 @@ Lets understand the code line by line
 
 ![](https://1.bp.blogspot.com/-gW4XETt9RJY/YL8HP7ooGQI/AAAAAAAAOxQ/IrR_h1hY3lcT6I75wfeSnVmtQxtlZffIgCLcBGAsYHQ/w640-h402/flatten.gif)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTcwMzAzNjQ1OCw3ODA0ODAxMTddfQ==
+eyJoaXN0b3J5IjpbLTE1MjI1NDM1MzYsLTcwMzAzNjQ1OCw3OD
+A0ODAxMTddfQ==
 -->
