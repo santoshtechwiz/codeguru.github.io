@@ -1,4 +1,5 @@
-In this blog po
+In this blog post I will show you some LINQ advanced features like finding moving average, nth highest salary using LINQ,left,right join using LINQ and many more.
+
 
  - [How to extract number from string using Linq](https://www.codeguru.co.in/2021/10/how-to-extract-number-from-string-using.html "How to extract number from string using Linq")
  - [Moving Average In C# Using LINQ](https://www.codeguru.co.in/2021/06/moving-average-in-c-using-linq.html "Moving Average In C# Using LINQ")
@@ -24,5 +25,5 @@ In this blog po
  - [How To display Image using LINQ To SQL](https://www.codeguru.co.in/2009/11/how-to-display-image-using-linq-to-sql.html "How To display Image using LINQ To SQL")
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjExNTM3MjkzXX0=
+eyJoaXN0b3J5IjpbLTcwODg4NDEzNV19
 -->
