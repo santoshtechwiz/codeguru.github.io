@@ -1,4 +1,4 @@
-In this article, I will show you how to shuffle an array in javascript. We will use The modern version of the Fisher-Yates shuffle, designed for computer use, was introduced by  [Richard Durstenfeld](https://en.wikipedia.org/w/index.php?title=Richard_Durstenfeld&action=edit&redlink=1 "Richard Durstenfeld (page does not exist)")  in 1964
+In this article, I will show you how to shuffle an array in javascript. Suffling or randomization is used in security or game design. In order to shuffle or randomized the item we need the efficinent algorithm. Here We will use The modern version of the Fisher-Yates shuffle, designed for computer use, was introduced by  [Richard Durstenfeld](https://en.wikipedia.org/w/index.php?title=Richard_Durstenfeld&action=edit&redlink=1 "Richard Durstenfeld (page does not exist)")  in 1964
 
 The algorithm for shuffling the array is very simple.
 
@@ -37,5 +37,5 @@ function arrayShuffle(arr){
 
 As you can see in the above algorithm, we are looping through the array and generating random index and swapping with the current element. Once the loop is finished, the array is shuffled.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAxMjc3NTA1N119
+eyJoaXN0b3J5IjpbMTk1MDgyOTAwMl19
 -->
