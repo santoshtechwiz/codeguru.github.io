@@ -1,5 +1,5 @@
 
-In
+In this blog post I have listed some of the recursive problems like find the permutions of a given string,merge sort,quick sort and flatten the javascript array. All problems have the solutions and also have visualization in order to understand how computer recurse the method calls.
 
  - [Recursion-1 > bunnyEars](https://www.codeguru.co.in/2017/11/recursion-1-bunnyears.html "Recursion-1 > bunnyEars ")
  - [Generate permutations of a given string in c#](https://www.codeguru.co.in/2013/04/generate-permutations-of-given-string.html "Generate permutations of a given string in c#")
@@ -12,5 +12,5 @@ In
  - [QuickSort implementation in TypeScript using recursion](https://www.codeguru.co.in/2021/05/quicksort-implementation-in-typescript.html "QuickSort implementation in TypeScript using recursion")
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQyNjg0NDU1XX0=
+eyJoaXN0b3J5IjpbOTM0MjcyMDM2XX0=
 -->
