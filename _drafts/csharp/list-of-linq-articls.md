@@ -1,4 +1,4 @@
-
+In this blog po
 
  - [How to extract number from string using Linq](https://www.codeguru.co.in/2021/10/how-to-extract-number-from-string-using.html "How to extract number from string using Linq")
  - [Moving Average In C# Using LINQ](https://www.codeguru.co.in/2021/06/moving-average-in-c-using-linq.html "Moving Average In C# Using LINQ")
@@ -17,7 +17,12 @@
  - [How to read namespace based xml using Linq](https://www.codeguru.co.in/2012/10/how-to-read-namespace-based-xml-using.html "How to read namespace based xml using Linq")
  - [How to use anonymous and Lambda expression in .net](https://www.codeguru.co.in/2010/09/how-to-use-anonymous-and-lambda.html "How to use anonymous and Lambda expression in .net")
  - [CASE Statement Equivalent in LINQ](https://www.codeguru.co.in/2010/08/case-statement-equivalent-in-linq.html "CASE Statement Equivalent in LINQ")
+ - [Linq and Sql "where in" Operator](https://www.codeguru.co.in/2010/08/linq-and-sql-where-in-operator.html "Linq and Sql  "where in"  Operator")
+ - [Linq and Reflection](https://www.codeguru.co.in/2010/08/linq-and-reflection.html "Linq and Reflection")
+ - [How to extract number from string using Linq](https://www.codeguru.co.in/2010/08/how-to-extract-number-from-string-using.html "How to extract number from string using Linq")
+ - [How to apply Left Outer join in Linq to Sql](https://www.codeguru.co.in/2010/08/how-to-apply-left-outer-join-in-linq-to.html "How to apply Left Outer join in Linq to Sql")
+ - [How To display Image using LINQ To SQL](https://www.codeguru.co.in/2009/11/how-to-display-image-using-linq-to-sql.html "How To display Image using LINQ To SQL")
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk1MTkzMTYyMF19
+eyJoaXN0b3J5IjpbNjExNTM3MjkzXX0=
 -->
