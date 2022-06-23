@@ -23,7 +23,19 @@ public async IAsyncEnumerable<string> GetPostAsync()
 
 ## How to use
 
-In order to use the above method you can simply write the foreach loop and then prefix the foreach with `await` operato
+In order to use the above method you can simply write the foreach loop and then prefix the foreach with `await` operator
+
+
+```csharp
+async void Main()
+{
+
+	await foreach (var item in GetPostAsync())
+	{
+		Console.WriteLine(item);
+	}
+}
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAyMzUzODI2N119
+eyJoaXN0b3J5IjpbLTc5MDgxODc4Ml19
 -->
