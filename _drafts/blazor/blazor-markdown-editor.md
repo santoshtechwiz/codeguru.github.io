@@ -2,7 +2,7 @@
 Nowadays, Markdown is an intelligent technology for creating web editors. StackOverflow uses MarkDown editor on their QnA website. There is a lot of online markdown editor available, like stackedit is very popular.
 This blog post will show you how to create a markdown editor in the Blazor Application.
 
-Let's start with some basic HTML structure.I have created a bootstrap row and two column first column is input
+Let's start with some basic HTML structure.I have created a bootstrap row and two column first column is input area and second column will show the preview
 
 ```csharp
 <div class="row">
@@ -41,7 +41,7 @@ For this, we can use properties and Blazor’s binding syntax. We just need to d
 
 # From markup to HTML
 
-Happily, we don't need to expend much effort to get HTML from this markup, and we can employ the excellent Markdig .NET Markdown processor to do it for us.
+Till now we have not added anything related to Markdown. In order to convert text to html we don't need to expend much effort to get HTML from this markup, and we can employ the excellent Markdig .NET Markdown processor to do it for us.
 
 Bring in the NuGet package.
 
@@ -89,6 +89,6 @@ Let's add a new `StringToMarkdown` property to our component, which will invoke 
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/mQaAQouJ41XMcCnE13?editor=true&result=true&errorList=false"></iframe>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkxMTk0NjQxLDc1MTk3MTQxNywxNTgxNz
-c1ODY2LC04MjI0NzQyNzZdfQ==
+eyJoaXN0b3J5IjpbLTE2NDU3ODYxOSw3NTE5NzE0MTcsMTU4MT
+c3NTg2NiwtODIyNDc0Mjc2XX0=
 -->
