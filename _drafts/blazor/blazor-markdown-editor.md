@@ -2,6 +2,18 @@ Now a days Markdown is very popular technology for creating web editor. StackOve
 In this blog post,I will show you how to create a markdown editor in Blazor Application.
 
 
+```csharp
+<div class="row">
+    <div class="col-6">
+        <textarea class="form-control"></textarea>
+    </div>
+    <div class="col-6">
+       ==Preview==
+    </div>
+</div>
+```
+
+
 
 ```csharp
 @using Markdig
@@ -41,5 +53,6 @@ In this blog post,I will show you how to create a markdown editor in Blazor Appl
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/mQaAQouJ41XMcCnE13?editor=true&result=true&errorList=false"></iframe>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU4MTc3NTg2NiwtODIyNDc0Mjc2XX0=
+eyJoaXN0b3J5IjpbODgyNDQ3MTE1LDE1ODE3NzU4NjYsLTgyMj
+Q3NDI3Nl19
 -->
