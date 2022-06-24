@@ -8,7 +8,7 @@
 
 > The binary heap was introduced by  [J. W. J. Williams](https://www.blogger.com/blog/post/edit/6673695286148904603/654739943086543692#)  in 1964, as a data structure for  [heapsort](https://www.blogger.com/blog/post/edit/6673695286148904603/654739943086543692# "Heapsort").[[2]](https://www.blogger.com/blog/post/edit/6673695286148904603/654739943086543692#)
 
-This blog post I will show you how to implement min-heap in typescript/javascript. In Min-heap lowest item is alwasy on the root while in max-heap highrst value is on the root. Both can be used to
+This blog post I will show you how to implement min-heap in typescript/javascript. In Min-heap lowest item is alwasy on the root while in max-heap highrst value is on the root. Both can be used to implement priority queue. Some languages have in-built heap implementions but some langujages like C# and JavaScript does not have but we can easily create our own.
 A heap implemented with a binary tree that follows the following two rules:
 
 -   Each node’s Element is greater than or equal to the elements of that node’s children…
@@ -113,5 +113,5 @@ export class MinHeap {
 3.  [Huffman Coding Compression Algorithm](https://www.blogger.com/blog/post/edit/6673695286148904603/654739943086543692#)
 4.  [Heap Sort Algorithm](https://www.blogger.com/blog/post/edit/6673695286148904603/654739943086543692#)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUwNDkzNTk2OF19
+eyJoaXN0b3J5IjpbNzczNDEwOTkyXX0=
 -->
