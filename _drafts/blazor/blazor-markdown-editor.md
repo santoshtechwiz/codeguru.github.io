@@ -42,14 +42,13 @@ For this, we can use properties and Blazor’s binding syntax. We just need to d
 # From markup to HTML
 
 Till now we have not added anything related to Markdown. In order to convert text to html we don't need to expend much effort to get HTML from this markup, and we can employ the excellent Markdig .NET Markdown processor to do it for us.
+Lets add nuget package to our project by running the following command
 
-Bring in the NuGet package.
 
-"`PowerShell
+```bash
 Install-Package Markdig
 ```
-
-Let's add a new `StringToMarkdown` property to our component, which will invoke Markdig every time we request its value.
+Once nuget package is installed .Let's add a new `StringToMarkdown` property to our component, which will invoke Markdig every time we request its value.
 
 ```csharp
 @using Markdig
@@ -89,6 +88,6 @@ Let's add a new `StringToMarkdown` property to our component, which will invoke 
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/mQaAQouJ41XMcCnE13?editor=true&result=true&errorList=false"></iframe>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NDU3ODYxOSw3NTE5NzE0MTcsMTU4MT
+eyJoaXN0b3J5IjpbMTM2NDMzODA5OCw3NTE5NzE0MTcsMTU4MT
 c3NTg2NiwtODIyNDc0Mjc2XX0=
 -->
