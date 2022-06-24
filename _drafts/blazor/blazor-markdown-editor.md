@@ -27,27 +27,14 @@ For this, we can use properties and Blazor’s binding syntax. We just need to d
        @bind:event="oninput" ></textarea>
     </div>
     <div class="col-6">
-        @((MarkupString)StringToMarkdown)
+        @(StringToMarkdown)
     </div>
 </div>
 @code {
     public string Body { get; set; } = string.Empty;
     private string html="";
-    public string StringToMarkdown{
-
-        get{
-            try{
-
-                html=Markdown.ToHtml(Body);
-            }
-            catch{
-
-            }
-            return html;
-        }
-    }
+    public string StringToMarkdown;
  
-
 }
 ```
 
@@ -101,6 +88,6 @@ Let’s add a new `StringToMarkdown` property to our component which will invoke
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/mQaAQouJ41XMcCnE13?editor=true&result=true&errorList=false"></iframe>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM5MDg5MzQ3LDE1ODE3NzU4NjYsLTgyMj
+eyJoaXN0b3J5IjpbNzUxOTcxNDE3LDE1ODE3NzU4NjYsLTgyMj
 Q3NDI3Nl19
 -->
