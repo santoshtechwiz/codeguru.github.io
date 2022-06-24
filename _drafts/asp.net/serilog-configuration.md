@@ -9,7 +9,7 @@
 [Message template](https://www.blogger.com/blog/post/edit/6673695286148904603/4366762326115193244#)  
 [How to override the log level](https://www.blogger.com/blog/post/edit/6673695286148904603/4366762326115193244#)
 
-This blog I will show you how to configure `Serilog` in asp.net core application. Logging is very important in any applications by using logging we can easily troubeshoot the pro
+This blog I will show you how to configure `Serilog` in asp.net core application. Logging is very important in any applications by using logging we can easily troubeshoot the production issue. ASP.NET core already provided the logging features but this blog we will discuss `Serilog` which is very popular logging framework of .net core application
 
 ## What is SeriLog
 
@@ -175,5 +175,5 @@ Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU0NTkzMTQ2MV19
+eyJoaXN0b3J5IjpbLTEwMDUwNjkyNzBdfQ==
 -->
