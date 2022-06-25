@@ -4,7 +4,7 @@
     -   [How to mock the protected method](https://www.codeguru.co.in/2021/05/c-mock-protected-async-method-using-moq.html#how-to-mock-the-protected-method)
     -   [Limitations](https://www.codeguru.co.in/2021/05/c-mock-protected-async-method-using-moq.html#limitations)
 
-In this blog post I will show you shome tips and trics of `Moq` framework. Like how to moq protected method,how to 
+In this blog post I will show you shome tips and trics of `Moq` framework. Like how to moq protected method,how to moq async method with some real world example. Before diving into the code let's get familar with some basic terms.
 
 ## Why Mocking?
 
@@ -60,14 +60,13 @@ public class ServiceHelperTest
 ```
 
 As you can see, the test is calling the actual protected method.  
+
 Let’s create a mock of the class and set up the behaviour; as you can see in the image below, IntelliSense is not showing the protected method. So let’s run the test without setup and see the result.
 
 ![](https://lh3.googleusercontent.com/-IPUaeQ6KFj8/YK-J2GKl4dI/AAAAAAAAOsI/4n_VNBMEwJETRzr__tPxxs6bU5rgJZLDACLcBGAsYHQ/s16000-rw/image.png)]
 
 ```csharp
-
-
-[Fact]
+     [Fact]
 	public async Task Should_throw_error_if_call_on_mock_object()
 	{
 		var mockService = new Mock<ServiceHelper>();
@@ -76,13 +75,11 @@ Let’s create a mock of the class and set up the behaviour; as you can see in t
 	}
 
 ```
-
 > You will get the following error
 
 ```bash
 [FAIL] ServiceHelperTest.Should_throw_error_if_call_on_mock_object: 
 Value cannot be null. (Parameter 'value')
-
 ```
 
 ## How to mock the protected method
@@ -120,5 +117,5 @@ If you run the above test case, you can see that it’s calling the Moq method, 
 
 [C# mock HttpClientFactory-HttpClient](https://www.codeguru.co.in/2020/05/easily-mock-htppclient-in-c-using-moq.html)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQzNDY2NzIxOF19
+eyJoaXN0b3J5IjpbNjc1MDkzNzRdfQ==
 -->
