@@ -1,8 +1,8 @@
-Jest is a JavaScript testing framework maintained by Facebook, Inc. designed and built by Christoph Nakazawa with a focus on simplicity and support for large web applications. It works with projects using Babel, TypeScript, Node.js, React, Angular, Vue.js and Svelte.  [Wikipedia](https://en.wikipedia.org/wiki/Jest_(JavaScript_framework))
+>Jest is a JavaScript testing framework maintained by Facebook, Inc. designed and built by Christoph Nakazawa with a focus on simplicity and support for large web applications. It works with projects using Babel, TypeScript, Node.js, React, Angular, Vue.js and Svelte.  [Wikipedia](https://en.wikipedia.org/wiki/Jest_(JavaScript_framework))
 
-In this post, I will show you an easy way to automatically mock all the function of the module. By the end of this tutorial, you will learn the following things.
+In this post, I will show you an easy way to automatically mock all the function of the module. Jest also alows you to mock module function. By the end of this tutorial, you will learn the following things.
 
--   How to mock a module automatically
+-   How to mock a module functional automatically
 -   How to check the function is the mock function
 -   How to assert on the mock function
 
@@ -51,5 +51,5 @@ describe("automatic mocks", () => {
 
 As you can see now every function have a  `mock`  property and now you can use all the mock functionality of jest on your function
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMzMTE2Nzk1OV19
+eyJoaXN0b3J5IjpbODUxNDcxNTddfQ==
 -->
