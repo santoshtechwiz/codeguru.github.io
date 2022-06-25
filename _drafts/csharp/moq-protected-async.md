@@ -8,7 +8,7 @@ In this blog post I will show you shome tips and trics of `Moq` framework. Like 
 
 ## Why Mocking?
 
-An object you want to test can depend on other complex things. So you substitute the other objects for mocks simulating the conduct of the actual objects to isolate their behaviour. Simply put, mocking creates objects that mimic true objects’ behaviour.
+In this blog post I will show you the tips and trics of the Moq framework. For example, how to moq protected method and how to moq async method with real-world examples. Before diving into the code, let's get familiar with some basic terms.
 
 > Moq is commonly used to create mock objects based on interfaces.  
 > However, in some cases, Moq allows creating Moq of the classes that are called Partial Moq.
@@ -117,5 +117,5 @@ If you run the above test case, you can see that it’s calling the Moq method, 
 
 [C# mock HttpClientFactory-HttpClient](https://www.codeguru.co.in/2020/05/easily-mock-htppclient-in-c-using-moq.html)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjc1MDkzNzRdfQ==
+eyJoaXN0b3J5IjpbLTIwNTY4MTU0NDYsNjc1MDkzNzRdfQ==
 -->
