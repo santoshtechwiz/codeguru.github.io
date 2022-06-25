@@ -1,6 +1,6 @@
 # Parsing CSV using ANTLR in c#
 
-This blog post will show you how to parse the CSV file using ANTLR in C#. CSV is a very popular format for transfering the data. There are a lot of C# csv parser aviable on the internet but you can easily create your own csv parser in C#. For this
+This blog post will show you how to parse the CSV file using ANTLR in C#. CSV is a very popular format for transfering the data. There are a lot of C# csv parser aviable on the internet but you can easily create your own csv parser in C#. For this post I am using ANTLR which is very popular tool for generating lexer and parser based on the EBNF grammar.
 
 > In computer-based language recognition, ANTLR, or ANother Tool for Language Recognition, is a parser generator that uses LL for parsing. ANTLR is the successor to the Purdue Compiler Construction Tool Set, first developed in 1989, and is under active development.
 
@@ -217,5 +217,5 @@ john,doe,22
 bill,gates,35
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODcyMzYyMzEwXX0=
+eyJoaXN0b3J5IjpbLTI3MzI1ODMwNF19
 -->
