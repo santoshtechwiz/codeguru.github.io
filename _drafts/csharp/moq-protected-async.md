@@ -1,8 +1,10 @@
--   -   [Why Mocking?](https://www.codeguru.co.in/2021/05/c-mock-protected-async-method-using-moq.html#why-mocking)
+  -   [Why Mocking?](https://www.codeguru.co.in/2021/05/c-mock-protected-async-method-using-moq.html#why-mocking)
     -   [What is Partial Mock?](https://www.codeguru.co.in/2021/05/c-mock-protected-async-method-using-moq.html#what-is-partial-mock)
     -   [Example](https://www.codeguru.co.in/2021/05/c-mock-protected-async-method-using-moq.html#example)
     -   [How to mock the protected method](https://www.codeguru.co.in/2021/05/c-mock-protected-async-method-using-moq.html#how-to-mock-the-protected-method)
     -   [Limitations](https://www.codeguru.co.in/2021/05/c-mock-protected-async-method-using-moq.html#limitations)
+
+In this blog post I will show you shome tips and trics of `Moq` framework. Like how to moq protected method,how to 
 
 ## Why Mocking?
 
@@ -118,5 +120,5 @@ If you run the above test case, you can see that it’s calling the Moq method, 
 
 [C# mock HttpClientFactory-HttpClient](https://www.codeguru.co.in/2020/05/easily-mock-htppclient-in-c-using-moq.html)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIyNTI4NTE0Ml19
+eyJoaXN0b3J5IjpbLTQzNDY2NzIxOF19
 -->
