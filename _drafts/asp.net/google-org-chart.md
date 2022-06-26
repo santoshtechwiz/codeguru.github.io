@@ -1,4 +1,6 @@
-In this post, I will show you how to integrate the google org chart in your  asp.net or any web application that supports ser application.
+In this post, I will show you how to integrate the google org chart in your  asp.net or any web application. Google hirarachy or organization chart can be used in any web applications the only thing required is to get the google org chart data in the format of JSON.
+
+Let's dive into the coding
 
 -   First, create a new empty website in the visual studio
 -   Add jquery and google visualization API reference to the default page
@@ -172,5 +174,5 @@ public class Service
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgzMTk2Mzk2NV19
+eyJoaXN0b3J5IjpbLTYyMjMzNTMwN119
 -->
