@@ -33,7 +33,51 @@ function onFailure(exception, dotnetObjectRef) {
 }
 ```
 
+```csharp
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    @errorMessage
+}
 
+<video id="video" @ref="VideoElementRef"></video>
+```
+
+
+```csharp
+@code {
+
+    private ElementReference VideoElementRef { get; set; }
+    private string errorMessage = "";
+    private string jsModulePath = "./camra.js";
+    private Task<IJSObjectReference> moduleRef;
+    [Inject]
+    private IJSRuntime jSRuntime { get; set; }
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            moduleRef = jSRuntime.InvokeAsync<IJSObjectReference>("import", jsModulePath).AsTask();
+            var module = await moduleRef;
+            await module.InvokeVoidAsync("init", VideoElementRef, DotNetObjectReference.Create(this));
+        }
+    }
+
+    [JSInvokable]
+    public void OnSuccess()
+    {
+        StateHasChanged();
+
+    }
+    [JSInvokable]
+    public void onFailure(string e)
+    {
+        errorMessage = e;
+        StateHasChanged();
+    }
+
+
+}   
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEzODU3MjU0MywyMTA2MDExNjczXX0=
+eyJoaXN0b3J5IjpbLTE1MjI3OTYxODksMjEwNjAxMTY3M119
 -->
