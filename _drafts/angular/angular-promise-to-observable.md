@@ -9,7 +9,7 @@ As per the MDN
 
 >The Promise object **represents the eventual completion (or failure) of an asynchronous operation and its resulting value**
 
-B
+The diffrence betwee
 
 Angular by default returns  `Obserable`  when you invoked HTTP client methods. But let’s assume that you have a function that returns a promise. In this case, you can easily change the return type from  `Promise`  to  `Observable`  .
 
@@ -20,5 +20,5 @@ import { from } from  'rxjs';
 const observable = from(promise);
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTgxNDAyNzI1XX0=
+eyJoaXN0b3J5IjpbLTExMzA3NDY5MTJdfQ==
 -->
