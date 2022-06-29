@@ -65,7 +65,7 @@ namespace BlazorRepl.UserComponents
 ```
 >TableView.razor
 
-```csharp
+```html
 @inject TodoService todoService
 <h1>TableView</h1>
 
@@ -92,12 +92,75 @@ namespace BlazorRepl.UserComponents
   </tbody>
 </table>
 ```
+>ListView.razor
+```html
+@inject TodoService todoService
+<h1>List View</h1>
 
+
+<ul class="list-group">
+       @foreach(var todo in todoService.GetData()){
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+   <span>@todo.id</span> @todo.title
+   <p class="list-group-item-text text-success">
+        @todo.completed
+        </p>
+  </li>
+   }
+</ul>
+```
+
+>_Main.razor
+
+```csharp
+
+<select @onchange="SelectView">
+@foreach(var c in componentList){
+    <option value="@c.Name">@c.Name</option>
+}
+</select>
+&nbsp;
+<DynamicComponent Type="@(Type.GetType(currentComponent.Type))" Parameters="@currentComponent.Parameters"
+  />
+
+@code {
+
+    private Component currentComponent { get; set; }
+    private  List<Component> componentList=new List<Component>();
+    public class Component
+    {
+        public string Name { get; set; }
+
+        public string Type { get; set; }
+
+        public Dictionary<string, object> Parameters { get; set; }
+
+    }
+    protected override async Task OnInitializedAsync()
+    {
+      componentList = new List<Component>()
+        {
+            new Component() { Name = "ListView",Type = typeof(ListView).AssemblyQualifiedName, 
+            Parameters = null},
+            new Component() { Name = "TableView",Type = typeof(TableView).AssemblyQualifiedName, 
+            Parameters = null}
+
+
+        };
+        currentComponent = componentList[0];
+        await base.OnInitializedAsync();
+    }
+    public void SelectView(ChangeEventArgs e){
+        currentComponent = this.componentList.FirstOrDefault(x => x.Name.Equals(e.Value.ToString()));
+
+    }
+}
+```
 
 ## Demo
 
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/QwEAwWvx16pyPHlV47?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NDc3MTEzMDgsMTMxNjI1OTYxMiw4NT
-EyNTA2MDksMTQ2MjgwNDQ0NF19
+eyJoaXN0b3J5IjpbNjgzOTY0NTYyLDEzMTYyNTk2MTIsODUxMj
+UwNjA5LDE0NjI4MDQ0NDRdfQ==
 -->
