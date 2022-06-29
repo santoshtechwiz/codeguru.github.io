@@ -1,4 +1,4 @@
-In Blazor, we typically use either RenderTreeBuilder or Razor syntax `RenderFragment` to create dynamic components. In the classic approach, we check for the data type or for a condition to dynamically render a component. This necessitates manually maintaining the component’s state of visibility based on whether the component should be displayed or hidden, which is more complicated for complex data.
+To generate dynamic components in Blazor, we commonly utilise RenderTreeBuilder or the Razor syntax 'RenderFragment.' To dynamically render a component, we check for the data type or a condition in the traditional way. This demands manually updating the component's visible status based on whether the component should be displayed or hidden, which is more difficult with complex data.
 
 Beginning with .NET 6 Preview 1, the ASP.NET Core team introduced  [DynamicComponent](https://devblogs.microsoft.com/aspnet/asp-net-core-updates-in-net-6-preview-1/#dynamiccomponent) . The use of DynamicComponent greatly reduces the complexity of dynamic component rendering when dealing with large amounts of complex data.
 
@@ -163,6 +163,7 @@ namespace BlazorRepl.UserComponents
 
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/QwEAwWvx16pyPHlV47?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEwNDI5OTc1OCw2ODM5NjQ1NjIsMTMxNj
-I1OTYxMiw4NTEyNTA2MDksMTQ2MjgwNDQ0NF19
+eyJoaXN0b3J5IjpbMTg3MDg2ODk0NSwyMTA0Mjk5NzU4LDY4Mz
+k2NDU2MiwxMzE2MjU5NjEyLDg1MTI1MDYwOSwxNDYyODA0NDQ0
+XX0=
 -->
