@@ -37,7 +37,7 @@ function onFailure(exception, dotnetObjectRef) {
 ```
 Here I am using JavaScript module technique. The above code is self explanotry expect the dotnetObjectRef refrecne which is blazor class to interact with C#
 
-Correspoding to JavaScript I have C# method as shown below
+
 ```csharp
 @if (!string.IsNullOrEmpty(errorMessage))
 {
@@ -47,7 +47,7 @@ Correspoding to JavaScript I have C# method as shown below
 <video id="video" @ref="VideoElementRef"></video>
 ```
 
-
+Correspoding to JavaScript I have C# method as shown below
 ```csharp
 @code {
 
@@ -84,5 +84,5 @@ Correspoding to JavaScript I have C# method as shown below
 }   
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk0MDcyNzU1MiwtMTUyMjc5NjE4OV19
+eyJoaXN0b3J5IjpbMTY1ODY4MzI5MCwtMTUyMjc5NjE4OV19
 -->
