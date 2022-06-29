@@ -10,12 +10,94 @@ Let's consider you want to show todo list as list view and table view as shown i
 
 ![](https://blogger.googleusercontent.com/img/a/AVvXsEhSyIQqPK6VeuhXj1KE62AksLrPx4wxlQ6LhyHAN3cv8Rde7BC6tV7wrR-1ZgpML_D0yVs9n7dQK5Shvuet1UFNgOp99JOxA7EguocmjRnvp3Men02mioA87WVvPNNCNEA8vQlQMtrdX9rHdn31b0gqEM53U3VObA5cc34PTi6MWDJXqzAGydEZFn9siQ=w640-h450)
 
+Let's dive into the code
+>Todo.cs
+```csharp
+namespace BlazorRepl.UserComponents
+{
+	using System;
+	using System.Collections.Generic;
+	using System.Linq;
+	using System.Text;
+	using System.Threading.Tasks;
+
+	public class Todo
+	{
+		public int id { get; set; }
+		public string title { get; set; }
+		public bool completed { get; set; }
+	}
+}
+```
+>TodoService.cs
+```csharp
+
+namespace BlazorRepl.UserComponents
+{
+	using System;
+	using System.Collections.Generic;
+	using System.Linq;
+	using System.Text;
+	using System.Threading.Tasks;
+	using System.Text.Json;
+	using System.Net.Http;
+	using System.Text.Json.Serialization;
+
+	public class TodoService
+	{
+		private List<Todo> todos;
+
+
+		public List<Todo> GetData()
+		{
+			todos = new List<Todo>(){
+				new Todo{id=1,title="write the blog post",completed=false},
+				new Todo{id=2,title="go grocery outlet",completed=true},
+				new Todo{id=3,title="lreom ipsum",completed=true},
+				new Todo{id=4,title="lorem ipsum lorem ipsum",completed=false},
+			};
+			return todos;
+
+
+		}
+	}
+}
+```
+>TableView.razor
+
+```csharp
+@inject TodoService todoService
+<h1>TableView</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Completed</th>
+    
+    </tr>
+  </thead>
+  <tbody>
+         @foreach(var todo in todoService.GetData()){
+    <tr>
+     
+      <td>@todo.id</td>
+      <td>@todo.title</td>
+      <td>@todo.completed</td>
+    </tr>
+         }
+   
+    
+  </tbody>
+</table>
+```
 
 
 ## Demo
 
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/QwEAwWvx16pyPHlV47?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMxNjI1OTYxMiw4NTEyNTA2MDksMTQ2Mj
-gwNDQ0NF19
+eyJoaXN0b3J5IjpbLTE5NDc3MTEzMDgsMTMxNjI1OTYxMiw4NT
+EyNTA2MDksMTQ2MjgwNDQ0NF19
 -->
