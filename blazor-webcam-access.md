@@ -8,7 +8,7 @@ See the following image for JavaScript->C# method mapping
 ![](https://blogger.googleusercontent.com/img/a/AVvXsEj822VcB1xaPgIhlrG6wRFvWRoeY25ShKH71XadfCHFxSeOnU5tvs_GhjpEBvRK5sKyYJclQM8n9nZZnL8UyVmAU49ZxR1_6T3RbqP6eFufpn5mljTkXlTxsdnM6J-IlEXwFhh_XDI5kHOe_C6qJZOWzzMhNjlQqwSIT_nmcy2jZWstVMKni_GkMBkZ9w=w640-h258)
 
 As you can see from the above image that we are using Blazor `DotNetRefrence` class to mediate beweeen JavaScript and C#.
-Lets a
+Lets add the javascript file and add the following functions.
 
 ```js
 
@@ -35,7 +35,9 @@ function onFailure(exception, dotnetObjectRef) {
     dotnetObjectRef.invokeMethodAsync("onFailure", exception.message);
 }
 ```
+Here I am using JavaScript module technique. The above code is self explanotry expect the dotnetObjectRef refrecne which is blazor class to interact with C#
 
+Correspoding to JavaScript I have C# method as shown below
 ```csharp
 @if (!string.IsNullOrEmpty(errorMessage))
 {
@@ -82,5 +84,5 @@ function onFailure(exception, dotnetObjectRef) {
 }   
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA4MjIyNzAyNywtMTUyMjc5NjE4OV19
+eyJoaXN0b3J5IjpbMTk0MDcyNzU1MiwtMTUyMjc5NjE4OV19
 -->
