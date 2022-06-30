@@ -135,7 +135,9 @@ namespace BlazorRepl.UserComponents
 
 
 >TableView.razor
-I am using bootstrap for creating simple tabl
+
+
+I am using bootstrap for creating simple table
 
 ```html
 @inject TodoService todoService
@@ -165,6 +167,9 @@ I am using bootstrap for creating simple tabl
 </table>
 ```
 >ListView.razor
+
+Boostrap list group for showing todos as list-group
+
 ```html
 @inject TodoService todoService
 <h1>List View</h1>
@@ -186,8 +191,9 @@ I am using bootstrap for creating simple tabl
 
 
 ## Demo
+Click on preview and play with the demo
 
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/QwEAwWvx16pyPHlV47?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg4NDI5Nzc0MSwtMTA1MTEwNzMzMl19
+eyJoaXN0b3J5IjpbMTY4MDcyMTU1OCwtMTA1MTEwNzMzMl19
 -->
