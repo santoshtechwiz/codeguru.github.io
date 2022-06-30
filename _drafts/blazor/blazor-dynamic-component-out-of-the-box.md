@@ -16,6 +16,53 @@ I have created two-component `ListView.razor` and `TableView.razor` and then pop
 
 
 
+>_Main.razor
+
+```csharp
+
+<select @onchange="SelectView">
+@foreach(var c in componentList){
+    <option value="@c.Name">@c.Name</option>
+}
+</select>
+&nbsp;
+<DynamicComponent Type="@(Type.GetType(currentComponent.Type))" Parameters="@currentComponent.Parameters"
+  />
+
+@code {
+
+    private Component currentComponent { get; set; }
+    private  List<Component> componentList=new List<Component>();
+    public class Component
+    {
+        public string Name { get; set; }
+
+        public string Type { get; set; }
+
+        public Dictionary<string, object> Parameters { get; set; }
+
+    }
+    protected override async Task OnInitializedAsync()
+    {
+      componentList = new List<Component>()
+        {
+            new Component() { Name = "ListView",Type = typeof(ListView).AssemblyQualifiedName, 
+            Parameters = null},
+            new Component() { Name = "TableView",Type = typeof(TableView).AssemblyQualifiedName, 
+            Parameters = null}
+
+
+        };
+        currentComponent = componentList[0];
+        await base.OnInitializedAsync();
+    }
+    public void SelectView(ChangeEventArgs e){
+        currentComponent = this.componentList.FirstOrDefault(x => x.Name.Equals(e.Value.ToString()));
+
+    }
+}
+```
+
 Let's dive into the code
 >Todo.cs
 ```csharp
@@ -116,58 +163,14 @@ namespace BlazorRepl.UserComponents
 </ul>
 ```
 
->_Main.razor
-
-```csharp
-
-<select @onchange="SelectView">
-@foreach(var c in componentList){
-    <option value="@c.Name">@c.Name</option>
-}
-</select>
-&nbsp;
-<DynamicComponent Type="@(Type.GetType(currentComponent.Type))" Parameters="@currentComponent.Parameters"
-  />
-
-@code {
-
-    private Component currentComponent { get; set; }
-    private  List<Component> componentList=new List<Component>();
-    public class Component
-    {
-        public string Name { get; set; }
-
-        public string Type { get; set; }
-
-        public Dictionary<string, object> Parameters { get; set; }
-
-    }
-    protected override async Task OnInitializedAsync()
-    {
-      componentList = new List<Component>()
-        {
-            new Component() { Name = "ListView",Type = typeof(ListView).AssemblyQualifiedName, 
-            Parameters = null},
-            new Component() { Name = "TableView",Type = typeof(TableView).AssemblyQualifiedName, 
-            Parameters = null}
 
 
-        };
-        currentComponent = componentList[0];
-        await base.OnInitializedAsync();
-    }
-    public void SelectView(ChangeEventArgs e){
-        currentComponent = this.componentList.FirstOrDefault(x => x.Name.Equals(e.Value.ToString()));
-
-    }
-}
-```
 
 ## Demo
 
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/QwEAwWvx16pyPHlV47?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjE5OTUxOTA3LDQwODg5MTk0MCwxODcwOD
+eyJoaXN0b3J5IjpbMTQzMjgyMzc1LDQwODg5MTk0MCwxODcwOD
 Y4OTQ1LDIxMDQyOTk3NTgsNjgzOTY0NTYyLDEzMTYyNTk2MTIs
 ODUxMjUwNjA5LDE0NjI4MDQ0NDRdfQ==
 -->
