@@ -18,10 +18,9 @@ Let's unerstand this with an example. Suppose you want to show a to-do list as a
 
 ![](https://blogger.googleusercontent.com/img/a/AVvXsEhSyIQqPK6VeuhXj1KE62AksLrPx4wxlQ6LhyHAN3cv8Rde7BC6tV7wrR-1ZgpML_D0yVs9n7dQK5Shvuet1UFNgOp99JOxA7EguocmjRnvp3Men02mioA87WVvPNNCNEA8vQlQMtrdX9rHdn31b0gqEM53U3VObA5cc34PTi6MWDJXqzAGydEZFn9siQ=w640-h450)
 
-Let's dive into code. I assume that you are familiar with how to create a
-I have created two-component `ListView.razor` and `TableView.razor` and then populated the dropdown list with components.
+Let's dive into code. I assume that you are familiar with how to create and run the blazor project. In the newly created blazor app I have created two-component `ListView.razor` and `TableView.razor` and then populated the dropdown list with components.
 
-In the following code snippet I am creating a list of `Component` with parameter name,type and parameters(in our case it is null)  and then my setting the currently selected component to `DynamicComponent` rest all the heavy lifting work is done by the `DynamicComponent`
+In the main page I have added following code snippet I am creating a list of `Component` with parameter name,type and parameters(in our case it is null)  and then my setting the currently selected component to `DynamicComponent` rest all the heavy lifting work is done by the `DynamicComponent`
 
 ```csharp
 <DynamicComponent Type="@(Type.GetType(currentComponent.Type))" Parameters="@currentComponent.Parameters"
@@ -75,6 +74,7 @@ In the following code snippet I am creating a list of `Component` with parameter
     }
 }
 ```
+## # Complete Source Code
 
 >Todo.cs
 ```csharp
@@ -182,8 +182,8 @@ namespace BlazorRepl.UserComponents
 
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/QwEAwWvx16pyPHlV47?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTkwMTczNTQ3LC0xMDUxMTA3MzMyLDE2Nz
-c2MTAyNjgsMTE5NjY0ODE2LDE0MzI4MjM3NSw0MDg4OTE5NDAs
-MTg3MDg2ODk0NSwyMTA0Mjk5NzU4LDY4Mzk2NDU2MiwxMzE2Mj
-U5NjEyLDg1MTI1MDYwOSwxNDYyODA0NDQ0XX0=
+eyJoaXN0b3J5IjpbLTE3ODIzMjA1ODksLTEwNTExMDczMzIsMT
+Y3NzYxMDI2OCwxMTk2NjQ4MTYsMTQzMjgyMzc1LDQwODg5MTk0
+MCwxODcwODY4OTQ1LDIxMDQyOTk3NTgsNjgzOTY0NTYyLDEzMT
+YyNTk2MTIsODUxMjUwNjA5LDE0NjI4MDQ0NDRdfQ==
 -->
