@@ -12,7 +12,7 @@ Beginning with .NET 6 Preview 1, the ASP.NET Core team introduced  [DynamicCompo
 [DynamicComponent](https://devblogs.microsoft.com/aspnet/asp-net-core-updates-in-net-6-preview-1/#dynamiccomponent ) is a new built-in Blazor component that can be used to render dynamic components using its type and optional parameters. 
 
 
-Let's assume you want to show a to-do list as a list view and a table view, as shown in the below image. You can quickly develop this functionality using `DynamicComponent.` 
+Let's assume you want to show a to-do list as a `list view` and a `table view`, as shown in the below image. You can quickly develop this functionality using `DynamicComponent.` 
 
 
 
@@ -181,8 +181,8 @@ namespace BlazorRepl.UserComponents
 
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/QwEAwWvx16pyPHlV47?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY3NzYxMDI2OCwxMTk2NjQ4MTYsMTQzMj
-gyMzc1LDQwODg5MTk0MCwxODcwODY4OTQ1LDIxMDQyOTk3NTgs
-NjgzOTY0NTYyLDEzMTYyNTk2MTIsODUxMjUwNjA5LDE0NjI4MD
-Q0NDRdfQ==
+eyJoaXN0b3J5IjpbLTEwNTExMDczMzIsMTY3NzYxMDI2OCwxMT
+k2NjQ4MTYsMTQzMjgyMzc1LDQwODg5MTk0MCwxODcwODY4OTQ1
+LDIxMDQyOTk3NTgsNjgzOTY0NTYyLDEzMTYyNTk2MTIsODUxMj
+UwNjA5LDE0NjI4MDQ0NDRdfQ==
 -->
