@@ -14,7 +14,13 @@ I have created two-component `ListView.razor` and `TableView.razor` and then pop
 
 ![](https://blogger.googleusercontent.com/img/a/AVvXsEhSyIQqPK6VeuhXj1KE62AksLrPx4wxlQ6LhyHAN3cv8Rde7BC6tV7wrR-1ZgpML_D0yVs9n7dQK5Shvuet1UFNgOp99JOxA7EguocmjRnvp3Men02mioA87WVvPNNCNEA8vQlQMtrdX9rHdn31b0gqEM53U3VObA5cc34PTi6MWDJXqzAGydEZFn9siQ=w640-h450)
 
-In the following code snippet I am creating a list of `Component` with parameter name,type and parameters(in our case it is null)  and then my setting the currently selecte
+In the following code snippet I am creating a list of `Component` with parameter name,type and parameters(in our case it is null)  and then my setting the currently selected component to `DynamicComponent` rest al
+
+```csharp
+<DynamicComponent Type="@(Type.GetType(currentComponent.Type))" Parameters="@currentComponent.Parameters"
+  />
+  ```
+
 
 >_Main.razor
 
@@ -63,7 +69,6 @@ In the following code snippet I am creating a list of `Component` with parameter
 }
 ```
 
-Let's dive into the code
 >Todo.cs
 ```csharp
 namespace BlazorRepl.UserComponents
@@ -170,7 +175,7 @@ namespace BlazorRepl.UserComponents
 
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/QwEAwWvx16pyPHlV47?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjE0NjY0ODc0NCwxNDMyODIzNzUsNDA4OD
-kxOTQwLDE4NzA4Njg5NDUsMjEwNDI5OTc1OCw2ODM5NjQ1NjIs
-MTMxNjI1OTYxMiw4NTEyNTA2MDksMTQ2MjgwNDQ0NF19
+eyJoaXN0b3J5IjpbLTk0NTk1OTgwLDE0MzI4MjM3NSw0MDg4OT
+E5NDAsMTg3MDg2ODk0NSwyMTA0Mjk5NzU4LDY4Mzk2NDU2Miwx
+MzE2MjU5NjEyLDg1MTI1MDYwOSwxNDYyODA0NDQ0XX0=
 -->
