@@ -135,7 +135,9 @@ namespace BlazorRepl.UserComponents
 
 
 >TableView.razor
-I am using bootstrap for creatin
+
+
+I am using bootstrap for creating simple table
 
 ```html
 @inject TodoService todoService
@@ -165,6 +167,9 @@ I am using bootstrap for creatin
 </table>
 ```
 >ListView.razor
+
+Boostrap list group for showing todos as list-group
+
 ```html
 @inject TodoService todoService
 <h1>List View</h1>
@@ -186,11 +191,12 @@ I am using bootstrap for creatin
 
 
 ## Demo
+Click on preview and play with the demo
 
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/QwEAwWvx16pyPHlV47?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4ODA4MTA3MzcsLTEwNTExMDczMzIsMT
-Y3NzYxMDI2OCwxMTk2NjQ4MTYsMTQzMjgyMzc1LDQwODg5MTk0
-MCwxODcwODY4OTQ1LDIxMDQyOTk3NTgsNjgzOTY0NTYyLDEzMT
-YyNTk2MTIsODUxMjUwNjA5LDE0NjI4MDQ0NDRdfQ==
+eyJoaXN0b3J5IjpbMTY4MDcyMTU1OCwtMTA1MTEwNzMzMiwxNj
+c3NjEwMjY4LDExOTY2NDgxNiwxNDMyODIzNzUsNDA4ODkxOTQw
+LDE4NzA4Njg5NDUsMjEwNDI5OTc1OCw2ODM5NjQ1NjIsMTMxNj
+I1OTYxMiw4NTEyNTA2MDksMTQ2MjgwNDQ0NF19
 -->
