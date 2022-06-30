@@ -14,7 +14,7 @@ I have created two-component `ListView.razor` and `TableView.razor` and then pop
 
 ![](https://blogger.googleusercontent.com/img/a/AVvXsEhSyIQqPK6VeuhXj1KE62AksLrPx4wxlQ6LhyHAN3cv8Rde7BC6tV7wrR-1ZgpML_D0yVs9n7dQK5Shvuet1UFNgOp99JOxA7EguocmjRnvp3Men02mioA87WVvPNNCNEA8vQlQMtrdX9rHdn31b0gqEM53U3VObA5cc34PTi6MWDJXqzAGydEZFn9siQ=w640-h450)
 
-
+In the following code snippet I am creating a list of `Component` with parameter name,type and parameters(in our case it is null)  and then my setting the currently selecte
 
 >_Main.razor
 
@@ -170,7 +170,7 @@ namespace BlazorRepl.UserComponents
 
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/QwEAwWvx16pyPHlV47?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQzMjgyMzc1LDQwODg5MTk0MCwxODcwOD
-Y4OTQ1LDIxMDQyOTk3NTgsNjgzOTY0NTYyLDEzMTYyNTk2MTIs
-ODUxMjUwNjA5LDE0NjI4MDQ0NDRdfQ==
+eyJoaXN0b3J5IjpbMjE0NjY0ODc0NCwxNDMyODIzNzUsNDA4OD
+kxOTQwLDE4NzA4Njg5NDUsMjEwNDI5OTc1OCw2ODM5NjQ1NjIs
+MTMxNjI1OTYxMiw4NTEyNTA2MDksMTQ2MjgwNDQ0NF19
 -->
