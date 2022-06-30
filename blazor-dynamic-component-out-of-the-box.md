@@ -1,16 +1,80 @@
-In Blazor, we typically use either RenderTreeBuilder or Razor syntax `RenderFragment` to create dynamic components. In the classic approach, we check for the data type or for a condition to dynamically render a component. This necessitates manually maintaining the component’s state of visibility based on whether the component should be displayed or hidden, which is more complicated for complex data.
 
-Beginning with .NET 6 Preview 1, the ASP.NET Core team introduced  [DynamicComponent](https://devblogs.microsoft.com/aspnet/asp-net-core-updates-in-net-6-preview-1/#dynamiccomponent) . The use of DynamicComponent greatly reduces the complexity of dynamic component rendering when dealing with large amounts of complex data.
+To generate dynamic components in Blazor, we commonly use `RenderTreeBuilder `or the `RenderFragment` To dynamically render a component. These require a lot of manual work, like maintaining the component's visible status based on whether the component should be displayed or hidden, which is more difficult with complex data.
+
+
+Beginning with .NET 6 Preview 1, the ASP.NET Core team introduced  [DynamicComponent](https://devblogs.microsoft.com/aspnet/asp-net-core-updates-in-net-6-preview-1/#dynamiccomponent) . By using the use of DynamicComponent you can reduces the complexity of dynamic component rendering when dealing with large amounts of complex data.
+>If you are not using .net6 preview1 then you can achived the same thing without using the DynamicComponet. please refer the following article
+
+[Dynamically-rendered ASP.NET Core Blazor components](https://www.codeguru.co.in/2022/06/dynamically-rendered-aspnet-core-blazor.html)
 
 ## What is DynamicComponent?
 
-[DynamicComponent](https://devblogs.microsoft.com/aspnet/asp-net-core-updates-in-net-6-preview-1/#dynamiccomponent ) is a new built-in Blazor component that can be used to render dynamic components using its type and optional parameters. Let’s take a look at it with some code examples. 
-Let's consider you want to show todo list as list view and table view as shown in the below image.I have created two component `ListView` and `TableView` and then poppulated the dropdown list with components.
+[DynamicComponent](https://devblogs.microsoft.com/aspnet/asp-net-core-updates-in-net-6-preview-1/#dynamiccomponent ) is a new built-in Blazor component that can be used to render dynamic components using its type and optional parameters. 
+
+
+Let's assume you want to show a to-do list as a `list view` and a `table view`, as shown in the below image. You can quickly develop this functionality using `DynamicComponent.` 
+
 
 
 ![](https://blogger.googleusercontent.com/img/a/AVvXsEhSyIQqPK6VeuhXj1KE62AksLrPx4wxlQ6LhyHAN3cv8Rde7BC6tV7wrR-1ZgpML_D0yVs9n7dQK5Shvuet1UFNgOp99JOxA7EguocmjRnvp3Men02mioA87WVvPNNCNEA8vQlQMtrdX9rHdn31b0gqEM53U3VObA5cc34PTi6MWDJXqzAGydEZFn9siQ=w640-h450)
 
-Let's dive into the code
+I have created two-component `ListView.razor` and `TableView.razor` and then populated the dropdown list with components.
+
+In the following code snippet I am creating a list of `Component` with parameter name,type and parameters(in our case it is null)  and then my setting the currently selected component to `DynamicComponent` rest all the heavy lifting work is done by the `DynamicComponent`
+
+```csharp
+<DynamicComponent Type="@(Type.GetType(currentComponent.Type))" Parameters="@currentComponent.Parameters"
+  />
+  ```
+
+
+>_Main.razor
+
+```csharp
+
+<select @onchange="SelectView">
+@foreach(var c in componentList){
+    <option value="@c.Name">@c.Name</option>
+}
+</select>
+&nbsp;
+<DynamicComponent Type="@(Type.GetType(currentComponent.Type))" Parameters="@currentComponent.Parameters"
+  />
+
+@code {
+
+    private Component currentComponent { get; set; }
+    private  List<Component> componentList=new List<Component>();
+    public class Component
+    {
+        public string Name { get; set; }
+
+        public string Type { get; set; }
+
+        public Dictionary<string, object> Parameters { get; set; }
+
+    }
+    protected override async Task OnInitializedAsync()
+    {
+      componentList = new List<Component>()
+        {
+            new Component() { Name = "ListView",Type = typeof(ListView).AssemblyQualifiedName, 
+            Parameters = null},
+            new Component() { Name = "TableView",Type = typeof(TableView).AssemblyQualifiedName, 
+            Parameters = null}
+
+
+        };
+        currentComponent = componentList[0];
+        await base.OnInitializedAsync();
+    }
+    public void SelectView(ChangeEventArgs e){
+        currentComponent = this.componentList.FirstOrDefault(x => x.Name.Equals(e.Value.ToString()));
+
+    }
+}
+```
+
 >Todo.cs
 ```csharp
 namespace BlazorRepl.UserComponents
@@ -110,56 +174,12 @@ namespace BlazorRepl.UserComponents
 </ul>
 ```
 
->_Main.razor
-
-```csharp
-
-<select @onchange="SelectView">
-@foreach(var c in componentList){
-    <option value="@c.Name">@c.Name</option>
-}
-</select>
-&nbsp;
-<DynamicComponent Type="@(Type.GetType(currentComponent.Type))" Parameters="@currentComponent.Parameters"
-  />
-
-@code {
-
-    private Component currentComponent { get; set; }
-    private  List<Component> componentList=new List<Component>();
-    public class Component
-    {
-        public string Name { get; set; }
-
-        public string Type { get; set; }
-
-        public Dictionary<string, object> Parameters { get; set; }
-
-    }
-    protected override async Task OnInitializedAsync()
-    {
-      componentList = new List<Component>()
-        {
-            new Component() { Name = "ListView",Type = typeof(ListView).AssemblyQualifiedName, 
-            Parameters = null},
-            new Component() { Name = "TableView",Type = typeof(TableView).AssemblyQualifiedName, 
-            Parameters = null}
 
 
-        };
-        currentComponent = componentList[0];
-        await base.OnInitializedAsync();
-    }
-    public void SelectView(ChangeEventArgs e){
-        currentComponent = this.componentList.FirstOrDefault(x => x.Name.Equals(e.Value.ToString()));
-
-    }
-}
-```
 
 ## Demo
 
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/QwEAwWvx16pyPHlV47?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjgzOTY0NTYyXX0=
+eyJoaXN0b3J5IjpbLTEwNTExMDczMzJdfQ==
 -->
