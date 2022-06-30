@@ -7,7 +7,7 @@ See the following image for JavaScript->C# method mapping
 
 ![](https://blogger.googleusercontent.com/img/a/AVvXsEj822VcB1xaPgIhlrG6wRFvWRoeY25ShKH71XadfCHFxSeOnU5tvs_GhjpEBvRK5sKyYJclQM8n9nZZnL8UyVmAU49ZxR1_6T3RbqP6eFufpn5mljTkXlTxsdnM6J-IlEXwFhh_XDI5kHOe_C6qJZOWzzMhNjlQqwSIT_nmcy2jZWstVMKni_GkMBkZ9w=w640-h258)
 
-As you can see from the above image that we are using Blazor `DotNetRefrence` class to mediate beweeen JavaScript and C#.
+As you can see from the above image that we are using Blazor `DotNetObjectReference` class to mediate beweeen JavaScript and C#.
 Lets add the javascript file and add the following functions.
 
 ```js
@@ -84,5 +84,6 @@ Correspoding to JavaScript I have C# method as shown below
 }   
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY1ODY4MzI5MCwtMTUyMjc5NjE4OV19
+eyJoaXN0b3J5IjpbLTE2MjYyNDE3NzgsMTY1ODY4MzI5MCwtMT
+UyMjc5NjE4OV19
 -->
