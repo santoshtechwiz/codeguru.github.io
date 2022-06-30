@@ -18,10 +18,9 @@ Let's unerstand this with an example. Suppose you want to show a to-do list as a
 
 ![](https://blogger.googleusercontent.com/img/a/AVvXsEhSyIQqPK6VeuhXj1KE62AksLrPx4wxlQ6LhyHAN3cv8Rde7BC6tV7wrR-1ZgpML_D0yVs9n7dQK5Shvuet1UFNgOp99JOxA7EguocmjRnvp3Men02mioA87WVvPNNCNEA8vQlQMtrdX9rHdn31b0gqEM53U3VObA5cc34PTi6MWDJXqzAGydEZFn9siQ=w640-h450)
 
-Let's dive into code. I assume that you are familiar with how to create and run 
-I have created two-component `ListView.razor` and `TableView.razor` and then populated the dropdown list with components.
+Let's dive into code. I assume that you are familiar with how to create and run the blazor project. In the newly created blazor app I have created two-component `ListView.razor` and `TableView.razor` and then populated the dropdown list with components.
 
-In the following code snippet I am creating a list of `Component` with parameter name,type and parameters(in our case it is null)  and then my setting the currently selected component to `DynamicComponent` rest all the heavy lifting work is done by the `DynamicComponent`
+In the main page I have added following code snippet I am creating a list of `Component` with parameter name,type and parameters(in our case it is null)  and then my setting the currently selected component to `DynamicComponent` rest all the heavy lifting work is done by the `DynamicComponent`
 
 ```csharp
 <DynamicComponent Type="@(Type.GetType(currentComponent.Type))" Parameters="@currentComponent.Parameters"
@@ -75,6 +74,7 @@ In the following code snippet I am creating a list of `Component` with parameter
     }
 }
 ```
+## # Complete Source Code
 
 >Todo.cs
 ```csharp
@@ -182,6 +182,6 @@ namespace BlazorRepl.UserComponents
 
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/QwEAwWvx16pyPHlV47?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NDQ2NDQ1MDgsLTEwNTExMDczMzJdfQ
+eyJoaXN0b3J5IjpbLTE3ODIzMjA1ODksLTEwNTExMDczMzJdfQ
 ==
 -->
