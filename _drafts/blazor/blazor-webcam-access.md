@@ -7,8 +7,18 @@ See the following image for JavaScript->C# method mapping
 
 ![](https://blogger.googleusercontent.com/img/a/AVvXsEj822VcB1xaPgIhlrG6wRFvWRoeY25ShKH71XadfCHFxSeOnU5tvs_GhjpEBvRK5sKyYJclQM8n9nZZnL8UyVmAU49ZxR1_6T3RbqP6eFufpn5mljTkXlTxsdnM6J-IlEXwFhh_XDI5kHOe_C6qJZOWzzMhNjlQqwSIT_nmcy2jZWstVMKni_GkMBkZ9w=w640-h258)
 
+
+
 As you can see from the above image that we are using Blazor `DotNetObjectReference` class to mediate beweeen JavaScript and C#.
 Lets add the javascript file and add the following functions.
+
+## Invoke an instance .NET method
+
+To invoke an instance .NET method from JavaScript (JS):
+
+-   Pass the .NET instance by reference to JS by wrapping the instance in a  [DotNetObjectReference](https://docs.microsoft.com/en-us/dotnet/api/microsoft.jsinterop.dotnetobjectreference)  and calling  [Create](https://docs.microsoft.com/en-us/dotnet/api/microsoft.jsinterop.dotnetobjectreference.create)  on it.
+-   Invoke a .NET instance method from JS using  `invokeMethodAsync`  or  `invokeMethod`  (Blazor WebAssembly only) from the passed  [DotNetObjectReference](https://docs.microsoft.com/en-us/dotnet/api/microsoft.jsinterop.dotnetobjectreference). The .NET instance can also be passed as an argument when invoking other .NET methods from JS.
+-   Dispose of the  [DotNetObjectReference](https://docs.microsoft.com/en-us/dotnet/api/microsoft.jsinterop.dotnetobjectreference).
 
 ```js
 
@@ -84,6 +94,6 @@ Correspoding to JavaScript I have C# method as shown below
 }   
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MjYyNDE3NzgsMTY1ODY4MzI5MCwtMT
-UyMjc5NjE4OSwyMTA2MDExNjczXX0=
+eyJoaXN0b3J5IjpbMTcxMDMwNTEwMCwxNjU4NjgzMjkwLC0xNT
+IyNzk2MTg5LDIxMDYwMTE2NzNdfQ==
 -->
