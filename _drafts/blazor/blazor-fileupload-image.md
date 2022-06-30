@@ -1,7 +1,5 @@
 
-
-
-> Written with [StackEdit](https://stackedit.io/).
+This blog post I will show you how to upload the image and preview it in Blazor Web Application. 
 
 
 ```html
@@ -33,5 +31,5 @@
 ## Demo
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/cwkAnuvO46GBBXBk45?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYxMzExMDAxN119
+eyJoaXN0b3J5IjpbMjEzMTYzNTU1LC02MTMxMTAwMTddfQ==
 -->
