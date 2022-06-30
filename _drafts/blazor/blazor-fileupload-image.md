@@ -1,5 +1,8 @@
 
 This blog post I will show you how to upload the image and preview it in Blazor Web Application. 
+Blazor out of the box provides a component `InputFile` that wraps the HTML file input element and supplies a [Stream for each file's contents.
+
+Let's understand this with an example. I have a razor page `Upload.razor` in which I have added two tag as shown below
 
 
 ```html
@@ -8,6 +11,8 @@ This blog post I will show you how to upload the image and preview it in Blazor 
 <img src="@ImageUri" />
 
 ```
+
+Then in the C# code 
 
 ```csharp
  public async Task LoadImage(InputFileChangeEventArgs inputFileChangeEventArgs)
@@ -31,5 +36,5 @@ This blog post I will show you how to upload the image and preview it in Blazor 
 ## Demo
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/cwkAnuvO46GBBXBk45?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEzMTYzNTU1LC02MTMxMTAwMTddfQ==
+eyJoaXN0b3J5IjpbLTE3NzA2MDQ3MTEsLTYxMzExMDAxN119
 -->
