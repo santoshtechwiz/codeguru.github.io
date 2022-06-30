@@ -13,7 +13,7 @@ Let's understand this with an example. I have a razor page `Upload.razor` in whi
 ```
 
 Then in the C# code I have created a method `LoadImage` that accepts a argument `InputFileChangeEventArgs` . When user select the image this method triggers and provides the information about the file.
-In the below code you can see that I am reading the file as `Stream` and then 
+In the below code you can see that I am reading the file as `Stream` and then converting it to base64 string so that we can show it in `img` tag.
 
 ```csharp
  public async Task LoadImage(InputFileChangeEventArgs inputFileChangeEventArgs)
@@ -37,5 +37,5 @@ In the below code you can see that I am reading the file as `Stream` and then
 ## Demo
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/cwkAnuvO46GBBXBk45?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMTYxNzA1NjQsLTYxMzExMDAxN119
+eyJoaXN0b3J5IjpbLTg2MzQ0NzgyNiwtNjEzMTEwMDE3XX0=
 -->
