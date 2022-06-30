@@ -76,6 +76,8 @@ In the main page I have added following code snippet I am creating a list of `Co
 ```
 ## # Complete Source Code
 
+This file is simple PCOC class for holding todo data
+
 >Todo.cs
 ```csharp
 namespace BlazorRepl.UserComponents
@@ -95,6 +97,8 @@ namespace BlazorRepl.UserComponents
 }
 ```
 >TodoService.cs
+
+Fake service for returning list of todos
 ```csharp
 
 namespace BlazorRepl.UserComponents
@@ -128,7 +132,10 @@ namespace BlazorRepl.UserComponents
 	}
 }
 ```
+
+
 >TableView.razor
+I am using bootstrap for creatin
 
 ```html
 @inject TodoService todoService
@@ -182,7 +189,7 @@ namespace BlazorRepl.UserComponents
 
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/QwEAwWvx16pyPHlV47?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3ODIzMjA1ODksLTEwNTExMDczMzIsMT
+eyJoaXN0b3J5IjpbLTE4ODA4MTA3MzcsLTEwNTExMDczMzIsMT
 Y3NzYxMDI2OCwxMTk2NjQ4MTYsMTQzMjgyMzc1LDQwODg5MTk0
 MCwxODcwODY4OTQ1LDIxMDQyOTk3NTgsNjgzOTY0NTYyLDEzMT
 YyNTk2MTIsODUxMjUwNjA5LDE0NjI4MDQ0NDRdfQ==
