@@ -16,6 +16,14 @@ public Dictionary<string,object> OtherAttributes {get;set;}
 - OtherAttributes in not a Required parameter name
 
 
+### Note 2 RenderFramgement2
+
+
+- Create a templated component
+- Render cotent in a givne template  formatting,inserting  andn  of type T
+- Add a typepramete directive to indicate the generic type of the parameter of the compoent
+@typepram
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMzMTUyMDY1Ml19
+eyJoaXN0b3J5IjpbLTE3ODMwODU5OV19
 -->
