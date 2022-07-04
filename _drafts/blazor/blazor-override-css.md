@@ -59,6 +59,33 @@
     }
 }
 ```
+
+>_Main.razor
+
+```html
+<h1>CodeGuru-Demo</h1>
+<Form/>
+@code {
+
+}
+```
+
+
+>CustomCssProvider.cs
+
+```csharp
+ public class CustomCssProvider:FieldCssClassProvider
+    {
+public override string GetFieldCssClass(EditContext editContext,in FieldIdentifier fieldIdentifier){
+	var isValid=!editContext.GetValidationMessages(fieldIdentifier).Any();
+	if(editContext.IsModified(fieldIdentifier)){
+		return isValid? "custom-error" : "custom-error";
+	}else{
+		return isValid ? "": "custom-error";
+	}
+}
+    }
+    ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NTExODM4Nl19
+eyJoaXN0b3J5IjpbODQ2MTMzMzI1XX0=
 -->
