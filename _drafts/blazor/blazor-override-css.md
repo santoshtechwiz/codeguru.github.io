@@ -72,7 +72,8 @@ In order to override the css follow these steps
 }
 ```
 
-- Create a `Custo
+- Create a `CustomCssProvider` class you can name it anything and inherits it from `FieldCssClassProvider` class and return the css classes that you want to use
+- After that  set the _editContext.SetFieldCssClassProvider(new CustomCssProvider());
 
 >CustomCssProvider.cs
 
@@ -102,6 +103,6 @@ public override string GetFieldCssClass(EditContext editContext,in FieldIdentifi
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY0MzA0NTIxNSwtNDA3NzcwMTgzLDkzMD
+eyJoaXN0b3J5IjpbLTU3MjQ2NjQwMywtNDA3NzcwMTgzLDkzMD
 M1MDU1OV19
 -->
