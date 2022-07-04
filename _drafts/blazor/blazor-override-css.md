@@ -21,11 +21,10 @@
 
 <style>
     .custom-error{
-        
-          border: 5px solid #ffdddd;
+       border: 5px solid #ffdddd;
     }
     .custom-success{
- border:  5px  solid  green;
+       border:  5px  solid  green;
 
 }
     </style>
@@ -92,5 +91,5 @@ public override string GetFieldCssClass(EditContext editContext,in FieldIdentifi
     }
     ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4ODgyMjA2NTksOTMwMzUwNTU5XX0=
+eyJoaXN0b3J5IjpbLTQwNzc3MDE4Myw5MzAzNTA1NTldfQ==
 -->
