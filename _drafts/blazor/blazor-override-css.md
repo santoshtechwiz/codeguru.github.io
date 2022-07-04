@@ -24,6 +24,10 @@
         
           border: 5px solid #ffdddd;
     }
+    .custom-success{
+ border:  5px  solid  green;
+
+}
     </style>
 <EditForm EditContext="_editContext" OnValidSubmit="@HandleValidSubmit">
     <DataAnnotationsValidator />
@@ -80,7 +84,7 @@
 public override string GetFieldCssClass(EditContext editContext,in FieldIdentifier fieldIdentifier){
 	var isValid=!editContext.GetValidationMessages(fieldIdentifier).Any();
 	if(editContext.IsModified(fieldIdentifier)){
-		return isValid? "custom-error" : "custom-error";
+		return isValid? "custom-success" : "custom-error";
 	}else{
 		return isValid ? "": "custom-error";
 	}
@@ -88,5 +92,5 @@ public override string GetFieldCssClass(EditContext editContext,in FieldIdentifi
     }
     ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNDk2ODgxMzUsOTMwMzUwNTU5XX0=
+eyJoaXN0b3J5IjpbLTE4ODgyMjA2NTksOTMwMzUwNTU5XX0=
 -->
