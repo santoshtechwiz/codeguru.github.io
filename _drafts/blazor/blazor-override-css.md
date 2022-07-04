@@ -6,7 +6,7 @@ Lets create a simple demo to understand this. As you can see in the blow image t
 
 In order to override the css follow these steps
 
-- Create a model c
+- Create a model class and add required `DataAnotation` as you cane see I have added Required and Range
 
 ```csharp
 
@@ -20,6 +20,8 @@ In order to override the css follow these steps
     public int Age {get;set;}
 }
 ```
+
+-  In the edit form replace `Model` with private instance of `EditContext` 
 
 >Form.razor
 
@@ -70,16 +72,7 @@ In order to override the css follow these steps
 }
 ```
 
->_Main.razor
-
-```html
-<h1>CodeGuru-Demo</h1>
-<Form/>
-@code {
-
-}
-```
-
+- Create a `Custo
 
 >CustomCssProvider.cs
 
@@ -96,7 +89,19 @@ public override string GetFieldCssClass(EditContext editContext,in FieldIdentifi
 }
     }
     ```
+
+>_Main.razor
+
+```html
+<h1>CodeGuru-Demo</h1>
+<Form/>
+@code {
+
+}
+```
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkzMTMyNDc5MSwtNDA3NzcwMTgzLDkzMD
+eyJoaXN0b3J5IjpbLTY0MzA0NTIxNSwtNDA3NzcwMTgzLDkzMD
 M1MDU1OV19
 -->
