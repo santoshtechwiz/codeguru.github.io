@@ -1,6 +1,12 @@
 In this blog post I wil show you how to override the css in `EditContext` . Assume you have already the css classes for the error message and you want to override the class when the blazor add the validation error message. You can do this very easily with blazor app. 
+Lets create a simple demo to understand this. As you can see in the blow image that I have added two custom classes one for error and one for success.
+
 
 ![](https://blogger.googleusercontent.com/img/a/AVvXsEgZufpGKmScUej2LB3GabR3eWjeCBA7g0J6ThHl6e_PuRcniAsBZvQ0E96-r0KPPtopQ1aJ7FCo4PqCJG9dRdZeGmkT75cLo6zp-7kSOnugU8Dn13F6TIvnMVlmGPTYDni3Ls9X80dL7WE0tHzMrqZKzr4ZwJx_43Vg0pyxXwsvCOh5cw8UZAIrylPDsw=w640-h282)
+
+In order to override the css follow these steps
+
+- Create a model c
 
 ```csharp
 
@@ -91,6 +97,6 @@ public override string GetFieldCssClass(EditContext editContext,in FieldIdentifi
     }
     ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA0MDQ0NDU3OSwtNDA3NzcwMTgzLDkzMD
+eyJoaXN0b3J5IjpbMTkzMTMyNDc5MSwtNDA3NzcwMTgzLDkzMD
 M1MDU1OV19
 -->
