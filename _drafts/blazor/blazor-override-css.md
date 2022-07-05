@@ -1,6 +1,6 @@
 
 In this blog post, I will show you how to override the CSS in `EditContext.` For example, assume you already have the CSS classes for the error message. Then, when the blazor adds the validation error message, you want to override the class. You can do this very easily with the blazor app. 
-The blazor framework provides a class called `FieldCssClassProvider` that you can use to override the default CSS class that blazor applies to input control when vali
+The blazor framework provides a class called `FieldCssClassProvider` that you can use to override the default CSS class that blazor applies to input control when validation error occures.
 
 # FieldCssClassProvider
 
@@ -112,7 +112,7 @@ public override string GetFieldCssClass(EditContext editContext,in FieldIdentifi
 
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/mGuVEJET30quO2gu35?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTY3ODE3MDAzLC04NTg5NjkwNTEsLTM0MT
-QzNTM5MywtMTkxMjc0NDA4OCwtNDA3NzcwMTgzLDkzMDM1MDU1
-OV19
+eyJoaXN0b3J5IjpbLTE3NzkxOTI0NDYsLTg1ODk2OTA1MSwtMz
+QxNDM1MzkzLC0xOTEyNzQ0MDg4LC00MDc3NzAxODMsOTMwMzUw
+NTU5XX0=
 -->
