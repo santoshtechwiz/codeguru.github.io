@@ -38,13 +38,13 @@ In the below code, you can see that I am reading the file as `Stream` and then c
 
 - `RequestImageFileAsync("image/png", 600, 600)` 
  convert the current image file to a new one of the specified file type and maximum file dimensions in our case it is 600x600. 
- - However, this method does not ensure the file's conversion, either before or after the conversion process. Because the modification is requested in the browser before it is transferred to the.NET function, the resulting data should not be trusted.
+ - However, this method does not ensure the file's conversion, either before or after the conversion process. Because the modification is requested in the browser before it is transferred to the .NET function, the resulting data should not be trusted.
 
 
 ## Demo
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/cwkAnuvO46GBBXBk45?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTQzMzUwMDQ2LC04MzQxMTU1NzgsLTE5ND
+eyJoaXN0b3J5IjpbMjM5NzcwNjQyLC04MzQxMTU1NzgsLTE5ND
 MyNzExNDMsLTE0MjA1ODA2MjgsLTg2MzQ0NzgyNiwtNjEzMTEw
 MDE3XX0=
 -->
