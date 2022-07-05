@@ -2,7 +2,7 @@
 
 Holds metadata related to a data editing process, such as flags to indicate which fields have been modified and the current set of validation messages.
 
-Let’s start with a UML diagram describing how Blazor maintains meta-state for form data.
+Let’s start with a below diagram describing how Blazor maintains meta-state for form data.
 
 
 ![](https://blogger.googleusercontent.com/img/a/AVvXsEg0y5i62UyRyqzsBNnMMRafHgijAYsk1TaOWb8EuurNU4UyVipPP5ZUgPzOLzdtTjaUuCqPgn657XZpCts-ilqLRhjXpmULNig1msUJIW0imSqBoUY4BhdzJiu_R5KnYsqivOfVCJN02eUsSkUhl2Vv0Fd-I681eJJhmLV8FxLvCzutWRy9vPYv-g8Hnw=w459-h640)
@@ -25,5 +25,5 @@ The purpose of a  `FieldIdentifier`  is to provide an identity for a specific pr
 
 Given an  `Address`  class with a property named  `PostalCode`, we can expect the following equality rules:
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NzQ0MTExNDksMTY1MTQ3OTg1MF19
+eyJoaXN0b3J5IjpbLTIwODkwMTI4NDIsMTY1MTQ3OTg1MF19
 -->
