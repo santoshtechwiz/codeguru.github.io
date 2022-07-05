@@ -108,8 +108,8 @@ public override string GetFieldCssClass(EditContext editContext,in FieldIdentifi
 ## CustomCss Class Demo
 
 
-<iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/mwaVuxPY40nzlZTi12?editor=true&result=true&errorList=true"></iframe>
-https://blazorrepl.telerik.com/mwaVuxPY40nzlZTi12
+<iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/mGuVEJET30quO2gu35?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM0MTQzNTM5MywtMTkxMjc0NDA4OF19
+eyJoaXN0b3J5IjpbLTg1ODk2OTA1MSwtMzQxNDM1MzkzLC0xOT
+EyNzQ0MDg4XX0=
 -->
