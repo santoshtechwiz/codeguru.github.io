@@ -15,14 +15,16 @@ The  `EditContext`  is a form-meta-data holder for the object currently being ed
 -   If a specific property of the Model has been manually altered.
 -   Which model properties have validation errors, and what those errors are.
 
-The class of the Model being edited should only represent our specific business needs, so having our model classes implement this additional user-interface state information would be a conflict of concerns – so Blazor stores this additional information within the EditContext. This is why the EditForm creates a new EditContext whenever its Model changes. If the Model changes, then the data held in the EditContext is no longer relevant.
+> EditForm creates a new EditContext whenever its Model changes. If the Model changes, then the data held in the EditContext is no longer relevant.
 
-## FieldIdentifier
+
+
+## What is FieldIdentifier?
 
 A' FieldIdentifier' aims to provide an identity for a specific property on an object. It differs from  `System.Reflection.PropertyInfo`  because it identifies a property in a particular object instance. In contrast, reflection identifies a property of a class.
 
 Given an  `Address`  class with a property named  `PostalCode,` we can expect the following equality rules:
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwOTA4MjA4OTksLTU2NjcxMjY3MywtMj
+eyJoaXN0b3J5IjpbLTE4NjA3MDA1ODUsLTU2NjcxMjY3MywtMj
 A4OTAxMjg0MiwxNjUxNDc5ODUwXX0=
 -->
