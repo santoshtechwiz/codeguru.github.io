@@ -10,7 +10,7 @@ Let’s start with a below diagram describing how Blazor maintains meta-state fo
 
 ## EditContext
 
-Whenever the  `EditForm.Model`  changes (the object being modified in the form),  `EditForm.OnParametersSet`  is executed and creates a new  `EditContext`  instance. The  `EditForm`  component declares this  `EditContext`  as a  [Cascading value](https://blazor-university.com/components/cascading-values/cascading-values-by-type/), so that any components within the form have access to it.
+Whenever the  `EditForm.Model`  changes (the object being modified in the form),  `EditForm.OnParametersSet`  is executed and creates a new  `EditContext`  instance. The  `EditForm`  component declares this  `EditContext`  as a  [Cascading value]  so that any components within the form have access to it.
 
 The  `EditContext`  is a form-meta-data holder for the object currently being edited. When editing an object – such as a  `Person`  – in a form, Blazor needs to know additional information about that object in order to give a richer user experience. The additional information held by Blazor tells us:
 
@@ -25,5 +25,6 @@ The purpose of a  `FieldIdentifier`  is to provide an identity for a specific pr
 
 Given an  `Address`  class with a property named  `PostalCode`, we can expect the following equality rules:
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwODkwMTI4NDIsMTY1MTQ3OTg1MF19
+eyJoaXN0b3J5IjpbLTU2NjcxMjY3MywtMjA4OTAxMjg0MiwxNj
+UxNDc5ODUwXX0=
 -->
