@@ -33,10 +33,14 @@ In the below code, you can see that I am reading the file as `Stream` and then c
 
     }
 ```
+## Note
+`RequestImageFileAsync("image/png", 600, 600)` 
+ convert the current image file to a new one of the specified file type and maximum file dimensions.
 
 
 ## Demo
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/cwkAnuvO46GBBXBk45?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MjA1ODA2MjgsLTg2MzQ0NzgyNl19
+eyJoaXN0b3J5IjpbMTY5NDM0Nzg0MiwtMTQyMDU4MDYyOCwtOD
+YzNDQ3ODI2XX0=
 -->
