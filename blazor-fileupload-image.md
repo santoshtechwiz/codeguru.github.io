@@ -33,14 +33,16 @@ In the below code, you can see that I am reading the file as `Stream` and then c
 
     }
 ```
-## Note
-`RequestImageFileAsync("image/png", 600, 600)` 
- convert the current image file to a new one of the specified file type and maximum file dimensions.
+##  Things to remember
+
+- `RequestImageFileAsync("image/png", 600, 600)` 
+ convert the current image file to a new one of the specified file type and maximum file dimensions in our case it is 600x600. 
+ - This method does no guarantee that the file will be converted, or will even be a valid image file at all, either before or after conversion. The conversion is requested within the browser before it is transferred to .NET code, so the resulting data should be treated as untrusted.
 
 
 ## Demo
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/cwkAnuvO46GBBXBk45?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY5NDM0Nzg0MiwtMTQyMDU4MDYyOCwtOD
-YzNDQ3ODI2XX0=
+eyJoaXN0b3J5IjpbLTE5NDMyNzExNDMsLTE0MjA1ODA2MjgsLT
+g2MzQ0NzgyNl19
 -->
