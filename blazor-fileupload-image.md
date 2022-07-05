@@ -6,6 +6,8 @@ Blazor out of the box provides a component `InputFile` that wraps the HTML file 
 
 Let's understand this with an example. I have a razor page, `Upload.razor,` in which I have added two tags, as shown below.
 
+![](https://blogger.googleusercontent.com/img/a/AVvXsEi9uN49iMKrXQCU1jjPe532IwlXwGxWDkAyMSdxRa79Wgg3sZoYiUs609VGk-oQiY27rxvybMKokDFTvkBr3hvMbb5kv2X-XZZH84fe1ujUA-yzhjmfpdq2Zos-DO-QY8aeDyUV9j2nph_Msi4FxD815VCaddzg0whv0DWdsbhvmBIt6igLHsJFYrXyKA=w400-h176)
+
 
 ```html
 <InputFile OnChange="LoadImage" />
@@ -44,6 +46,7 @@ In the below code, you can see that I am reading the file as `Stream` and then c
 ## Demo
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/cwkAnuvO46GBBXBk45?editor=true&result=true&errorList=false"></iframe>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjM5NzcwNjQyLC04MzQxMTU1NzgsLTE5ND
-MyNzExNDMsLTE0MjA1ODA2MjgsLTg2MzQ0NzgyNl19
+eyJoaXN0b3J5IjpbMTY3Mjk5MzYwMSwyMzk3NzA2NDIsLTgzND
+ExNTU3OCwtMTk0MzI3MTE0MywtMTQyMDU4MDYyOCwtODYzNDQ3
+ODI2XX0=
 -->
