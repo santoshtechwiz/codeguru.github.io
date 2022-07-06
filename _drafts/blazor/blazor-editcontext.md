@@ -95,9 +95,12 @@ public sealed class EditContext
 ```
 
 
+## How to Retrive All Error Messages from the EditContext
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU1NzYxMjY3Miw3MTgwNjEwNjgsMjQ0Nj
-k0NjgsLTg5NzIwNjk2NCwtMTI0NTQ1NDE5NCwtMTgxMjU3ODEy
-NiwtNTY2NzEyNjczLC0yMDg5MDEyODQyLDE2NTE0Nzk4NTBdfQ
-==
+eyJoaXN0b3J5IjpbLTEzNzc0OTU2MjksNzE4MDYxMDY4LDI0ND
+Y5NDY4LC04OTcyMDY5NjQsLTEyNDU0NTQxOTQsLTE4MTI1Nzgx
+MjYsLTU2NjcxMjY3MywtMjA4OTAxMjg0MiwxNjUxNDc5ODUwXX
+0=
 -->
