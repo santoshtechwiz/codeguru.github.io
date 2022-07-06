@@ -57,12 +57,12 @@ The  `FieldState`  class holds additional information about any object’s prope
 
     private void Callback()
     {
-        var state = _editContext.Field("Name");
+      
     }
 }
 
 ```
-
+In the a
 
 
 ## Inside Edit Context
@@ -91,7 +91,7 @@ public sealed class EditContext
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjQ0Njk0NjgsLTg5NzIwNjk2NCwtMTI0NT
-Q1NDE5NCwtMTgxMjU3ODEyNiwtNTY2NzEyNjczLC0yMDg5MDEy
-ODQyLDE2NTE0Nzk4NTBdfQ==
+eyJoaXN0b3J5IjpbMjA5MjE5NzcxMSwyNDQ2OTQ2OCwtODk3Mj
+A2OTY0LC0xMjQ1NDU0MTk0LC0xODEyNTc4MTI2LC01NjY3MTI2
+NzMsLTIwODkwMTI4NDIsMTY1MTQ3OTg1MF19
 -->
