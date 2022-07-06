@@ -27,6 +27,43 @@ A' FieldIdentifier' aims to provide an identity for a specific property on an ob
 
 The  `FieldState`  class holds additional information about any object’s property. The  `EditContext`  class has a private property of type  `Dictionary<FieldIdentifier, FieldState>`  – this lets Blazor store its additional state in a flattened list for quick access.
 
+```csharp
+@page "/form"
+@using EditContextDemo.Data
+<h3>FromDemo</h3>
+<EditForm EditContext="_editContext" OnValidSubmit="Callback">
+    <div>
+        <label for="FirstName">FirstName</label>
+        <InputText @bind-Value="person.Name"></InputText>
+    </div>
+    <div>
+        <label for="Age">Age</label>
+        <InputNumber @bind-Value="person.Age"></InputNumber>
+    </div>
+    <input type="submit" value="Save" />
+</EditForm>
+
+@code {
+
+    Person person = new Person();
+    private EditContext _editContext;
+    protected override void OnInitialized()
+    {
+        person.Name = "demo";
+        person.Age = 12;
+        _editContext = new EditContext(person);
+
+    }
+
+    private void Callback()
+    {
+        var state = _editContext.Field("Name");
+    }
+}
+
+```
+
+
 
 ## Inside Edit Context
 
@@ -54,7 +91,7 @@ public sealed class EditContext
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg5NzIwNjk2NCwtMTI0NTQ1NDE5NCwtMT
-gxMjU3ODEyNiwtNTY2NzEyNjczLC0yMDg5MDEyODQyLDE2NTE0
-Nzk4NTBdfQ==
+eyJoaXN0b3J5IjpbMjQ0Njk0NjgsLTg5NzIwNjk2NCwtMTI0NT
+Q1NDE5NCwtMTgxMjU3ODEyNiwtNTY2NzEyNjczLC0yMDg5MDEy
+ODQyLDE2NTE0Nzk4NTBdfQ==
 -->
