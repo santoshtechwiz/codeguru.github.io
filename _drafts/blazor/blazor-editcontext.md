@@ -47,7 +47,9 @@ public sealed class EditContext
   public bool Validate();
 }
 ```
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MTI1NzgxMjYsLTU2NjcxMjY3MywtMj
-A4OTAxMjg0MiwxNjUxNDc5ODUwXX0=
+eyJoaXN0b3J5IjpbLTEyNDU0NTQxOTQsLTE4MTI1NzgxMjYsLT
+U2NjcxMjY3MywtMjA4OTAxMjg0MiwxNjUxNDc5ODUwXX0=
 -->
