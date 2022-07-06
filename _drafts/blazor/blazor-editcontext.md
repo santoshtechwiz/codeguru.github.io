@@ -80,11 +80,18 @@ If you want to access all the error messages then you can get it by using follow
  _errors = _editContext.GetValidationMessages();
  ```
 
-## How to know whe
+## How to know when the input value has changed
+
+If you want to detect when the input value has changed you can subscribe to `EditContext` `OnFieldChanged` event and get the information
+
+
+```csharp
+  _editContext.OnFieldChanged += EditContext_OnFieldChanged;
+  ```
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ2MDQyMTc5MiwtMTM3NzQ5NTYyOSw3MT
+eyJoaXN0b3J5IjpbLTk1MTQxMTE2MCwtMTM3NzQ5NTYyOSw3MT
 gwNjEwNjgsMjQ0Njk0NjgsLTg5NzIwNjk2NCwtMTI0NTQ1NDE5
 NCwtMTgxMjU3ODEyNiwtNTY2NzEyNjczLC0yMDg5MDEyODQyLD
 E2NTE0Nzk4NTBdfQ==
