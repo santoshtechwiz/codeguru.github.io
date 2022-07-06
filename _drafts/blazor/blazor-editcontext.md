@@ -62,7 +62,9 @@ The  `FieldState`  class holds additional information about any object’s prope
 }
 
 ```
-In the a
+If you run the above application and enter some value in the name filed and click on the submit button then you will see that EditContext keep track of the filed that is modifed in our case name field
+
+
 
 
 ## Inside Edit Context
@@ -91,7 +93,7 @@ public sealed class EditContext
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA5MjE5NzcxMSwyNDQ2OTQ2OCwtODk3Mj
-A2OTY0LC0xMjQ1NDU0MTk0LC0xODEyNTc4MTI2LC01NjY3MTI2
-NzMsLTIwODkwMTI4NDIsMTY1MTQ3OTg1MF19
+eyJoaXN0b3J5IjpbLTkyNzA1Mjg1LDI0NDY5NDY4LC04OTcyMD
+Y5NjQsLTEyNDU0NTQxOTQsLTE4MTI1NzgxMjYsLTU2NjcxMjY3
+MywtMjA4OTAxMjg0MiwxNjUxNDc5ODUwXX0=
 -->
