@@ -23,6 +23,10 @@ The  `EditContext`  is a form-meta-data holder for the object currently being ed
 
 A' FieldIdentifier' aims to provide an identity for a specific property on an object. It differs from  `System.Reflection.PropertyInfo`  because it identifies a property in a particular object instance. In contrast, reflection identifies a property of a class.
 
+## FieldState
+
+The  `FieldState`  class holds additional information about any object’s property. The  `EditContext`  class has a private property of type  `Dictionary<FieldIdentifier, FieldState>`  – this lets Blazor store its additional state in a flattened list for quick access.
+
 
 ## Inside Edit Context
 
@@ -50,6 +54,7 @@ public sealed class EditContext
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNDU0NTQxOTQsLTE4MTI1NzgxMjYsLT
-U2NjcxMjY3MywtMjA4OTAxMjg0MiwxNjUxNDc5ODUwXX0=
+eyJoaXN0b3J5IjpbLTg5NzIwNjk2NCwtMTI0NTQ1NDE5NCwtMT
+gxMjU3ODEyNiwtNTY2NzEyNjczLC0yMDg5MDEyODQyLDE2NTE0
+Nzk4NTBdfQ==
 -->
