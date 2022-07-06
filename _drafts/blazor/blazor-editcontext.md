@@ -70,36 +70,21 @@ If you run the above application and enter some value in the name filed and clic
 
 <iframe width="100%" height="500px" src="https://blazorrepl.telerik.com/repl/embed/QwEBYqPF49pLjqtv36?editor=true&result=true&errorList=false"></iframe>
 
-## Inside Edit Context
 
-```csharp
-public sealed class EditContext
-{    
-  public EditContext(object model);    
-  public object Model { get; }     
-  public event EventHandler<FieldChangedEventArgs> OnFieldChanged;    
-  public event EventHandler<ValidationRequestedEventArgs> OnValidationRequested;    
-  public event EventHandler<ValidationStateChangedEventArgs> OnValidationStateChanged;     
-  
-  public FieldIdentifier Field(string fieldName);    
-  public IEnumerable<string> GetValidationMessages();    
-  public IEnumerable<string> GetValidationMessages(FieldIdentifier fieldIdentifier);    
-  public bool IsModified();    
-  public bool IsModified(in FieldIdentifier fieldIdentifier);    
-  public void MarkAsUnmodified(in FieldIdentifier fieldIdentifier);    
-  public void MarkAsUnmodified();    
-  public void NotifyFieldChanged(in FieldIdentifier fieldIdentifier);    
-  public void NotifyValidationStateChanged();    
-  public bool Validate();
-}
-```
 
 
 ## How to Retrive All Error Messages from the EditContext
+If you want to access all the error messages then you can get it by using following method call
+
+```csharp
+ _errors = _editContext.GetValidationMessages();
+ ```
+
+## How to know whe
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ2MjI5ODgwNCwtMTM3NzQ5NTYyOSw3MT
+eyJoaXN0b3J5IjpbMTQ2MDQyMTc5MiwtMTM3NzQ5NTYyOSw3MT
 gwNjEwNjgsMjQ0Njk0NjgsLTg5NzIwNjk2NCwtMTI0NTQ1NDE5
 NCwtMTgxMjU3ODEyNiwtNTY2NzEyNjczLC0yMDg5MDEyODQyLD
 E2NTE0Nzk4NTBdfQ==
