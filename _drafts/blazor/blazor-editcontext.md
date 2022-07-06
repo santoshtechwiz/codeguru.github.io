@@ -101,12 +101,17 @@ If you want to reset the validation state you can call following method
 If you want to update the UI if input value has changed you can call EditContext method `NotifyFieldChanged` with input as filed identifer
 
 ```csharp
+ public void Callback()
+    {
+        var filedIdentifier = _editContext.Field("Name");
+        _editContext.NotifyFieldChanged(filedIdentifier);
 
-
+    }
+```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQxNjQwNTg1NCwtMTM3NzQ5NTYyOSw3MT
-gwNjEwNjgsMjQ0Njk0NjgsLTg5NzIwNjk2NCwtMTI0NTQ1NDE5
-NCwtMTgxMjU3ODEyNiwtNTY2NzEyNjczLC0yMDg5MDEyODQyLD
-E2NTE0Nzk4NTBdfQ==
+eyJoaXN0b3J5IjpbOTg0ODExMTYzLC0xMzc3NDk1NjI5LDcxOD
+A2MTA2OCwyNDQ2OTQ2OCwtODk3MjA2OTY0LC0xMjQ1NDU0MTk0
+LC0xODEyNTc4MTI2LC01NjY3MTI2NzMsLTIwODkwMTI4NDIsMT
+Y1MTQ3OTg1MF19
 -->
