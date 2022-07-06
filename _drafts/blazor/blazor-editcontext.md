@@ -98,7 +98,7 @@ If you want to reset the validation state you can call following method
 
 ## Notify value has changed
 
-If you want to update the UI if input value has changed you can call EditContext method `NotifyFieldChanged` with input as filed identifer
+If you want to update the UI if input value has changed you can call EditContext method `NotifyFieldChanged` with input as filed identifer. 
 
 ```csharp
  public void Callback()
@@ -110,8 +110,8 @@ If you want to update the UI if input value has changed you can call EditContext
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTg0ODExMTYzLC0xMzc3NDk1NjI5LDcxOD
-A2MTA2OCwyNDQ2OTQ2OCwtODk3MjA2OTY0LC0xMjQ1NDU0MTk0
-LC0xODEyNTc4MTI2LC01NjY3MTI2NzMsLTIwODkwMTI4NDIsMT
-Y1MTQ3OTg1MF19
+eyJoaXN0b3J5IjpbLTE3MDk0ODg0OTksLTEzNzc0OTU2MjksNz
+E4MDYxMDY4LDI0NDY5NDY4LC04OTcyMDY5NjQsLTEyNDU0NTQx
+OTQsLTE4MTI1NzgxMjYsLTU2NjcxMjY3MywtMjA4OTAxMjg0Mi
+wxNjUxNDc5ODUwXX0=
 -->
