@@ -24,7 +24,30 @@ The  `EditContext`  is a form-meta-data holder for the object currently being ed
 A' FieldIdentifier' aims to provide an identity for a specific property on an object. It differs from  `System.Reflection.PropertyInfo`  because it identifies a property in a particular object instance. In contrast, reflection identifies a property of a class.
 
 
+## Inside Edit Context
+
+```csharp
+public sealed class EditContext
+{    
+  public EditContext(object model);    
+  public object Model { get; }     
+  public event EventHandler<FieldChangedEventArgs> OnFieldChanged;    
+  public event EventHandler<ValidationRequestedEventArgs> OnValidationRequested;    
+  public event EventHandler<ValidationStateChangedEventArgs> OnValidationStateChanged;     
+  
+  public FieldIdentifier Field(string fieldName);    
+  public IEnumerable<string> GetValidationMessages();    
+  public IEnumerable<string> GetValidationMessages(FieldIdentifier fieldIdentifier);    
+  public bool IsModified();    
+  public bool IsModified(in FieldIdentifier fieldIdentifier);    
+  public void MarkAsUnmodified(in FieldIdentifier fieldIdentifier);    
+  public void MarkAsUnmodified();    
+  public void NotifyFieldChanged(in FieldIdentifier fieldIdentifier);    
+  public void NotifyValidationStateChanged();    
+  public bool Validate();
+}
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzcwNjY3MzQyLC01NjY3MTI2NzMsLTIwOD
-kwMTI4NDIsMTY1MTQ3OTg1MF19
+eyJoaXN0b3J5IjpbLTE4MTI1NzgxMjYsLTU2NjcxMjY3MywtMj
+A4OTAxMjg0MiwxNjUxNDc5ODUwXX0=
 -->
