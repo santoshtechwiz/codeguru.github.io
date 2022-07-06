@@ -98,11 +98,14 @@ If you want to reset the validation state you can call following method
 
 ## Notify value has changed
 
-If you want to update the UI if 
+If you want to update the UI if input value has changed you can call EditContext method `NotifyFieldChanged` with input as filed identifer
+
+```csharp
+
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU1NTk1Njk2NCwtMTM3NzQ5NTYyOSw3MT
+eyJoaXN0b3J5IjpbMTQxNjQwNTg1NCwtMTM3NzQ5NTYyOSw3MT
 gwNjEwNjgsMjQ0Njk0NjgsLTg5NzIwNjk2NCwtMTI0NTQ1NDE5
 NCwtMTgxMjU3ODEyNiwtNTY2NzEyNjczLC0yMDg5MDEyODQyLD
 E2NTE0Nzk4NTBdfQ==
