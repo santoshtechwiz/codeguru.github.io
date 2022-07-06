@@ -88,10 +88,21 @@ If you want to detect when the input value has changed you can subscribe to `Edi
 ```csharp
   _editContext.OnFieldChanged += EditContext_OnFieldChanged;
   ```
+## How to reset the validation
+
+If you want to reset the validation state you can call following method
+
+```csharp
+  _editContext.MarkAsUnmodified();
+```
+
+## Notify value has changed
+
+If you want to update the UI if 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk1MTQxMTE2MCwtMTM3NzQ5NTYyOSw3MT
+eyJoaXN0b3J5IjpbMTU1NTk1Njk2NCwtMTM3NzQ5NTYyOSw3MT
 gwNjEwNjgsMjQ0Njk0NjgsLTg5NzIwNjk2NCwtMTI0NTQ1NDE5
 NCwtMTgxMjU3ODEyNiwtNTY2NzEyNjczLC0yMDg5MDEyODQyLD
 E2NTE0Nzk4NTBdfQ==
