@@ -4,6 +4,9 @@ This blog post I will show you what is a HTML web 5 components with real world e
 - What are the diffrent events of the HTML5 web components
 - And in the last how to create a reusable HTML5 web components
 
+## What is HTML5 Web Components?
+
+Web components are introduced HTML5 DOM specifications by W3C. Web components are a set of APIs that facilitate the creation of new custom, reusable HTML tags/elements that can be used in web pages and web apps with their functionality isolated from the rest of your application code.
 
 When the HTML5 web component renders, it called several callback events. You can define several different callbacks inside a custom element’s class definition, which fire at various points in the element’s lifecycle:
 
@@ -117,5 +120,5 @@ In this article, I will show you how to create a reusable HTML5 countdown timer 
 </html>
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzcxNzE0NDI4XX0=
+eyJoaXN0b3J5IjpbNzMxODk3MjY2XX0=
 -->
