@@ -1,4 +1,7 @@
-This blog
+This blog post I will show you what is a HTML web 5 components with real world example. By the end of the blog post you will learn the following things
+
+- What is HTML5 Web Components?
+- What are the diffrent events of the 
 When the HTML5 web component renders, it called several callback events. You can define several different callbacks inside a custom element’s class definition, which fire at various points in the element’s lifecycle:
 
 ## `connectedCallback`:
@@ -111,5 +114,5 @@ In this article, I will show you how to create a reusable HTML5 countdown timer 
 </html>
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM1NzA1MjA1NV19
+eyJoaXN0b3J5IjpbODU0OTY0ODcxXX0=
 -->
