@@ -9,6 +9,9 @@ In this blog post, I will show you everything related to jest testing like
 
 
 
+
+
+
 - [Testing with Jest: Awesome Tips and Tricks](https://www.codeguru.co.in/2021/03/jest-tips-and-trics.html)
 - [How to mock DOM element in Javascript/JQuery using Jest](https://www.codeguru.co.in/2021/02/how-to-mock-dom-element-in.html)
 - [ Testing JavaScript Event Listeners with Jest](https://www.codeguru.co.in/2021/02/testing-javascript-events-with-jest.html)
@@ -17,6 +20,6 @@ In this blog post, I will show you everything related to jest testing like
 - [Mocking- A guide to mock jQuery ajax using Jest](https://www.codeguru.co.in/2021/04/how-to-test-jquery-ajax-using-jest.html)
 - [How to mock jQuery selector and return HTML element using JEST](https://www.codeguru.co.in/2021/04/how-to-mock-jquery-selector-using-jest.html)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUzODI2NTM3LDEzNjU2MzY2MSwxNTc2Nz
-AzNDU0XX0=
+eyJoaXN0b3J5IjpbLTIwNjQ4MzEwMDksMTUzODI2NTM3LDEzNj
+U2MzY2MSwxNTc2NzAzNDU0XX0=
 -->
