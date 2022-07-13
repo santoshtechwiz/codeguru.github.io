@@ -6,8 +6,7 @@ In this blog post, I will show you everything related to jest testing like
 - Jest Mock 
 - Jest Module mocking
 - How to mock Jquery event and jquery ajax call
-- How to mock IntersectionObserver
-and some tips and tricks about the jest
+
 
 
 - [Testing with Jest: Awesome Tips and Tricks](https://www.codeguru.co.in/2021/03/jest-tips-and-trics.html)
@@ -18,5 +17,5 @@ and some tips and tricks about the jest
 - [Mocking- A guide to mock jQuery ajax using Jest](https://www.codeguru.co.in/2021/04/how-to-test-jquery-ajax-using-jest.html)
 - [How to mock jQuery selector and return HTML element using JEST](https://www.codeguru.co.in/2021/04/how-to-mock-jquery-selector-using-jest.html)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU3NjcwMzQ1NF19
+eyJoaXN0b3J5IjpbMTM2NTYzNjYxLDE1NzY3MDM0NTRdfQ==
 -->
