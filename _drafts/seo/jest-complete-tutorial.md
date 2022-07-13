@@ -1,4 +1,7 @@
-Testing is very important part of any software development. Testing helps to detect the bug early and also reduce the time of testing. 
+Testing is very important part of any software development. Testing helps to detect the bug early and also reduce the time of testing. Earlier we only focused on the backend testing but now a days there are  a lot of frameworks aviable for frontend testing one of them is `Jest` which is very popular framework for frontend testing. 
+In this blog post I will show you everything related with jest testing like
+
+- Jest SpyOn
 
 
 - [Testing with Jest: Awesome Tips and Tricks](https://www.codeguru.co.in/2021/03/jest-tips-and-trics.html)
@@ -9,5 +12,5 @@ Testing is very important part of any software development. Testing helps to det
 - [Mocking- A guide to mock jQuery ajax using Jest](https://www.codeguru.co.in/2021/04/how-to-test-jquery-ajax-using-jest.html)
 - [How to mock jQuery selector and return HTML element using JEST](https://www.codeguru.co.in/2021/04/how-to-mock-jquery-selector-using-jest.html)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc3NDQ0NDQ2NV19
+eyJoaXN0b3J5IjpbMjEwNzk1MDQyMV19
 -->
