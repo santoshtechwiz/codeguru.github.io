@@ -9,16 +9,16 @@ In this blog post, I will show you everything related to jest testing like
 
 Check out the below tutorial 
 
- 1. [Testing with Jest: Awesome Tips and
+   [Testing with Jest: Awesome Tips and
     Tricks](https://www.codeguru.co.in/2021/03/jest-tips-and-trics.html)
-    - [How to mock DOM element in Javascript/JQuery using Jest](https://www.codeguru.co.in/2021/02/how-to-mock-dom-element-in.html)
-    - [ Testing JavaScript Event Listeners with Jest](https://www.codeguru.co.in/2021/02/testing-javascript-events-with-jest.html)
-    - [How to mock/test IntersectionObserver using JEST](https://www.codeguru.co.in/2022/02/how-to-mocktest-intersectionobserver.html)
+     [How to mock DOM element in Javascript/JQuery using Jest](https://www.codeguru.co.in/2021/02/how-to-mock-dom-element-in.html)
+    [ Testing JavaScript Event Listeners with Jest](https://www.codeguru.co.in/2021/02/testing-javascript-events-with-jest.html)
+     [How to mock/test IntersectionObserver using JEST](https://www.codeguru.co.in/2022/02/how-to-mocktest-intersectionobserver.html)
     
-    - [Mocking- A guide to mock jQuery ajax using Jest](https://www.codeguru.co.in/2021/04/how-to-test-jquery-ajax-using-jest.html)
-    - [How to mock jQuery selector and return HTML element using JEST](https://www.codeguru.co.in/2021/04/how-to-mock-jquery-selector-using-jest.html)
+ [Mocking- A guide to mock jQuery ajax using Jest](https://www.codeguru.co.in/2021/04/how-to-test-jquery-ajax-using-jest.html) 
+ [How to mock jQuery selector and return HTML element using JEST](https://www.codeguru.co.in/2021/04/how-to-mock-jquery-selector-using-jest.html)
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NzA3NjQ3NDksMTUzODI2NTM3LDEzNj
-U2MzY2MSwxNTc2NzAzNDU0XX0=
+eyJoaXN0b3J5IjpbMTIwNDIzMTYwMSwxNTM4MjY1MzcsMTM2NT
+YzNjYxLDE1NzY3MDM0NTRdfQ==
 -->
