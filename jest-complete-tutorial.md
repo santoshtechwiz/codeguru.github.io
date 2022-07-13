@@ -1,7 +1,7 @@
 
+
 Testing is a significant part of any software development. Testing helps detect the bug early and reduces the testing time. Earlier, we only focused on backend testing, but nowadays, there are a lot of frameworks available for frontend testing. One of them is `Jest`, a very popular framework for frontend testing. 
 In this blog post, I will show you everything related to jest testing like
-
 - Jest SpyOn
 - Jest Mock 
 - Jest Module mocking
@@ -17,5 +17,6 @@ In this blog post, I will show you everything related to jest testing like
 - [Mocking- A guide to mock jQuery ajax using Jest](https://www.codeguru.co.in/2021/04/how-to-test-jquery-ajax-using-jest.html)
 - [How to mock jQuery selector and return HTML element using JEST](https://www.codeguru.co.in/2021/04/how-to-mock-jquery-selector-using-jest.html)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM2NTYzNjYxLDE1NzY3MDM0NTRdfQ==
+eyJoaXN0b3J5IjpbMTUzODI2NTM3LDEzNjU2MzY2MSwxNTc2Nz
+AzNDU0XX0=
 -->
